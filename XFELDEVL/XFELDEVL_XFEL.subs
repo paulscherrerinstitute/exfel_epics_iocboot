@@ -1,0 +1,52 @@
+
+################################################################################
+## S7gpac driver test server - ASYNCHRONOUS                                 ####
+################################################################################
+
+# file test.template {
+#    pattern  {DEV                  SRV    }
+#             {XFEL-TEST            GPAC2TEST}
+# }
+
+################################################################################
+## GPAC SPECIFIC SERVER - ASYNCHRONOUS                                      ####
+################################################################################
+
+file S7gpac.template {
+   pattern  {DEV                    SRV             }
+            {FLASHLXBUTBPM1         FLASHLXBUTBPM1 }
+}
+
+file gpac2_service.template {
+   pattern  {DEV                    SRV             }
+            {FLASHLXBUTBPM1         FLASHLXBUTBPM1 }
+}
+
+################################################################################
+## BUTTON BPM OPERATION                                                     ####
+################################################################################
+
+file S7gpac.template {
+  pattern  {DEV             SRV                }    
+           {XFELDEVL-BUT1   XFELDEVL-BUT1    }    
+}
+
+file but_bpm_s7gpac.template {
+  pattern  {DEV             SRV            READ_OFFSET  }
+           {XFELDEVL-BUT1   XFELDEVL-BUT1         280  }
+}
+
+################################################################################
+## BUTTON BPM SERVICE SERVER                                                ####
+################################################################################
+
+#file S7gpac.template {
+#  pattern {DEV            SRV             }    
+#          {FLASHBUTSERV   FLASHBUTSERV    }    
+#}
+#
+#
+#file but_serv_s7gpac.template {
+#  pattern {DEV           SRV          READ_OFFSET  }
+#          {FLASHBUTSERV  FLASHBUTSERV         112  }
+#}

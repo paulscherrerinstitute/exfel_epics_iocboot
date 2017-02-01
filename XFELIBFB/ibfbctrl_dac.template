@@ -1,0 +1,656 @@
+#------------------------------------------------------------------------------
+#
+#
+
+#-- temperature
+
+record(ai,"$(DEV):$(PLANE)-DAC-TEMP-0") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x005C T=INT32")
+  field(PREC, "1")
+  field(ASLO, "0.00390625")   
+}
+
+record(ai,"$(DEV):$(PLANE)-DAC-TEMP-1") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0060 T=INT32")
+  field(PREC, "1")
+  field(ASLO, "0.00390625")   
+}
+
+record(ai,"$(DEV):$(PLANE)-DAC-TEMP-2") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0064 T=INT32")
+  field(PREC, "1")
+  field(ASLO, "0.00390625")   
+}
+
+record(ai,"$(DEV):$(PLANE)-DAC-TEMP-3") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0068 T=INT32")
+  field(PREC, "1")
+  field(ASLO, "0.00390625")   
+}
+
+#-- comparators
+
+record(longin, "$(DEV):$(PLANE)-DAC-COMP-N-0") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x006C T=UINT8")
+}
+
+record(longin, "$(DEV):$(PLANE)-DAC-COMP-N-1") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x006D T=UINT8")
+}
+
+record(longin, "$(DEV):$(PLANE)-DAC-COMP-N-2") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x006E T=UINT8")
+}
+
+record(longin, "$(DEV):$(PLANE)-DAC-COMP-N-3") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x006F T=UINT8")
+}
+
+record(longin, "$(DEV):$(PLANE)-DAC-COMP-P-0") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0070 T=UINT8")
+}
+
+record(longin, "$(DEV):$(PLANE)-DAC-COMP-P-1") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0071 T=UINT8")
+}
+
+record(longin, "$(DEV):$(PLANE)-DAC-COMP-P-2") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0072 T=UINT8")
+}
+
+record(longin, "$(DEV):$(PLANE)-DAC-COMP-P-3") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0073 T=UINT8")
+}
+
+#-- DCM 
+
+record(ai, "$(DEV):$(PLANE)-DCM-FREQ-0") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0074 T=UINT32")
+  field(PREC, "3")
+  field(ASLO, "0.000001")   
+}
+
+record(ai, "$(DEV):$(PLANE)-DCM-FREQ-1") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0078 T=UINT32")
+  field(PREC, "3")
+  field(ASLO, "0.000001")   
+}
+
+record(ai, "$(DEV):$(PLANE)-DCM-FREQ-2") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x007C T=UINT32")
+  field(PREC, "3")
+  field(ASLO, "0.000001")   
+}
+
+record(ai, "$(DEV):$(PLANE)-DCM-FREQ-3") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0080 T=UINT32")
+  field(PREC, "3")
+  field(ASLO, "0.000001")   
+}
+
+record(longin, "$(DEV):$(PLANE)-DCM-LOCKED") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0084 T=UINT32")
+}
+
+#-- PLL
+
+record(longin, "$(DEV):$(PLANE)-DAC-NO-EXT-CLK") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0088 T=UINT32")
+}
+
+record(longin, "$(DEV):$(PLANE)-DAC-PLL1-LOCKED") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x008C T=UINT32")
+}
+
+record(longin, "$(DEV):$(PLANE)-DAC-PLL2-LOCKED") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0090 T=UINT32")
+}
+
+#-- Amplifier enable
+
+record(bo, "$(DEV):$(PLANE)-DAC-AMP-ENA-0") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x005C:0x005C T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(ZNAM, "Off" )
+  field(ONAM, "On" )
+}
+
+record(bo, "$(DEV):$(PLANE)-DAC-AMP-ENA-1") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x005D:0x005D T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(ZNAM, "Off" )
+  field(ONAM, "On" )
+}
+
+record(bo, "$(DEV):$(PLANE)-DAC-AMP-ENA-2") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x005E:0x005E T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(ZNAM, "Off" )
+  field(ONAM, "On" )
+}
+
+record(bo, "$(DEV):$(PLANE)-DAC-AMP-ENA-3") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x005F:0x005F T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(ZNAM, "Off" )
+  field(ONAM, "On" )
+}
+
+#-- DAC enable
+
+record(bo, "$(DEV):$(PLANE)-DAC-ENA-0") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0060:0x0060 T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(ZNAM, "Off" )
+  field(ONAM, "On" )
+}
+
+record(bo, "$(DEV):$(PLANE)-DAC-ENA-1") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0061:0x0061 T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(ZNAM, "Off" )
+  field(ONAM, "On" )
+}
+
+record(bo, "$(DEV):$(PLANE)-DAC-ENA-2") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0062:0x0062 T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(ZNAM, "Off" )
+  field(ONAM, "On" )
+}
+
+record(bo, "$(DEV):$(PLANE)-DAC-ENA-3") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0063:0x0063 T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(ZNAM, "Off" )
+  field(ONAM, "On" )
+}
+
+#-- DAC amplifier common mode voltage
+
+record(ao,"$(DEV):$(PLANE)-DAC-AMP-CMV-0") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0064:0x0064 T=INT32")
+  field(SCAN, "I/O Intr")
+  field(DRVL, "0")  
+  field(DRVH, "4095")
+  field(LOPR, "0")
+  field(HOPR, "4095")  
+  field(PREC, "0")  
+  field(ASLO, "0.0625")  
+}
+
+record(ao,"$(DEV):$(PLANE)-DAC-AMP-CMV-1") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0068:0x0068 T=INT32")
+  field(SCAN, "I/O Intr")
+  field(DRVL, "0")  
+  field(DRVH, "4095")
+  field(LOPR, "0")
+  field(HOPR, "4095")  
+  field(PREC, "0")  
+  field(ASLO, "0.0625")  
+}
+
+record(ao,"$(DEV):$(PLANE)-DAC-AMP-CMV-2") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x006C:0x006C T=INT32")
+  field(SCAN, "I/O Intr")
+  field(DRVL, "0")  
+  field(DRVH, "4095")
+  field(LOPR, "0")
+  field(HOPR, "4095")  
+  field(PREC, "0")  
+  field(ASLO, "0.0625")  
+}
+
+record(ao,"$(DEV):$(PLANE)-DAC-AMP-CMV-3") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0070:0x0070 T=INT32")
+  field(SCAN, "I/O Intr")
+  field(DRVL, "0")  
+  field(DRVH, "4095")
+  field(LOPR, "0")
+  field(HOPR, "4095")  
+  field(PREC, "0")  
+  field(ASLO, "0.0625")  
+}
+
+#-- Comparator reference voltage
+
+record(ao,"$(DEV):$(PLANE)-DAC-COMP-REF-0") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0074:0x0074 T=INT32")
+  field(SCAN, "I/O Intr")
+  field(DRVL, "0")  
+  field(DRVH, "4095")
+  field(LOPR, "0")
+  field(HOPR, "4095")  
+  field(PREC, "0")  
+  field(ASLO, "0.0625")  
+}
+
+record(ao,"$(DEV):$(PLANE)-DAC-COMP-REF-1") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0078:0x0078 T=INT32")
+  field(SCAN, "I/O Intr")
+  field(DRVL, "0")  
+  field(DRVH, "4095")
+  field(LOPR, "0")
+  field(HOPR, "4095")  
+  field(PREC, "0")  
+  field(ASLO, "0.0625")  
+}
+
+record(ao,"$(DEV):$(PLANE)-DAC-COMP-REF-2") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x007C:0x007C T=INT32")
+  field(SCAN, "I/O Intr")
+  field(DRVL, "0")  
+  field(DRVH, "4095")
+  field(LOPR, "0")
+  field(HOPR, "4095")  
+  field(PREC, "0")  
+  field(ASLO, "0.0625")  
+}
+
+record(ao,"$(DEV):$(PLANE)-DAC-COMP-REF-3") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0080:0x0080 T=INT32")
+  field(SCAN, "I/O Intr")
+  field(DRVL, "0")  
+  field(DRVH, "4095")
+  field(LOPR, "0")
+  field(HOPR, "4095")  
+  field(PREC, "0")  
+  field(ASLO, "0.0625")  
+}
+
+#-- DAC mode
+
+record(mbbo, "$(DEV):$(PLANE)-DAC-MODE-M") {
+  field(NOBT,"4")
+  field(SHFT, "0")
+  field(ZRVL, "0" )
+  field(ONVL, "1" )
+  field(TWVL, "2" )
+  field(THVL, "3" )
+  field(FRVL, "4" )
+  field(FVVL, "5" )
+  field(SXVL, "6" )
+  field(SVVL, "7" )
+  field(EIVL, "8" )
+  field(NIVL, "9" )
+  field(ZRST, "Off" )
+  field(ONST, "Constant" )
+  field(TWST, "Sinewave" )
+  field(THST, "Sqarewave" )
+  field(FRST, "Noise" )
+  field(FVST, "Saw" )
+  field(SXST, "Doublet" )
+  field(SVST, "User pattern" )
+  field(EIST, "IBFB" )
+  field(NIST, "Test" )
+  field(OUT, "$(DEV):$(PLANE)-DAC-MODE-F PP")
+}
+
+record(dfanout,"$(DEV):$(PLANE)-DAC-MODE-F") {
+   field(SCAN, "Passive")
+   field(DOL,  "$(DEV):$(PLANE)-DAC-MODE-M")
+   field(OMSL, "closed_loop")
+   field(OUTA, "$(DEV):$(PLANE)-DAC-MODE-0 PP")
+   field(OUTB, "$(DEV):$(PLANE)-DAC-MODE-1 PP")
+   field(OUTC, "$(DEV):$(PLANE)-DAC-MODE-2 PP")
+   field(OUTD, "$(DEV):$(PLANE)-DAC-MODE-3 PP")
+}
+
+record(mbbo, "$(DEV):$(PLANE)-DAC-MODE-0") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0084:0x0084 T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(NOBT,"4")
+  field(SHFT, "0")
+  field(ZRVL, "0" )
+  field(ONVL, "1" )
+  field(TWVL, "2" )
+  field(THVL, "3" )
+  field(FRVL, "4" )
+  field(FVVL, "5" )
+  field(SXVL, "6" )
+  field(SVVL, "7" )
+  field(EIVL, "8" )
+  field(NIVL, "9" )
+  field(ZRST, "Off" )
+  field(ONST, "Constant" )
+  field(TWST, "Sinewave" )
+  field(THST, "Sqarewave" )
+  field(FRST, "Noise" )
+  field(FVST, "Saw" )
+  field(SXST, "Doublet" )
+  field(SVST, "User pattern" )
+  field(EIST, "IBFB" )
+  field(NIST, "Test" )
+}
+
+record(mbbo, "$(DEV):$(PLANE)-DAC-MODE-1") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0085:0x0085 T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(NOBT,"4")
+  field(SHFT, "0")
+  field(ZRVL, "0" )
+  field(ONVL, "1" )
+  field(TWVL, "2" )
+  field(THVL, "3" )
+  field(FRVL, "4" )
+  field(FVVL, "5" )
+  field(SXVL, "6" )
+  field(SVVL, "7" )
+  field(EIVL, "8" )
+  field(NIVL, "9" )
+  field(ZRST, "Off" )
+  field(ONST, "Constant" )
+  field(TWST, "Sinewave" )
+  field(THST, "Sqarewave" )
+  field(FRST, "Noise" )
+  field(FVST, "Saw" )
+  field(SXST, "Doublet" )
+  field(SVST, "User pattern" )
+  field(EIST, "IBFB" )
+  field(NIST, "Test" )
+}
+
+record(mbbo, "$(DEV):$(PLANE)-DAC-MODE-2") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0086:0x0086 T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(NOBT,"4")
+  field(SHFT, "0")
+  field(ZRVL, "0" )
+  field(ONVL, "1" )
+  field(TWVL, "2" )
+  field(THVL, "3" )
+  field(FRVL, "4" )
+  field(FVVL, "5" )
+  field(SXVL, "6" )
+  field(SVVL, "7" )
+  field(EIVL, "8" )
+  field(NIVL, "9" )
+  field(ZRST, "Off" )
+  field(ONST, "Constant" )
+  field(TWST, "Sinewave" )
+  field(THST, "Sqarewave" )
+  field(FRST, "Noise" )
+  field(FVST, "Saw" )
+  field(SXST, "Doublet" )
+  field(SVST, "User pattern" )
+  field(EIST, "IBFB" )
+  field(NIST, "Test" )
+}
+
+record(mbbo, "$(DEV):$(PLANE)-DAC-MODE-3") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0087:0x0087 T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(NOBT,"4")
+  field(SHFT, "0")
+  field(ZRVL, "0" )
+  field(ONVL, "1" )
+  field(TWVL, "2" )
+  field(THVL, "3" )
+  field(FRVL, "4" )
+  field(FVVL, "5" )
+  field(SXVL, "6" )
+  field(SVVL, "7" )
+  field(EIVL, "8" )
+  field(NIVL, "9" )
+  field(ZRST, "Off" )
+  field(ONST, "Constant" )
+  field(TWST, "Sinewave" )
+  field(THST, "Sqarewave" )
+  field(FRST, "Noise" )
+  field(FVST, "Saw" )
+  field(SXST, "Doublet" )
+  field(SVST, "User pattern" )
+  field(EIST, "IBFB" )
+  field(NIST, "Test" )
+}
+
+#-- DAC Wave Amplitude
+record(ao,"$(DEV):$(PLANE)-DAC-WAVE-AMPL-0") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0088:0x0088 T=FLOAT")
+  field(SCAN, "I/O Intr")
+  field(DRVL, "0")  
+  field(DRVH, "1")
+  field(LOPR, "0")
+  field(HOPR, "1")  
+  field(PREC, "3")  
+}
+
+record(ao,"$(DEV):$(PLANE)-DAC-WAVE-AMPL-1") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x008C:0x008C T=FLOAT")
+  field(SCAN, "I/O Intr")
+  field(DRVL, "0")  
+  field(DRVH, "1")
+  field(LOPR, "0")
+  field(HOPR, "1")  
+  field(PREC, "3")  
+}
+
+record(ao,"$(DEV):$(PLANE)-DAC-WAVE-AMPL-2") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0090:0x0090 T=FLOAT")
+  field(SCAN, "I/O Intr")
+  field(DRVL, "0")  
+  field(DRVH, "1")
+  field(LOPR, "0")
+  field(HOPR, "1")  
+  field(PREC, "3")  
+}
+
+record(ao,"$(DEV):$(PLANE)-DAC-WAVE-AMPL-3") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0094:0x0094 T=FLOAT")
+  field(SCAN, "I/O Intr")
+  field(DRVL, "0")  
+  field(DRVH, "1")
+  field(LOPR, "0")
+  field(HOPR, "1")  
+  field(PREC, "3")  
+}
+
+#-- DAC Wave Freuqency
+record(ao,"$(DEV):$(PLANE)-DAC-WAVE-FREQ-0") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0098:0x0098 T=FLOAT")
+  field(SCAN, "I/O Intr")
+  field(DRVL, "0")  
+  field(DRVH, "108")
+  field(LOPR, "0")
+  field(HOPR, "108")  
+  field(PREC, "3")  
+}
+
+record(ao,"$(DEV):$(PLANE)-DAC-WAVE-FREQ-1") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x009C:0x009C T=FLOAT")
+  field(SCAN, "I/O Intr")
+  field(DRVL, "0")  
+  field(DRVH, "108")
+  field(LOPR, "0")
+  field(HOPR, "108")  
+  field(PREC, "3")  
+}
+
+record(ao,"$(DEV):$(PLANE)-DAC-WAVE-FREQ-2") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x00A0:0x00A0 T=FLOAT")
+  field(SCAN, "I/O Intr")
+  field(DRVL, "0")  
+  field(DRVH, "108")
+  field(LOPR, "0")
+  field(HOPR, "108")  
+  field(PREC, "3")  
+}
+
+record(ao,"$(DEV):$(PLANE)-DAC-WAVE-FREQ-3") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x00A4:0x00A4 T=FLOAT")
+  field(SCAN, "I/O Intr")
+  field(DRVL, "0")  
+  field(DRVH, "108")
+  field(LOPR, "0")
+  field(HOPR, "108")  
+  field(PREC, "3")  
+}
+
+#-- DAC Wave Phase
+record(ao,"$(DEV):$(PLANE)-DAC-WAVE-PHASE-0") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x00A8:0x00A8 T=FLOAT")
+  field(SCAN, "I/O Intr")
+  field(DRVL, "-360")  
+  field(DRVH, "360")
+  field(LOPR, "-360")
+  field(HOPR, "360")  
+  field(PREC, "0")  
+}
+
+record(ao,"$(DEV):$(PLANE)-DAC-WAVE-PHASE-1") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x00AC:0x00AC T=FLOAT")
+  field(SCAN, "I/O Intr")
+  field(DRVL, "-360")  
+  field(DRVH, "360")
+  field(LOPR, "-360")
+  field(HOPR, "360")  
+  field(PREC, "0")  
+}
+
+record(ao,"$(DEV):$(PLANE)-DAC-WAVE-PHASE-2") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x00B0:0x00B0 T=FLOAT")
+  field(SCAN, "I/O Intr")
+  field(DRVL, "-360")  
+  field(DRVH, "360")
+  field(LOPR, "-360")
+  field(HOPR, "360")  
+  field(PREC, "0")  
+}
+
+record(ao,"$(DEV):$(PLANE)-DAC-WAVE-PHASE-3") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x00B4:0x00B4 T=FLOAT")
+  field(SCAN, "I/O Intr")
+  field(DRVL, "-360")  
+  field(DRVH, "360")
+  field(LOPR, "-360")
+  field(HOPR, "360")  
+  field(PREC, "0")  
+}
+
+
+#-- DCM pahse shift
+
+record(longin, "$(DEV):$(PLANE)-DCM-PS-STATE-0") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x009C T=UINT32")
+}
+
+record(longin, "$(DEV):$(PLANE)-DCM-PS-STATE-1") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x00A0 T=UINT32")
+}
+
+record(longin, "$(DEV):$(PLANE)-DCM-PS-STATE-2") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x00A4 T=UINT32")
+}
+
+record(longin, "$(DEV):$(PLANE)-DCM-PS-STATE-3") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x00A8 T=UINT32")
+}
+
+record(longin, "$(DEV):$(PLANE)-DCM-PS-PHASE-0") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x00AC T=UINT8")
+}
+
+record(longin, "$(DEV):$(PLANE)-DCM-PS-PHASE-1") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x00AD T=UINT8")
+}
+
+record(longin, "$(DEV):$(PLANE)-DCM-PS-PHASE-2") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x00AE T=UINT8")
+}
+
+record(longin, "$(DEV):$(PLANE)-DCM-PS-PHASE-3") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x00AF T=UINT8")
+}
+
+record(longout, "$(DEV):$(PLANE)-DCM-PS-CMD") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x00B8 T=UINT32")
+}

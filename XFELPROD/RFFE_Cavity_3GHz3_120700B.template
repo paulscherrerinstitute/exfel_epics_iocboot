@@ -1,0 +1,946 @@
+#------------------------------------------------------------------------------
+#-----------            RFFE cavity system channels            ----------------
+#------------------------------------------------------------------------------
+# ADDRESSES OF FPGA CHIPS RELATIVE TO GPAC BASE ADDRESS
+# SYS  FPGA             0x00000000
+# CFG  FPGA             0x00001000
+# BP   FPGA             0x00100000
+#   VME_P2_ADDR (CAV1)  0x00002000
+#   VME_P2_ADDR (CAV2)  0x00002018
+# BPM1 FPGA             0x00800000
+#   FL_ADDR             0x00010000
+#   SYS_INIT            0x00038000
+#   I2C_ADDR            0x00040000
+#   SMP_ADDR_REG        0x00060000
+#   SMP_ADDR_MEM        0x00100000
+# BPM2 FPGA             0x01000000
+#   FL_ADDR             0x00010000
+#   SYS_INIT            0x00038000
+#   I2C_ADDR            0x00040000
+#   SMP_ADDR_REG        0x00060000
+#   SMP_ADDR_MEM        0x00100000
+#
+#------------------------------------------------------------------------------
+
+#------------------------------------------------------------------------------
+# RFFE Init
+#------------------------------------------------------------------------------
+record(bo, "$(DEV):RFFE-INIT") {
+   field(DESC, "RFFE Init")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0254 T=UINT32")
+   field(ZNAM, "Operate")
+   field(ONAM, "Init")
+}
+
+#------------------------------------------------------------------------------
+# RFFE EEPROM interface
+#------------------------------------------------------------------------------
+
+record(bo, "$(DEV):RFFE-EEPROM-RD") {
+   field(DESC, "Read calibration from EEPROM")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0258:0x0258 T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(ZNAM, "Done")
+   field(ONAM, "Read")
+}
+
+record(bo, "$(DEV):RFFE-EEPROM-WR") {
+   field(DESC, "Write calibration to EEPROM")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x025C:0x025C T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(ZNAM, "Done")
+   field(ONAM, "Write")
+}
+
+#------------------------------------------------------------------------------
+# RFFE ADC MAX11617 interface
+#------------------------------------------------------------------------------
+record(ai,"$(DEV):R-MX-TMP-FBI") {
+   field(DESC, "R mixer temperature feedback")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0550 T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(PREC, "2")
+   field(LINR, "SLOPE")
+   field(ROFF, "-61440")
+   field(ASLO, "0.064102")
+   field(AOFF, "-30.769231")
+   field(EGU,  "degC")
+   field(FLNK, "$(DEV):R-MX-TMP-CHECK")
+}
+
+record(ai,"$(DEV):R-RF-TMP-FBI") {
+   field(DESC, "R RF temperature feedback")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0554 T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(PREC, "2")
+   field(LINR, "SLOPE")
+   field(ROFF, "-61440")
+   field(ASLO, "0.064102")
+   field(AOFF, "-30.769231")
+   field(EGU,  "degC")
+   field(FLNK, "$(DEV):R-RF-TMP-CHECK")
+}
+
+record(ai,"$(DEV):X-MX-TMP-FBI") {
+   field(DESC, "X mixer temperature feedback")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0558 T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(PREC, "2")
+   field(LINR, "SLOPE")
+   field(ROFF, "-61440")
+   field(ASLO, "0.064102")
+   field(AOFF, "-30.769231")
+   field(EGU,  "degC")
+   field(FLNK, "$(DEV):X-MX-TMP-CHECK")
+}
+
+record(ai,"$(DEV):X-RF-TMP-FBI") {
+   field(DESC, "X RF temperature feedback")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x055C T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(PREC, "2")
+   field(LINR, "SLOPE")
+   field(ROFF, "-61440")
+   field(ASLO, "0.064102")
+   field(AOFF, "-30.769231")
+   field(EGU,  "degC")
+   field(FLNK, "$(DEV):X-RF-TMP-CHECK")
+}
+
+record(ai,"$(DEV):Y-MX-TMP-FBI") {
+   field(DESC, "Y mixer temperature feedback")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0560 T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(PREC, "2")
+   field(LINR, "SLOPE")
+   field(ROFF, "-61440")
+   field(ASLO, "0.064102")
+   field(AOFF, "-30.769231")
+   field(EGU,  "degC")
+   field(FLNK, "$(DEV):Y-MX-TMP-CHECK")
+}
+
+record(ai,"$(DEV):Y-RF-TMP-FBI") {
+   field(DESC, "Y RF temperature feedback")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0564 T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(PREC, "2")
+   field(LINR, "SLOPE")
+   field(ROFF, "-61440")
+   field(ASLO, "0.064102")
+   field(AOFF, "-30.769231")
+   field(EGU,  "degC")
+   field(FLNK, "$(DEV):Y-RF-TMP-CHECK")
+}
+
+record(ai,"$(DEV):LO-TMP-FBI") {
+   field(DESC, "LO temperature feedback")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0568 T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(PREC, "3")
+   field(LINR, "SLOPE")
+   field(ROFF, "-61440")
+   field(ASLO, "0.0010")
+   field(EGU,  "V")
+   field(FLNK, "$(DEV):LO-PWR-TMP-CHECK")
+}
+
+record(ai,"$(DEV):LO-PWR-I") {
+   field(DESC, "LO voltage")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x056C T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(PREC, "3")
+   field(LINR, "SLOPE")
+   field(ROFF, "-61440")
+   field(ASLO, "0.0010")
+   field(EGU,  "V")
+}
+
+record(ai,"$(DEV):DET-DC") {
+   field(DESC, "Ref clk voltage")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0570 T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(PREC, "3")
+   field(LINR, "SLOPE")
+   field(ROFF, "-61440")
+   field(ASLO, "0.0010")
+   field(EGU,  "V")
+}
+
+#------------------------------------------------------------------------------
+# RFFE DIO PCA9536 interface
+#------------------------------------------------------------------------------
+record(longin,"$(DEV):DIO-I") {
+   field(DESC, "DIO input reg")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0580 T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(FLNK, "$(DEV):EXT-REF-GOOD")
+}
+
+record(calcout, "$(DEV):EXT-REF-GOOD") {
+   field(DESC, "External ref. good")
+   field(INPA, "$(DEV):DIO-I")
+   field(CALC, "(A>>1) AND 1")
+}
+
+record(bo, "$(DEV):DIO-TMP-FB") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0228:0x0228 T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(ZNAM, "FEEDBACK")
+   field(ONAM, "CONTROL")
+}
+
+record(bo, "$(DEV):DIO-INT-REF") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x022C:0x022C T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(ZNAM, "Off")
+   field(ONAM, "On")
+}
+
+#------------------------------------------------------------------------------
+# RFFE temperature check
+#------------------------------------------------------------------------------
+record(ao,"$(DEV):TMP-CHECK") {
+   field(DESC, "temperature threshold")
+   field(PREC, "2")
+   field(LOPR, "0.0")
+   field(HOPR, "1.0")
+   field(DRVL, "0.0")
+   field(DRVH, "1.0")
+   field(EGU,  "degC")
+   field(VAL,  "0.5")
+}
+
+record(calcout, "$(DEV):R-MX-TMP-CHECK") {
+   field(INPA, "$(DEV):R-MX-TMP-FBI")
+   field(INPB, "$(DEV):R-MX-TMP-FBO")
+   field(INPC, "$(DEV):TMP-CHECK")
+   field(CALC, "ABS(A - B) > C")
+}
+
+record(calcout, "$(DEV):R-RF-TMP-CHECK") {
+   field(INPA, "$(DEV):R-RF-TMP-FBI")
+   field(INPB, "$(DEV):R-RF-TMP-FBO")
+   field(INPC, "$(DEV):TMP-CHECK")
+   field(CALC, "ABS(A - B) > C")
+}
+
+record(calcout, "$(DEV):X-MX-TMP-CHECK") {
+   field(INPA, "$(DEV):X-MX-TMP-FBI")
+   field(INPB, "$(DEV):X-MX-TMP-FBO")
+   field(INPC, "$(DEV):TMP-CHECK")
+   field(CALC, "ABS(A - B) > C")
+}
+
+record(calcout, "$(DEV):X-RF-TMP-CHECK") {
+   field(INPA, "$(DEV):X-RF-TMP-FBI")
+   field(INPB, "$(DEV):X-RF-TMP-FBO")
+   field(INPC, "$(DEV):TMP-CHECK")
+   field(CALC, "ABS(A - B) > C")
+}
+
+record(calcout, "$(DEV):Y-MX-TMP-CHECK") {
+   field(INPA, "$(DEV):Y-MX-TMP-FBI")
+   field(INPB, "$(DEV):Y-MX-TMP-FBO")
+   field(INPC, "$(DEV):TMP-CHECK")
+   field(CALC, "ABS(A - B) > C")
+}
+
+record(calcout, "$(DEV):Y-RF-TMP-CHECK") {
+   field(INPA, "$(DEV):Y-RF-TMP-FBI")
+   field(INPB, "$(DEV):Y-RF-TMP-FBO")
+   field(INPC, "$(DEV):TMP-CHECK")
+   field(CALC, "ABS(A - B) > C")
+}
+
+record(calcout, "$(DEV):LO-PWR-TMP-CHECK") {
+   field(INPA, "$(DEV):LO-TMP-FBI")
+   field(INPB, "$(DEV):LO-TMP-FBO")
+   field(INPC, "$(DEV):TMP-CHECK")
+   field(CALC, "ABS(A - B) > C")
+}
+
+record(seq, "$(DEV):TMP-FBO-CPY") {
+   field(DOL1, "$(DEV):R-MX-TMP-FBI")
+   field(DOL2, "$(DEV):R-RF-TMP-FBI")
+   field(DOL3, "$(DEV):X-MX-TMP-FBI")
+   field(DOL4, "$(DEV):X-RF-TMP-FBI")
+   field(DOL5, "$(DEV):Y-MX-TMP-FBI")
+   field(DOL6, "$(DEV):Y-RF-TMP-FBI")
+   field(DOL7, "$(DEV):LO-TMP-FBI")
+   field(LNK1, "$(DEV):R-MX-TMP-FBO PP")
+   field(LNK2, "$(DEV):R-RF-TMP-FBO PP")
+   field(LNK3, "$(DEV):X-MX-TMP-FBO PP")
+   field(LNK4, "$(DEV):X-RF-TMP-FBO PP")
+   field(LNK5, "$(DEV):Y-MX-TMP-FBO PP")
+   field(LNK6, "$(DEV):Y-RF-TMP-FBO PP")
+   field(LNK7, "$(DEV):LO-TMP-FBO PP")
+}
+
+#------------------------------------------------------------------------------
+# RFFE temperature sensor LM73 interface
+#------------------------------------------------------------------------------
+record(ai,"$(DEV):R-I-TMP") {
+   field(DESC, "IF R I temperature")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0586 T=INT16")
+  field(SCAN, "I/O Intr")
+   field(PREC, "2")
+   field(ASLO, "0.0078125")
+   field(EGU,  "degC")
+}
+
+record(ai,"$(DEV):R-Q-TMP") {
+   field(DESC, "IF R Q temperature")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x058A T=INT16")
+  field(SCAN, "I/O Intr")
+   field(PREC, "2")
+   field(ASLO, "0.0078125")
+   field(EGU,  "degC")
+}
+
+record(ai,"$(DEV):X-I-TMP") {
+   field(DESC, "IF X I temperature")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x058E T=INT16")
+  field(SCAN, "I/O Intr")
+   field(PREC, "2")
+   field(ASLO, "0.0078125")
+   field(EGU,  "degC")
+}
+
+record(ai,"$(DEV):X-Q-TMP") {
+   field(DESC, "IF X Q temperature")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0592 T=INT16")
+  field(SCAN, "I/O Intr")
+   field(PREC, "2")
+   field(ASLO, "0.0078125")
+   field(EGU,  "degC")
+}
+
+record(ai,"$(DEV):Y-I-TMP") {
+   field(DESC, "IF Y I temperature")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0596 T=INT16")
+  field(SCAN, "I/O Intr")
+   field(PREC, "2")
+   field(ASLO, "0.0078125")
+   field(EGU,  "degC")
+}
+
+record(ai,"$(DEV):Y-Q-TMP") {
+   field(DESC, "IF Y Q temperature")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x059A T=INT16")
+  field(SCAN, "I/O Intr")
+   field(PREC, "2")
+   field(ASLO, "0.0078125")
+   field(EGU,  "degC")
+}
+
+#------------------------------------------------------------------------------
+# RFFE DAC DAC7678 interface
+#------------------------------------------------------------------------------
+record(ao,"$(DEV):R-MX-TMP-FBO") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0230:0x0230 T=FLOAT")
+  field(SCAN, "I/O Intr")
+   field(PREC, "1")
+   field(EGU,  "degC")
+   field(DRVL, "0.0")
+   field(DRVH, "60.0")
+   field(LOPR, "0.0")
+   field(HOPR, "60.0")
+}
+
+record(ao,"$(DEV):R-RF-TMP-FBO") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0234:0x0234 T=FLOAT")
+  field(SCAN, "I/O Intr")
+   field(PREC, "1")
+   field(EGU,  "degC")
+   field(DRVL, "0.0")
+   field(DRVH, "60.0")
+   field(LOPR, "0.0")
+   field(HOPR, "60.0")
+}
+
+record(ao,"$(DEV):X-MX-TMP-FBO") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0238:0x0238 T=FLOAT")
+  field(SCAN, "I/O Intr")
+   field(PREC, "1")
+   field(EGU,  "degC")
+   field(DRVL, "0.0")
+   field(DRVH, "60.0")
+   field(LOPR, "0.0")
+   field(HOPR, "60.0")
+}
+
+record(ao,"$(DEV):X-RF-TMP-FBO") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x023C:0x023C T=FLOAT")
+  field(SCAN, "I/O Intr")
+   field(PREC, "1")
+   field(EGU,  "degC")
+   field(DRVL, "0.0")
+   field(DRVH, "60.0")
+   field(LOPR, "0.0")
+   field(HOPR, "60.0")
+}
+
+record(ao,"$(DEV):Y-MX-TMP-FBO") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0240:0x0240 T=FLOAT")
+  field(SCAN, "I/O Intr")
+   field(PREC, "1")
+   field(EGU,  "degC")
+   field(DRVL, "0.0")
+   field(DRVH, "60.0")
+   field(LOPR, "0.0")
+   field(HOPR, "60.0")
+}
+
+record(ao,"$(DEV):Y-RF-TMP-FBO") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0244:0x0244 T=FLOAT")
+  field(SCAN, "I/O Intr")
+   field(PREC, "1")
+   field(EGU,  "degC")
+   field(DRVL, "0.0")
+   field(DRVH, "60.0")
+   field(LOPR, "0.0")
+   field(HOPR, "60.0")
+}
+
+record(ao,"$(DEV):LO-TMP-FBO") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0248:0x0248 T=FLOAT")
+  field(SCAN, "I/O Intr")
+   field(PREC, "3")
+   field(EGU,  "V")
+   field(DRVL, "0.0")
+   field(DRVH, "3.3")
+   field(LOPR, "0.0")
+   field(HOPR, "3.3")
+}
+
+record(ao,"$(DEV):LO-PHASE") {
+   field(DESC, "RF phase shifter")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x024C:0x024C T=FLOAT")
+  field(SCAN, "I/O Intr")
+   field(PREC, "3")
+   field(EGU,  "V")
+   field(DRVL, "0.0")
+   field(DRVH, "4.0")
+   field(VAL,  "0")
+   field(LOPR, "0.0")
+   field(HOPR, "4.0")
+}
+
+record(ao,"$(DEV):LO-PWR-O") {
+   field(DESC, "RF phase shifter")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0250:0x0250 T=FLOAT")
+  field(SCAN, "I/O Intr")
+   field(PREC, "3")
+   field(EGU,  "V")
+   field(DRVL, "0.0")
+   field(DRVH, "4.0")
+   field(LOPR, "0.0")
+   field(HOPR, "4.0")
+}
+
+#------------------------------------------------------------------------------
+# RFFE I2C/SPI bridge SC18IS602B PLL ADF4107 interface
+#------------------------------------------------------------------------------
+record(ao,"$(DEV):LO-PLL-R") {
+   field(DESC, "LO PLL R counter")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x01C0:0x01C0 T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(LOPR, "0.0")
+   field(HOPR, "16384.0")
+   field(DRVL, "0.0")
+   field(DRVH, "16384.0")
+}
+
+record(ao,"$(DEV):LO-PLL-A") {
+   field(DESC, "LO PLL A counter")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x01C4:0x01C4 T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(LOPR, "0.0")
+   field(HOPR, "64.0")
+   field(DRVL, "0.0")
+   field(DRVH, "64.0")
+}
+
+record(ao,"$(DEV):LO-PLL-B") {
+   field(DESC, "LO PLL B counter")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x01C8:0x01C8 T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(LOPR, "0.0")
+   field(HOPR, "8192.0")
+   field(DRVL, "0.0")
+   field(DRVH, "8192.0")
+}
+
+record(mbbo, "$(DEV):LO-PLL-MUX") {
+   field(DESC, "LO PLL MUX out")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x01CC:0x01CC T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(NOBT, "3")
+   field(SHFT, "0")
+   field(VAL,  "0")
+   field(ZRVL, "0" )
+   field(ONVL, "1" )
+   field(TWVL, "2" )
+   field(THVL, "3" )
+   field(FRVL, "4" )
+   field(FVVL, "5" )
+   field(SXVL, "6" )
+   field(SVVL, "7" )
+   field(ZRST, "TRI-STATE" )
+   field(ONST, "LOCK DET." )
+   field(TWST, "N DIV." )
+   field(THST, "DVDD" )
+   field(FRST, "R DIV." )
+   field(FVST, "N CH LOCK" )
+   field(SXST, "SDO" )
+   field(SVST, "DGND" )
+}
+
+record(bo, "$(DEV):LO-PLL-F2") {
+   field(DESC, "RF PLL REF PD polarity")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x01D0:0x01D0 T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(ZNAM, "NEGATIVE")
+   field(ONAM, "POSITIVE")
+}
+
+record(bo, "$(DEV):LO-PLL-F3") {
+   field(DESC, "RF PLL REF CP TRI state")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x01D4:0x01D4 T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(ZNAM, "NORMAL")
+   field(ONAM, "TRI-STATE")
+}
+
+record(mbbo, "$(DEV):LO-PLL-P") {
+   field(DESC, "RF PLL REF prescaler value")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x01D8:0x01D8 T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(NOBT, "2")
+   field(SHFT, "0")
+   field(VAL,  "0")
+   field(ZRVL, "0" )
+   field(ONVL, "1" )
+   field(TWVL, "2" )
+   field(THVL, "3" )
+   field(ZRST, "8/9" )
+   field(ONST, "16/17" )
+   field(TWST, "32/33" )
+   field(THST, "64/65" )
+}
+
+record(longin,"$(DEV):LO-PLL-GPIO-I") {
+   field(DESC, "LO PLL DI reg")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0574 T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(FLNK, "$(DEV):LO-PLL-MUX-OUT")
+}
+
+record(calcout, "$(DEV):LO-PLL-MUX-OUT") {
+   field(DESC, "REF RF PLL MUX out")
+   field(INPA, "$(DEV):LO-PLL-GPIO-I")
+   field(CALC, "(A>>1)AND 1")
+}
+
+#------------------------------------------------------------------------------
+# RFFE I2C/SPI bridge SC18IS602 DDS AD9913 interface
+#------------------------------------------------------------------------------
+record(longout,"$(DEV):CCLK-DDS-CFR1") {
+   field(DESC, "DDS CFR1 reg")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x01DC:0x01DC T=UINT32")
+  field(SCAN, "I/O Intr")
+}
+
+record(longout,"$(DEV):CCLK-DDS-CFR2") {
+   field(DESC, "DDS CFR2 reg")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x01E0:0x01E0 T=UINT32")
+  field(SCAN, "I/O Intr")
+}
+
+record(longout,"$(DEV):CCLK-DDS-DAC") {
+   field(DESC, "DDS DAC control reg")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x01E4:0x01E4 T=UINT32")
+  field(SCAN, "I/O Intr")
+}
+
+record(longout,"$(DEV):CCLK-DDS-FTW") {
+   field(DESC, "DDS FTW reg")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x01E8:0x01E8 T=UINT32")
+  field(SCAN, "I/O Intr")
+}
+
+record(ao,"$(DEV):DDS-PHASE") {
+   field(DESC, "DDS PHASE")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x01EC:0x01EC T=FLOAT")
+  field(SCAN, "I/O Intr")
+   field(PREC, "2")
+   field(DRVL, "0.0")
+   field(DRVH, "360.0")
+   field(LOPR, "0.0")
+   field(HOPR, "360.0")
+   field(EGU,  "deg")
+}
+
+record(bo, "$(DEV):CCLK-DDS-RESET") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x01F0:0x01F0 T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(ZNAM, "NORMAL")
+   field(ONAM, "RESET")
+}
+
+#------------------------------------------------------------------------------
+# RFFE I2C/SPI bridge SC18IS602B IFPLL ADF4001 interface
+#------------------------------------------------------------------------------
+record(ao,"$(DEV):CCLK-PLL-R") {
+   field(DESC, "IF PLL R counter")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x01F4:0x01F4 T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(LOPR, "0.0")
+   field(HOPR, "16384.0")
+   field(DRVL, "0.0")
+   field(DRVH, "16384.0")
+}
+
+record(ao,"$(DEV):CCLK-PLL-N") {
+   field(DESC, "IF PLL N counter")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x01F8:0x01F8 T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(LOPR, "0.0")
+   field(HOPR, "8192.0")
+   field(DRVL, "0.0")
+   field(DRVH, "8192.0")
+}
+
+record(mbbo, "$(DEV):CCLK-PLL-MUX") {
+   field(DESC, "IF PLL MUX out")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x01FC:0x01FC T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(NOBT, "3")
+   field(SHFT, "0")
+   field(VAL,  "0")
+   field(ZRVL, "0" )
+   field(ONVL, "1" )
+   field(TWVL, "2" )
+   field(THVL, "3" )
+   field(FRVL, "4" )
+   field(FVVL, "5" )
+   field(SXVL, "6" )
+   field(SVVL, "7" )
+   field(ZRST, "TRI-STATE" )
+   field(ONST, "LOCK DET." )
+   field(TWST, "N DIV." )
+   field(THST, "AVDD" )
+   field(FRST, "R DIV." )
+   field(FVST, "N-CH. OD" )
+   field(SXST, "SDO" )
+   field(SVST, "DGND" )
+}
+
+record(bo, "$(DEV):CCLK-PLL-F2") {
+   field(DESC, "IF PLL PD polarity")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0200:0x0200 T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(ZNAM, "NEGATIVE")
+   field(ONAM, "POSITIVE")
+}
+
+record(bo, "$(DEV):CCLK-PLL-F3") {
+   field(DESC, "IF PLL CP TRI state")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0204:0x0204 T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(ZNAM, "NORMAL")
+   field(ONAM, "TRI-STATE")
+}
+
+record(longin,"$(DEV):CCLK-PLL-GPIO-I") {
+   field(DESC, "SC18IS602 Configuration")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0578 T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(FLNK, "$(DEV):CCLK-PLL-MUX-OUT")
+}
+
+record(calcout, "$(DEV):CCLK-PLL-MUX-OUT") {
+   field(DESC, "IF PLL MUX out")
+   field(INPA, "$(DEV):CCLK-PLL-GPIO-I")
+   field(CALC, "(A>>1) AND 1")
+}
+
+#------------------------------------------------------------------------------
+# RFFE digital in/out attenuator PCA9555 interface
+#------------------------------------------------------------------------------
+record(calcout,"$(DEV):R-DSA-GLB") {
+   field(DESC, "Global attenuator ctrl")
+   field(INPA, "$(GLB):R-DSA CP")
+   field(CALC, "A")
+   field(OUT,  "$(DEV):R-DSA PP")
+}
+
+record(ao,"$(DEV):R-DSA") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0208:0x0208 T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(LOPR, "0")
+   field(HOPR, "62")
+   field(DRVL, "0")
+   field(DRVH, "62")
+   field(EGU,  "dB")
+}
+
+record(calcout,"$(DEV):X-DSA-GLB") {
+   field(DESC, "Global attenuator ctrl")
+   field(INPA, "$(GLB):X-DSA CP")
+   field(CALC, "A")
+   field(OUT,  "$(DEV):X-DSA PP")
+}
+
+record(ao,"$(DEV):X-DSA") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x020C:0x020C T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(LOPR, "0")
+   field(HOPR, "62")
+   field(DRVL, "0")
+   field(DRVH, "62")
+   field(EGU,  "dB")
+}
+
+record(calcout,"$(DEV):Y-DSA-GLB") {
+   field(DESC, "Global attenuator ctrl")
+   field(INPA, "$(GLB):Y-DSA CP")
+   field(CALC, "A")
+   field(OUT,  "$(DEV):Y-DSA PP")
+}
+
+record(ao,"$(DEV):Y-DSA") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0210:0x0210 T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(LOPR, "0")
+   field(HOPR, "62")
+   field(DRVL, "0")
+   field(DRVH, "62")
+   field(EGU,  "dB")
+}
+
+#------------------------------------------------------------------------------
+# RFFE parallel attenuator interface
+#------------------------------------------------------------------------------
+record(longin,"$(DEV):STATUS-DIO") {
+   field(DESC, "Status reg")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x057C T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(FLNK, "$(DEV):STATUS-DIO-EXT-REF")
+}
+
+record(calcout, "$(DEV):STATUS-DIO-EXT-REF") {
+   field(DESC, "Ext Ref good")
+   field(INPA, "$(DEV):STATUS-DIO")
+   field(CALC, "(A>>0)AND 1")
+   field(FLNK, "$(DEV):STATUS-DIO-PLL")
+}
+
+record(calcout, "$(DEV):STATUS-DIO-PLL") {
+   field(DESC, "RFFE PLLs locked")
+   field(INPA, "$(DEV):STATUS-DIO")
+   field(CALC, "(A>>1)AND 1")
+}
+
+record(bo, "$(DEV):DSA-CTRL-ENA") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0214:0x0214 T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(ZNAM, "I2C")
+   field(ONAM, "DIO")
+#   field(FLNK, "$(DEV):DSA-CTRL-ENA-SEQ")
+}
+
+record(seq, "$(DEV):DSA-CTRL-ENA-SEQ") {
+   field(DO1,  "1")
+   field(DO2,  "1")
+   field(DO3,  "1")
+   field(DO4,  "1")
+   field(DO5,  "1")
+   field(LNK1, "$(DEV):R-DSA.PROC")
+   field(LNK2, "$(DEV):X-DSA.PROC")
+   field(LNK3, "$(DEV):Y-DSA.PROC")
+   field(LNK4, "$(DEV):R-DSA-DIO.PROC")
+   field(LNK5, "$(DEV):XY-DSA-DIO.PROC")
+}
+
+record(ao,"$(DEV):R-DSA-DIO") {
+   field(PREC, "0")
+   field(LOPR, "0")
+   field(HOPR, "62")
+   field(DRVL, "0")
+   field(DRVH, "62")
+   field(EGU,  "dB")
+   field(FLNK, "$(DEV):R-DSA-DIO-C0")
+}
+
+record(calcout, "$(DEV):R-DSA-DIO-C0") {
+   field(INPA, "$(DEV):R-DSA-DIO")
+   field(CALC, "A<19?0:A<50?A-18:31")
+   field(OUT,  "$(DEV):R-DSA1-DIO PP")
+   field(FLNK, "$(DEV):R-DSA-DIO-C1")
+}
+
+record(calcout, "$(DEV):R-DSA-DIO-C1") {
+   field(INPA, "$(DEV):R-DSA-DIO")
+   field(CALC, "A<18?A:A>49?A-49+18:18")
+   field(OUT,  "$(DEV):R-DSA2-DIO PP")
+   field(FLNK, "$(DEV):R-DSA-DIO-C2")
+}
+
+record(calcout,"$(DEV):R-DSA-DIO-C2") {
+   field(PREC, "1")
+   field(INPA, "$(DEV):R-DSA-DIO")
+   field(CALC, "A")
+   field(OUT,  "$(DEV):R-DSA-C3 PP") 
+}
+
+record(ao,"$(DEV):R-DSA1-DIO") {
+   field(DESC, "R DSA1 DIO")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0218:0x0218 T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(PREC, "1")
+   field(LOPR, "0.0")
+   field(HOPR, "31.5")
+   field(DRVL, "0.0")
+   field(DRVH, "31.5")
+   field(EGU,  "dB")
+   field(ASLO, "0.5")
+}
+
+record(ao,"$(DEV):R-DSA2-DIO") {
+   field(DESC, "R DSA2 DIO")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x021C:0x021C T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(PREC, "1")
+   field(LOPR, "0.0")
+   field(HOPR, "31.5")
+   field(DRVL, "0.0")
+   field(DRVH, "31.5")
+   field(EGU,  "dB")
+   field(ASLO, "0.5")
+}
+
+record(ao,"$(DEV):XY-DSA-DIO") {
+   field(PREC, "0")
+   field(LOPR, "0")
+   field(HOPR, "62")
+   field(DRVL, "0")
+   field(DRVH, "62")
+   field(EGU,  "dB")
+   field(FLNK, "$(DEV):XY-DSA-DIO-C0")
+}
+
+record(calcout, "$(DEV):XY-DSA-DIO-C0") {
+   field(INPA, "$(DEV):XY-DSA-DIO")
+   field(CALC, "A<19?0:A<50?A-18:31")
+   field(OUT,  "$(DEV):XY-DSA1-DIO PP")
+   field(FLNK, "$(DEV):XY-DSA-DIO-C1")
+}
+
+record(calcout, "$(DEV):XY-DSA-DIO-C1") {
+   field(INPA, "$(DEV):XY-DSA-DIO")
+   field(CALC, "A<18?A:A>49?A-49+18:18")
+   field(OUT,  "$(DEV):XY-DSA2-DIO PP")
+   field(FLNK, "$(DEV):XY-DSA-DIO-C2")
+}
+
+record(calcout,"$(DEV):XY-DSA-DIO-C2") {
+   field(PREC, "1")
+   field(INPA, "$(DEV):XY-DSA-DIO")
+   field(CALC, "A")
+   field(OUT,  "$(DEV):X-DSA-C3 PP") 
+   field(FLNK, "$(DEV):XY-DSA-DIO-C3")
+}
+
+record(calcout,"$(DEV):XY-DSA-DIO-C3") {
+   field(PREC, "1")
+   field(INPA, "$(DEV):XY-DSA-DIO")
+   field(CALC, "A")
+   field(OUT,  "$(DEV):Y-DSA-C3 PP") 
+}
+
+record(ao,"$(DEV):XY-DSA1-DIO") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0220:0x0220 T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(PREC, "1")
+   field(LOPR, "0.0")
+   field(HOPR, "31.5")
+   field(DRVL, "0.0")
+   field(DRVH, "31.5")
+   field(EGU,  "dB")
+   field(ASLO, "0.5")
+}
+
+record(ao,"$(DEV):XY-DSA2-DIO") {
+   field(DESC, "X and Y DSA2 DIO")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0224:0x0224 T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(PREC, "1")
+   field(LOPR, "0.0")
+   field(HOPR, "31.5")
+   field(DRVL, "0.0")
+   field(DRVH, "31.5")
+   field(EGU,  "dB")
+   field(ASLO, "0.5")
+}
+

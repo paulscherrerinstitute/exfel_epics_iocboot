@@ -1,0 +1,133 @@
+
+################################################################################
+## S7gpac driver status                                                     ####
+################################################################################
+
+file S7gpac.template {
+  pattern  {DEV                SRV           }
+           {IBFBCTRL           IBFBCTRL      }
+           {IBFBCCOM           IBFBCCOM      }
+           {IBFBCTRL1          IBFBCTRL1     }
+           {IBFBCWAV1          IBFBCWAV1     }
+           {IBFBCTRL2          IBFBCTRL2     }
+           {IBFBCWAV2          IBFBCWAV2     }
+           {IBFBSW             IBFBSW        }
+           {IBFBSCOM           IBFBSCOM      }
+           {IBFBSW1            IBFBSW1       }
+           {IBFBSW2            IBFBSW2       }
+           {IBFBMON            IBFBMON       }
+           {IBFBMCOM           IBFBMCOM      }
+           {IBFBMON1           IBFBMON1      }
+           {IBFBMON2           IBFBMON2      }
+#           {IBFBPLAY           IBFBPLAY      }
+#           {IBFBPCOM           IBFBPCOM      }
+#           {IBFBPLAY1          IBFBPLAY1     }
+#           {IBFBPLAY2          IBFBPLAY2     }
+           {IBFBYUP            IBFBYUP       }
+           {IBFBYDOWN          IBFBYDOWN     }
+           {IBFBXUP            IBFBXUP       }
+#           {IBFBXDOWN          IBFBXDOWN     }
+}
+ 
+################################################################################
+## GPAC SERVICE SERVERS                                                     ####
+################################################################################
+
+file gpac2_service.template {
+  pattern  {DEV                SRV           }
+           {IBFBCTRL           IBFBCTRL      } 
+           {IBFBSW             IBFBSW        }
+           {IBFBMON            IBFBMON       }
+#           {IBFBPLAY           IBFBPLAY     }
+}
+  
+################################################################################
+## IBFB                                                                     ####
+################################################################################
+
+#-- controller
+
+file ibfbctrl_plane.template {
+   pattern  {DEV           SRV     		   READ_OFFSET  PLANE }
+            {IBFBCTRL      IBFBCTRL1             344      Y }
+            {IBFBCTRL      IBFBCTRL2             344      X }
+}
+
+file ibfbctrl_dac.template {
+   pattern  {DEV           SRV     		   READ_OFFSET  PLANE }
+            {IBFBCTRL      IBFBCTRL1             344      Y }
+            {IBFBCTRL      IBFBCTRL2             344      X }
+}
+
+file ibfbctrl_common.template {
+   pattern  {DEV           SRV     	     READ_OFFSET        }
+            {IBFBCTRL      IBFBCCOM                4        }
+}
+
+file ibfbctrl_amplifier.template {
+   pattern  {DEV           SRV     	     READ_OFFSET        }
+            {IBFBCTRL      IBFBCCOM                4        }
+}
+
+
+file ibfbctrl_waveforms.template {
+   pattern  {DEV           SRV     	       READ_OFFSET  PLANE }
+            {IBFBCTRL      IBFBCWAV1           4            Y }
+            {IBFBCTRL      IBFBCWAV2           4            X }
+}
+
+file ibfbctrl_tables.template {
+   pattern  {DEV           SRV     		   READ_OFFSET  PLANE }
+            {IBFBCTRL      IBFBCTAB1           22048      Y }
+            {IBFBCTRL      IBFBCTAB2           22048      X }
+}
+
+#-- switch
+file ibfbscom.template {
+   pattern  {DEV           SRV     		   READ_OFFSET        }
+            {IBFBSW        IBFBSCOM               72        }
+}
+
+file ibfbsw.template {
+   pattern  {DEV           SRV     		   READ_OFFSET   SW   }
+            {IBFBSW        IBFBSW1                20   SW1  }
+            {IBFBSW        IBFBSW2                20   SW2  }
+}
+
+#-- monitor
+file ibfbmcom.template {
+   pattern  {DEV           SRV     		   READ_OFFSET        }
+            {IBFBMON       IBFBMCOM                4        }
+}
+
+file ibfbmon.template {
+   pattern  {DEV           SRV     		   READ_OFFSET  MON   }
+            {IBFBMON       IBFBMON1               20  AMP   }
+            {IBFBMON       IBFBMON2               20  KICK  }
+}
+
+#-- player
+#file ibfbpcom.template {
+#   pattern  {DEV           SRV     		   READ_OFFSET        }
+#            {IBFBPLAY      IBFBPCOM                4        }
+#}
+#
+#file ibfbplay.template {
+#   pattern  {DEV           SRV     		   READ_OFFSET  PLAYER}
+#            {IBFBPLAY      IBFBPLAY1           43224  PLAY1 }
+#            {IBFBPLAY      IBFBPLAY2           43224  PLAY2 }
+#}
+#
+#
+#################################################################################
+### IBFB Cavity BPMs                                                         ####
+#################################################################################
+
+file ibfbcav.template {
+   pattern  {DEV              SRV          READ_OFFSET  }
+            {IBFBYUP          IBFBYUP               32  }
+            {IBFBYDOWN        IBFBYDOWN             32  }
+            {IBFBXUP          IBFBXUP               32  }
+#            {IBFBXDOWN        IBFBXDOWN             32  }
+}
+

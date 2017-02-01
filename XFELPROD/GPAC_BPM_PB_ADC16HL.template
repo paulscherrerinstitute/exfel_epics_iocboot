@@ -1,0 +1,737 @@
+#------------------------------------------------------------------------------
+#-----------         GPAC PB ADC16HL FastLink channels         ----------------
+#------------------------------------------------------------------------------
+# ADDRESSES OF FPGA CHIPS RELATIVE TO GPAC BASE ADDRESS
+# SYS  FPGA             0x00000000
+# CFG  FPGA             0x00001000
+# BP   FPGA             0x00100000
+#   VME_P2_ADDR (CAV1)  0x00002000
+#   VME_P2_ADDR (CAV2)  0x00002018
+# BPM1 FPGA             0x00800000
+#   FL_ADDR             0x00010000
+#   SYS_INIT            0x00038000
+#   I2C_ADDR            0x00040000
+#   SMP_ADDR_REG        0x00060000
+#   SMP_ADDR_MEM        0x00100000
+# BPM2 FPGA             0x01000000
+#   FL_ADDR             0x00010000
+#   SYS_INIT            0x00038000
+#   I2C_ADDR            0x00040000
+#   SMP_ADDR_REG        0x00060000
+#   SMP_ADDR_MEM        0x00100000
+#------------------------------------------------------------------------------
+
+#------------------------------------------------------------------------------
+# Initialization of ADC16HL by Fast-Link
+#------------------------------------------------------------------------------
+record(bo, "$(DEV):PB-INIT") {
+   field(DESC, "PB Init")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x00F4:0x00F4 T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(ZNAM, "Operate")
+   field(ONAM, "Init")
+}
+
+#------------------------------------------------------------------------------
+# ADC12FL global clock enable and sync for LMK01020
+#------------------------------------------------------------------------------
+record(bo, "$(DEV):GOE") {
+   field(DESC, "Clock distribution ena.")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x00F8:0x00F8 T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(ZNAM, "Enabled")
+   field(ONAM, "Disabled")
+}
+
+record(bo, "$(DEV):SYNC") {
+   field(DESC, "Clock sync ena.")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x00FC:0x00FC T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(ZNAM, "Sync")
+   field(ONAM, "Done")
+}
+
+#------------------------------------------------------------------------------
+# Control LMK010x0 by Fast-Link
+#------------------------------------------------------------------------------
+record(bo, "$(DEV):CLK-PD") {
+   field(DESC, "Power down")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0100:0x0100 T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(ZNAM, "Operating")
+   field(ONAM, "Powerdown")
+}
+
+record(bo, "$(DEV):CLK-EN") {
+   field(DESC, "Global Enable")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0104:0x0104 T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(VAL, "1")
+   field(ZNAM, "All off")
+   field(ONAM, "Operating")
+}
+
+record(bo, "$(DEV):CLK-SEL") {
+   field(DESC, "Input MUX")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0108:0x0108 T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(ZNAM, "local")
+   field(ONAM, "external")
+}
+
+record(ao,"$(DEV):FPGA-CLK-DLY") {
+   field(DESC, "Delay 150 ps steps")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x010C:0x010C T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(DRVL, "0.0")
+   field(DRVH, "15.0")
+}
+
+record(ao,"$(DEV):FPGA-CLK-DIV") {
+   field(DESC, "Clock divider x 2")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0110:0x0110 T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(DRVL, "1.0")
+   field(DRVH, "255.0")
+   field(VAL, "1")
+}
+
+record(mbbo, "$(DEV):FPGA-CLK-MUX") {
+   field(DESC, "Clock MUX out")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0114:0x0114 T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(NOBT,"2")
+   field(SHFT, "0")
+   field(VAL, "0")
+   field(ZRVL, "0" )
+   field(ONVL, "1" )
+   field(TWVL, "2" )
+   field(THVL, "3" )
+   field(ZRST, "Bypassed" )
+   field(ONST, "Divided" )
+   field(TWST, "Delayed" )
+   field(THST, "Div. and Del." )
+}
+
+record(ao,"$(DEV):PWR-CLK-DLY") {
+   field(DESC, "Delay 150 ps steps")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0118:0x0118 T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(DRVL, "0.0")
+   field(DRVH, "15.0")
+}
+
+record(ao,"$(DEV):PWR-CLK-DIV") {
+   field(DESC, "Clock divider x 2")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x011C:0x011C T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(DRVL, "1.0")
+   field(DRVH, "255.0")
+   field(VAL, "1")
+}
+
+record(mbbo, "$(DEV):PWR-CLK-MUX") {
+   field(DESC, "Clock MUX out")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0120:0x0120 T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(NOBT,"2")
+   field(SHFT, "0")
+   field(VAL, "0")
+   field(ZRVL, "0" )
+   field(ONVL, "1" )
+   field(TWVL, "2" )
+   field(THVL, "3" )
+   field(ZRST, "Bypassed" )
+   field(ONST, "Divided" )
+   field(TWST, "Delayed" )
+   field(THST, "Div. and Del." )
+}
+
+record(ao,"$(DEV):ADC0-CLK-DLY") {
+   field(DESC, "Delay 150 ps steps")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0124:0x0124 T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(DRVL, "0.0")
+   field(DRVH, "15.0")
+}
+
+record(ao,"$(DEV):ADC0-CLK-DIV") {
+   field(DESC, "Clock divider x 2")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0128:0x0128 T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(DRVL, "1.0")
+   field(DRVH, "255.0")
+   field(VAL, "1")
+}
+
+record(mbbo, "$(DEV):ADC0-CLK-MUX") {
+   field(DESC, "Clock MUX out")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x012C:0x012C T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(NOBT,"2")
+   field(SHFT, "0")
+   field(VAL, "0")
+   field(ZRVL, "0" )
+   field(ONVL, "1" )
+   field(TWVL, "2" )
+   field(THVL, "3" )
+   field(ZRST, "Bypassed" )
+   field(ONST, "Divided" )
+   field(TWST, "Delayed" )
+   field(THST, "Div. and Del." )
+}
+
+record(ao,"$(DEV):ADC1-CLK-DLY") {
+   field(DESC, "Delay 150 ps steps")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0130:0x0130 T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(DRVL, "0.0")
+   field(DRVH, "15.0")
+   field(VAL,  "0")
+}
+
+record(ao,"$(DEV):ADC1-CLK-DIV") {
+   field(DESC, "Clock divider x 2")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0134:0x0134 T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(DRVL, "1.0")
+   field(DRVH, "255.0")
+   field(VAL,  "1")
+}
+
+record(mbbo, "$(DEV):ADC1-CLK-MUX") {
+   field(DESC, "Clock MUX out")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0138:0x0138 T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(NOBT, "2")
+   field(SHFT, "0")
+   field(VAL,  "0")
+   field(ZRVL, "0" )
+   field(ONVL, "1" )
+   field(TWVL, "2" )
+   field(THVL, "3" )
+   field(ZRST, "Bypassed" )
+   field(ONST, "Divided" )
+   field(TWST, "Delayed" )
+   field(THST, "Div. and Del." )
+}
+
+record(ao,"$(DEV):ADC2-CLK-DLY") {
+   field(DESC, "Delay 150 ps steps")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x013C:0x013C T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(PREC, "0")
+   field(DRVL, "0.0")
+   field(DRVH, "15.0")
+   field(VAL,  "0")
+}
+
+record(ao,"$(DEV):ADC2-CLK-DIV") {
+   field(DESC, "Clock divider x 2")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0140:0x0140 T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(PREC, "0")
+   field(DRVL, "1.0")
+   field(DRVH, "255.0")
+   field(VAL,  "1")
+}
+
+record(mbbo, "$(DEV):ADC2-CLK-MUX") {
+   field(DESC, "Clock MUX out")
+   field(NOBT, "2")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0144:0x0144 T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(SHFT, "0")
+   field(VAL,  "0")
+   field(ZRVL, "0" )
+   field(ONVL, "1" )
+   field(TWVL, "2" )
+   field(THVL, "3" )
+   field(ZRST, "Bypassed" )
+   field(ONST, "Divided" )
+   field(TWST, "Delayed" )
+   field(THST, "Div. and Del." )
+}
+
+record(ao,"$(DEV):ADC3-CLK-DLY") {
+   field(DESC, "Delay 150 ps steps")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0148:0x0148 T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(PREC, "0")
+   field(DRVL, "0.0")
+   field(DRVH, "15.0")
+   field(VAL,  "0")
+}
+
+record(ao,"$(DEV):ADC3-CLK-DIV") {
+   field(DESC, "Clock divider x 2")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x014C:0x014C T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(PREC, "0")
+   field(DRVL, "1.0")
+   field(DRVH, "255.0")
+   field(VAL,  "1")
+}
+
+record(mbbo, "$(DEV):ADC3-CLK-MUX") {
+   field(DESC, "Clock MUX out")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0150:0x0150 T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(NOBT, "2")
+   field(SHFT, "0")
+   field(VAL,  "0")
+   field(ZRVL, "0" )
+   field(ONVL, "1" )
+   field(TWVL, "2" )
+   field(THVL, "3" )
+   field(ZRST, "Bypassed" )
+   field(ONST, "Divided" )
+   field(TWST, "Delayed" )
+   field(THST, "Div. and Del." )
+}
+
+record(ao,"$(DEV):ADC4-CLK-DLY") {
+   field(DESC, "Delay 150 ps steps")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0154:0x0154 T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(PREC, "0")
+   field(DRVL, "0.0")
+   field(DRVH, "15.0")
+   field(VAL, "0")
+}
+
+record(ao,"$(DEV):ADC4-CLK-DIV") {
+   field(DESC, "Clock divider x 2")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0158:0x0158 T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(PREC, "0")
+   field(DRVL, "1.0")
+   field(DRVH, "255.0")
+   field(VAL, "1")
+}
+
+record(mbbo, "$(DEV):ADC4-CLK-MUX") {
+   field(DESC, "Clock MUX out")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x015C:0x015C T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(NOBT,"2")
+   field(SHFT, "0")
+   field(VAL, "0")
+   field(ZRVL, "0" )
+   field(ONVL, "1" )
+   field(TWVL, "2" )
+   field(THVL, "3" )
+   field(ZRST, "Bypassed" )
+   field(ONST, "Divided" )
+   field(TWST, "Delayed" )
+   field(THST, "Div. and Del." )
+}
+
+record(ao,"$(DEV):ADC5-CLK-DLY") {
+   field(DESC, "Delay 150 ps steps")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0160:0x0160 T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(PREC, "0")
+   field(DRVL, "0.0")
+   field(DRVH, "15.0")
+   field(VAL, "0")
+}
+
+record(ao,"$(DEV):ADC5-CLK-DIV") {
+   field(DESC, "Clock divider x 2")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0164:0x0164 T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(PREC, "0")
+   field(DRVL, "1.0")
+   field(DRVH, "255.0")
+   field(VAL, "1")
+}
+
+record(mbbo, "$(DEV):ADC5-CLK-MUX") {
+   field(DESC, "Clock MUX out")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0168:0x0168 T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(NOBT,"2")
+   field(SHFT, "0")
+   field(VAL, "0")
+   field(ZRVL, "0" )
+   field(ONVL, "1" )
+   field(TWVL, "2" )
+   field(THVL, "3" )
+   field(ZRST, "Bypassed" )
+   field(ONST, "Divided" )
+   field(TWST, "Delayed" )
+   field(THST, "Div. and Del." )
+}
+
+record(bo, "$(DEV):CLK-VBOOST") {
+   field(DESC, "LMK010x0 VBOOST")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x016C:0x016C T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(ZNAM, "0")
+   field(ONAM, "1")
+}
+
+#------------------------------------------------------------------------------
+# Control DAC7512 by Fast-Link
+#------------------------------------------------------------------------------
+record(ao,"$(DEV):ADC0-DAC-OFS") {
+   field(DESC, "ADC0 offset")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0170:0x0170 T=FLOAT")
+  field(SCAN, "I/O Intr")
+   field(PREC, "4")
+   field(EGU,  "V")
+   field(VAL,  "1.25")
+   field(DRVL, "0.25")
+   field(DRVH, "2.0")
+   field(LOPR, "0.25")
+   field(HOPR, "2.0")
+}
+
+record(mbbo, "$(DEV):ADC0-DAC-MUX") {
+   field(DESC, "ADC0 offset MUX")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0174:0x0174 T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(NOBT,"2")
+   field(SHFT, "0")
+   field(VAL, "3")
+   field(ZRVL, "0" )
+   field(ONVL, "1" )
+   field(TWVL, "2" )
+   field(THVL, "3" )
+   field(ZRST, "DAC" )
+   field(ONST, "1k GND" )
+   field(TWST, "100k GND" )
+   field(THST, "High Z" )
+}
+
+record(ao,"$(DEV):ADC1-DAC-OFS") {
+   field(DESC, "ADC1 offset")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0178:0x0178 T=FLOAT")
+  field(SCAN, "I/O Intr")
+   field(PREC, "4")
+   field(EGU,  "V")
+   field(VAL,  "1.25")
+   field(DRVL, "0.25")
+   field(DRVH, "2.0")
+   field(LOPR, "0.25")
+   field(HOPR, "2.0")
+}
+
+record(mbbo, "$(DEV):ADC1-DAC-MUX") {
+   field(DESC, "ADC1 offset MUX")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x017C:0x017C T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(NOBT,"2")
+   field(SHFT, "0")
+   field(VAL, "3")
+   field(ZRVL, "0" )
+   field(ONVL, "1" )
+   field(TWVL, "2" )
+   field(THVL, "3" )
+   field(ZRST, "DAC" )
+   field(ONST, "1k GND" )
+   field(TWST, "100k GND" )
+   field(THST, "High Z" )
+}
+
+record(ao,"$(DEV):ADC2-DAC-OFS") {
+   field(DESC, "ADC2 offset")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0180:0x0180 T=FLOAT")
+  field(SCAN, "I/O Intr")
+   field(PREC, "4")
+   field(EGU,  "V")
+   field(VAL,  "1.25")
+   field(DRVL, "0.25")
+   field(DRVH, "2.0")
+   field(LOPR, "0.25")
+   field(HOPR, "2.0")
+}
+
+record(mbbo, "$(DEV):ADC2-DAC-MUX") {
+   field(DESC, "ADC2 offset MUX")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0184:0x0184 T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(NOBT,"2")
+   field(SHFT, "0")
+   field(VAL, "3")
+   field(ZRVL, "0" )
+   field(ONVL, "1" )
+   field(TWVL, "2" )
+   field(THVL, "3" )
+   field(ZRST, "DAC" )
+   field(ONST, "1k GND" )
+   field(TWST, "100k GND" )
+   field(THST, "High Z" )
+}
+
+record(ao,"$(DEV):ADC3-DAC-OFS") {
+   field(DESC, "ADC3 offset")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0188:0x0188 T=FLOAT")
+  field(SCAN, "I/O Intr")
+   field(PREC, "4")
+   field(EGU,  "V")
+   field(VAL,  "1.25")
+   field(DRVL, "0.25")
+   field(DRVH, "2.0")
+   field(LOPR, "0.25")
+   field(HOPR, "2.0")
+}
+
+record(mbbo, "$(DEV):ADC3-DAC-MUX") {
+   field(DESC, "ADC3 offset MUX")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x018C:0x018C T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(NOBT,"2")
+   field(SHFT, "0")
+   field(VAL, "3")
+   field(ZRVL, "0" )
+   field(ONVL, "1" )
+   field(TWVL, "2" )
+   field(THVL, "3" )
+   field(ZRST, "DAC" )
+   field(ONST, "1k GND" )
+   field(TWST, "100k GND" )
+   field(THST, "High Z" )
+}
+
+record(ao,"$(DEV):ADC4-DAC-OFS") {
+   field(DESC, "ADC4 offset")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0190:0x0190 T=FLOAT")
+  field(SCAN, "I/O Intr")
+   field(PREC, "4")
+   field(EGU,  "V")
+   field(VAL,  "1.25")
+   field(DRVL, "0.25")
+   field(DRVH, "2.0")
+   field(LOPR, "0.25")
+   field(HOPR, "2.0")
+}
+
+record(mbbo, "$(DEV):ADC4-DAC-MUX") {
+   field(DESC, "ADC4 offset MUX")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0194:0x0194 T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(NOBT,"2")
+   field(SHFT, "0")
+   field(VAL, "3")
+   field(ZRVL, "0" )
+   field(ONVL, "1" )
+   field(TWVL, "2" )
+   field(THVL, "3" )
+   field(ZRST, "DAC" )
+   field(ONST, "1k GND" )
+   field(TWST, "100k GND" )
+   field(THST, "High Z" )
+}
+
+record(ao,"$(DEV):ADC5-DAC-OFS") {
+   field(DESC, "ADC5 offset")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0198:0x0198 T=FLOAT")
+  field(SCAN, "I/O Intr")
+   field(PREC, "4")
+   field(EGU,  "V")
+   field(VAL,  "1.25")
+   field(DRVL, "0.25")
+   field(DRVH, "2.0")
+   field(LOPR, "0.25")
+   field(HOPR, "2.0")
+}
+
+record(mbbo, "$(DEV):ADC5-DAC-MUX") {
+   field(DESC, "ADC5 offset MUX")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x019C:0x019C T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(NOBT,"2")
+   field(SHFT, "0")
+   field(VAL, "3")
+   field(ZRVL, "0" )
+   field(ONVL, "1" )
+   field(TWVL, "2" )
+   field(THVL, "3" )
+   field(ZRST, "DAC" )
+   field(ONST, "1k GND" )
+   field(TWST, "100k GND" )
+   field(THST, "High Z" )
+}
+
+#------------------------------------------------------------------------------
+# Write General Gain and Control Register by fast link
+#------------------------------------------------------------------------------
+record(bo, "$(DEV):ADC0-PGA") {
+   field(DESC, "ADC0 prog gain amp")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x01A0:0x01A0 T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(ZNAM, "gain 1")
+   field(ONAM, "gain 1.5")
+}
+
+record(bo, "$(DEV):ADC1-PGA") {
+   field(DESC, "ADC1 prog gain amp")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x01A4:0x01A4 T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(ZNAM, "gain 1")
+   field(ONAM, "gain 1.5")
+}
+
+record(bo, "$(DEV):ADC2-PGA") {
+   field(DESC, "ADC2 prog gain amp")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x01A8:0x01A8 T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(ZNAM, "gain 1")
+   field(ONAM, "gain 1.5")
+}
+
+record(bo, "$(DEV):ADC3-PGA") {
+   field(DESC, "ADC3 prog gain amp")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x01AC:0x01AC T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(ZNAM, "gain 1")
+   field(ONAM, "gain 1.5")
+}
+
+record(bo, "$(DEV):ADC4-PGA") {
+   field(DESC, "ADC4 prog gain amp")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x01B0:0x01B0 T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(ZNAM, "gain 1")
+   field(ONAM, "gain 1.5")
+}
+
+record(bo, "$(DEV):ADC5-PGA") {
+   field(DESC, "ADC5 prog gain amp")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x01B4:0x01B4 T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(ZNAM, "gain 1")
+   field(ONAM, "gain 1.5")
+}
+
+record(bo, "$(DEV):ADC-SHDN") {
+   field(DESC, "ADC shutdown")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x01B8:0x01B8 T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(ZNAM, "Operating")
+   field(ONAM, "Powerdown")
+}
+
+record(bo, "$(DEV):SCK-OE") {
+   field(DESC, "Lokal oscillator output ena.")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x01BC:0x01BC T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(ZNAM, "Disabled")
+   field(ONAM, "Enabled")
+}
+
+#------------------------------------------------------------------------------
+# Read ADC temperature by Fast-Link
+#------------------------------------------------------------------------------
+record(ai,"$(DEV):TEMP-ADC-X-I") {
+   field(DESC, "Temperature ADC0")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x053A T=INT16")
+  field(SCAN, "I/O Intr")
+   field(PREC, "1")
+   field(ASLO, "0.03125")
+   field(EGU, "degC")
+}
+
+record(ai,"$(DEV):TEMP-ADC-X-Q") {
+   field(DESC, "Temperature ADC1")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x053E T=INT16")
+  field(SCAN, "I/O Intr")
+   field(PREC, "1")
+   field(ASLO, "0.03125")
+   field(EGU, "degC")
+}
+
+record(ai,"$(DEV):TEMP-ADC-REF-I") {
+   field(DESC, "Temperature ADC2")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0542 T=INT16")
+  field(SCAN, "I/O Intr")
+   field(PREC, "1")
+   field(ASLO, "0.03125")
+   field(EGU, "degC")
+}
+
+record(ai,"$(DEV):TEMP-ADC-REF-Q") {
+   field(DESC, "Temperature ADC3")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0546 T=INT16")
+  field(SCAN, "I/O Intr")
+   field(PREC, "1")
+   field(ASLO, "0.03125")
+   field(EGU, "degC")
+}
+
+record(ai,"$(DEV):TEMP-ADC-Y-I") {
+   field(DESC, "Temperature ADC4")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x054A T=INT16")
+  field(SCAN, "I/O Intr")
+   field(PREC, "1")
+   field(ASLO, "0.03125")
+   field(EGU, "degC")
+}
+
+record(ai,"$(DEV):TEMP-ADC-Y-Q") {
+   field(DESC, "Temperature ADC5")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x054E T=INT16")
+  field(SCAN, "I/O Intr")
+   field(PREC, "1")
+   field(ASLO, "0.03125")
+   field(EGU, "degC")
+}

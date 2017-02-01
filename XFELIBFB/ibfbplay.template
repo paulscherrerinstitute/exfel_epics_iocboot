@@ -1,0 +1,112 @@
+#------------------------------------------------------------------------------
+#
+#
+record(aao, "$(DEV):$(PLAYER)-MEM-PLAY-TIMESTAMP") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0000:0x0000 T=UINT32")
+  field(NELM, "2700")
+  field(FTVL, "LONG")
+} 
+
+record(aao, "$(DEV):$(PLAYER)-MEM-PLAY-CONTROL") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x2A30:0x2A30 T=UINT32")
+  field(NELM, "2700")
+  field(FTVL, "LONG")
+}
+
+record(aao, "$(DEV):$(PLAYER)-MEM-PLAY-X") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x5460:0x5460 T=FLOAT")
+  field(NELM, "2700")
+  field(FTVL, "FLOAT")
+}
+
+record(aao, "$(DEV):$(PLAYER)-MEM-PLAY-Y") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x7E90:0x7E90 T=FLOAT")
+  field(NELM, "2700") 
+  field(FTVL, "FLOAT")
+}
+
+record(longout, "$(DEV):$(PLAYER)-MEM-PLAY-CMD") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0xA8C4 T=UINT32")
+#  field(SCAN, "I/O Intr")
+}
+
+
+record(mbbo, "$(DEV):$(PLAYER)-TRG-SOURCE") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0xA8C8:0xA8C8 T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(NOBT,"3")
+  field(SHFT, "0")
+  field(ZRVL, "0" )
+  field(ONVL, "1" )
+  field(TWVL, "2" )
+  field(THVL, "3" )
+  field(FRVL, "4" )
+  field(FVVL, "5" )
+  field(ZRST, "External" )
+  field(ONST, "Auto ( 2 s)" )
+  field(TWST, "Auto ( 1 s)" )
+  field(THST, "Auto (.5 s)" )
+  field(FRST, "Auto (.2 s)" )
+  field(FVST, "Auto (.1 s)" )
+}
+
+record(bo, "$(DEV):$(PLAYER)-TRG-MODE") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0xA8C9:0xA8C9 T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(ZNAM, "Cont." )
+  field(ONAM, "Single" )
+}
+
+record(longout, "$(DEV):$(PLAYER)-TRG-SINGLE") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0xA8D4 T=UINT32")
+}
+
+
+record(longout, "$(DEV):$(PLAYER)-TRG-DEL") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0xA8CC:0xA8CC T=UINT32")
+  field(SCAN, "I/O Intr")
+  field(DRVH, "268435455")
+  field(DRVL, "0")
+  field(HOPR, "268435455")
+  field(LOPR, "0")
+}
+
+record(longout, "$(DEV):$(PLAYER)-BUNCH-NUM") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0xA8D0:0xA8D0 T=UINT16")
+  field(SCAN, "I/O Intr")
+  field(DRVH, "2700")
+  field(DRVL, "1")
+  field(HOPR, "2700")
+  field(LOPR, "1")
+}
+
+record(longout, "$(DEV):$(PLAYER)-BUNCH-SPACE") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0xA8D2:0xA8D2 T=UINT16")
+  field(SCAN, "I/O Intr")
+  field(DRVH, "100")
+  field(DRVL, "1")
+  field(HOPR, "100")
+  field(LOPR, "1")
+}
+
+record(longin, "$(DEV):$(PLAYER)-TRG-EXT-MISSING") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x000B T=UINT8")
+}
+

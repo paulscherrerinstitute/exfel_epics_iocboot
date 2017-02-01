@@ -1,0 +1,224 @@
+#------------------------------------------------------------------------------
+#
+#
+
+record(mbbo, "$(DEV):TRG-SOURCE") {
+  field(NOBT,"3")
+  field(SHFT, "0")
+  field(ZRVL, "0" )
+  field(ONVL, "1" )
+  field(TWVL, "2" )
+  field(THVL, "3" )
+  field(FRVL, "4" )
+  field(FVVL, "5" )
+  field(ZRST, "External" )
+  field(ONST, "Auto ( 2 s)" )
+  field(TWST, "Auto ( 1 s)" )
+  field(THST, "Auto (.5 s)" )
+  field(FRST, "Auto (.2 s)" )
+  field(FVST, "Auto (.1 s)" )
+  field(VAL, "5" )
+  field(OUT, "$(DEV):TRG-SOURCE-F   PP")
+}
+
+record(dfanout,"$(DEV):TRG-SOURCE-F") {
+   field(SCAN, "Passive")
+   field(DOL,  "$(DEV):TRG-SOURCE")
+   field(OMSL, "closed_loop")
+   field(OUTA, "$(DEV):Y-TRG-SOURCE PP")
+   field(OUTB, "$(DEV):X-TRG-SOURCE PP")
+   field(OUTC, "IBFBSW:SW1-TRG-SOURCE PP")
+   field(OUTD, "IBFBSW:SW2-TRG-SOURCE PP")
+   field(OUTE, "IBFBMON:AMP-TRG-SOURCE PP")
+   field(OUTF, "IBFBMON:KICK-TRG-SOURCE PP")
+}
+
+##---
+record(longout, "$(DEV):TRG-DEL") {
+  field(DRVH, "268435455")
+  field(DRVL, "0")
+  field(HOPR, "268435455")
+  field(LOPR, "0")
+  field(VAL, "65535" )
+  field(OUT, "$(DEV):TRG-DEL-F   PP")
+}
+
+record(dfanout,"$(DEV):TRG-DEL-F") {
+   field(SCAN, "Passive")
+   field(DOL,  "$(DEV):TRG-DEL")
+   field(OMSL, "closed_loop")
+   field(OUTA, "$(DEV):Y-TRG-DEL PP")
+   field(OUTB, "$(DEV):X-TRG-DEL PP")
+   field(OUTC, "IBFBSW:SW1-TRG-DEL PP")
+   field(OUTD, "IBFBSW:SW2-TRG-DEL PP")
+   field(OUTE, "IBFBMON:AMP-TRG-DEL PP")
+   field(OUTF, "IBFBMON:KICK-TRG-DEL PP")
+}
+
+##---
+record(bo, "$(DEV):TRG-MODE") {
+  field(ZNAM, "Cont." )
+  field(ONAM, "Single" )
+  field(OUT, "$(DEV):TRG-MODE-F   PP")
+}
+
+record(dfanout,"$(DEV):TRG-MODE-F") {
+   field(SCAN, "Passive")
+   field(DOL,  "$(DEV):TRG-MODE")
+   field(OMSL, "closed_loop")
+   field(OUTA, "$(DEV):Y-TRG-MODE PP")
+   field(OUTB, "$(DEV):X-TRG-MODE PP")
+   field(OUTC, "IBFBSW:SW1-TRG-MODE PP")
+   field(OUTD, "IBFBSW:SW2-TRG-MODE PP")
+   field(OUTE, "IBFBMON:AMP-TRG-MODE PP")
+   field(OUTF, "IBFBMON:KICK-TRG-MODE PP")
+}
+
+##---
+record(longout, "$(DEV):TRG-SINGLE") {
+  field(OUT, "$(DEV):TRG-SINGLE-F   PP")
+}
+
+record(dfanout,"$(DEV):TRG-SINGLE-F") {
+   field(SCAN, "Passive")
+   field(DOL,  "$(DEV):TRG-SINGLE")
+   field(OMSL, "closed_loop")
+   field(OUTA, "$(DEV):Y-TRG-SINGLE PP")
+   field(OUTB, "$(DEV):X-TRG-SINGLE PP")
+   field(OUTC, "IBFBSW:SW1-TRG-SINGLE PP")
+   field(OUTD, "IBFBSW:SW2-TRG-SINGLE PP")
+   field(OUTE, "IBFBMON:AMP-TRG-SINGLE PP")
+   field(OUTF, "IBFBMON:KICK-TRG-SINGLE PP")
+}
+
+## ##---
+## record(longout, "$(DEV):BUNCH-NUM") {
+##   field(DRVH, "2700")
+##   field(DRVL, "1")
+##   field(HOPR, "2700")
+##   field(LOPR, "1")
+##   field(VAL, "1")
+##   field(OUT, "$(DEV):BUNCH-NUM-F PP")  
+## }
+## 
+## record(dfanout,"$(DEV):BUNCH-NUM-F") {
+##    field(SCAN, "Passive")
+##    field(DOL,  "$(DEV):BUNCH-NUM")
+##    field(OMSL, "closed_loop")
+##    field(OUTA, "$(DEV):Y-BUNCH-NUM PP")
+##    field(OUTB, "$(DEV):X-BUNCH-NUM PP")
+##    field(OUTC, "IBFBSW:SW1-BUNCH-NUM PP")
+##    field(OUTD, "IBFBSW:SW2-BUNCH-NUM PP")
+##    field(OUTE, "IBFBMON:AMP-BUNCH-NUM PP")
+##    field(OUTF, "IBFBMON:KICK-BUNCH-NUM PP")
+## }
+## 
+## ##---
+## record(longout, "$(DEV):BUNCH-SPACE") {
+##   field(DRVH, "100")
+##   field(DRVL, "1")
+##   field(HOPR, "100")
+##   field(LOPR, "1")
+##   field(VAL, "1")
+##   field(OUT, "$(DEV):BUNCH-SPACE-F PP")  
+## }
+## 
+## record(dfanout,"$(DEV):BUNCH-SPACE-F") {
+##    field(SCAN, "Passive")
+##    field(DOL,  "$(DEV):BUNCH-SPACE")
+##    field(OMSL, "closed_loop")
+##    field(OUTA, "$(DEV):Y-BUNCH-SPACE PP")
+##    field(OUTB, "$(DEV):X-BUNCH-SPACE PP")
+##    field(OUTC, "IBFBSW:SW1-BUNCH-SPACE PP")
+##    field(OUTD, "IBFBSW:SW2-BUNCH-SPACE PP")
+##    field(OUTE, "IBFBMON:AMP-BUNCH-SPACE PP")
+##    field(OUTF, "IBFBMON:KICK-BUNCH-SPACE PP")
+## }
+
+##---
+record(longin, "$(DEV):CLK-EXTERNAL") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0004 T=UINT8")
+}
+
+record(longin, "$(DEV):RTMG-SFP1") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0060 T=UINT32")
+}
+
+record(longin, "$(DEV):RTMG-SFP2") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0064 T=UINT32")
+}
+
+
+##--- COMMON READOUT
+record(longin, "$(DEV):AMP-ALIGNED-1") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0004 T=UINT32")
+}
+
+record(longin, "$(DEV):AMP-ALIGNED-2") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0010 T=UINT32")
+}
+
+record(longin, "$(DEV):AMP-ALIGNED-3") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x001C T=UINT32")
+}
+
+record(longin, "$(DEV):AMP-ALIGNED-4") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0018 T=UINT32")
+}
+
+record(longin, "$(DEV):AMP-ALIGNED-5") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0024 T=UINT32")
+}
+
+record(longin, "$(DEV):AMP-ALIGNED-6") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0030 T=UINT32")
+}
+
+record(longin, "$(DEV):AMP-ALIGNED-7") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x003C T=UINT32")
+}
+
+record(longin, "$(DEV):AMP-ALIGNED-8") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0048 T=UINT32")
+}
+
+record(longout, "$(DEV):AMP-LOSS-RST") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0000 T=UINT32") 
+}
+
+##----------------
+
+record(longin, "$(DEV):RTMG-SFP1") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0060 T=UINT32")
+}
+
+record(longin, "$(DEV):RTMG-SFP2") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0064 T=UINT32")
+}

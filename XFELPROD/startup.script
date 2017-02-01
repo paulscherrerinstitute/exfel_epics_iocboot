@@ -1,0 +1,13 @@
+#This is an automatically generated startup script for softioc
+
+epicsEnvSet IOC XFELPROD
+epicsEnvSet INSTBASE /sf/work
+# < $(INSTBASE)/iocBoot/startup/startup.script_linux
+cd /ioc/XFEL01
+
+#---------- put your stuff here --------------
+< startup.script_XFEL
+
+#----------  end of your stuff  --------------
+iocInit
+#----------  sequencer stuff comes here ----------

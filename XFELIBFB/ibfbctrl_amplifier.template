@@ -1,0 +1,372 @@
+#------------------------------------------------------------------------------
+#
+#
+
+##--- AMPLIFIER READOUT
+
+record(longin, "$(DEV):AMP-GATE-1") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0000 T=UINT32")
+  field(FLNK, "$(DEV):AMP-LINK-SPEED-1" )
+}
+
+record(calc, "$(DEV):AMP-LINK-SPEED-1") {
+  field(INPA, "$(DEV):AMP-GATE-1")
+  field(CALC, "62.5/(2*(A+1)&0xFF)")
+  field(PREC, "2")
+  field(FLNK, "$(DEV):AMP-GATE-DELAY-1" )
+}
+
+record(calc, "$(DEV):AMP-GATE-DELAY-1") {
+  field(INPA, "$(DEV):AMP-GATE-1")
+  field(CALC, "0.016*((A>>9)&0x1FFFFF)")
+  field(PREC, "3")
+}
+
+record(longin, "$(DEV):AMP-ALIGNED-1") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0004 T=UINT32")
+  field(FLNK, "$(DEV):AMP-LINK-DELAY-1" )
+}
+
+record(calc, "$(DEV):AMP-LINK-DELAY-1") {
+  field(INPA, "$(DEV):AMP-ALIGNED-1")
+  field(CALC, "A&0xFF")
+  field(FLNK, "$(DEV):AMP-GATE-LENGTH-1" )
+}
+
+record(calc, "$(DEV):AMP-GATE-LENGTH-1") {
+  field(INPA, "$(DEV):AMP-ALIGNED-1")
+  field(CALC, "0.016*((A>>9)&0x1FFFF)")
+  field(PREC, "3")
+}
+
+record(longin, "$(DEV):AMP-STATUS-1") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0008 T=UINT32")
+}
+
+##-
+record(longin, "$(DEV):AMP-GATE-2") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x000C T=UINT32")
+  field(FLNK, "$(DEV):AMP-LINK-SPEED-2" )
+}
+
+record(calc, "$(DEV):AMP-LINK-SPEED-2") {
+  field(INPA, "$(DEV):AMP-GATE-2")
+  field(CALC, "62.5/(2*(A+1)&0xFF)")
+  field(PREC, "2")
+  field(FLNK, "$(DEV):AMP-GATE-DELAY-2" )
+}
+
+record(calc, "$(DEV):AMP-GATE-DELAY-2") {
+  field(INPA, "$(DEV):AMP-GATE-2")
+  field(CALC, "0.016*((A>>9)&0x1FFFFF)")
+  field(PREC, "3")
+}
+
+record(longin, "$(DEV):AMP-ALIGNED-2") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0010 T=UINT32")
+  field(FLNK, "$(DEV):AMP-LINK-DELAY-2" )
+}
+
+record(calc, "$(DEV):AMP-LINK-DELAY-2") {
+  field(INPA, "$(DEV):AMP-ALIGNED-2")
+  field(CALC, "A&0xFF")
+  field(FLNK, "$(DEV):AMP-GATE-LENGTH-2" )
+}
+
+record(calc, "$(DEV):AMP-GATE-LENGTH-2") {
+  field(INPA, "$(DEV):AMP-ALIGNED-2")
+  field(CALC, "0.016*((A>>9)&0x1FFFF)")
+  field(PREC, "3")
+}
+
+record(longin, "$(DEV):AMP-STATUS-2") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0014 T=UINT32")
+}
+
+##-
+record(longin, "$(DEV):AMP-GATE-3") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0018 T=UINT32")
+  field(FLNK, "$(DEV):AMP-LINK-SPEED-3" )
+}
+
+record(calc, "$(DEV):AMP-LINK-SPEED-3") {
+  field(INPA, "$(DEV):AMP-GATE-3")
+  field(CALC, "62.5/(2*(A+1)&0xFF)")
+  field(PREC, "2")
+  field(FLNK, "$(DEV):AMP-GATE-DELAY-3" )
+}
+
+record(calc, "$(DEV):AMP-GATE-DELAY-3") {
+  field(INPA, "$(DEV):AMP-GATE-3")
+  field(CALC, "0.016*((A>>9)&0x1FFFFF)")
+  field(PREC, "3")
+}
+
+record(longin, "$(DEV):AMP-ALIGNED-3") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x001C T=UINT32")
+  field(FLNK, "$(DEV):AMP-LINK-DELAY-3" )
+}
+
+record(calc, "$(DEV):AMP-LINK-DELAY-3") {
+  field(INPA, "$(DEV):AMP-ALIGNED-3")
+  field(CALC, "A&0xFF")
+  field(FLNK, "$(DEV):AMP-GATE-LENGTH-3" )
+}
+
+record(calc, "$(DEV):AMP-GATE-LENGTH-3") {
+  field(INPA, "$(DEV):AMP-ALIGNED-3")
+  field(CALC, "0.016*((A>>9)&0x1FFFF)")
+  field(PREC, "3")
+}
+
+record(longin, "$(DEV):AMP-STATUS-3") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0020 T=UINT32")
+}
+
+##-
+record(longin, "$(DEV):AMP-GATE-4") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0024 T=UINT32")
+  field(FLNK, "$(DEV):AMP-LINK-SPEED-4" )
+}
+
+record(calc, "$(DEV):AMP-LINK-SPEED-4") {
+  field(INPA, "$(DEV):AMP-GATE-4")
+  field(CALC, "62.5/(2*(A+1)&0xFF)")
+  field(PREC, "2")
+  field(FLNK, "$(DEV):AMP-GATE-DELAY-4" )
+}
+
+record(calc, "$(DEV):AMP-GATE-DELAY-4") {
+  field(INPA, "$(DEV):AMP-GATE-4")
+  field(CALC, "0.016*((A>>9)&0x1FFFFF)")
+  field(PREC, "3")
+}
+
+record(longin, "$(DEV):AMP-ALIGNED-4") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0028 T=UINT32")
+  field(FLNK, "$(DEV):AMP-LINK-DELAY-4" )
+}
+
+record(calc, "$(DEV):AMP-LINK-DELAY-4") {
+  field(INPA, "$(DEV):AMP-ALIGNED-4")
+  field(CALC, "A&0xFF")
+  field(FLNK, "$(DEV):AMP-GATE-LENGTH-4" )
+}
+
+record(calc, "$(DEV):AMP-GATE-LENGTH-4") {
+  field(INPA, "$(DEV):AMP-ALIGNED-4")
+  field(CALC, "0.016*((A>>9)&0x1FFFF)")
+  field(PREC, "3")
+}
+
+record(longin, "$(DEV):AMP-STATUS-4") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x002C T=UINT32")
+}
+
+##-
+record(longin, "$(DEV):AMP-GATE-5") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0030 T=UINT32")
+  field(FLNK, "$(DEV):AMP-LINK-SPEED-5" )
+}
+
+record(calc, "$(DEV):AMP-LINK-SPEED-5") {
+  field(INPA, "$(DEV):AMP-GATE-5")
+  field(CALC, "62.5/(2*(A+1)&0xFF)")
+  field(PREC, "2")
+  field(FLNK, "$(DEV):AMP-GATE-DELAY-5" )
+}
+
+record(calc, "$(DEV):AMP-GATE-DELAY-5") {
+  field(INPA, "$(DEV):AMP-GATE-5")
+  field(CALC, "0.016*((A>>9)&0x1FFFFF)")
+  field(PREC, "3")
+}
+
+record(longin, "$(DEV):AMP-ALIGNED-5") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0034 T=UINT32")
+  field(FLNK, "$(DEV):AMP-LINK-DELAY-5" )
+}
+
+record(calc, "$(DEV):AMP-LINK-DELAY-5") {
+  field(INPA, "$(DEV):AMP-ALIGNED-5")
+  field(CALC, "A&0xFF")
+  field(FLNK, "$(DEV):AMP-GATE-LENGTH-5" )
+}
+
+record(calc, "$(DEV):AMP-GATE-LENGTH-5") {
+  field(INPA, "$(DEV):AMP-ALIGNED-5")
+  field(CALC, "0.016*((A>>9)&0x1FFFF)")
+  field(PREC, "3")
+}
+
+record(longin, "$(DEV):AMP-STATUS-5") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0038 T=UINT32")
+}
+
+##-
+record(longin, "$(DEV):AMP-GATE-6") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x003C T=UINT32")
+  field(FLNK, "$(DEV):AMP-LINK-SPEED-6" )
+}
+
+record(calc, "$(DEV):AMP-LINK-SPEED-6") {
+  field(INPA, "$(DEV):AMP-GATE-6")
+  field(CALC, "62.5/(2*(A+1)&0xFF)")
+  field(PREC, "2")
+  field(FLNK, "$(DEV):AMP-GATE-DELAY-6" )
+}
+
+record(calc, "$(DEV):AMP-GATE-DELAY-6") {
+  field(INPA, "$(DEV):AMP-GATE-6")
+  field(CALC, "0.016*((A>>9)&0x1FFFFF)")
+  field(PREC, "3")
+}
+
+record(longin, "$(DEV):AMP-ALIGNED-6") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0040 T=UINT32")
+  field(FLNK, "$(DEV):AMP-LINK-DELAY-6" )
+}
+
+record(calc, "$(DEV):AMP-LINK-DELAY-6") {
+  field(INPA, "$(DEV):AMP-ALIGNED-6")
+  field(CALC, "A&0xFF")
+  field(FLNK, "$(DEV):AMP-GATE-LENGTH-6" )
+}
+
+record(calc, "$(DEV):AMP-GATE-LENGTH-6") {
+  field(INPA, "$(DEV):AMP-ALIGNED-6")
+  field(CALC, "0.016*((A>>9)&0x1FFFF)")
+  field(PREC, "3")
+}
+
+record(longin, "$(DEV):AMP-STATUS-6") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0044 T=UINT32")
+}
+
+##-
+record(longin, "$(DEV):AMP-GATE-7") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0048 T=UINT32")
+  field(FLNK, "$(DEV):AMP-LINK-SPEED-7" )
+}
+
+record(calc, "$(DEV):AMP-LINK-SPEED-7") {
+  field(INPA, "$(DEV):AMP-GATE-7")
+  field(CALC, "62.5/(2*(A+1)&0xFF)")
+  field(PREC, "2")
+  field(FLNK, "$(DEV):AMP-GATE-DELAY-7" )
+}
+
+record(calc, "$(DEV):AMP-GATE-DELAY-7") {
+  field(INPA, "$(DEV):AMP-GATE-7")
+  field(CALC, "0.016*((A>>9)&0x1FFFFF)")
+  field(PREC, "3")
+}
+
+record(longin, "$(DEV):AMP-ALIGNED-7") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x004C T=UINT32")
+  field(FLNK, "$(DEV):AMP-LINK-DELAY-7" )
+}
+
+record(calc, "$(DEV):AMP-LINK-DELAY-7") {
+  field(INPA, "$(DEV):AMP-ALIGNED-7")
+  field(CALC, "A&0xFF")
+  field(FLNK, "$(DEV):AMP-GATE-LENGTH-7" )
+}
+
+record(calc, "$(DEV):AMP-GATE-LENGTH-7") {
+  field(INPA, "$(DEV):AMP-ALIGNED-7")
+  field(CALC, "0.016*((A>>9)&0x1FFFF)")
+  field(PREC, "3")
+}
+
+record(longin, "$(DEV):AMP-STATUS-7") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0050 T=UINT32")
+}
+
+##-
+record(longin, "$(DEV):AMP-GATE-8") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0054 T=UINT32")
+  field(FLNK, "$(DEV):AMP-LINK-SPEED-8" )
+}
+
+record(calc, "$(DEV):AMP-LINK-SPEED-8") {
+  field(INPA, "$(DEV):AMP-GATE-8")
+  field(CALC, "62.5/(2*(A+1)&0xFF)")
+  field(PREC, "2")
+  field(FLNK, "$(DEV):AMP-GATE-DELAY-8" )
+}
+
+record(calc, "$(DEV):AMP-GATE-DELAY-8") {
+  field(INPA, "$(DEV):AMP-GATE-8")
+  field(CALC, "0.016*((A>>9)&0x1FFFFF)")
+  field(PREC, "3")
+}
+
+record(longin, "$(DEV):AMP-ALIGNED-8") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0058 T=UINT32")
+  field(FLNK, "$(DEV):AMP-LINK-DELAY-8" )
+}
+
+record(calc, "$(DEV):AMP-LINK-DELAY-8") {
+  field(INPA, "$(DEV):AMP-ALIGNED-8")
+  field(CALC, "A&0xFF")
+  field(FLNK, "$(DEV):AMP-GATE-LENGTH-8" )
+}
+
+record(calc, "$(DEV):AMP-GATE-LENGTH-8") {
+  field(INPA, "$(DEV):AMP-ALIGNED-8")
+  field(CALC, "0.016*((A>>9)&0x1FFFF)")
+  field(PREC, "3")
+}
+
+record(longin, "$(DEV):AMP-STATUS-8") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x005C T=UINT32")
+}

@@ -1,0 +1,2181 @@
+#------------------------------------------------------------------------------
+#
+# ADDRESSES OF FPGA CHIPS RELATIVE TO GPAC BASE ADDRESS
+# SYS  FPGA     0x00000000
+# CFG  FPGA     0x00001000
+# BP   FPGA     0x01800000
+# BPM1 FPGA     0x02000000
+#   BUT BPM1    0x02200000
+#   BUT BPM2    0x02300000
+# BPM2 FPGA     0x03000000
+#   BUT BPM3    0x03200000
+#   BUT BPM4    0x03300000  
+#
+#------------------------------------------------------------------------------
+# BPM fsm
+#------------------------------------------------------------------------------
+
+
+#-------------------------------------
+#--QDR2 READOUT
+#-------------------------------------
+
+record(waveform, "$(DEV):BPM-DATA-CH1") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0000")
+  field(NELM, "256")
+  field(FTVL, "SHORT")
+  field(FLNK, "$(DEV):BPM-DATA-CH2 PP" )
+}
+
+record(waveform, "$(DEV):BPM-DATA-CH2") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0200")
+  field(NELM, "256")
+  field(FTVL, "SHORT")
+}
+
+record(waveform, "$(DEV):BPM-DATA-CH3") { 
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0400")
+  field(NELM, "256")
+  field(FTVL, "SHORT")
+}
+
+record(waveform, "$(DEV):BPM-DATA-CH4") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0600")
+  field(NELM, "256")
+  field(FTVL, "SHORT")
+  field(FLNK, "$(DEV):BPM-DATA-SUM PP")
+}
+
+record(acalcout, "$(DEV):BPM-DATA-SUM") {
+   field(INAA, "$(DEV):BPM-DATA-CH1 NPP")
+   field(INBB, "$(DEV):BPM-DATA-CH2 NPP")
+   field(INCC, "$(DEV):BPM-DATA-CH3 NPP")
+   field(INDD, "$(DEV):BPM-DATA-CH4 NPP")
+   field(NELM, "256")
+   field(CALC, "AA+BB+CC+DD")
+}
+
+#---------------------------------------------------------------------------------
+#--DDR2 READOUT
+#---------------------------------------------------------------------------------
+
+#-- 
+record(waveform, "$(DEV):X-TRAIN") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0800 T=FLOAT")
+  field(NELM, "800")
+  field(PREC, "4")
+  field(FTVL, "FLOAT")
+  field(FLNK, "$(DEV):X PP" )
+}
+
+#record(subArray, "$(DEV):X") {
+#  field(INP, "$(DEV):X-TRAIN NPP")
+#  field(MALM, "1")
+#  field(NELM, "1")
+#  field(PREC, "4")
+#  field(FTVL, "FLOAT")
+#  field(FLNK, "$(DEV):X-TD PP" )
+#} 
+
+record(ai,"$(DEV):X") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0xB1D0 T=FLOAT")
+  field(PREC, "4")
+  field(FLNK, "$(DEV):X-TD PP" )
+}
+
+record(acalcout, "$(DEV):X-TD") {
+   field(INPA, "$(DEV):X-SINGLE NPP")
+   field(INAA, "$(DEV):X-TD.AVAL NPP")
+   field(NELM, "100")
+   field(PREC, "4")
+   field(CALC, "(ARR(A)>>99)+(AA<<1)")
+}
+
+#--
+record(waveform, "$(DEV):Y-TRAIN") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x3230 T=FLOAT")
+  field(NELM, "800")
+  field(PREC, "4")
+  field(FTVL, "FLOAT")
+  field(FLNK, "$(DEV):Y" )
+}
+
+#record(subArray, "$(DEV):Y") {
+#  field(INP, "$(DEV):Y-TRAIN NPP")
+#  field(MALM, "1")
+#  field(NELM, "1")
+#  field(PREC, "4")
+#  field(FTVL, "FLOAT")
+#  field(FLNK, "$(DEV):Y-TD PP" )
+#} 
+
+record(ai,"$(DEV):Y") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0xB1D4 T=FLOAT")
+  field(PREC, "4")
+  field(FLNK, "$(DEV):Y-TD PP" )
+}
+
+
+record(acalcout, "$(DEV):Y-TD") {
+   field(INPA, "$(DEV):Y-SINGLE NPP")
+   field(INAA, "$(DEV):Y-TD.AVAL NPP")
+   field(PREC, "4")
+   field(NELM, "100")
+   field(CALC, "(ARR(A)>>99)+(AA<<1)")
+}
+
+#--
+record(waveform, "$(DEV):Q-TRAIN") {
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x5C60 T=FLOAT")
+  field(NELM, "2700")
+  field(SCAN, "I/O Intr")
+  field(FTVL, "FLOAT")
+  field(FLNK, "$(DEV):Q PP" )
+}
+
+#record(subArray, "$(DEV):Q") {
+#  field(INP, "$(DEV):Q-TRAIN NPP")
+#  field(MALM, "1")
+#  field(NELM, "1")
+#  field(PREC, "4")
+#  field(FTVL, "FLOAT")
+#  field(FLNK, "$(DEV):Q-TD PP" )
+#} 
+
+record(ai,"$(DEV):Q") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0xB1D8 T=FLOAT")
+  field(PREC, "4")
+  field(FLNK, "$(DEV):Q-TD PP" )
+}
+
+
+record(acalcout, "$(DEV):Q-TD") {
+   field(INPA, "$(DEV):Q-SINGLE NPP")
+   field(INAA, "$(DEV):Q-TD.AVAL NPP")
+   field(NELM, "100")
+   field(PREC, "2")
+   field(CALC, "(ARR(A)>>99)+(AA<<1)")
+}
+
+record(waveform, "$(DEV):V-TRAIN") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x8690 T=UINT32")
+  field(NELM, "800")
+  field(FTVL, "LONG")             ## for unknown reason has to be signed type
+  field(FLNK, "$(DEV):V PP" )
+}
+
+record(subArray, "$(DEV):V") {
+   field(INP, "$(DEV):V-TRAIN NPP")
+   field(MALM, "1")
+   field(NELM, "1")
+   field(FTVL, "ULONG")
+} 
+
+#-------------------------------------------------------------------------------
+# RFFE
+#-------------------------------------------------------------------------------
+
+#-- MASTER RECORDS -------------------------------------------------------------
+
+record(fanout,"$(DEV):RFFE-SETTINGS-COPY") {
+   field(SCAN, "Passive")
+   field(LNK1, "$(DEV):RFFE-SETTINGS-COPY1 PP")
+   field(LNK2, "$(DEV):RFFE-SETTINGS-COPY2 PP")
+}
+
+record(fanout,"$(DEV):RFFE-SETTINGS-COPY1") {
+   field(SCAN, "Passive")
+   field(LNK1, "$(DEV):RFFE-DET-BIAS-ADJ-P1-F PP")
+   field(LNK2, "$(DEV):RFFE-DET-BIAS-ADJ-N1-F PP")
+   field(LNK3, "$(DEV):RFFE-DIS-BUF-BIAS-P1-F PP")
+   field(LNK4, "$(DEV):RFFE-DIS-BUF-BIAS-N1-F PP")
+   field(LNK5, "$(DEV):RFFE-SW-MOD-ENA1-F PP")
+}
+
+record(fanout,"$(DEV):RFFE-SETTINGS-COPY2") {
+   field(SCAN, "Passive")
+   field(LNK1, "$(DEV):RFFE-DIS-BUF-OFS-COMM1-F PP")
+   field(LNK2, "$(DEV):RFFE-DIS-BUF-OFS-DIFF1-F PP")
+   field(LNK3, "$(DEV):RFFE-DIS-BUF-SUP-P1-F PP")
+   field(LNK4, "$(DEV):RFFE-DIS-BUF-SUP-N1-F PP")
+   field(LNK5, "$(DEV):RFFE-5V-AMP-ENA1-F PP")
+}
+
+record(dfanout,"$(DEV):RFFE-DET-BIAS-ADJ-P1-F") {
+   field(SCAN, "Passive")
+   field(DOL,  "$(DEV):RFFE-DET-BIAS-ADJ-P1")
+   field(OMSL, "closed_loop")
+   field(OUTA, "$(DEV):RFFE-DET-BIAS-ADJ-P2 PP")
+   field(OUTB, "$(DEV):RFFE-DET-BIAS-ADJ-P3 PP")
+   field(OUTC, "$(DEV):RFFE-DET-BIAS-ADJ-P4 PP")
+}
+
+record(dfanout,"$(DEV):RFFE-DET-BIAS-ADJ-N1-F") {
+   field(SCAN, "Passive")
+   field(DOL,  "$(DEV):RFFE-DET-BIAS-ADJ-N1")
+   field(OMSL, "closed_loop")
+   field(OUTA, "$(DEV):RFFE-DET-BIAS-ADJ-N2 PP")
+   field(OUTB, "$(DEV):RFFE-DET-BIAS-ADJ-N3 PP")
+   field(OUTC, "$(DEV):RFFE-DET-BIAS-ADJ-N4 PP")
+}
+
+record(dfanout,"$(DEV):RFFE-DIS-BUF-BIAS-P1-F") {
+   field(SCAN, "Passive")
+   field(DOL,  "$(DEV):RFFE-DIS-BUF-BIAS-P1")
+   field(OMSL, "closed_loop")
+   field(OUTA, "$(DEV):RFFE-DIS-BUF-BIAS-P2 PP")
+   field(OUTB, "$(DEV):RFFE-DIS-BUF-BIAS-P3 PP")
+   field(OUTC, "$(DEV):RFFE-DIS-BUF-BIAS-P4 PP")
+}
+
+record(dfanout,"$(DEV):RFFE-DIS-BUF-BIAS-N1-F") {
+   field(SCAN, "Passive")
+   field(DOL,  "$(DEV):RFFE-DIS-BUF-BIAS-N1")
+   field(OMSL, "closed_loop")
+   field(OUTA, "$(DEV):RFFE-DIS-BUF-BIAS-N2 PP")
+   field(OUTB, "$(DEV):RFFE-DIS-BUF-BIAS-N3 PP")
+   field(OUTC, "$(DEV):RFFE-DIS-BUF-BIAS-N4 PP")
+}
+
+record(dfanout,"$(DEV):RFFE-DIS-BUF-OFS-COMM1-F") {
+   field(SCAN, "Passive")
+   field(DOL,  "$(DEV):RFFE-DIS-BUF-OFS-COMM1")
+   field(OMSL, "closed_loop")
+   field(OUTA, "$(DEV):RFFE-DIS-BUF-OFS-COMM2 PP")
+   field(OUTB, "$(DEV):RFFE-DIS-BUF-OFS-COMM3 PP")
+   field(OUTC, "$(DEV):RFFE-DIS-BUF-OFS-COMM4 PP")
+}
+
+record(dfanout,"$(DEV):RFFE-DIS-BUF-OFS-DIFF1-F") {
+   field(SCAN, "Passive")
+   field(DOL,  "$(DEV):RFFE-DIS-BUF-OFS-DIFF1")
+   field(OMSL, "closed_loop")
+   field(OUTA, "$(DEV):RFFE-DIS-BUF-OFS-DIFF2 PP")
+   field(OUTB, "$(DEV):RFFE-DIS-BUF-OFS-DIFF3 PP")
+   field(OUTC, "$(DEV):RFFE-DIS-BUF-OFS-DIFF4 PP")
+}
+
+record(dfanout,"$(DEV):RFFE-DIS-BUF-SUP-P1-F") {
+   field(SCAN, "Passive")
+   field(DOL,  "$(DEV):RFFE-DIS-BUF-SUP-P1")
+   field(OMSL, "closed_loop")
+   field(OUTA, "$(DEV):RFFE-DIS-BUF-SUP-P2 PP")
+   field(OUTB, "$(DEV):RFFE-DIS-BUF-SUP-P3 PP")
+   field(OUTC, "$(DEV):RFFE-DIS-BUF-SUP-P4 PP")
+}
+
+record(dfanout,"$(DEV):RFFE-DIS-BUF-SUP-N1-F") {
+   field(SCAN, "Passive")
+   field(DOL,  "$(DEV):RFFE-DIS-BUF-SUP-N1")
+   field(OMSL, "closed_loop")
+   field(OUTA, "$(DEV):RFFE-DIS-BUF-SUP-N2 PP")
+   field(OUTB, "$(DEV):RFFE-DIS-BUF-SUP-N3 PP")
+   field(OUTC, "$(DEV):RFFE-DIS-BUF-SUP-N4 PP")
+}
+
+record(dfanout,"$(DEV):RFFE-SW-MOD-ENA1-F") {
+   field(SCAN, "Passive")
+   field(DOL,  "$(DEV):RFFE-SW-MOD-ENA1")
+   field(OMSL, "closed_loop")
+   field(OUTA, "$(DEV):RFFE-SW-MOD-ENA2 PP")
+   field(OUTB, "$(DEV):RFFE-SW-MOD-ENA3 PP")
+   field(OUTC, "$(DEV):RFFE-SW-MOD-ENA4 PP")
+}
+
+record(dfanout,"$(DEV):RFFE-5V-AMP-ENA1-F") {
+   field(SCAN, "Passive")
+   field(DOL,  "$(DEV):RFFE-5V-AMP-ENA1")
+   field(OMSL, "closed_loop")
+   field(OUTA, "$(DEV):RFFE-5V-AMP-ENA2 PP")
+   field(OUTB, "$(DEV):RFFE-5V-AMP-ENA3 PP")
+   field(OUTC, "$(DEV):RFFE-5V-AMP-ENA4 PP")
+}
+
+record(ao,"$(DEV):RFFE-ATTN-M") {
+   field(DRVL, "0")  
+   field(DRVH, "63")
+   field(LOPR, "0")
+   field(HOPR, "31.5")  
+   field(PREC, "1")  
+   field(ASLO, "0.5")
+   field(EGU, "dB")
+   field(VAL, "4.0")
+   field(OUT, "$(DEV):RFFE-ATTN-F   PP")
+}
+
+record(dfanout,"$(DEV):RFFE-ATTN-F") {
+   field(DOL,  "$(DEV):RFFE-ATTN-M")
+   field(OUTA, "$(DEV):RFFE-ATTN1 PP")
+   field(OUTB, "$(DEV):RFFE-ATTN2 PP")
+   field(OUTC, "$(DEV):RFFE-ATTN3 PP")
+   field(OUTD, "$(DEV):RFFE-ATTN4 PP")
+}
+
+record(mbbo, "$(DEV):RFFE-AMPL-M") {
+   field(NOBT,"2")
+   field(SHFT, "0")
+   field(VAL, "0")
+   field(ZRVL, "0" )
+   field(ONVL, "1" )
+   field(TWVL, "2" )
+   field(ZRST, "Low (0dB)" )
+   field(ONST, "Medium (31dB)" )
+   field(TWST, "High (52.5dB)" )
+   field(OUT, "$(DEV):RFFE-AMPL-F   PP")
+}
+
+record(dfanout,"$(DEV):RFFE-AMPL-F") {
+   field(DOL,  "$(DEV):RFFE-AMPL-M")
+   field(OUTA, "$(DEV):RFFE-AMPL1 PP")
+   field(OUTB, "$(DEV):RFFE-AMPL2 PP")
+   field(OUTC, "$(DEV):RFFE-AMPL3 PP")
+   field(OUTD, "$(DEV):RFFE-AMPL4 PP")
+}
+
+record(ao,"$(DEV):RFFE-AMP-TEMP-SP-M") {
+   field(DRVH, "60")
+   field(DRVL, "10")
+   field(HOPR, "60")  
+   field(LOPR, "10")
+   field(PREC, "1")     
+   field(EGU, "degC")
+   field(VAL, "37.0")
+   field(OUT, "$(DEV):RFFE-AMP-TEMP-SP-F   PP")
+}
+
+record(dfanout,"$(DEV):RFFE-AMP-TEMP-SP-F") {
+   field(DOL,  "$(DEV):RFFE-AMP-TEMP-SP-M")
+   field(OUTA, "$(DEV):RFFE-AMP-TEMP-SP1 PP")
+   field(OUTB, "$(DEV):RFFE-AMP-TEMP-SP2 PP")
+   field(OUTC, "$(DEV):RFFE-AMP-TEMP-SP3 PP")
+   field(OUTD, "$(DEV):RFFE-AMP-TEMP-SP4 PP")
+}
+
+record(ao,"$(DEV):RFFE-DET-TEMP-SP-M") {
+   field(DRVL, "0")  
+   field(DRVH, "2048")
+   field(LOPR, "0")
+   field(HOPR, "129")  
+   field(PREC, "1")     
+   field(ASLO, "0.03818609775641025")    # DAC scaling:  ESLO=2.44V/4096=0.0006103515625, EOFF=0
+   field(AOFF, "-30.77")            # Temp scaling: ESLO=ESLO/0.0156V/degC, EOFF=0.48V/0.0156V/degC
+   field(EGU, "degC")
+   field(VAL, "40.0")
+   field(OUT, "$(DEV):RFFE-DET-TEMP-SP-F   PP")
+}
+
+record(dfanout,"$(DEV):RFFE-DET-TEMP-SP-F") {
+   field(SCAN, "Passive")
+   field(DOL,  "$(DEV):RFFE-DET-TEMP-SP-M")
+   field(OUTA, "$(DEV):RFFE-DET-TEMP-SP1 PP")
+   field(OUTB, "$(DEV):RFFE-DET-TEMP-SP2 PP")
+   field(OUTC, "$(DEV):RFFE-DET-TEMP-SP3 PP")
+   field(OUTD, "$(DEV):RFFE-DET-TEMP-SP4 PP")
+}
+
+
+#-- COMMON ---------------------------------------------------------------------
+
+record(bo, "$(DEV):RFFE-SW-CAL-ENA") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x00B8:0x00B8 T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(ZNAM, "RF" )
+  field(ONAM, "Cal" )
+}
+
+record(bo, "$(DEV):RFFE-HIV-ENA") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x00B4:0x00B4 T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(ZNAM, "Off" )
+  field(ONAM, "On" )
+}
+
+record(bo, "$(DEV):RFFE-6V-IO-ENA") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x00B5:0x00B5 T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(ZNAM, "Off" )
+  field(ONAM, "On" )
+}
+
+record(bo, "$(DEV):RFFE-TIM-CST") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x00B6:0x00B6 T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(ZNAM, "Off" )
+  field(ONAM, "On" )
+}
+
+record(bo, "$(DEV):RFFE-TMP-CTRL-ENA") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x00B7:0x00B7 T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(ZNAM, "Off" )
+  field(ONAM, "On" )
+}
+
+record(longin, "$(DEV):RFFE-AMP-TEMP-STAT") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0xB168 T=UINT32")
+}
+
+record(bo, "$(DEV):RFFE-AMP-PWM-ENA") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x00F8:0x00F8 T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(ZNAM, "Off" )
+  field(ONAM, "On" )
+}
+
+record(stringin,"$(DEV):RFFE-HS-SN"){
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0xB16C L=7")
+}
+
+record(longin,"$(DEV):RFFE-PRESENT"){
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0xB174 T=UINT32")
+}
+
+record(longin,"$(DEV):RFFE-HS-STATUS"){
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0xB178 T=UINT32")
+}
+
+#-- CH1 ------------------------------------------------------------------------
+
+record(ao,"$(DEV):RFFE-DIS-BUF-OFS-COMM1") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0000:0x0000 T=INT16")
+  field(SCAN, "I/O Intr")
+  field(LOPR, "-5")
+  field(HOPR, "5")  
+  field(PREC, "3")         
+  field(ASLO, "0.0006104260774020266145769747283604")   
+}
+
+record(ao,"$(DEV):RFFE-DIS-BUF-OFS-DIFF1") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0002:0x0002 T=INT16")
+  field(SCAN, "I/O Intr")
+  field(LOPR, "-5")
+  field(HOPR, "5")  
+  field(PREC, "3")         
+  field(ASLO, "0.001220852154804053229153949456")   
+}
+
+record(ao,"$(DEV):RFFE-DIS-BUF-SUP-P1") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0046:0x0046 T=INT16")
+  field(SCAN, "I/O Intr")
+  field(LOPR, "0")
+  field(HOPR, "5")  
+  field(PREC, "3")         
+  field(ASLO, "0.000610426077402026")   
+}
+
+record(ao,"$(DEV):RFFE-DIS-BUF-SUP-N1") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0044:0x0044 T=INT16")
+  field(SCAN, "I/O Intr")
+  field(LOPR, "-5")
+  field(HOPR, "0")  
+  field(PREC, "3")         
+  field(ASLO, "0.000610426077402026")   
+}
+
+record(ao,"$(DEV):RFFE-DIS-BUF-BIAS-P1") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0056:0x0056 T=INT16")
+  field(SCAN, "I/O Intr")
+  field(LOPR, "-5")
+  field(HOPR, "5")  
+  field(PREC, "3")         
+  field(ASLO, "0.000610426077402026")   
+}
+
+record(ao,"$(DEV):RFFE-DIS-BUF-BIAS-N1") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0054:0x0054 T=INT16")
+  field(SCAN, "I/O Intr")
+  field(LOPR, "-5")
+  field(HOPR, "5")  
+  field(PREC, "3")         
+  field(ASLO, "0.000610426077402026")   
+}
+
+record(ao,"$(DEV):RFFE-DET-BIAS-ADJ-P1") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0066:0x0066 T=INT16")
+  field(SCAN, "I/O Intr")
+  field(LOPR, "-5")
+  field(HOPR, "5")  
+  field(PREC, "3")         
+  field(ASLO, "0.000610426077402026")   
+}
+
+record(ao,"$(DEV):RFFE-DET-BIAS-ADJ-N1") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0064:0x0064 T=INT16")
+  field(SCAN, "I/O Intr")
+  field(LOPR, "-5")
+  field(HOPR, "5")  
+  field(PREC, "3")         
+  field(ASLO, "0.000610426077402026")   
+}
+
+record(ai,"$(DEV):RFFE-DET-BIAS-SEN-P1") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0xB0E0 T=INT16")
+  field(PREC, "3")
+  field(ASLO, "0.001220703125")   
+}
+
+record(ai,"$(DEV):RFFE-DET-BIAS-SEN-N1") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0xB0E2 T=INT16")
+  field(PREC, "3")
+  field(ASLO, "0.001220703125")   
+}
+
+record(ai,"$(DEV):RFFE-AMP-TEMP-SEN1") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0xB0E4 T=INT16")
+  field(PREC, "1")
+  field(ASLO, "0.039125100160")    # ADC scaling:  ESLO=2.5V/4096=0.0006103515625, EOFF=0
+  field(AOFF, "-30.77")            # Temp scaling: ESLO=ESLO/0.0156V/degC, EOFF=0.48V/0.0156V/degC
+}
+
+record(ai,"$(DEV):RFFE-DET-TEMP-SEN1") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0xB0E6 T=INT16")
+  field(PREC, "1")
+  field(ASLO, "0.039125100160")    # ADC scaling:  ESLO=2.5V/4096=0.0006103515625, EOFF=0
+  field(AOFF, "-30.77")            # Temp scaling: ESLO=ESLO/0.0156V/degC, EOFF=0.48V/0.0156V/degC
+}
+
+record(bo, "$(DEV):RFFE-SW-MOD-ENA1") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0074:0x0074 T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(ZNAM, "Off") 
+  field(ONAM, "On")
+} 
+
+record(bo, "$(DEV):RFFE-5V-AMP-ENA1") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0078:0x0078 T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(ZNAM, "Off") 
+  field(ONAM, "On")
+} 
+
+record(ao, "$(DEV):RFFE-AMP-TEMP-SP1") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0080:0x0080 T=FLOAT")
+  field(SCAN, "I/O Intr")
+  field(PREC, "1")
+  field(DRVH, "60")
+  field(DRVL, "10")
+  field(HOPR, "60")  
+  field(LOPR, "10")
+}
+
+
+record(ao,"$(DEV):RFFE-DET-TEMP-SP1") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0092:0x0092 T=UINT16")
+  field(SCAN, "I/O Intr")
+  field(DRVL, "0")  
+  field(DRVH, "2048")
+  field(LOPR, "0")
+  field(HOPR, "129")  
+  field(PREC, "1")     
+  field(ASLO, "0.03818609775641025")    # DAC scaling:  ESLO=2.44V/4096=0.0006103515625, EOFF=0
+  field(AOFF, "-30.77")                 # Temp scaling: ESLO=ESLO/0.0156V/degC, EOFF=0.48V/0.0156V/degC
+}
+
+record(ao, "$(DEV):RFFE-ATTN1") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0098:0x0098 T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(DRVL, "0")  
+  field(DRVH, "31.5")
+  field(LOPR, "0")
+  field(HOPR, "31.5")  
+  field(PREC, "1")  
+  field(ASLO, "0.5")
+}
+
+record(mbbo, "$(DEV):RFFE-AMPL1") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x009C:0x009C T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(NOBT, "2")
+  field(SHFT, "0")
+  field(VAL, "0")
+  field(ZRVL, "0" )
+  field(ONVL, "1" )
+  field(TWVL, "2" )
+  field(ZRST, "Low (0dB)" )
+  field(ONST, "Medium (31dB)" )
+  field(TWST, "High (52.5dB)" )
+}
+
+#-- CH2 ------------------------------------------------------------------------
+
+record(ao,"$(DEV):RFFE-DIS-BUF-OFS-COMM2") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0004:0x0004 T=INT16")
+  field(SCAN, "I/O Intr")
+  field(LOPR, "-5")
+  field(HOPR, "5")  
+  field(PREC, "3")         
+  field(ASLO, "0.0006104260774020266145769747283604")   
+}
+
+record(ao,"$(DEV):RFFE-DIS-BUF-OFS-DIFF2") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0006:0x0006 T=INT16")
+  field(SCAN, "I/O Intr")
+  field(LOPR, "-5")
+  field(HOPR, "5")  
+  field(PREC, "3")         
+  field(ASLO, "0.001220852154804053229153949456")   
+}
+
+record(ao,"$(DEV):RFFE-DIS-BUF-SUP-P2") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x004A:0x004A T=INT16")
+  field(SCAN, "I/O Intr")
+  field(LOPR, "0")
+  field(HOPR, "5")  
+  field(PREC, "3")         
+  field(LINR, "SLOPE")   
+  field(ASLO, "0.000610426077402026")   
+}
+
+record(ao,"$(DEV):RFFE-DIS-BUF-SUP-N2") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0048:0x0048 T=INT16")
+  field(SCAN, "I/O Intr")
+  field(LOPR, "-5")
+  field(HOPR, "0")  
+  field(PREC, "3")         
+  field(ASLO, "0.000610426077402026")   
+}
+
+record(ao,"$(DEV):RFFE-DIS-BUF-BIAS-P2") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x005A:0x005A T=INT16")
+  field(SCAN, "I/O Intr")
+  field(LOPR, "-5")
+  field(HOPR, "5")  
+  field(PREC, "3")         
+  field(ASLO, "0.000610426077402026")   
+}
+
+record(ao,"$(DEV):RFFE-DIS-BUF-BIAS-N2") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0058:0x0058 T=INT16")
+  field(SCAN, "I/O Intr")
+  field(LOPR, "-5")
+  field(HOPR, "5")  
+  field(PREC, "3")         
+  field(ASLO, "0.000610426077402026")   
+}
+
+record(ao,"$(DEV):RFFE-DET-BIAS-ADJ-P2") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x006A:0x006A T=INT16")
+  field(SCAN, "I/O Intr")
+  field(LOPR, "-5")
+  field(HOPR, "5")  
+  field(PREC, "3")         
+  field(ASLO, "0.000610426077402026")   
+}
+
+record(ao,"$(DEV):RFFE-DET-BIAS-ADJ-N2") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0068:0x0068 T=INT16")
+  field(SCAN, "I/O Intr")
+  field(LOPR, "-5")
+  field(HOPR, "5")  
+  field(PREC, "3")         
+  field(ASLO, "0.000610426077402026")   
+}
+
+record(ai,"$(DEV):RFFE-DET-BIAS-SEN-P2") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0xB0E8 T=INT16")
+  field(PREC, "3")
+  field(ASLO, "0.001220703125")   
+}
+
+record(ai,"$(DEV):RFFE-DET-BIAS-SEN-N2") {
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0xB0EA T=INT16")
+  field(SCAN, "I/O Intr")
+  field(PREC, "3")
+  field(ASLO, "0.001220703125")   
+}
+
+record(ai,"$(DEV):RFFE-AMP-TEMP-SEN2") {
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0xB0EC T=INT16")
+  field(SCAN, "I/O Intr")
+  field(PREC, "1")
+  field(ASLO, "0.039125100160")    # ADC scaling:  ESLO=2.5V/4096=0.0006103515625, EOFF=0
+  field(AOFF, "-30.77")            # Temp scaling: ESLO=ESLO/0.0156V/degC, EOFF=0.48V/0.0156V/degC
+}
+
+record(ai,"$(DEV):RFFE-DET-TEMP-SEN2") {
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0xB0EE T=INT16")
+  field(SCAN, "I/O Intr")
+  field(PREC, "1")
+  field(ASLO, "0.039125100160")    # ADC scaling:  ESLO=2.5V/4096=0.0006103515625, EOFF=0
+  field(AOFF, "-30.77")            # Temp scaling: ESLO=ESLO/0.0156V/degC, EOFF=0.48V/0.0156V/degC
+}
+
+record(bo, "$(DEV):RFFE-SW-MOD-ENA2") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0075:0x0075 T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(ZNAM, "Off") 
+  field(ONAM, "On")
+} 
+
+record(bo, "$(DEV):RFFE-5V-AMP-ENA2") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0079:0x0079 T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(ZNAM, "Off") 
+  field(ONAM, "On")
+} 
+
+record(ao, "$(DEV):RFFE-AMP-TEMP-SP2") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0084:0x0084 T=FLOAT")
+  field(SCAN, "I/O Intr")
+  field(PREC, "1")
+  field(DRVH, "60")
+  field(DRVL, "10")
+  field(HOPR, "60")  
+  field(LOPR, "10")
+}
+
+record(ao,"$(DEV):RFFE-DET-TEMP-SP2") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0090:0x0090 T=UINT16")
+  field(SCAN, "I/O Intr")
+  field(DRVL, "0")  
+  field(DRVH, "2048")
+  field(LOPR, "0")
+  field(HOPR, "129")  
+  field(PREC, "1")     
+  field(ASLO, "0.03818609775641025")    # DAC scaling:  ESLO=2.44V/4096=0.0006103515625, EOFF=0
+  field(AOFF, "-30.77")                 # Temp scaling: ESLO=ESLO/0.0156V/degC, EOFF=0.48V/0.0156V/degC
+}
+
+record(ao, "$(DEV):RFFE-ATTN2") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0099:0x0099 T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(DRVL, "0")  
+  field(DRVH, "31.5")
+  field(LOPR, "0")
+  field(HOPR, "31.5")  
+  field(PREC, "1")  
+  field(ASLO, "0.5")
+}
+
+record(mbbo, "$(DEV):RFFE-AMPL2") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x009D:0x009D T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(NOBT, "2")
+  field(SHFT, "0")
+  field(VAL, "0")
+  field(ZRVL, "0" )
+  field(ONVL, "1" )
+  field(TWVL, "2" )
+  field(ZRST, "Low (0dB)" )
+  field(ONST, "Medium (31dB)" )
+  field(TWST, "High (52.5dB)" )
+}
+
+#-- CH3 ------------------------------------------------------------------------
+
+record(ao,"$(DEV):RFFE-DIS-BUF-OFS-COMM3") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0008:0x0008 T=INT16")
+  field(SCAN, "I/O Intr")
+  field(LOPR, "-5")
+  field(HOPR, "5")  
+  field(PREC, "3")         
+  field(ASLO, "0.0006104260774020266145769747283604")   
+}
+
+record(ao,"$(DEV):RFFE-DIS-BUF-OFS-DIFF3") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x000A:0x000A T=INT16")
+  field(SCAN, "I/O Intr")
+  field(LOPR, "-5")
+  field(HOPR, "5")  
+  field(PREC, "3")         
+  field(ASLO, "0.001220852154804053229153949456")   
+}
+
+record(ao,"$(DEV):RFFE-DIS-BUF-SUP-P3") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x004E:0x004E T=INT16")
+  field(SCAN, "I/O Intr")
+  field(LOPR, "0")
+  field(HOPR, "5")  
+  field(PREC, "3")         
+  field(ASLO, "0.000610426077402026")   
+}
+
+record(ao,"$(DEV):RFFE-DIS-BUF-SUP-N3") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x004C:0x004C T=INT16")
+  field(SCAN, "I/O Intr")
+  field(LOPR, "-5")
+  field(HOPR, "0")  
+  field(PREC, "3")         
+  field(ASLO, "0.000610426077402026")   
+}
+
+record(ao,"$(DEV):RFFE-DIS-BUF-BIAS-P3") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x005E:0x005E T=INT16")
+  field(SCAN, "I/O Intr")
+  field(LOPR, "-5")
+  field(HOPR, "5")  
+  field(PREC, "3")         
+  field(ASLO, "0.000610426077402026")   
+}
+
+record(ao,"$(DEV):RFFE-DIS-BUF-BIAS-N3") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x005C:0x005C T=INT16")
+  field(SCAN, "I/O Intr")
+  field(LOPR, "-5")
+  field(HOPR, "5")  
+  field(PREC, "3")         
+  field(ASLO, "0.000610426077402026")   
+}
+
+record(ao,"$(DEV):RFFE-DET-BIAS-ADJ-P3") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x006E:0x006E T=INT16")
+  field(SCAN, "I/O Intr")
+  field(LOPR, "-5")
+  field(HOPR, "5")  
+  field(PREC, "3")         
+  field(ASLO, "0.000610426077402026")   
+}
+
+record(ao,"$(DEV):RFFE-DET-BIAS-ADJ-N3") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x006C:0x006C T=INT16")
+  field(LOPR, "-5")
+  field(HOPR, "5")  
+  field(PREC, "3")         
+  field(ASLO, "0.000610426077402026")   
+}
+
+record(ai,"$(DEV):RFFE-DET-BIAS-SEN-P3") {
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0xB0F0 T=INT16")
+  field(SCAN, "I/O Intr")
+  field(PREC, "3")
+  field(ASLO, "0.001220703125")   
+}
+
+record(ai,"$(DEV):RFFE-DET-BIAS-SEN-N3") {
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0xB0F2 T=INT16")
+  field(SCAN, "I/O Intr")
+  field(PREC, "3")
+  field(ASLO, "0.001220703125")   
+}
+
+record(ai,"$(DEV):RFFE-AMP-TEMP-SEN3") {
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0xB0F4 T=INT16")
+  field(SCAN, "I/O Intr")
+  field(PREC, "1")
+  field(ASLO, "0.039125100160")    # ADC scaling:  ESLO=2.5V/4096=0.0006103515625, EOFF=0
+  field(AOFF, "-30.77")            # Temp scaling: ESLO=ESLO/0.0156V/degC, EOFF=0.48V/0.0156V/degC
+}
+
+record(ai,"$(DEV):RFFE-DET-TEMP-SEN3") {
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0xB0F6 T=INT16")
+  field(SCAN, "I/O Intr")
+  field(PREC, "1")
+  field(ASLO, "0.039125100160")    # ADC scaling:  ESLO=2.5V/4096=0.0006103515625, EOFF=0
+  field(AOFF, "-30.77")            # Temp scaling: ESLO=ESLO/0.0156V/degC, EOFF=0.48V/0.0156V/degC
+}
+
+record(bo, "$(DEV):RFFE-SW-MOD-ENA3") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0076:0x0076 T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(ZNAM, "Off") 
+  field(ONAM, "On")
+} 
+
+record(bo, "$(DEV):RFFE-5V-AMP-ENA3") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x007A:0x007A T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(ZNAM, "Off") 
+  field(ONAM, "On")
+} 
+
+record(ao, "$(DEV):RFFE-AMP-TEMP-SP3") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0088:0x0088 T=FLOAT")
+  field(SCAN, "I/O Intr")
+  field(PREC, "1")
+  field(DRVH, "60")
+  field(DRVL, "10")
+  field(HOPR, "60")  
+  field(LOPR, "10")
+}
+
+record(ao,"$(DEV):RFFE-DET-TEMP-SP3") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0096:0x0096 T=UINT16")
+  field(SCAN, "I/O Intr")
+  field(DRVL, "0")  
+  field(DRVH, "2048")
+  field(LOPR, "0")
+  field(HOPR, "129")  
+  field(PREC, "1")     
+  field(ASLO, "0.03818609775641025")    # DAC scaling:  ESLO=2.44V/4096=0.0006103515625, EOFF=0
+  field(AOFF, "-30.77")                 # Temp scaling: ESLO=ESLO/0.0156V/degC, EOFF=0.48V/0.0156V/degC
+}
+
+record(ao, "$(DEV):RFFE-ATTN3") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x009A:0x009A T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(DRVL, "0")  
+  field(DRVH, "31.5")
+  field(LOPR, "0")
+  field(HOPR, "31.5")  
+  field(PREC, "1")  
+  field(ASLO, "0.5")
+}
+
+record(mbbo, "$(DEV):RFFE-AMPL3") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x009E:0x009E T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(NOBT, "2")
+  field(SHFT, "0")
+  field(VAL, "0")
+  field(ZRVL, "0" )
+  field(ONVL, "1" )
+  field(TWVL, "2" )
+  field(ZRST, "Low (0dB)" )
+  field(ONST, "Medium (31dB)" )
+  field(TWST, "High (52.5dB)" )
+}
+
+#-- CH4 ------------------------------------------------------------------------
+
+record(ao,"$(DEV):RFFE-DIS-BUF-OFS-COMM4") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x000C:0x000C T=INT16")
+  field(SCAN, "I/O Intr")
+  field(LOPR, "-5")
+  field(HOPR, "5")  
+  field(PREC, "3")         
+  field(ASLO, "0.0006104260774020266145769747283604")   
+}
+
+record(ao,"$(DEV):RFFE-DIS-BUF-OFS-DIFF4") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x000E:0x000E T=INT16")
+  field(SCAN, "I/O Intr")
+  field(LOPR, "-5")
+  field(HOPR, "5")  
+  field(PREC, "3")         
+  field(ASLO, "0.001220852154804053229153949456")   
+}
+
+record(ao,"$(DEV):RFFE-DIS-BUF-SUP-P4") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0052:0x0052 T=INT16")
+  field(SCAN, "I/O Intr")
+  field(LOPR, "0")
+  field(HOPR, "5")  
+  field(PREC, "3")         
+  field(ASLO, "0.000610426077402026")   
+}
+
+record(ao,"$(DEV):RFFE-DIS-BUF-SUP-N4") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0050:0x0050 T=INT16")
+  field(SCAN, "I/O Intr")
+  field(LOPR, "-5")
+  field(HOPR, "0")  
+  field(PREC, "3")         
+  field(ASLO, "0.000610426077402026")   
+}
+
+record(ao,"$(DEV):RFFE-DIS-BUF-BIAS-P4") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0062:0x0062 T=INT16")
+  field(SCAN, "I/O Intr")
+  field(LOPR, "-5")
+  field(HOPR, "5")  
+  field(PREC, "3")         
+  field(ASLO, "0.000610426077402026")   
+}
+
+record(ao,"$(DEV):RFFE-DIS-BUF-BIAS-N4") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0060:0x0060 T=INT16")
+  field(SCAN, "I/O Intr")
+  field(LOPR, "-5")
+  field(HOPR, "5")  
+  field(PREC, "3")         
+  field(ASLO, "0.000610426077402026")   
+}
+
+record(ao,"$(DEV):RFFE-DET-BIAS-ADJ-P4") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0072:0x0072 T=INT16")
+  field(SCAN, "I/O Intr")
+  field(LOPR, "-5")
+  field(HOPR, "5")  
+  field(PREC, "3")         
+  field(ASLO, "0.000610426077402026")   
+}
+
+record(ao,"$(DEV):RFFE-DET-BIAS-ADJ-N4") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0070:0x0070 T=INT16")
+  field(SCAN, "I/O Intr")
+  field(LOPR, "-5")
+  field(HOPR, "5")  
+  field(PREC, "3")         
+  field(ASLO, "0.000610426077402026")   
+}
+
+record(ai,"$(DEV):RFFE-DET-BIAS-SEN-P4") {
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0xB0F8 T=INT16")
+  field(SCAN, "I/O Intr")
+  field(PREC, "3")
+  field(LINR, "SLOPE")   
+  field(ASLO, "0.001220703125")   
+}
+
+record(ai,"$(DEV):RFFE-DET-BIAS-SEN-N4") {
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0xB0FA T=INT16")
+  field(SCAN, "I/O Intr")
+  field(PREC, "3")
+  field(LINR, "SLOPE")   
+  field(ASLO, "0.001220703125")   
+}
+
+record(ai,"$(DEV):RFFE-AMP-TEMP-SEN4") {
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0xB0FC T=INT16")
+  field(SCAN, "I/O Intr")
+  field(PREC, "1")
+  field(ASLO, "0.039125100160")    # ADC scaling:  ESLO=2.5V/4096=0.0006103515625, EOFF=0
+  field(AOFF, "-30.77")            # Temp scaling: ESLO=ESLO/0.0156V/degC, EOFF=0.48V/0.0156V/degC
+}
+#--
+record(ai,"$(DEV):RFFE-DET-TEMP-SEN4") {
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0xB0FE T=INT16")
+  field(SCAN, "I/O Intr")
+  field(PREC, "1")
+  field(ASLO, "0.039125100160")    # ADC scaling:  ESLO=2.5V/4096=0.0006103515625, EOFF=0
+  field(AOFF, "-30.77")            # Temp scaling: ESLO=ESLO/0.0156V/degC, EOFF=0.48V/0.0156V/degC
+}
+
+record(bo, "$(DEV):RFFE-SW-MOD-ENA4") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0077:0x0077 T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(ZNAM, "Off") 
+  field(ONAM, "On")
+} 
+
+record(bo, "$(DEV):RFFE-5V-AMP-ENA4") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x007B:0x007B T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(ZNAM, "Off") 
+  field(ONAM, "On")
+} 
+
+record(ao, "$(DEV):RFFE-AMP-TEMP-SP4") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x008C:0x008C T=FLOAT")
+  field(SCAN, "I/O Intr")
+  field(PREC, "1")
+  field(DRVH, "60")
+  field(DRVL, "10")
+  field(HOPR, "60")  
+  field(LOPR, "10")
+}
+
+record(ao,"$(DEV):RFFE-DET-TEMP-SP4") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0094:0x0094 T=UINT16")
+  field(SCAN, "I/O Intr")
+  field(DRVL, "0")  
+  field(DRVH, "2048")
+  field(LOPR, "0")
+  field(HOPR, "129")  
+  field(PREC, "1")     
+  field(ASLO, "0.03818609775641025")    # DAC scaling:  ESLO=2.44V/4096=0.0006103515625, EOFF=0
+  field(AOFF, "-30.77")                 # Temp scaling: ESLO=ESLO/0.0156V/degC, EOFF=0.48V/0.0156V/degC
+}
+
+record(ao, "$(DEV):RFFE-ATTN4") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x009B:0x009B T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(DRVL, "0")  
+  field(DRVH, "31.5")
+  field(LOPR, "0")
+  field(HOPR, "31.5")  
+  field(PREC, "1")  
+  field(ASLO, "0.5")
+}
+
+record(mbbo, "$(DEV):RFFE-AMPL4") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x009F:0x009F T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(NOBT, "2")
+  field(SHFT, "0")
+  field(VAL, "0")
+  field(ZRVL, "0" )
+  field(ONVL, "1" )
+  field(TWVL, "2" )
+  field(ZRST, "Low (0dB)" )
+  field(ONST, "Medium (31dB)" )
+  field(TWST, "High (52.5dB)" )
+}
+
+#------------------------------------------------------------------------------
+# AGC parameters
+#------------------------------------------------------------------------------
+
+record(bo, "$(DEV):AGC-ENA") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x00A0:0x00A0 T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(ZNAM, "Manual" )
+  field(ONAM, "Auto" )
+}
+
+record(longout, "$(DEV):AGC-A-MAX") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x00A1:0x00A1 T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(DRVH, "100")
+  field(DRVL, "0")
+  field(HOPR, "100")
+  field(LOPR, "0")
+}
+
+record(longout, "$(DEV):AGC-A-MIN") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x00A2:0x00A2 T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(DRVH, "100")
+  field(DRVL, "0")
+  field(HOPR, "100")
+  field(LOPR, "0")
+}
+
+record(longout, "$(DEV):AGC-A-MIN-TIME") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x00A3:0x00A3 T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(DRVH, "100")
+  field(DRVL, "0")
+  field(HOPR, "100")
+  field(LOPR, "0")
+}
+
+record(longin, "$(DEV):AGC-STATE") {
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0xB104 T=UINT8")
+  field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(DEV):AGC-LEVEL") {
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0xB105 T=UINT8")
+  field(SCAN, "I/O Intr")
+}
+
+record(longout, "$(DEV):AGC-GAIN-UP") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x00A4:0x00A4 T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(DRVH, "100")
+  field(DRVL, "0")
+  field(HOPR, "100")
+  field(LOPR, "0")
+}
+
+record(longout, "$(DEV):AGC-GAIN-DOWN") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x00A5:0x00A5 T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(DRVH, "100")
+  field(DRVL, "0")
+  field(HOPR, "100")
+  field(LOPR, "0")
+}
+
+record(bo, "$(DEV):AGC-MODE") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x00A6:0x00A6 T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(ZNAM, "Amplitude" )
+  field(ONAM, "Limits" )
+}
+
+record(longout, "$(DEV):AGC-BEGIN") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x00A8:0x00A8 T=UINT16")
+  field(SCAN, "I/O Intr")
+  field(DRVH, "799")
+  field(DRVL, "0")
+  field(HOPR, "799")
+  field(LOPR, "0")
+}
+
+record(longout, "$(DEV):AGC-END") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x00AA:0x00AA T=UINT16")
+  field(SCAN, "I/O Intr")
+  field(DRVH, "799")
+  field(DRVL, "0")
+  field(HOPR, "799")
+  field(LOPR, "0")
+}
+
+record(ao, "$(DEV):AGC-MAX-POS") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x00AC:0x00AC T=FLOAT")
+  field(SCAN, "I/O Intr")
+  field(PREC, "2")
+  field(DRVH, "10")
+  field(DRVL, "0")
+  field(HOPR, "10")
+  field(LOPR, "0")
+}
+
+record(ao, "$(DEV):AGC-MAX-Q") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x00B0:0x00B0 T=FLOAT")
+  field(SCAN, "I/O Intr")
+  field(PREC, "0")
+  field(DRVH, "2000")
+  field(DRVL, "1")
+  field(HOPR, "2000")
+  field(LOPR, "1")
+}
+
+record(ai, "$(DEV):AGC-ALLOW-Q") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(PREC, "2")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0xB108 T=FLOAT")
+}
+
+record(ai,"$(DEV):G1") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0xB10C T=FLOAT")
+  field(PREC, "3")         
+}
+
+record(ai,"$(DEV):G2") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0xB110 T=FLOAT")
+  field(PREC, "3")         
+}
+
+record(ai,"$(DEV):G3") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0xB114 T=FLOAT")
+  field(PREC, "3")         
+}
+
+record(ai,"$(DEV):G4") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0xB118 T=FLOAT")
+  field(PREC, "3")         
+}
+
+record(longin,"$(DEV):A1") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0xB11C T=UINT32")
+}
+
+record(longin,"$(DEV):A2") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0xB120 T=UINT32")
+}
+
+record(longin,"$(DEV):A3") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0xB124 T=UINT32")
+}
+
+record(longin,"$(DEV):A4") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0xB128 T=UINT32")
+}
+
+#------------------------------------------------------------------------------
+# TIMING
+#------------------------------------------------------------------------------
+record(longin, "$(DEV):BPM-TRAIN-DEL") {
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0xB0D0 T=UINT32")
+  field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(DEV):TIM-TRG-CNT") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0xB0CC T=UINT32")
+  field(FLNK, "$(DEV):TIM-TRG-SW" )
+}
+
+record(calc, "$(DEV):TIM-TRG-SW") {
+  field(INPA, "$(DEV):TIM-TRG-SW")
+  field(CALC, "A+1")
+  field(FLNK, "$(DEV):TIM-TRG-OFFSET" )
+} 
+
+record(calc, "$(DEV):TIM-TRG-OFFSET") {
+  field(INPA, "$(DEV):TIM-TRG-SW")
+  field(INPB, "$(DEV):TIM-TRG-CNT")
+  field(INPC, "0")
+  field(CALC, "A-B+C")
+} 
+
+record(calcout, "$(DEV):TIM-TRG-RESET") {
+  field(INPA, "$(DEV):TIM-TRG-OFFSET.C")
+  field(INPB, "$(DEV):TIM-TRG-OFFSET")
+  field(CALC, "A-B")
+  field(OUT, "$(DEV):TIM-TRG-OFFSET.C" )
+} 
+
+record(longout, "$(DEV):BPM-SMP-B3-0") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0010:0x0010 T=UINT32")
+  field(SCAN, "I/O Intr")
+  field(DRVH, "268435455")
+  field(DRVL, "0")
+  field(HOPR, "268435455")
+  field(LOPR, "0")
+}
+
+record(longout, "$(DEV):BPM-SMP-B0-0") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0014:0x0014 T=UINT16")
+  field(SCAN, "I/O Intr")
+  field(DRVH, "2700")
+  field(DRVL, "1")
+  field(HOPR, "2700")
+  field(LOPR, "1")
+}
+
+record(longout, "$(DEV):BPM-SMP-B2-0") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0016:0x0016 T=UINT16")
+  field(SCAN, "I/O Intr")
+  field(DRVH, "4096")
+  field(DRVL, "0")
+  field(HOPR, "4096")
+  field(LOPR, "0")
+}
+
+record(longout, "$(DEV):BPM-SMP-S1-2") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0018:0x0018 T=UINT16")
+  field(SCAN, "I/O Intr")
+  field(DRVH, "251")
+  field(DRVL, "0")
+  field(HOPR, "251")
+  field(LOPR, "0")
+}
+
+record(longout, "$(DEV):BPM-SMP-S1-1") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x001A:0x001A T=UINT16")
+  field(SCAN, "I/O Intr")
+  field(DRVH, "255")
+  field(DRVL, "0")
+  field(HOPR, "255")
+  field(LOPR, "0")
+}
+
+record(mbbo, "$(DEV):BPM-TRG-SOURCE") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x001C:0x001C T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(NOBT, "3")
+  field(SHFT, "0")
+  field(ZRVL, "0" )
+  field(ONVL, "1" )
+  field(TWVL, "2" )
+  field(THVL, "3" )
+  field(FRVL, "4" )
+  field(FVVL, "5" )
+  field(SXVL, "6" )
+  field(ZRST, "Signal" )
+  field(ONST, "External" )
+  field(TWST, "Auto ( 2 s)" )
+  field(THST, "Auto ( 1 s)" )
+  field(FRST, "Auto (.5 s)" )
+  field(FVST, "Auto (.2 s)" )
+  field(SXST, "Auto (.1 s)" )
+}
+
+record(bo, "$(DEV):BPM-TRG-MODE") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x001D:0x001D T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(ZNAM, "Continuous" )
+  field(ONAM, "Single" )
+}
+
+record(bo, "$(DEV):BPM-TRG-EDGE") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x001E:0x001E T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(ZNAM, "Negative" )
+  field(ONAM, "Positive" )
+}
+
+record(bo, "$(DEV):BPM-TRG-CONNECT") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x001F:0x001F T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(ZNAM, "Crossed" )
+  field(ONAM, "Straight" )
+}
+
+record(longout, "$(DEV):BPM-TRG-LEVEL") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0020:0x0020 T=UINT16")
+  field(SCAN, "I/O Intr")
+  field(DRVH, "8191")
+  field(DRVL, "-8192")
+  field(HOPR, "8191")
+  field(LOPR, "-8192")
+}
+
+record(bo, "$(DEV):BPM-DISCH-ENA") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0022:0x0022 T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(ZNAM, "Off" )
+  field(ONAM, "On" )
+}
+
+record(bo, "$(DEV):BPM-CALIB-ENA") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0023:0x0023 T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(ZNAM, "Off" )
+  field(ONAM, "On" )
+}
+
+record(longout, "$(DEV):BPM-SMP-C2-1") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0024:0x0024 T=UINT16")
+  field(SCAN, "I/O Intr")
+  field(DRVH, "255")
+  field(DRVL, "0")
+  field(HOPR, "255")
+  field(LOPR, "0")
+  field(VAL, "0")
+}
+
+record(longout, "$(DEV):BPM-SMP-D1-1") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0026:0x0026 T=UINT16")
+  field(SCAN, "I/O Intr")
+  field(DRVH, "255")
+  field(DRVL, "0")
+  field(HOPR, "255")
+  field(LOPR, "0")
+}
+
+record(longout, "$(DEV):BPM-SMP-C0") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0028:0x0028 T=UINT16")
+  field(SCAN, "I/O Intr")
+  field(DRVH, "2700")
+  field(DRVL, "1")
+  field(HOPR, "2700")
+  field(LOPR, "1")
+}
+
+record(longout, "$(DEV):BPM-SMP-C-SPACE") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x002A:0x002A T=UINT16")
+  field(SCAN, "I/O Intr")
+  field(DRVH, "40")
+  field(DRVL, "1")
+  field(HOPR, "40")
+  field(LOPR, "1")
+}
+
+record(mbbo, "$(DEV):BPM-CALIB-SOURCE") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x002C:0x002C T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(NOBT,"3")
+  field(SHFT, "0")
+  field(ZRVL, "0" )
+  field(ONVL, "1" )
+  field(TWVL, "2" )
+  field(THVL, "3" )
+  field(FRVL, "4" )
+  field(FVVL, "5" )
+  field(ZRST, "External" )
+  field(ONST, "Auto ( 2 s)" )
+  field(TWST, "Auto ( 1 s)" )
+  field(THST, "Auto (.5 s)" )
+  field(FRST, "Auto (.2 s)" )
+  field(FVST, "Auto (.1 s)" )
+}
+
+record(bo, "$(DEV):BPM-TIMEOUT-ENA") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x002D:0x002D T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(ZNAM, "Off" )
+  field(ONAM, "On" )
+}
+
+record(longout, "$(DEV):BPM-SMP-D1-0") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0030:0x0030 T=UINT32")
+  field(SCAN, "I/O Intr")
+  field(DRVH, "200")
+  field(DRVL, "-200")
+  field(HOPR, "200")
+  field(LOPR, "-200")
+}
+
+record(longout, "$(DEV):BPM-AMP-T1") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0034:0x0034 T=UINT16")
+  field(SCAN, "I/O Intr")
+  field(DRVH, "512")
+  field(DRVL, "0")
+  field(HOPR, "512")
+  field(LOPR, "0")
+}
+
+record(longout, "$(DEV):BPM-AMP-T2") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0036:0x0036 T=UINT16")
+  field(SCAN, "I/O Intr")
+  field(DRVH, "512")
+  field(DRVL, "0")
+  field(HOPR, "512")
+  field(LOPR, "0")
+}
+
+record(mbbo, "$(DEV):BPM-CLK-MODE") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x003C:0x003C T=UINT32")
+  field(SCAN, "I/O Intr")
+  field(NOBT, "2")
+  field(SHFT, "0")
+  field(ZRVL, "0" )
+  field(ONVL, "1" )
+  field(TWVL, "2" )
+  field(THVL, "3" )
+  field(ZRST, "MO:216.6->433.3" )
+  field(ONST, "LO:500.0->433.3" )
+  field(TWST, "LO:500.0->500.0" )
+  field(THST, "Custom" )
+}
+
+record(longout, "$(DEV):BPM-TRG-SINGLE") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0038 T=UINT32")
+}
+
+record(longin, "$(DEV):TIM-ERROR") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0xB0D4 T=UINT32")
+}
+
+record(longin, "$(DEV):RFFE-STATUS") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0xB0D8 T=UINT8")
+}
+
+record(longin,"$(DEV):BPM-PLL-STATUS"){
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0xB0DC T=UINT32")
+}
+
+record(longout, "$(DEV):BL-CTRL-DEM") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0040:0x0040 T=UINT16")
+  field(SCAN, "I/O Intr")
+  field(DRVH, "2047")
+  field(DRVL, "-2048")
+  field(HOPR, "2047")
+  field(LOPR, "-2048")
+}
+
+record(longout, "$(DEV):BL-CTRL-TH") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0042:0x0042 T=UINT16")
+  field(SCAN, "I/O Intr")
+  field(DRVH, "2047")
+  field(DRVL, "0")
+  field(HOPR, "2047")
+  field(LOPR, "0")
+}
+
+record(bo, "$(DEV):BL-CTRL-ENA") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x007E:0x007E T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(ZNAM, "Off" )
+  field(ONAM, "On" )
+}
+
+record(longout, "$(DEV):BL-CTRL-TIME") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x007F:0x007F T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(DRVH, "2047")
+  field(DRVL, "0")
+  field(HOPR, "2047")
+  field(LOPR, "0")
+}
+
+#--
+record(longin, "$(DEV):BL-STATUS") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0xB100 T=UINT32")
+}
+
+#------------------------------------------------------------------------------
+# AMPLITUDE CALCULATION
+#------------------------------------------------------------------------------
+
+record(longin, "$(DEV):AMP-BL-START") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0xB0C0 T=UINT16")
+}
+
+record(longin, "$(DEV):AMP-BL-STOP") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0xB0C2 T=UINT16")
+}
+
+record(longin, "$(DEV):AMP-TOP-START") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0xB0C4 T=UINT16")
+}
+
+record(longin, "$(DEV):AMP-TOP-STOP") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0xB0C6 T=UINT16")
+}
+
+record(longin, "$(DEV):AMP-TRG-LEFT") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0xB0C8 T=UINT16")
+}
+
+record(longin, "$(DEV):AMP-TRG-RIGHT") {
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0xB0CA T=UINT16")
+  field(SCAN, "I/O Intr")
+}
+
+#------------------------------------------------------------------------------
+# BPM POSITION
+#------------------------------------------------------------------------------
+
+record(bo, "$(DEV):LIN-ENA") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x00BC:0x00BC T=UINT32")
+  field(SCAN, "I/O Intr")
+  field(ZNAM, "Off" )
+  field(ONAM, "On" )
+}
+
+record(ao, "$(DEV):POS-KX") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x00C0:0x00C0 T=FLOAT")
+  field(SCAN, "I/O Intr")
+  field(PREC, "1")
+}
+
+record(ao, "$(DEV):POS-KY") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x00C4:0x00C4 T=FLOAT")
+  field(SCAN, "I/O Intr")
+  field(PREC, "1")
+}
+
+record(ao, "$(DEV):POS-Q") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x00C8:0x00C8 T=FLOAT")
+  field(SCAN, "I/O Intr")
+  field(PREC, "5")
+}
+
+record(ao, "$(DEV):POS-OFFSET-X-INT") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x00CC:0x00CC T=FLOAT")
+  field(SCAN, "I/O Intr")
+  field(PREC, "1")
+}
+
+record(ao, "$(DEV):POS-OFFSET-Y-INT") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x00D0:0x00D0 T=FLOAT")
+  field(SCAN, "I/O Intr")
+  field(PREC, "1")
+}
+
+record(ao, "$(DEV):POS-OFFSET-X-EXT") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x00D4:0x00D4 T=FLOAT")
+  field(SCAN, "I/O Intr")
+  field(PREC, "1")
+}
+
+record(ao, "$(DEV):POS-OFFSET-Y-EXT") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x00D8:0x00D8 T=FLOAT")
+  field(SCAN, "I/O Intr")
+  field(PREC, "1")
+}
+
+record(bo, "$(DEV):POS-PICKUP-ANGLE") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x00DC:0x00DC T=UINT16")
+  field(SCAN, "I/O Intr")
+  field(ZNAM, "0 deg" )
+  field(ONAM, "45 deg" )
+}
+
+record(ao, "$(DEV):POS-ROLL-ANGLE") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x00E0:0x00E0 T=FLOAT")
+  field(SCAN, "I/O Intr")
+  field(PREC, "2")
+}
+
+record(ai, "$(DEV):Q-THR") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0xB1F4 T=FLOAT")
+}
+
+record(longout, "$(DEV):Q-THR-RELATIVE") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x00E4:0x00E4 T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(DRVH, "100")
+  field(DRVL, "0")
+  field(HOPR, "100")
+  field(LOPR, "0")
+}
+
+record(longout, "$(DEV):BUCKET-SEL") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x00E8:0x00E8 T=UINT32")
+  field(SCAN, "I/O Intr")
+  field(DRVH, "799")
+  field(DRVL, "0")
+  field(HOPR, "799")
+  field(LOPR, "0")
+}
+
+record(longout, "$(DEV):STAT-LENGTH") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x00EC:0x00EC T=UINT32")
+  field(SCAN, "I/O Intr")
+  field(DRVH, "511")
+  field(DRVL, "1")
+  field(HOPR, "511")
+  field(LOPR, "1")
+}
+
+record(longout, "$(DEV):STAT-RESET") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x00F0:0x00F0 T=UINT32")
+  field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(DEV):V-ORED") {
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/0xB12C T=UINT32")
+  field(SCAN, "I/O Intr")
+}
+
+
+#-------------------------------------------------------------------------------
+# STATISTICS
+#-------------------------------------------------------------------------------
+
+record(ai,"$(DEV):X-AVG") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0xB130 T=FLOAT")
+  field(PREC, "4")
+}
+
+record(ai,"$(DEV):X-STD") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0xB134 T=FLOAT")
+  field(PREC, "4")
+}
+
+record(ai,"$(DEV):X-MIN") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0xB17C T=FLOAT")
+  field(PREC, "4")
+}
+
+record(ai,"$(DEV):X-MAX") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0xB180 T=FLOAT")
+  field(PREC, "4")
+}
+
+record(ai,"$(DEV):X-P2P") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0xB184 T=FLOAT")
+  field(PREC, "4")
+}
+
+record(ai,"$(DEV):X-SINGLE") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0xB1D0 T=FLOAT")
+  field(PREC, "4")
+}
+
+record(ai,"$(DEV):Y-AVG") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0xB138 T=FLOAT")
+  field(PREC, "4")
+}
+
+record(ai,"$(DEV):Y-STD") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0xB13C T=FLOAT")
+  field(PREC, "4")
+}
+
+record(ai,"$(DEV):Y-MIN") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0xB188 T=FLOAT")
+  field(PREC, "4")
+}
+
+record(ai,"$(DEV):Y-MAX") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0xB18C T=FLOAT")
+  field(PREC, "4")
+}
+
+record(ai,"$(DEV):Y-P2P") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0xB190 T=FLOAT")
+  field(PREC, "4")
+}
+
+record(ai,"$(DEV):Y-SINGLE") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0xB1D4 T=FLOAT")
+  field(PREC, "4")
+}
+
+record(ai,"$(DEV):Q-AVG") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0xB140 T=FLOAT")
+  field(PREC, "1")
+}
+
+record(ai,"$(DEV):Q-STD") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0xB144 T=FLOAT")
+  field(PREC, "1")
+}
+
+record(ai,"$(DEV):Q-MIN") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0xB194 T=FLOAT")
+  field(PREC, "1")
+}
+
+record(ai,"$(DEV):Q-MAX") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0xB198 T=FLOAT")
+  field(PREC, "1")
+}
+
+record(ai,"$(DEV):Q-P2P") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0xB19C T=FLOAT")
+  field(PREC, "1")
+}
+
+record(ai,"$(DEV):Q-SINGLE") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0xB1D8 T=FLOAT")
+  field(PREC, "1")
+}
+
+record(ai,"$(DEV):A1-AVG") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0xB148 T=FLOAT")
+}
+
+record(ai,"$(DEV):A1-STD") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0xB14C T=FLOAT")
+}
+
+record(ai,"$(DEV):A1-MIN") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0xB1A0 T=FLOAT")
+}
+
+record(ai,"$(DEV):A1-MAX") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0xB1A4 T=FLOAT")
+}
+
+record(ai,"$(DEV):A1-P2P") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0xB1A8 T=FLOAT")
+}
+
+record(ai,"$(DEV):A1-SINGLE") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0xB1DC T=FLOAT")
+}
+
+record(ai,"$(DEV):A2-AVG") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0xB150 T=FLOAT")
+}
+
+record(ai,"$(DEV):A2-STD") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0xB154 T=FLOAT")
+}
+
+record(ai,"$(DEV):A2-MIN") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0xB1AC T=FLOAT")
+}
+
+record(ai,"$(DEV):A2-MAX") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0xB1B0 T=FLOAT")
+}
+
+record(ai,"$(DEV):A2-P2P") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0xB1B4 T=FLOAT")
+}
+
+record(ai,"$(DEV):A2-SINGLE") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0xB1E0 T=FLOAT")
+}
+
+record(ai,"$(DEV):A3-AVG") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0xB158 T=FLOAT")
+}
+
+record(ai,"$(DEV):A3-STD") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0xB15C T=FLOAT")
+}
+
+record(ai,"$(DEV):A3-MIN") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0xB1B8 T=FLOAT")
+}
+
+record(ai,"$(DEV):A3-MAX") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0xB1BC T=FLOAT")
+}
+
+record(ai,"$(DEV):A3-P2P") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0xB1C0 T=FLOAT")
+}
+
+record(ai,"$(DEV):A3-SINGLE") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0xB1E4 T=FLOAT")
+}
+
+record(ai,"$(DEV):A4-AVG") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0xB160 T=FLOAT")
+}
+
+record(ai,"$(DEV):A4-STD") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0xB164 T=FLOAT")
+}
+
+record(ai,"$(DEV):A4-MIN") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0xB1C4 T=FLOAT")
+}
+
+record(ai,"$(DEV):A4-MAX") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0xB1C8 T=FLOAT")
+}
+
+record(ai,"$(DEV):A4-P2P") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0xB1CC T=FLOAT")
+}
+
+record(ai,"$(DEV):A4-SINGLE") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0xB1E8 T=FLOAT")
+}
+
+#-------------------------------------------------------------------------------
+# RFFE
+#-------------------------------------------------------------------------------
+
+record(bo, "$(DEV):RFFE-SW-MOD-CLK-ENA") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x00F6:0x00F6 T=UINT16")
+  field(SCAN, "I/O Intr")
+   field(ZNAM, "Off")
+   field(ONAM, "On")
+}
+

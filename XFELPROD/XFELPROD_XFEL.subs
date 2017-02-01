@@ -1,0 +1,303 @@
+
+################################################################################
+## S7gpac driver test server - ASYNCHRONOUS                                 ####
+################################################################################
+
+# file test.template {
+#    pattern  {DEV                  SRV    }
+#             {XFEL-TEST            GPAC2TEST}
+# }
+
+################################################################################
+## GPAC SPECIFIC SERVER - ASYNCHRONOUS                                      ####
+################################################################################
+
+file S7gpac.template {
+   pattern  {DEV                     SRV                 }
+            {XFELGPAC1DI30I1         XFELGPAC1DI30I1     }
+            {XFELGPAC1DI55I1         XFELGPAC1DI55I1     }
+            {XFELGPAC2DI55I1         XFELGPAC2DI55I1     }
+            {XFELGPAC3DI55I1         XFELGPAC3DI55I1     }
+            {XFELGPAC1DI59I1         XFELGPAC1DI59I1     }
+            {XFELGPAC1DI94I1         XFELGPAC1DI94I1     }
+            {XFELGPAC2DI94I1         XFELGPAC2DI94I1     }
+            {XFELGPAC3DI94I1         XFELGPAC3DI94I1     }
+            {XFELGPAC4DI94I1         XFELGPAC4DI94I1     }	    
+            {XFELGPAC1DI107I1        XFELGPAC1DI107I1    }
+            {XFELGPAC2DI107I1        XFELGPAC2DI107I1    }
+            {XFELGPAC1DI160L1        XFELGPAC1DI160L1    }
+            {XFELGPAC2DI160L1        XFELGPAC2DI160L1    }
+            {XFELGPAC1DI176B1        XFELGPAC1DI176B1    }
+            {XFELGPAC1DI203B1        XFELGPAC1DI203B1    }
+            {XFELGPAC1DI215B1        XFELGPAC1DI215B1    }
+            {XFELGPAC1DI220B1        XFELGPAC1DI220B1    }
+            {XFELGPAC1DI240B1        XFELGPAC1DI240B1    }
+            {XFELGPAC1DI276L2        XFELGPAC1DI276L2    }
+            {XFELGPAC2DI276L2        XFELGPAC2DI276L2    }
+            {XFELGPAC1DI324L2        XFELGPAC1DI324L2    }
+            {XFELGPAC2DI324L2        XFELGPAC2DI324L2    }
+            {XFELGPAC1DI372L2        XFELGPAC1DI372L2    }
+            {XFELGPAC2DI372L2        XFELGPAC2DI372L2    }
+            {XFELGPAC1DI390B2        XFELGPAC1DI390B2    }
+            {XFELGPAC1DI415B2        XFELGPAC1DI415B2    }
+            {XFELGPAC1DI438B2        XFELGPAC1DI438B2    }
+            {XFELGPAC1DI458B2        XFELGPAC1DI458B2    }
+            {XFELGPAC2DI458B2        XFELGPAC2DI458B2    }
+            {XFELGPAC3DI458B2        XFELGPAC3DI458B2    }
+            {XFELGPAC1DI514L3        XFELGPAC1DI514L3    }
+            {XFELGPAC1DI562L3        XFELGPAC1DI562L3    }
+            {XFELGPAC2DI562L3        XFELGPAC2DI562L3    }
+            {XFELGPAC1DI610L3        XFELGPAC1DI610L3    }
+            {XFELGPAC2DI610L3        XFELGPAC2DI610L3    }
+            {XFELGPAC1DI661L3        XFELGPAC1DI661L3    }
+            {XFELGPAC1DI709L3        XFELGPAC1DI709L3    }
+#           {XFELGPAC2DI709L3        XFELGPAC2DI709L3    }
+            {XFELGPAC1DI757L3        XFELGPAC1DI757L3    }	    
+#           {XFELGPAC2DI757L3        XFELGPAC2DI757L3    }
+            {XFELGPAC1DI808L3        XFELGPAC1DI808L3    }
+#           {XFELGPAC2DI808L3        XFELGPAC2DI808L3    }
+            {XFELGPAC1DI856L3        XFELGPAC1DI856L3    }
+            {XFELGPAC1DI904L3        XFELGPAC1DI904L3    }
+            {XFELGPAC1DI955L3        XFELGPAC1DI955L3    }
+            {XFELGPAC1DI1003L3       XFELGPAC1DI1003L3   }
+            {XFELGPAC1DI1051L3       XFELGPAC1DI1051L3   }
+            {XFELGPAC1DI1102L3       XFELGPAC1DI1102L3   }
+#           {XFELGPAC2DI1102L3       XFELGPAC2DI1102L3   }
+            {XFELGPAC1DI1150L3       XFELGPAC1DI1150L3   }
+            {XFELGPAC1DI1198L3       XFELGPAC1DI1198L3   }
+#           {XFELGPAC2DI1198L3       XFELGPAC2DI1198L3   }
+            {XFELGPAC1DI1249L3       XFELGPAC1DI1249L3   }
+#           {XFELGPAC2DI1249L3       XFELGPAC2DI1249L3   }
+            {XFELGPAC1DI1297L3       XFELGPAC1DI1297L3   }
+#           {XFELGPAC2DI1297L3       XFELGPAC2DI1297L3   }
+            {XFELGPAC1DI1345L3       XFELGPAC1DI1345L3   }
+            {XFELGPAC1DI1396L3       XFELGPAC1DI1396L3   }
+#           {XFELGPAC2DI1396L3       XFELGPAC2DI1396L3   }
+            {XFELGPAC1DI1444L3       XFELGPAC1DI1444L3   }
+#           {XFELGPAC2DI1444L3       XFELGPAC2DI1444L3   }
+            {XFELGPAC1DI1499L3       XFELGPAC1DI1499L3   }
+            {XFELGPAC1DI1601L3       XFELGPAC1DI1601L3   }
+            {XFELGPAC1DI1656L3       XFELGPAC1DI1656L3   }
+            {XFELGPAC1DI1685CL       XFELGPAC1DI1685CL   }
+            {XFELGPAC1DI1720CL       XFELGPAC1DI1720CL   }
+            {XFELGPAC2DI1720CL       XFELGPAC2DI1720CL   }
+            {XFELGPAC1DI1755CL       XFELGPAC1DI1755CL   }
+            {XFELGPAC2DI1755CL       XFELGPAC2DI1755CL   }
+            {XFELGPAC1DI1793CL       XFELGPAC1DI1793CL   }
+            {XFELGPAC1DI1828CL       XFELGPAC1DI1828CL   }
+            {XFELGPAC1DI1862TL       XFELGPAC1DI1862TL   }
+            {XFELGPAC1DI1899TL       XFELGPAC1DI1899TL   }
+            {XFELGPAC2DI1899TL       XFELGPAC2DI1899TL   }
+            {XFELGPAC3DI1899TL       XFELGPAC3DI1899TL   }
+            {XFELGPAC4DI1899TL       XFELGPAC4DI1899TL   }
+            {XFELGPAC1DI1973TL       XFELGPAC1DI1973TL   }
+            {XFELGPAC1DI2018TL       XFELGPAC1DI2018TL   }
+            {XFELGPAC1DI2018TLD      XFELGPAC1DI2018TLD  }
+            {XFELGPAC1DI2047TLD      XFELGPAC1DI2047TLD  }
+            {XFELGPAC1DI2074TLD      XFELGPAC1DI2074TLD  }
+            {XFELGPAC3DI2100TLD      XFELGPAC3DI2100TLD  }
+            {XFELGPAC1DIXS1UG3TLD    XFELGPAC1DIXS1UG3TLD}                       
+}
+
+file gpac2_service.template {
+   pattern  {DEV                     SRV                 }
+            {XFELGPAC1DI30I1         XFELGPAC1DI30I1     }
+            {XFELGPAC1DI55I1         XFELGPAC1DI55I1     }
+            {XFELGPAC2DI55I1         XFELGPAC2DI55I1     }
+            {XFELGPAC3DI55I1         XFELGPAC3DI55I1     }
+            {XFELGPAC1DI59I1         XFELGPAC1DI59I1     }
+            {XFELGPAC1DI94I1         XFELGPAC1DI94I1     }
+            {XFELGPAC2DI94I1         XFELGPAC2DI94I1     }
+            {XFELGPAC3DI94I1         XFELGPAC3DI94I1     }
+            {XFELGPAC4DI94I1         XFELGPAC4DI94I1     }
+            {XFELGPAC1DI107I1        XFELGPAC1DI107I1    }
+            {XFELGPAC2DI107I1        XFELGPAC2DI107I1    }
+            {XFELGPAC1DI160L1        XFELGPAC1DI160L1    }
+            {XFELGPAC2DI160L1        XFELGPAC2DI160L1    }
+            {XFELGPAC1DI176B1        XFELGPAC1DI176B1    }
+            {XFELGPAC1DI203B1        XFELGPAC1DI203B1    }
+            {XFELGPAC1DI215B1        XFELGPAC1DI215B1    }
+            {XFELGPAC1DI220B1        XFELGPAC1DI220B1    }
+            {XFELGPAC1DI240B1        XFELGPAC1DI240B1    }
+            {XFELGPAC1DI276L2        XFELGPAC1DI276L2    }
+            {XFELGPAC2DI276L2        XFELGPAC2DI276L2    }
+            {XFELGPAC1DI324L2        XFELGPAC1DI324L2    }
+            {XFELGPAC2DI324L2        XFELGPAC2DI324L2    }
+            {XFELGPAC1DI372L2        XFELGPAC1DI372L2    }
+            {XFELGPAC2DI372L2        XFELGPAC2DI372L2    }
+            {XFELGPAC1DI390B2        XFELGPAC1DI390B2    }
+            {XFELGPAC1DI415B2        XFELGPAC1DI415B2    }
+            {XFELGPAC1DI438B2        XFELGPAC1DI438B2    }
+            {XFELGPAC1DI458B2        XFELGPAC1DI458B2    }
+            {XFELGPAC2DI458B2        XFELGPAC2DI458B2    }
+            {XFELGPAC3DI458B2        XFELGPAC3DI458B2    }
+            {XFELGPAC1DI514L3        XFELGPAC1DI514L3    }
+            {XFELGPAC1DI562L3        XFELGPAC1DI562L3    }
+            {XFELGPAC2DI562L3        XFELGPAC2DI562L3    }
+            {XFELGPAC1DI610L3        XFELGPAC1DI610L3    }
+            {XFELGPAC2DI610L3        XFELGPAC2DI610L3    }
+            {XFELGPAC1DI661L3        XFELGPAC1DI661L3    }
+            {XFELGPAC1DI709L3        XFELGPAC1DI709L3    }
+#           {XFELGPAC2DI709L3        XFELGPAC2DI709L3    }
+            {XFELGPAC1DI757L3        XFELGPAC1DI757L3    }	    
+#           {XFELGPAC2DI757L3        XFELGPAC2DI757L3    }
+            {XFELGPAC1DI808L3        XFELGPAC1DI808L3    }
+#           {XFELGPAC2DI808L3        XFELGPAC2DI808L3    }
+            {XFELGPAC1DI856L3        XFELGPAC1DI856L3    }
+            {XFELGPAC1DI904L3        XFELGPAC1DI904L3    }
+            {XFELGPAC1DI955L3        XFELGPAC1DI955L3    }
+            {XFELGPAC1DI1003L3       XFELGPAC1DI1003L3   }
+            {XFELGPAC1DI1051L3       XFELGPAC1DI1051L3   }
+            {XFELGPAC1DI1102L3       XFELGPAC1DI1102L3   }
+#           {XFELGPAC2DI1102L3       XFELGPAC2DI1102L3   }
+            {XFELGPAC1DI1150L3       XFELGPAC1DI1150L3   }
+            {XFELGPAC1DI1198L3       XFELGPAC1DI1198L3   }
+#           {XFELGPAC2DI1198L3       XFELGPAC2DI1198L3   }
+            {XFELGPAC1DI1249L3       XFELGPAC1DI1249L3   }
+#           {XFELGPAC2DI1249L3       XFELGPAC2DI1249L3   }
+            {XFELGPAC1DI1297L3       XFELGPAC1DI1297L3   }
+#           {XFELGPAC2DI1297L3       XFELGPAC2DI1297L3   }
+            {XFELGPAC1DI1345L3       XFELGPAC1DI1345L3   }
+            {XFELGPAC1DI1396L3       XFELGPAC1DI1396L3   }
+#           {XFELGPAC2DI1396L3       XFELGPAC2DI1396L3   }
+            {XFELGPAC1DI1444L3       XFELGPAC1DI1444L3   }
+#           {XFELGPAC2DI1444L3       XFELGPAC2DI1444L3   }
+            {XFELGPAC1DI1499L3       XFELGPAC1DI1499L3   }
+            {XFELGPAC1DI1601L3       XFELGPAC1DI1601L3   }
+            {XFELGPAC1DI1656L3       XFELGPAC1DI1656L3   }
+            {XFELGPAC1DI1685CL       XFELGPAC1DI1685CL   }
+            {XFELGPAC1DI1720CL       XFELGPAC1DI1720CL   }
+            {XFELGPAC2DI1720CL       XFELGPAC2DI1720CL   }
+            {XFELGPAC1DI1755CL       XFELGPAC1DI1755CL   }
+            {XFELGPAC2DI1755CL       XFELGPAC2DI1755CL   }
+            {XFELGPAC1DI1793CL       XFELGPAC1DI1793CL   }
+            {XFELGPAC1DI1828CL       XFELGPAC1DI1828CL   }
+            {XFELGPAC1DI1862TL       XFELGPAC1DI1862TL   }
+            {XFELGPAC1DI1899TL       XFELGPAC1DI1899TL   }
+            {XFELGPAC2DI1899TL       XFELGPAC2DI1899TL   }
+            {XFELGPAC3DI1899TL       XFELGPAC3DI1899TL   }
+            {XFELGPAC4DI1899TL       XFELGPAC4DI1899TL   }
+            {XFELGPAC1DI1973TL       XFELGPAC1DI1973TL   }
+            {XFELGPAC1DI2018TL       XFELGPAC1DI2018TL   }
+            {XFELGPAC1DI2018TLD      XFELGPAC1DI2018TLD  }
+            {XFELGPAC1DI2047TLD      XFELGPAC1DI2047TLD  }
+            {XFELGPAC1DI2074TLD      XFELGPAC1DI2074TLD  }
+            {XFELGPAC3DI2100TLD      XFELGPAC3DI2100TLD  }
+            {XFELGPAC1DIXS1UG3TLD    XFELGPAC1DIXS1UG3TLD}
+}
+
+################################################################################
+## BUTTON BPM OPERATION                                                     ####
+################################################################################
+
+#file S7gpac.template {
+#  pattern  {DEV             SRV           }    
+#           {BPMG-24-I1      BPMG-24-I1    }    
+#           {BPMG-25I-I1     BPMG-25I-I1   }    
+#           {BPMG-25II-I1    BPMG-25II-I1  }    
+#           {BPMC-38I-I1     BPMC-38I-I1   }    
+#           {BPMA-55-I1      BPMA-55-I1    }    
+#           {BPMA-57-I1      BPMA-57-I1    }    
+#           {BPMA-59-I1      BPMA-59-I1    }    
+#           {BPMA-63-I1      BPMA-63-I1    }    
+#           {BPMA-63-I1D     BPMA-63-I1D   }    
+#           {BPMA-64-I1D     BPMA-64-I1D   }    
+#}
+
+#file but_bpm_s7gpac.template {
+#  pattern  {DEV             SRV        READ_OFFSET  }
+#            {BPMG-24-I1      BPMG-24-I1         280  }
+#            {BPMG-25I-I1     BPMG-25I-I1        280  }
+#            {BPMG-25II-I1    BPMG-25II-I1       280  }
+#            {BPMC-38I-I1     BPMC-38I-I1        280  }
+#            {BPMA-55-I1      BPMA-55-I1         280  }
+#            {BPMA-57-I1      BPMA-57-I1         280  }
+#            {BPMA-59-I1      BPMA-59-I1         280  }
+#            {BPMA-63-I1      BPMA-63-I1         280  }
+#            {BPMA-63-I1D     BPMA-63-I1D        280  }
+#            {BPMA-64-I1D     BPMA-64-I1D        280  }
+#}
+
+################################################################################
+## CAVITY BPM                                                               ####
+################################################################################
+
+#file S7gpac.template {
+#  pattern  {DEV             SRV           }    
+#           {BPMF-47-I1      BPMF-47-I1    }    
+#           {BPMF-48-I1      BPMF-48-I1    }    
+#           {BPMF-52-I1      BPMF-52-I1    }    
+#}
+
+#file GPAC_BPM_SMP.template {
+#   pattern  {DEV           SRV        READ_OFFSET  }
+#            {BPMF-47-I1    BPMF-47-I1         660  }
+#            {BPMF-48-I1    BPMF-48-I1         660  }
+#            {BPMF-52-I1    BPMF-52-I1         660  }
+#}
+
+#file GPAC_BPM_PB_ADC16HL.template {
+#   pattern  {DEV           SRV        READ_OFFSET  }
+#            {BPMF-47-I1    BPMF-47-I1         660  }
+#            {BPMF-48-I1    BPMF-48-I1         660  }
+#            {BPMF-52-I1    BPMF-52-I1         660  }
+#}
+
+#file RFFE_Cavity_3GHz3_120700B.template {
+#   pattern  {DEV           SRV        READ_OFFSET  GLB}
+#            {BPMF-47-I1    BPMF-47-I1         660  MTEST10-ETH0}
+#            {BPMF-48-I1    BPMF-48-I1         660  MTEST10-ETH0}
+#            {BPMF-52-I1    BPMF-52-I1         660  MTEST10-ETH0}
+#}
+
+#file GPAC_BPM_CONSISTENT_SET_VAL.template {
+#   pattern {DEV         SRV         READ_OFFSET  }
+#           {BPMF-47-I1  BPMF-47-I1          660  }
+#           {BPMF-48-I1  BPMF-48-I1          660  }
+#           {BPMF-52-I1  BPMF-52-I1          660  }
+#}
+
+#file GPAC_BPM_Calc_RMS_AVG.template { 
+#   pattern {DEV            VAR    EGU PREC MIN MAX RMS-MAX DESC        }
+#           {BPMF-47-I1     Q      pC  3    0   500 10      "Charge avg"}
+#           {BPMF-47-I1     X      mm  4    -10 10  0.05    "Pos X avg" }
+#           {BPMF-47-I1     Y      mm  4    -10 10  0.05    "Pos Y avg" }
+#           {BPMF-48-I1     Q      pC  3    0   500 10      "Charge avg"}
+#           {BPMF-48-I1     X      mm  4    -10 10  0.05    "Pos X avg" }
+#           {BPMF-48-I1     Y      mm  4    -10 10  0.05    "Pos Y avg" }
+#           {BPMF-52-I1     Q      pC  3    0   500 10      "Charge avg"}
+#           {BPMF-52-I1     X      mm  4    -10 10  0.05    "Pos X avg" }
+#           {BPMF-52-I1     Y      mm  4    -10 10  0.05    "Pos Y avg" }
+#}
+
+
+################################################################################
+## REENTRANT CAVITY BPM                                                     ####
+################################################################################
+
+#file S7gpac.template {
+#  pattern  {DEV               SRV             }    
+#           {BPMR-38II-I1      BPMR-38II-I1    }    
+#}
+
+#file EXFEL_ReCAV_BPM_SMP.template {
+#  pattern  {DEV              SRV          READ_OFFSET  }
+#           {BPMR-38II-I1     BPMR-38II-I1         536  }
+#}
+
+#file GPAC_BPM_PB_ADC16HL.template {
+#  pattern  {DEV              SRV          READ_OFFSET  }
+#           {BPMR-38II-I1     BPMR-38II-I1         536  }
+#}
+
+#file EXFEL_ReCAV_BPM_RFFE.template {
+#  pattern  {DEV              SRV          READ_OFFSET  }
+#           {BPMR-38II-I1     BPMR-38II-I1         536  }
+#}
+
+#file GPAC_BPM_Calc_RMS_AVG.template { 
+#  pattern {DEV               VAR    EGU PREC MIN MAX RMS-MAX DESC        }
+#          {BPMR-38II-I1      Q      pC  3    0   500 10      "Charge avg"}
+#          {BPMR-38II-I1      X      mm  4    -10 10  0.05    "Pos X avg" }
+#          {BPMR-38II-I1      Y      mm  4    -10 10  0.05    "Pos Y avg" }
+#}

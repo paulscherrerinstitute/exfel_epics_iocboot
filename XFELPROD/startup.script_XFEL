@@ -1,0 +1,126 @@
+# load General Purpose Memory Mapped driver 
+
+epicsEnvSet "EPICS_CA_MAX_ARRAY_BYTES", "65536"
+
+require "SynApps"
+require "s7gpac", "koprek_w"
+
+# epicsEnvSet s7gpacDebug 6
+
+# s7plcConfigure   ( PLCname,           IPaddr,                 port,  inSize,  outSize, bigEndian, recvTimeout, sendIntervall) 
+#___________________________________________________________________________________________
+# S7gpac driver test server
+#___________________________________________________________________________________________
+# s7gpacConfigure  ("GPAC2TEST",        "ipc1342",              51233,     12,       12,         1,       10000, 2000)  # 
+#___________________________________________________________________________________________
+# GPAC service servers
+#___________________________________________________________________________________________
+  s7gpacConfigure  ("XFELGPAC1DI30I1",      "xfelgpac1di30i1",         51234,    628,       72,         1,       10000,  200)  # ipc1352, xfelcpudi30i1  
+  s7gpacConfigure  ("XFELGPAC1DI55I1",      "xfelgpac1di55i1",         51234,    628,       72,         1,       10000,  200)  # ipc1310, xfelcpudi55i1  
+  s7gpacConfigure  ("XFELGPAC2DI55I1",      "xfelgpac2di55i1",         51234,    628,       72,         1,       10000,  200)  # ipc1360, xfelcpudi55i1   
+  s7gpacConfigure  ("XFELGPAC3DI55I1",      "xfelgpac3di55i1",         51234,    628,       72,         1,       10000,  200)  # ipc1342, xfelcpudi55i1   
+  s7gpacConfigure  ("XFELGPAC1DI59I1",      "xfelgpac1di59i1",         51234,    628,       72,         1,       10000,  200)  # ipc1367, xfelcpudi59i1   
+  s7gpacConfigure  ("XFELGPAC1DI94I1",      "xfelgpac1di94i1",         51234,    628,       72,         1,       10000,  200)  #
+  s7gpacConfigure  ("XFELGPAC2DI94I1",      "xfelgpac2di94i1",         51234,    628,       72,         1,       10000,  200)  #
+  s7gpacConfigure  ("XFELGPAC3DI94I1",      "xfelgpac3di94i1",         51234,    628,       72,         1,       10000,  200)  #
+  s7gpacConfigure  ("XFELGPAC4DI94I1",      "xfelgpac4di94i1",         51234,    628,       72,         1,       10000,  200)  #
+  s7gpacConfigure  ("XFELGPAC1DI107I1",     "xfelgpac1di107i1",        51234,    628,       72,         1,       10000,  200)  #
+  s7gpacConfigure  ("XFELGPAC2DI107I1",     "xfelgpac2di107i1",        51234,    628,       72,         1,       10000,  200)  #
+  s7gpacConfigure  ("XFELGPAC1DI160L1",     "xfelgpac1di160l1",        51234,    628,       72,         1,       10000,  200)  #
+  s7gpacConfigure  ("XFELGPAC2DI160L1",     "xfelgpac2di160l1",        51234,    628,       72,         1,       10000,  200)  # 
+  s7gpacConfigure  ("XFELGPAC1DI176B1",     "xfelgpac1di176b1",        51234,    628,       72,         1,       10000,  200)  #
+  s7gpacConfigure  ("XFELGPAC1DI203B1",     "xfelgpac1di203b1",        51234,    628,       72,         1,       10000,  200)  #
+  s7gpacConfigure  ("XFELGPAC1DI215B1",     "xfelgpac1di215b1",        51234,    628,       72,         1,       10000,  200)  #
+  s7gpacConfigure  ("XFELGPAC1DI220B1",     "xfelgpac1di220b1",        51234,    628,       72,         1,       10000,  200)  #
+  s7gpacConfigure  ("XFELGPAC1DI240B1",     "xfelgpac1di240b1",        51234,    628,       72,         1,       10000,  200)  #
+  s7gpacConfigure  ("XFELGPAC1DI276L2",     "xfelgpac1di276l2",        51234,    628,       72,         1,       10000,  200)  #
+  s7gpacConfigure  ("XFELGPAC2DI276L2",     "xfelgpac2di276l2",        51234,    628,       72,         1,       10000,  200)  #
+  s7gpacConfigure  ("XFELGPAC1DI324L2",     "xfelgpac1di324l2",        51234,    628,       72,         1,       10000,  200)  #
+  s7gpacConfigure  ("XFELGPAC2DI324L2",     "xfelgpac2di324l2",        51234,    628,       72,         1,       10000,  200)  #
+  s7gpacConfigure  ("XFELGPAC1DI372L2",     "xfelgpac1di372l2",        51234,    628,       72,         1,       10000,  200)  #
+  s7gpacConfigure  ("XFELGPAC2DI372L2",     "xfelgpac2di372l2",        51234,    628,       72,         1,       10000,  200)  #
+  s7gpacConfigure  ("XFELGPAC1DI390B2",     "xfelgpac1di390b2",        51234,    628,       72,         1,       10000,  200)  #
+  s7gpacConfigure  ("XFELGPAC1DI415B2",     "xfelgpac1di415b2",        51234,    628,       72,         1,       10000,  200)  #
+  s7gpacConfigure  ("XFELGPAC1DI438B2",     "xfelgpac1di438b2",        51234,    628,       72,         1,       10000,  200)  #
+  s7gpacConfigure  ("XFELGPAC1DI458B2",     "xfelgpac1di458b2",        51234,    628,       72,         1,       10000,  200)  #
+  s7gpacConfigure  ("XFELGPAC2DI458B2",     "xfelgpac2di458b2",        51234,    628,       72,         1,       10000,  200)  #
+  s7gpacConfigure  ("XFELGPAC3DI458B2",     "xfelgpac3di458b2",        51234,    628,       72,         1,       10000,  200)  #
+  s7gpacConfigure  ("XFELGPAC1DI514L3" ,    "xfelgpac1di514l3" ,       51234,    628,       72,         1,       10000,  200)  #
+  s7gpacConfigure  ("XFELGPAC1DI562L3" ,    "xfelgpac1di562l3" ,       51234,    628,       72,         1,       10000,  200)  #
+  s7gpacConfigure  ("XFELGPAC2DI562L3" ,    "xfelgpac2di562l3" ,       51234,    628,       72,         1,       10000,  200)  #
+  s7gpacConfigure  ("XFELGPAC1DI610L3" ,    "xfelgpac1di610l3" ,       51234,    628,       72,         1,       10000,  200)  #
+  s7gpacConfigure  ("XFELGPAC2DI610L3" ,    "xfelgpac2di610l3" ,       51234,    628,       72,         1,       10000,  200)  #
+  s7gpacConfigure  ("XFELGPAC1DI661L3" ,    "xfelgpac1di661l3" ,       51234,    628,       72,         1,       10000,  200)  #
+  s7gpacConfigure  ("XFELGPAC1DI709L3" ,    "xfelgpac1di709l3" ,       51234,    628,       72,         1,       10000,  200)  #
+# s7gpacConfigure  ("XFELGPAC2DI709L3" ,    "xfelgpac2di709l3" ,       51234,    628,       72,         1,       10000,  200)  #
+  s7gpacConfigure  ("XFELGPAC1DI757L3" ,    "xfelgpac1di757l3" ,       51234,    628,       72,         1,       10000,  200)  #
+# s7gpacConfigure  ("XFELGPAC2DI757L3" ,    "xfelgpac2di757l3" ,       51234,    628,       72,         1,       10000,  200)  #
+  s7gpacConfigure  ("XFELGPAC1DI808L3" ,    "xfelgpac1di808l3" ,       51234,    628,       72,         1,       10000,  200)  #
+# s7gpacConfigure  ("XFELGPAC2DI808L3" ,    "xfelgpac2di808l3" ,       51234,    628,       72,         1,       10000,  200)  #
+  s7gpacConfigure  ("XFELGPAC1DI856L3" ,    "xfelgpac1di856l3" ,       51234,    628,       72,         1,       10000,  200)  #
+  s7gpacConfigure  ("XFELGPAC1DI904L3" ,    "xfelgpac1di904l3" ,       51234,    628,       72,         1,       10000,  200)  #
+  s7gpacConfigure  ("XFELGPAC1DI955L3" ,    "xfelgpac1di955l3" ,       51234,    628,       72,         1,       10000,  200)  #
+  s7gpacConfigure  ("XFELGPAC1DI1003L3",    "xfelgpac1di1003l3",       51234,    628,       72,         1,       10000,  200)  #
+  s7gpacConfigure  ("XFELGPAC1DI1051L3",    "xfelgpac1di1051l3",       51234,    628,       72,         1,       10000,  200)  #
+  s7gpacConfigure  ("XFELGPAC1DI1102L3",    "xfelgpac1di1102l3",       51234,    628,       72,         1,       10000,  200)  #
+# s7gpacConfigure  ("XFELGPAC2DI1102L3",    "xfelgpac2di1102l3",       51234,    628,       72,         1,       10000,  200)  #
+  s7gpacConfigure  ("XFELGPAC1DI1150L3",    "xfelgpac1di1150l3",       51234,    628,       72,         1,       10000,  200)  #
+  s7gpacConfigure  ("XFELGPAC1DI1198L3",    "xfelgpac1di1198l3",       51234,    628,       72,         1,       10000,  200)  #
+# s7gpacConfigure  ("XFELGPAC2DI1198L3",    "xfelgpac2di1198l3",       51234,    628,       72,         1,       10000,  200)  #
+  s7gpacConfigure  ("XFELGPAC1DI1249L3",    "xfelgpac1di1249l3",       51234,    628,       72,         1,       10000,  200)  #
+# s7gpacConfigure  ("XFELGPAC2DI1249L3",    "xfelgpac2di1249l3",       51234,    628,       72,         1,       10000,  200)  #
+  s7gpacConfigure  ("XFELGPAC1DI1297L3",    "xfelgpac1di1297l3",       51234,    628,       72,         1,       10000,  200)  #
+# s7gpacConfigure  ("XFELGPAC2DI1297L3",    "xfelgpac2di1297l3",       51234,    628,       72,         1,       10000,  200)  #
+  s7gpacConfigure  ("XFELGPAC1DI1345L3",    "xfelgpac1di1345l3",       51234,    628,       72,         1,       10000,  200)  #
+  s7gpacConfigure  ("XFELGPAC1DI1396L3",    "xfelgpac1di1396l3",       51234,    628,       72,         1,       10000,  200)  #
+# s7gpacConfigure  ("XFELGPAC2DI1396L3",    "xfelgpac2di1396l3",       51234,    628,       72,         1,       10000,  200)  #
+  s7gpacConfigure  ("XFELGPAC1DI1444L3",    "xfelgpac1di1444l3",       51234,    628,       72,         1,       10000,  200)  #
+# s7gpacConfigure  ("XFELGPAC2DI1444L3",    "xfelgpac2di1444l3",       51234,    628,       72,         1,       10000,  200)  #
+  s7gpacConfigure  ("XFELGPAC1DI1499L3",    "xfelgpac1di1499l3",       51234,    628,       72,         1,       10000,  200)  #
+  s7gpacConfigure  ("XFELGPAC1DI1601L3",    "xfelgpac1di1601l3",       51234,    628,       72,         1,       10000,  200)  #
+  s7gpacConfigure  ("XFELGPAC1DI1656L3",    "xfelgpac1di1656l3",       51234,    628,       72,         1,       10000,  200)  #
+  s7gpacConfigure  ("XFELGPAC1DI1685CL",    "xfelgpac1di1685cl",       51234,    628,       72,         1,       10000,  200)  #
+  s7gpacConfigure  ("XFELGPAC1DI1720CL",    "xfelgpac1di1720cl",       51234,    628,       72,         1,       10000,  200)  #
+  s7gpacConfigure  ("XFELGPAC2DI1720CL",    "xfelgpac2di1720cl",       51234,    628,       72,         1,       10000,  200)  #
+  s7gpacConfigure  ("XFELGPAC1DI1755CL",    "xfelgpac1di1755cl",       51234,    628,       72,         1,       10000,  200)  #
+  s7gpacConfigure  ("XFELGPAC2DI1755CL",    "xfelgpac2di1755cl",       51234,    628,       72,         1,       10000,  200)  #
+  s7gpacConfigure  ("XFELGPAC1DI1793CL",    "xfelgpac1di1793cl",       51234,    628,       72,         1,       10000,  200)  #
+  s7gpacConfigure  ("XFELGPAC1DI1828CL",    "xfelgpac1di1828cl",       51234,    628,       72,         1,       10000,  200)  #
+  s7gpacConfigure  ("XFELGPAC1DI1862TL",    "xfelgpac1di1862tl",       51234,    628,       72,         1,       10000,  200)  #
+  s7gpacConfigure  ("XFELGPAC1DI1899TL",    "xfelgpac1di1899tl",       51234,    628,       72,         1,       10000,  200)  #
+  s7gpacConfigure  ("XFELGPAC2DI1899TL",    "xfelgpac2di1899tl",       51234,    628,       72,         1,       10000,  200)  #
+  s7gpacConfigure  ("XFELGPAC3DI1899TL",    "xfelgpac3di1899tl",       51234,    628,       72,         1,       10000,  200)  #
+  s7gpacConfigure  ("XFELGPAC4DI1899TL",    "xfelgpac4di1899tl",       51234,    628,       72,         1,       10000,  200)  #
+  s7gpacConfigure  ("XFELGPAC1DI1973TL",    "xfelgpac1di1973tl",       51234,    628,       72,         1,       10000,  200)  #
+  s7gpacConfigure  ("XFELGPAC1DI2018TL",    "xfelgpac1di2018tl",       51234,    628,       72,         1,       10000,  200)  #
+  s7gpacConfigure  ("XFELGPAC1DI2018TLD",   "xfelgpac1di2018tld",      51234,    628,       72,         1,       10000,  200)  #
+  s7gpacConfigure  ("XFELGPAC1DI2047TLD",   "xfelgpac1di2047tld",      51234,    628,       72,         1,       10000,  200)  #
+  s7gpacConfigure  ("XFELGPAC1DI2074TLD",   "xfelgpac1di2074tld",      51234,    628,       72,         1,       10000,  200)  #
+  s7gpacConfigure  ("XFELGPAC3DI2100TLD",   "xfelgpac3di2100tld",      51234,    628,       72,         1,       10000,  200)  #
+  s7gpacConfigure  ("XFELGPAC1DIXS1UG3TLD", "xfelgpac1dixs1ug3tld",    51234,    628,       72,         1,       10000,  200)  #
+    
+#___________________________________________________________________________________________                     
+# Injector BPMs                                                                                                  
+#___________________________________________________________________________________________                     
+#**** XFELGPAC1DI30I1, xfelgpac1di30i1, 3xButton *******************************************
+#  s7gpacConfigure  ("BPMG-24-I1",       "xfelgpac1di30i1",     51235,   45852,      280,         1,       10000,  200)  # Button BPM
+#  s7gpacConfigure  ("BPMG-25I-I1",      "xfelgpac1di30i1",     51236,   45852,      280,         1,       10000,  200)  # Button BPM
+#  s7gpacConfigure  ("BPMG-25II-I1",     "xfelgpac1di30i1",     51237,   45852,      280,         1,       10000,  200)  # Button BPM
+#**** GXFELPAC1DI55I1, xfelgpac1di55i1, 1xRe-entrant, 1xButton *****************************
+#  s7gpacConfigure  ("BPMC-38I-I1",      "xfelgpac1di55i1",     51235,   45852,      280,         1,       10000,  200)  # Button BPM
+#  s7gpacConfigure  ("BPMR-38II-I1",     "xfelgpac1di55i1",     51237,    1904,      536,         1,       10000,  200)  # Re-entrant BPM
+#**** XFELGPAC2DI55I1, xfelgpac2di55i1, 2xCavity *******************************************
+#  s7gpacConfigure  ("BPMF-47-I1",       "xfelgpac2di55i1",     51235,   34656,      660,         1,       10000,  200)  # Cavity BPM    
+#  s7gpacConfigure  ("BPMF-48-I1",       "xfelgpac2di55i1",     51237,   34656,      660,         1,       10000,  200)  # Cavity BPM    
+#**** XFELGPAC3DI55I1, xfelgpac3di55i1, 1xCavity, 2xButton *********************************
+#  s7gpacConfigure  ("BPMF-52-I1",       "xfelgpac3di55i1",     51237,   34656,      660,         1,       10000,  200)  # Cavity BPM    
+#  s7gpacConfigure  ("BPMA-55-I1",       "xfelgpac3di55i1",     51235,   45852,      280,         1,       10000,  200)  # Button BPM    
+#  s7gpacConfigure  ("BPMA-57-I1",       "xfelgpac3di55i1",     51236,   45852,      280,         1,       10000,  200)  # Button BPM    
+#**** XFELGPAC1DI59I1, xfelgpac2di59i1, 4xButton  ******************************************
+#  s7gpacConfigure  ("BPMA-59-I1",       "xfelgpac1di59i1",     51235,   45852,      280,         1,       10000,  200)  # Button BPM  
+#  s7gpacConfigure  ("BPMA-63-I1",       "xfelgpac1di59i1",     51236,   45852,      280,         1,       10000,  200)  # Button BPM  
+#  s7gpacConfigure  ("BPMA-63-I1D",      "xfelgpac1di59i1",     51237,   45852,      280,         1,       10000,  200)  # Button BPM  
+#  s7gpacConfigure  ("BPMA-64-I1D",      "xfelgpac1di59i1",     51238,   45852,      280,         1,       10000,  200)  # Button BPM  
+
+cd /ioc/XFELPROD
+dbLoadTemplate("XFELPROD_XFEL.subs") 

@@ -1,0 +1,174 @@
+#------------------------------------------------------------------------------
+#
+#
+record(mbbo, "$(DEV):$(SW)-TRG-SOURCE") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0004:0x0004 T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(NOBT,"3")
+  field(SHFT, "0")
+  field(ZRVL, "0" )
+  field(ONVL, "1" )
+  field(TWVL, "2" )
+  field(THVL, "3" )
+  field(FRVL, "4" )
+  field(FVVL, "5" )
+  field(ZRST, "External" )
+  field(ONST, "Auto ( 2 s)" )
+  field(TWST, "Auto ( 1 s)" )
+  field(THST, "Auto (.5 s)" )
+  field(FRST, "Auto (.2 s)" )
+  field(FVST, "Auto (.1 s)" )
+}
+
+record(bo, "$(DEV):$(SW)-TRG-MODE") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0005:0x0005 T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(ZNAM, "Cont." )
+  field(ONAM, "Single" )
+}
+
+record(longout, "$(DEV):$(SW)-TRG-SINGLE") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0010 T=UINT32")
+}
+
+
+record(longout, "$(DEV):$(SW)-TRG-DEL") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0008:0x0008 T=UINT32")
+  field(SCAN, "I/O Intr")
+  field(DRVH, "268435455")
+  field(DRVL, "0")
+  field(HOPR, "268435455")
+  field(LOPR, "0")
+}
+
+record(longout, "$(DEV):$(SW)-BUNCH-NUM") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x000C:0x000C T=UINT16")
+  field(SCAN, "I/O Intr")
+  field(DRVH, "2700")
+  field(DRVL, "1")
+  field(HOPR, "2700")
+  field(LOPR, "1")
+}
+
+record(longout, "$(DEV):$(SW)-BUNCH-SPACE") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x000E:0x000E T=UINT16")
+  field(SCAN, "I/O Intr")
+  field(DRVH, "100")
+  field(DRVL, "1")
+  field(HOPR, "100")
+  field(LOPR, "1")
+}
+
+record(longin, "$(DEV):$(SW)-TRG-EXT-MISSING") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0003 T=UINT8")
+}
+
+record(longin, "$(DEV):$(SW)-GTX-QSFP0123-BPM0123-STATUS") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0004 T=UINT8")
+}
+
+record(longin, "$(DEV):$(SW)-GTX-BPM01-STATUS") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0005 T=UINT8")
+}
+
+record(longin, "$(DEV):$(SW)-GTX-QSFP02-STATUS") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0006 T=UINT8")
+}
+
+record(longin, "$(DEV):$(SW)-GTX-QSFP13-STATUS") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0007 T=UINT8")
+}
+
+record(longin, "$(DEV):$(SW)-GTX-P0-STATUS") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x000B T=UINT8")
+}
+
+record(longin, "$(DEV):$(SW)-GTX-QSFP0-LOSS-CNT") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0012 T=UINT16")
+}
+
+record(longin, "$(DEV):$(SW)-GTX-QSFP1-LOSS-CNT") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0010 T=UINT16")
+}
+
+record(longin, "$(DEV):$(SW)-GTX-QSFP2-LOSS-CNT") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0016 T=UINT16")
+}
+
+record(longin, "$(DEV):$(SW)-GTX-QSFP3-LOSS-CNT") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0014 T=UINT16")
+}
+
+record(longin, "$(DEV):$(SW)-GTX-BPM0-LOSS-CNT") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x001A T=UINT16")
+}
+
+record(longin, "$(DEV):$(SW)-GTX-BPM1-LOSS-CNT") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0018 T=UINT16")
+}
+
+##record(longin, "$(DEV):$(SW)-GTX-BPM1-LOSS-CNT") {
+##  field(SCAN, "I/O Intr")
+##  field(DTYP, "S7gpac")
+##  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0018 T=UINT16")
+##}
+##
+##record(longin, "$(DEV):$(SW)-GTX-BPM2-LOSS-CNT") {
+##  field(SCAN, "I/O Intr")
+##  field(DTYP, "S7gpac")
+##  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x001E T=UINT16")
+##}
+##
+##record(longin, "$(DEV):$(SW)-GTX-BPM3-LOSS-CNT") {
+##  field(SCAN, "I/O Intr")
+##  field(DTYP, "S7gpac")
+##  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x001C T=UINT16")
+##}
+
+record(longin, "$(DEV):$(SW)-GTX-P0-0-LOSS-CNT") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0022 T=UINT16")
+}
+
+record(longin, "$(DEV):$(SW)-GTX-P0-1-LOSS-CNT") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0020 T=UINT16")
+}
+
+record(longin, "$(DEV):$(SW)-CRC-ERR-CNT") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0024 T=UINT32")
+}

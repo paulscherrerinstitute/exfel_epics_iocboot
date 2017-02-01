@@ -1,0 +1,12 @@
+
+record (bi, "$(DEV):S7GPAC-STATUS") {
+  field (DTYP, "S7gpac stat")
+  field (INP,  "@$(SRV)")
+  field (SCAN, "I/O Intr")
+}
+ 
+
+record (stringout, "$(DEV):S7GPAC-ADDR") {
+  field (DTYP, "S7gpac addr")
+  field (OUT,  "@$(SRV)")
+}

@@ -1,0 +1,15 @@
+#------------------------------------------------------------------------------
+#
+#
+
+record(longin, "$(DEV):RTMG-SFP1") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0000 T=UINT32")
+}
+
+record(longin, "$(DEV):RTMG-SFP2") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0004 T=UINT32")
+}

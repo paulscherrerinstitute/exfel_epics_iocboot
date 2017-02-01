@@ -1,0 +1,46 @@
+# load General Purpose Memory Mapped driver 
+
+epicsEnvSet "EPICS_CA_MAX_ARRAY_BYTES", "131072"
+
+require "SynApps"
+require "s7gpac", "koprek_w"
+  
+# epicsEnvSet s7gpacDebug 6
+
+#  s7plcConfigure   ( DEVname,       IPaddr,     port, inSize,  outSize, bigEndian, recvTimeout, sendIntervall) 
+#___________________________________________________________________________________________                     
+# IBFB Servers                                                                                                  
+#___________________________________________________________________________________________                     
+   s7gpacConfigure  ("IBFBCTRL",     "xfelgpacibfbctrl",   51234,    628,       72,         1,       10000,           200)    
+   s7gpacConfigure  ("IBFBCCOM",     "xfelgpacibfbctrl",   51235,    108,        4,         1,       10000,           200)    
+   s7gpacConfigure  ("IBFBCTRL1",    "xfelgpacibfbctrl",   51236,    568,      344,         1,       10000,           200)    
+   s7gpacConfigure  ("IBFBCWAV1",    "xfelgpacibfbctrl",   51237,  54164,        4,         1,       10000,           200)    
+   s7gpacConfigure  ("IBFBCTAB1",    "xfelgpacibfbctrl",   51238,  43712,    22048,         1,       10000,           200)    
+   s7gpacConfigure  ("IBFBCTRL2",    "xfelgpacibfbctrl",   51246,    568,      344,         1,       10000,           200)    
+   s7gpacConfigure  ("IBFBCWAV2",    "xfelgpacibfbctrl",   51247,  54164,        4,         1,       10000,           200)    
+   s7gpacConfigure  ("IBFBCTAB2",    "xfelgpacibfbctrl",   51248,  43712,    22048,         1,       10000,           200)    
+#  __   
+   s7gpacConfigure  ("IBFBSW",       "xfelgpacibfbsw",     51234,    628,       72,         1,       10000,           200)    
+   s7gpacConfigure  ("IBFBSCOM",     "xfelgpacibfbsw",     51235,    208,       72,         1,       10000,           200)    
+   s7gpacConfigure  ("IBFBSW1",      "xfelgpacibfbsw",     51236,     60,       20,         1,       10000,           200)    
+   s7gpacConfigure  ("IBFBSW2",      "xfelgpacibfbsw",     51237,     60,       20,         1,       10000,           200)    
+#  __   
+   s7gpacConfigure  ("IBFBMON",      "xfelgpacibfbmon",    51234,    628,       72,         1,       10000,           200)    
+   s7gpacConfigure  ("IBFBMCOM",     "xfelgpacibfbmon",    51235,    144,       44,         1,       10000,           200)    
+   s7gpacConfigure  ("IBFBMON1",     "xfelgpacibfbmon",    51236,  32796,       20,         1,       10000,           200)    
+   s7gpacConfigure  ("IBFBMON2",     "xfelgpacibfbmon",    51237,  32796,       20,         1,       10000,           200)    
+#  __   
+#  s7gpacConfigure  ("IBFBPLAY",     "xfelgpacibfbplay",   51234,    628,       72,         1,       10000,           200)    
+#  s7gpacConfigure  ("IBFBPCOM",     "xfelgpacibfbplay",   51235,    144,       44,         1,       10000,           200)    
+#  s7gpacConfigure  ("IBFBPLAY1",    "xfelgpacibfbplay",   51236,  43236,    43224,         1,       10000,           200)    
+#  s7gpacConfigure  ("IBFBPLAY2",    "xfelgpacibfbplay",   51237,  43236,    43224,         1,       10000,           200)    
+
+# Cavity BPM Server for IBFB
+#___________________________________________________________________________________________                     
+   s7gpacConfigure   ("IBFBYUP",    "xfelgpac1di1899tl",    51239,     84,       32,         1,       10000,          200)      
+   s7gpacConfigure   ("IBFBYDOWN",  "xfelgpac2di1899tl",    51239,     84,       32,         1,       10000,          200)      
+   s7gpacConfigure   ("IBFBXUP",    "xfelgpac3di1899tl",    51239,     84,       32,         1,       10000,          200)      
+#   s7gpacConfigure   ("IBFBXDOWN",  "xfelgpac4di1899tl",    51239,     84,       32,         1,       10000,          200)      
+
+cd /ioc/XFELIBFB
+dbLoadTemplate("XFELIBFB_IBFB.subs") 

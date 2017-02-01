@@ -1,0 +1,718 @@
+#------------------------------------------------------------------------------
+#
+#
+
+record(bo, "$(DEV):KICK-ATTN-FAN-RST-1") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0003:0x0003 T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(ZNAM, "On" )
+  field(ONAM, "Off" )
+}
+
+record(bo, "$(DEV):KICK-ATTN-FAN-RST-2") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0007:0x0007 T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(ZNAM, "On" )
+  field(ONAM, "Off" )
+}
+
+record(bo, "$(DEV):KICK-ATTN-FAN-RST-3") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x000B:0x000B T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(ZNAM, "On" )
+  field(ONAM, "Off" )
+}
+
+record(bo, "$(DEV):KICK-ATTN-FAN-RST-4") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x000F:0x000F T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(ZNAM, "On" )
+  field(ONAM, "Off" )
+}
+
+record(bo, "$(DEV):KICK-ATTN-FAN-RST-5") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0013:0x0013 T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(ZNAM, "On" )
+  field(ONAM, "Off" )
+}
+
+record(bo, "$(DEV):KICK-ATTN-FAN-RST-6") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0017:0x0017 T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(ZNAM, "On" )
+  field(ONAM, "Off" )
+}
+
+record(bo, "$(DEV):KICK-ATTN-FAN-RST-7") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x001B:0x001B T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(ZNAM, "On" )
+  field(ONAM, "Off" )
+}
+
+record(bo, "$(DEV):KICK-ATTN-FAN-RST-8") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x001F:0x001F T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(ZNAM, "On" )
+  field(ONAM, "Off" )
+}
+
+record(longout, "$(DEV):KICK-ATTN-FAN-SPEED-1") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0002:0x0002 T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(DRVH, "100")
+  field(DRVL, "0")
+  field(HOPR, "100")
+  field(LOPR, "0")
+}
+
+record(longout, "$(DEV):KICK-ATTN-FAN-SPEED-2") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0006:0x0006 T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(DRVH, "100")
+  field(DRVL, "0")
+  field(HOPR, "100")
+  field(LOPR, "0")
+}
+
+record(longout, "$(DEV):KICK-ATTN-FAN-SPEED-3") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x000A:0x000A T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(DRVH, "100")
+  field(DRVL, "0")
+  field(HOPR, "100")
+  field(LOPR, "0")
+}
+
+record(longout, "$(DEV):KICK-ATTN-FAN-SPEED-4") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x000E:0x000E T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(DRVH, "100")
+  field(DRVL, "0")
+  field(HOPR, "100")
+  field(LOPR, "0")
+}
+
+record(longout, "$(DEV):KICK-ATTN-FAN-SPEED-5") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0012:0x0012 T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(DRVH, "100")
+  field(DRVL, "0")
+  field(HOPR, "100")
+  field(LOPR, "0")
+}
+
+record(longout, "$(DEV):KICK-ATTN-FAN-SPEED-6") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0016:0x0016 T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(DRVH, "100")
+  field(DRVL, "0")
+  field(HOPR, "100")
+  field(LOPR, "0")
+}
+
+record(longout, "$(DEV):KICK-ATTN-FAN-SPEED-7") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x001A:0x001A T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(DRVH, "100")
+  field(DRVL, "0")
+  field(HOPR, "100")
+  field(LOPR, "0")
+}
+
+record(longout, "$(DEV):KICK-ATTN-FAN-SPEED-8") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x001E:0x001E T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(DRVH, "100")
+  field(DRVL, "0")
+  field(HOPR, "100")
+  field(LOPR, "0")
+}
+
+record(longin, "$(DEV):KICK-ATTN-FAN-RD-1") {
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0000 T=UINT32")
+  field(SCAN, "I/O Intr")
+  field(FLNK, "$(DEV):KICK-ATTN-FAN-TACHO-1" )
+}
+
+record(calc, "$(DEV):KICK-ATTN-FAN-TACHO-1") {
+  field(INPA, "$(DEV):KICK-ATTN-FAN-RD-1")
+  field(CALC, "3750000000/(A&0x7FFFFFFF)")
+} 
+
+record(longin, "$(DEV):KICK-ATTN-FAN-RD-2") {
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0004 T=UINT32")
+  field(SCAN, "I/O Intr")
+  field(FLNK, "$(DEV):KICK-ATTN-FAN-TACHO-2" )
+}
+
+record(calc, "$(DEV):KICK-ATTN-FAN-TACHO-2") {
+  field(INPA, "$(DEV):KICK-ATTN-FAN-RD-2")
+  field(CALC, "3750000000/(A&0x7FFFFFFF)")
+} 
+
+record(longin, "$(DEV):KICK-ATTN-FAN-RD-3") {
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0008 T=UINT32")
+  field(SCAN, "I/O Intr")
+  field(FLNK, "$(DEV):KICK-ATTN-FAN-TACHO-3" )
+}
+
+record(calc, "$(DEV):KICK-ATTN-FAN-TACHO-3") {
+  field(INPA, "$(DEV):KICK-ATTN-FAN-RD-3")
+  field(CALC, "3750000000/(A&0x7FFFFFFF)")
+} 
+
+record(longin, "$(DEV):KICK-ATTN-FAN-RD-4") {
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x000C T=UINT32")
+  field(SCAN, "I/O Intr")
+  field(FLNK, "$(DEV):KICK-ATTN-FAN-TACHO-4" )
+}
+
+record(calc, "$(DEV):KICK-ATTN-FAN-TACHO-4") {
+  field(INPA, "$(DEV):KICK-ATTN-FAN-RD-4")
+  field(CALC, "3750000000/(A&0x7FFFFFFF)")
+} 
+
+record(longin, "$(DEV):KICK-ATTN-FAN-RD-5") {
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0010 T=UINT32")
+  field(SCAN, "I/O Intr")
+  field(FLNK, "$(DEV):KICK-ATTN-FAN-TACHO-5" )
+}
+
+record(calc, "$(DEV):KICK-ATTN-FAN-TACHO-5") {
+  field(INPA, "$(DEV):KICK-ATTN-FAN-RD-5")
+  field(CALC, "3750000000/(A&0x7FFFFFFF)")
+} 
+
+record(longin, "$(DEV):KICK-ATTN-FAN-RD-6") {
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0014 T=UINT32")
+  field(SCAN, "I/O Intr")
+  field(FLNK, "$(DEV):KICK-ATTN-FAN-TACHO-6" )
+}
+
+record(calc, "$(DEV):KICK-ATTN-FAN-TACHO-6") {
+  field(INPA, "$(DEV):KICK-ATTN-FAN-RD-6")
+  field(CALC, "3750000000/(A&0x7FFFFFFF)")
+} 
+
+record(longin, "$(DEV):KICK-ATTN-FAN-RD-7") {
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0018 T=UINT32")
+  field(SCAN, "I/O Intr")
+  field(FLNK, "$(DEV):KICK-ATTN-FAN-TACHO-7" )
+}
+
+record(calc, "$(DEV):KICK-ATTN-FAN-TACHO-7") {
+  field(INPA, "$(DEV):KICK-ATTN-FAN-RD-7")
+  field(CALC, "3750000000/(A&0x7FFFFFFF)")
+} 
+
+record(longin, "$(DEV):KICK-ATTN-FAN-RD-8") {
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x001C T=UINT32")
+  field(SCAN, "I/O Intr")
+  field(FLNK, "$(DEV):KICK-ATTN-FAN-TACHO-8" )
+}
+
+record(calc, "$(DEV):KICK-ATTN-FAN-TACHO-8") {
+  field(INPA, "$(DEV):KICK-ATTN-FAN-RD-8")
+  field(CALC, "3750000000/(A&0x7FFFFFFF)")
+} 
+
+record(longin, "$(DEV):RTMG-SFP1") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0040 T=UINT32")
+}
+
+record(longin, "$(DEV):RTMG-SFP2") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0044 T=UINT32")
+}
+
+record(longin, "$(DEV):QSFP1-RX-LOSS") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0020 T=UINT32")
+}
+
+record(longin, "$(DEV):QSFP1-SFP-IN") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x002C T=UINT32")
+}
+
+record(longin, "$(DEV):QSFP2-RX-LOSS") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0030 T=UINT32")
+}
+
+record(longin, "$(DEV):QSFP2-SFP-IN") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x003C T=UINT32")
+}
+
+## --- switch filters configuration
+record(longout, "$(DEV):Y-FILT-SASE1-BPM1") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0024:0x0024 T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(DRVH, "255")
+  field(DRVL, "0")
+  field(HOPR, "255")
+  field(LOPR, "0")
+  field(OMSL, "closed_loop")
+  field(DOL,  "IBFBCTRL:Y-FB-SASE1-BPM1")
+}
+
+record(longout, "$(DEV):Y-FILT-SASE1-BPM2") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0025:0x0025 T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(DRVH, "255")
+  field(DRVL, "0")
+  field(HOPR, "255")
+  field(LOPR, "0")
+  field(OMSL, "closed_loop")
+  field(DOL,  "IBFBCTRL:Y-FB-SASE1-BPM2")
+}
+
+record(longout, "$(DEV):X-FILT-SASE1-BPM1") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0026:0x0026 T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(DRVH, "255")
+  field(DRVL, "0")
+  field(HOPR, "255")
+  field(LOPR, "0")
+  field(OMSL, "closed_loop")
+  field(DOL,  "IBFBCTRL:X-FB-SASE1-BPM1")
+}
+
+record(longout, "$(DEV):X-FILT-SASE1-BPM2") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0027:0x0027 T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(DRVH, "255")
+  field(DRVL, "0")
+  field(HOPR, "255")
+  field(LOPR, "0")
+  field(OMSL, "closed_loop")
+  field(DOL,  "IBFBCTRL:X-FB-SASE1-BPM2")
+}
+
+record(longout, "$(DEV):Y-FILT-SASE2-BPM1") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0020:0x0020 T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(DRVH, "255")
+  field(DRVL, "0")
+  field(HOPR, "255")
+  field(LOPR, "0")
+  field(OMSL, "closed_loop")
+  field(DOL,  "IBFBCTRL:Y-FB-SASE2-BPM1")
+}
+
+record(longout, "$(DEV):Y-FILT-SASE2-BPM2") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0021:0x0021 T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(DRVH, "255")
+  field(DRVL, "0")
+  field(HOPR, "255")
+  field(LOPR, "0")
+  field(OMSL, "closed_loop")
+  field(DOL,  "IBFBCTRL:Y-FB-SASE2-BPM2")
+}
+
+record(longout, "$(DEV):X-FILT-SASE2-BPM1") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0022:0x0022 T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(DRVH, "255")
+  field(DRVL, "0")
+  field(HOPR, "255")
+  field(LOPR, "0")
+  field(OMSL, "closed_loop")
+  field(DOL,  "IBFBCTRL:X-FB-SASE2-BPM1")
+}
+
+record(longout, "$(DEV):X-FILT-SASE2-BPM2") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0023:0x0023 T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(DRVH, "255")
+  field(DRVL, "0")
+  field(HOPR, "255")
+  field(LOPR, "0")
+  field(OMSL, "closed_loop")
+  field(DOL,  "IBFBCTRL:X-FB-SASE2-BPM2")
+}
+
+record(longout, "$(DEV):Y-FILT-COLL-BPM1") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0028:0x0028 T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(DRVH, "255")
+  field(DRVL, "0")
+  field(HOPR, "255")
+  field(LOPR, "0")
+  field(OMSL, "closed_loop")
+  field(DOL,  "IBFBCTRL:Y-FB-COLL-BPM")
+}
+
+record(longout, "$(DEV):X-FILT-COLL-BPM1") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0029:0x0029 T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(DRVH, "255")
+  field(DRVL, "0")
+  field(HOPR, "255")
+  field(LOPR, "0")
+  field(OMSL, "closed_loop")
+  field(DOL,  "IBFBCTRL:Y-FB-COL-BPM")
+}
+
+record(longout, "$(DEV):Y-FILT-SASE3-BPM1") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x002C:0x002C T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(DRVH, "255")
+  field(DRVL, "0")
+  field(HOPR, "255")
+  field(LOPR, "0")
+  field(OMSL, "closed_loop")
+  field(DOL,  "IBFBCTRL:Y-FB-SASE3-BPM1")
+}
+
+record(longout, "$(DEV):Y-FILT-SASE3-BPM2") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x002D:0x002D T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(DRVH, "255")
+  field(DRVL, "0")
+  field(HOPR, "255")
+  field(LOPR, "0")
+  field(OMSL, "closed_loop")
+  field(DOL,  "IBFBCTRL:Y-FB-SASE3-BPM2")
+}
+
+record(longout, "$(DEV):X-FILT-SASE3-BPM1") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x002E:0x002E T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(DRVH, "255")
+  field(DRVL, "0")
+  field(HOPR, "255")
+  field(LOPR, "0")
+  field(OMSL, "closed_loop")
+  field(DOL,  "IBFBCTRL:X-FB-SASE3-BPM1")
+}
+
+record(longout, "$(DEV):X-FILT-SASE3-BPM2") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x002F:0x002F T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(DRVH, "255")
+  field(DRVL, "0")
+  field(HOPR, "255")
+  field(LOPR, "0")
+  field(OMSL, "closed_loop")
+  field(DOL,  "IBFBCTRL:X-FB-SASE3-BPM2")
+}
+
+record(longin, "$(DEV):FILT-SASE1-UPSTREAM-PACKETS") {
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0048 T=UINT16")
+  field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(DEV):FILT-SASE1-DOWNSTREAM-PACKETS") {
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x004A T=UINT16")
+  field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(DEV):FILT-SASE2-UPSTREAM-PACKETS") {
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x004C T=UINT16")
+  field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(DEV):FILT-SASE2-DOWNSTREAM-PACKETS") {
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x004E T=UINT16")
+  field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(DEV):X-FILT-SASE1-DISCARD") {
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0050 T=UINT16")
+  field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(DEV):Y-FILT-SASE1-DISCARD") {
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0052 T=UINT16")
+  field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(DEV):X-FILT-SASE2-DISCARD") {
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0078 T=UINT16")
+  field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(DEV):Y-FILT-SASE2-DISCARD") {
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x007A T=UINT16")
+  field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(DEV):FILT-SASE3-UPSTREAM-PACKETS") {
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0054 T=UINT16")
+  field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(DEV):FILT-SASE3-DOWNSTREAM-PACKETS") {
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0056 T=UINT16")
+  field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(DEV):FILT-COLL-UPSTREAM-PACKETS") {
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x006C T=UINT16")
+  field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(DEV):X-FILT-SASE3-DISCARD") {
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0058 T=UINT16")
+  field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(DEV):Y-FILT-SASE3-DISCARD") {
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x005A T=UINT16")
+  field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(DEV):FILT-COLL-DISCARD") {
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x007C T=UINT16")
+  field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(DEV):X-FILT-SASE1-INVALID-BPM") {
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x005C T=UINT8")
+  field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(DEV):Y-FILT-SASE1-INVALID-BPM") {
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x005D T=UINT8")
+  field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(DEV):X-FILT-SASE2-INVALID-BPM") {
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x005E T=UINT8")
+  field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(DEV):Y-FILT-SASE2-INVALID-BPM") {
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x005F T=UINT8")
+  field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(DEV):X-FILT-SASE3-INVALID-BPM") {
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0060 T=UINT8")
+  field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(DEV):Y-FILT-SASE3-INVALID-BPM") {
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0061 T=UINT8")
+  field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(DEV):FILT-COLL-INVALID-BPM") {
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0062 T=UINT8")
+  field(SCAN, "I/O Intr")
+}
+
+record(longout, "$(DEV):SW1-RST") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0030 T=UINT32")
+}
+
+record(longout, "$(DEV):SW2-RST") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0034 T=UINT32")
+}
+
+record(longin, "$(DEV):X-FILT-SASE1-PASSED") {
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0064 T=UINT16")
+  field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(DEV):Y-FILT-SASE1-PASSED") {
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0066 T=UINT16")
+  field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(DEV):X-FILT-SASE2-PASSED") {
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0080 T=UINT16")
+  field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(DEV):Y-FILT-SASE2-PASSED") {
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0082 T=UINT16")
+  field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(DEV):X-FILT-SASE3-PASSED") {
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0068 T=UINT16")
+  field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(DEV):Y-FILT-SASE3-PASSED") {
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x006A T=UINT16")
+  field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(DEV):FILT-COLL-PASSED") {
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0086 T=UINT16")
+  field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(DEV):ROUTER1-OUT-ENA") {
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0070 T=UINT8")
+  field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(DEV):ROUTER2-OUT-ENA") {
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0074 T=UINT8")
+  field(SCAN, "I/O Intr")
+}
+
+record(longout, "$(DEV):FILT-SASE1-BUCKET-START") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0038:0x0038 T=UINT16")
+  field(SCAN, "I/O Intr")
+  field(DRVH, "2699")
+  field(DRVL, "0")
+  field(HOPR, "2699")
+  field(LOPR, "0")
+}
+
+record(longout, "$(DEV):FILT-SASE1-BUCKET-STOP") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x003A:0x003A T=UINT16")
+  field(SCAN, "I/O Intr")
+  field(DRVH, "2699")
+  field(DRVL, "0")
+  field(HOPR, "2699")
+  field(LOPR, "0")
+}
+
+record(longout, "$(DEV):FILT-SASE2-BUCKET-START") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x003C:0x003C T=UINT16")
+  field(SCAN, "I/O Intr")
+  field(DRVH, "2699")
+  field(DRVL, "0")
+  field(HOPR, "2699")
+  field(LOPR, "0")
+}
+
+record(longout, "$(DEV):FILT-SASE2-BUCKET-STOP") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x003E:0x003E T=UINT16")
+  field(SCAN, "I/O Intr")
+  field(DRVH, "2699")
+  field(DRVL, "0")
+  field(HOPR, "2699")
+  field(LOPR, "0")
+}
+
+record(longout, "$(DEV):FILT-SASE3-BUCKET-START") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0040:0x0040 T=UINT16")
+  field(SCAN, "I/O Intr")
+  field(DRVH, "2699")
+  field(DRVL, "0")
+  field(HOPR, "2699")
+  field(LOPR, "0")
+}
+
+record(longout, "$(DEV):FILT-SASE3-BUCKET-STOP") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0042:0x0042 T=UINT16")
+  field(SCAN, "I/O Intr")
+  field(DRVH, "2699")
+  field(DRVL, "0")
+  field(HOPR, "2699")
+  field(LOPR, "0")
+}
+
+record(longout, "$(DEV):FILT-COLLIM-BUCKET-START") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0044:0x0044 T=UINT16")
+  field(SCAN, "I/O Intr")
+  field(DRVH, "2699")
+  field(DRVL, "0")
+  field(HOPR, "2699")
+  field(LOPR, "0")
+}
+
+record(longout, "$(DEV):FILT-COLLIM-BUCKET-STOP") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0046:0x0046 T=UINT16")
+  field(SCAN, "I/O Intr")
+  field(DRVH, "2699")
+  field(DRVL, "0")
+  field(HOPR, "2699")
+  field(LOPR, "0")
+}

@@ -1,0 +1,45 @@
+#------------------------------------------------------------------------------
+#
+#
+
+# -- dynamic waveforms
+
+record(waveform, "$(DEV):$(PLANE)-FB-POS-ERR") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0000")
+  field(NELM, "2708")
+  field(FTVL, "FLOAT")
+}
+
+record(waveform, "$(DEV):$(PLANE)-FB-ANGLE-ERR") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x2A50")
+  field(NELM, "2708")
+  field(FTVL, "FLOAT")
+}
+
+record(waveform, "$(DEV):$(PLANE)-RX-UPDOWN-TIME") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x54A0")
+  field(NELM, "2708")
+  field(FTVL, "LONG")
+}
+
+record(waveform, "$(DEV):$(PLANE)-RX-UPDOWN-CTRL") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x7EF0")
+  field(NELM, "2708")
+  field(FTVL, "LONG")
+}
+
+record(waveform, "$(DEV):$(PLANE)-RX-UPDOWN-POS") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0xA940")
+  field(NELM, "2708")
+  field(FTVL, "FLOAT")
+}

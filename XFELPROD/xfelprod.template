@@ -1,0 +1,18 @@
+
+record(scalcout,"$(DEV):BPM-STRING"){
+   field (CALC, "AA")
+   field (FLNK, "$(DEV):CONN-DEV")
+}
+
+record(scalcout,"$(DEV):CONN-DEV"){
+   field (INAA, "$(DEV):BPM-STRING.SVAL")
+   field (CALC, "AA['#',-1]")
+   field (FLNK, "$(DEV):CONN-STRING")
+}
+
+record(scalcout,"$(DEV):CONN-STRING"){
+   field (INAA, "$(DEV):BPM-STRING.SVAL")
+   field (CALC, "AA[0,'#']")
+   field (OUT, "$(DEV):S7GPAC-ADDR PP")
+}
+

@@ -1,0 +1,13 @@
+#This is an automatically generated startup script for softioc
+
+epicsEnvSet IOC XFELIBFB
+epicsEnvSet INSTBASE /fin/devl
+$(INSTBASE)/iocBoot/startup/startup.script_linux
+cd /ioc/XFELIBFB
+
+#---------- put your stuff here --------------
+< startup.script_IBFB
+
+#----------  end of your stuff  --------------
+iocInit
+#----------  sequencer stuff comes here ----------
