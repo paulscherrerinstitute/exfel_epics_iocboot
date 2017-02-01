@@ -1,0 +1,1463 @@
+#------------------------------------------------------------------------------
+#-----------            GPAC2 SERVICE FUNCTIONS                ----------------
+#------------------------------------------------------------------------------
+
+#------------------------------------------------------------------------------
+# Hardware 
+#------------------------------------------------------------------------------
+record(longout,"$(DEV):GPAC2-HARD-RESET"){
+   field (DTYP, "S7gpac")
+   field (OUT,  "@$(SRV)/0x0038 T=UINT32") 
+}
+
+record(longin,"$(DEV):GPAC2-MAC1"){
+   field (SCAN, "I/O Intr")
+   field (DTYP, "S7gpac")
+   field (INP,  "@$(SRV)/0x00D8 T=UINT32") 
+   field (FLNK, "$(DEV):GPAC2-MAC2")
+}
+
+record(longin,"$(DEV):GPAC2-MAC2"){
+   field (SCAN, "I/O Intr")
+   field (DTYP, "S7gpac")
+   field (INP,  "@$(SRV)/0x00DC T=UINT16") 
+   field (FLNK, "$(DEV):GPAC2-MAC")
+}
+
+record(scalcout,"$(DEV):GPAC2-MAC"){
+   field (INPA, "$(DEV):GPAC2-MAC1")
+   field (INPB, "$(DEV):GPAC2-MAC2")
+   field (CALC, "PRINTF('0x%08x',A)+PRINTF('%04x',B)")
+}
+
+record(stringin,"$(DEV):GPAC2-SN"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x021C L=7")
+}
+
+record(longin,"$(DEV):GPAC2-PB12"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x00C4 T=UINT32") 
+}
+
+record(stringin,"$(DEV):GPAC2-PB1-SN"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x00C8 L=8")
+}
+
+record(stringin,"$(DEV):GPAC2-PB2-SN"){
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x00D0 L=8")
+  field (SCAN, "I/O Intr")
+}
+
+record(longin,"$(DEV):GPAC2-LAST-REBOOT"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x021A T=UINT8")
+}
+
+#------------------------------------------------------------------------------
+# SYSACE Configuration
+#------------------------------------------------------------------------------
+record(longin,"$(DEV):SYSACE-REV"){
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x01D0 T=UINT32")
+  field (SCAN, "I/O Intr")
+}
+
+record(mbbo, "$(DEV):SYSACE-REV-SET") {
+  field (DTYP, "S7gpac")
+  field (OUT,  "@$(SRV)/0x0040 T=UINT32")
+  field (NOBT, "3" )
+  field (SHFT, "0" )
+  field (ZRVL, "0" )
+  field (ONVL, "1" )
+  field (TWVL, "2" )
+  field (THVL, "3" )
+  field (FRVL, "4" )
+  field (FVVL, "5" )
+  field (SXVL, "6" )
+  field (SVVL, "7" )
+  field (ZRST, "0" )
+  field (ONST, "1" )
+  field (TWST, "2" )
+  field (THST, "3" )
+  field (FRST, "4" )
+  field (FVST, "5" )
+  field (SXST, "6" )
+  field (SVST, "7" )
+}
+
+record(longin,"$(DEV):SYSFPGA-ACK-CONF"){
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x01D4 T=UINT32")
+  field (SCAN, "I/O Intr")
+}
+
+record(bo, "$(DEV):SYSFPGA-ACK-CONF-SET") {
+  field (DTYP, "S7gpac")
+  field (OUT,  "@$(SRV)/0x0044 T=UINT32")
+  field (ZNAM, "Disabled" )
+  field (ONAM, "Enable" )
+}
+
+record(longin,"$(DEV):LINUX-READY"){
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x01D4 T=UINT32")
+  field (SCAN, "I/O Intr")
+}
+
+#------------------------------------------------------------------------------
+# SYS Firmware 
+#------------------------------------------------------------------------------
+
+record (longin,"$(DEV):SYS-FIRMWARE"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x0224 T=UINT32")
+}
+
+record(longin,"$(DEV):SYS-FW-YEAR"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x0228 T=UINT32")
+}
+
+record(longin,"$(DEV):SYS-FW-MONTH"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x022C T=UINT32")
+}
+
+record(longin,"$(DEV):SYS-FW-DAY"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x0144 T=UINT32")
+}
+
+record(longin,"$(DEV):SYS-FW-HOUR"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x0148 T=UINT32")
+}
+
+record(longin,"$(DEV):SYS-FW-MINUTE"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x014C T=UINT32")
+  field (FLNK, "$(DEV):SYS-FW-DATE1")
+}
+
+record(scalcout,"$(DEV):SYS-FW-DATE1"){
+   field (INPA, "$(DEV):SYS-FW-YEAR")
+   field (INPB, "$(DEV):SYS-FW-MONTH")
+   field (CALC, "PRINTF('%d',A)+PRINTF('.%02d.',B)")
+   field (FLNK, "$(DEV):SYS-FW-DATE2")
+}
+
+record(scalcout,"$(DEV):SYS-FW-DATE2"){
+   field (INPA, "$(DEV):SYS-FW-HOUR")
+   field (INPB, "$(DEV):SYS-FW-MINUTE")
+   field (CALC, "PRINTF(' %02d:',A)+PRINTF('%02d',B)")
+   field (FLNK, "$(DEV):SYS-FW-DATE")
+}
+
+record(scalcout,"$(DEV):SYS-FW-DATE"){
+   field (INAA, "$(DEV):SYS-FW-DATE1.SVAL")
+   field (INBB, "$(DEV):SYS-FW-DATE2.SVAL")
+   field (INPA, "$(DEV):SYS-FW-DAY")
+   field (CALC, "AA+PRINTF('%02d',A)+BB")
+}
+
+#--
+record(longin,"$(DEV):SYS-SW-YEAR"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x00F4 T=UINT32")
+}
+
+record(longin,"$(DEV):SYS-SW-MONTH"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x00F8 T=UINT32")
+}
+
+record(longin,"$(DEV):SYS-SW-DAY"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x00FC T=UINT32")
+}
+
+record(longin,"$(DEV):SYS-SW-HOUR"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x0100 T=UINT32")
+}
+
+record(longin,"$(DEV):SYS-SW-MINUTE"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x0104 T=UINT32")
+  field (FLNK, "$(DEV):SYS-SW-DATE1")
+}
+
+record(scalcout,"$(DEV):SYS-SW-DATE1"){
+   field (INPA, "$(DEV):SYS-SW-YEAR")
+   field (INPB, "$(DEV):SYS-SW-MONTH")
+   field (CALC, "PRINTF('%d',A)+PRINTF('.%02d.',B)")
+   field (FLNK, "$(DEV):SYS-SW-DATE2")
+}
+
+record(scalcout,"$(DEV):SYS-SW-DATE2"){
+   field (INPA, "$(DEV):SYS-SW-HOUR")
+   field (INPB, "$(DEV):SYS-SW-MINUTE")
+   field (CALC, "PRINTF(' %02d:',A)+PRINTF('%02d',B)")
+   field (FLNK, "$(DEV):SYS-SW-DATE")
+}
+
+record(scalcout,"$(DEV):SYS-SW-DATE"){
+   field (INAA, "$(DEV):SYS-SW-DATE1.SVAL")
+   field (INBB, "$(DEV):SYS-SW-DATE2.SVAL")
+   field (INPA, "$(DEV):SYS-SW-DAY")
+   field (CALC, "AA+PRINTF('%02d',A)+BB")
+}
+
+#------------------------------------------------------------------------------
+# CFG Firmware 
+#------------------------------------------------------------------------------
+record(longin,"$(DEV):CFG-FIRMWARE"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x0230 T=UINT32")
+}
+
+record(longin,"$(DEV):CFG-FW-YEAR"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x0234 T=UINT32")
+}
+
+record(longin,"$(DEV):CFG-FW-MONTH"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x0238 T=UINT32")
+}
+
+record(longin,"$(DEV):CFG-FW-DAY"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x023C T=UINT32")
+}
+ 
+record(longin,"$(DEV):CFG-FW-HOUR"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x0240 T=UINT32")
+}
+
+record(longin,"$(DEV):CFG-FW-MINUTE"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x0244 T=UINT32")
+  field (FLNK, "$(DEV):CFG-FW-DATE1")
+}
+
+record(scalcout,"$(DEV):CFG-FW-DATE1"){
+   field (INPA, "$(DEV):CFG-FW-YEAR")
+   field (INPB, "$(DEV):CFG-FW-MONTH")
+   field (CALC, "PRINTF('%d',A)+PRINTF('.%02d.',B)")
+   field (FLNK, "$(DEV):CFG-FW-DATE2")
+}
+
+record(scalcout,"$(DEV):CFG-FW-DATE2"){
+   field (INPA, "$(DEV):CFG-FW-HOUR")
+   field (INPB, "$(DEV):CFG-FW-MINUTE")
+   field (CALC, "PRINTF(' %02d:',A)+PRINTF('%02d',B)")
+   field (FLNK, "$(DEV):CFG-FW-DATE")
+}
+
+record(scalcout,"$(DEV):CFG-FW-DATE"){
+   field (INAA, "$(DEV):CFG-FW-DATE1.SVAL")
+   field (INBB, "$(DEV):CFG-FW-DATE2.SVAL")
+   field (INPA, "$(DEV):CFG-FW-DAY")
+   field (CALC, "AA+PRINTF('%02d',A)+BB")
+}
+
+#--
+record(longin,"$(DEV):CFG-SW-YEAR"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x00E0 T=UINT32")
+}
+
+record(longin,"$(DEV):CFG-SW-MONTH"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x00E4 T=UINT32")
+}
+
+record(longin,"$(DEV):CFG-SW-DAY"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x00E8 T=UINT32")
+}
+
+record(longin,"$(DEV):CFG-SW-HOUR"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x00EC T=UINT32")
+}
+
+record(longin,"$(DEV):CFG-SW-MINUTE"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x00F0 T=UINT32")
+  field (FLNK, "$(DEV):CFG-SW-DATE1")
+}
+
+record(scalcout,"$(DEV):CFG-SW-DATE1"){
+   field (INPA, "$(DEV):CFG-SW-YEAR")
+   field (INPB, "$(DEV):CFG-SW-MONTH")
+   field (CALC, "PRINTF('%d',A)+PRINTF('.%02d.',B)")
+   field (FLNK, "$(DEV):CFG-SW-DATE2")
+}
+
+record(scalcout,"$(DEV):CFG-SW-DATE2"){
+   field (INPA, "$(DEV):CFG-SW-HOUR")
+   field (INPB, "$(DEV):CFG-SW-MINUTE")
+   field (CALC, "PRINTF(' %02d:',A)+PRINTF('%02d',B)")
+   field (FLNK, "$(DEV):CFG-SW-DATE")
+}
+
+record(scalcout,"$(DEV):CFG-SW-DATE"){
+   field (INAA, "$(DEV):CFG-SW-DATE1.SVAL")
+   field (INBB, "$(DEV):CFG-SW-DATE2.SVAL")
+   field (INPA, "$(DEV):CFG-SW-DAY")
+   field (CALC, "AA+PRINTF('%02d',A)+BB")
+}
+
+#------------------------------------------------------------------------------
+# BP Firmware 
+#------------------------------------------------------------------------------
+record (longin,"$(DEV):BP-FIRMWARE"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x0248 T=UINT32")
+}
+
+record(longin,"$(DEV):BP-FW-YEAR"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x024C T=UINT32")
+}
+
+record(longin,"$(DEV):BP-FW-MONTH"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x0250 T=UINT32")
+}
+
+record(longin,"$(DEV):BP-FW-DAY"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x0150 T=UINT32")
+}
+
+record(longin,"$(DEV):BP-FW-HOUR"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x0154 T=UINT32")
+}
+
+record(longin,"$(DEV):BP-FW-MINUTE"){
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x0158 T=UINT32")
+  field (SCAN, "I/O Intr")
+  field (FLNK, "$(DEV):BP-FW-DATE1")
+}
+
+record(scalcout,"$(DEV):BP-FW-DATE1"){
+   field (INPA, "$(DEV):BP-FW-YEAR")
+   field (INPB, "$(DEV):BP-FW-MONTH")
+   field (CALC, "PRINTF('%d',A)+PRINTF('.%02d.',B)")
+   field (FLNK, "$(DEV):BP-FW-DATE2")
+}
+
+record(scalcout,"$(DEV):BP-FW-DATE2"){
+   field (INPA, "$(DEV):BP-FW-HOUR")
+   field (INPB, "$(DEV):BP-FW-MINUTE")
+   field (CALC, "PRINTF(' %02d:',A)+PRINTF('%02d',B)")
+   field (FLNK, "$(DEV):BP-FW-DATE")
+}
+
+record(scalcout,"$(DEV):BP-FW-DATE"){
+   field (INAA, "$(DEV):BP-FW-DATE1.SVAL")
+   field (INBB, "$(DEV):BP-FW-DATE2.SVAL")
+   field (INPA, "$(DEV):BP-FW-DAY")
+   field (CALC, "AA+PRINTF('%02d',A)+BB")
+}
+
+#--
+record(longin,"$(DEV):BP-SW-YEAR"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x0108 T=UINT32")
+}
+
+record(longin,"$(DEV):BP-SW-MONTH"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x010C T=UINT32")
+}
+
+record(longin,"$(DEV):BP-SW-DAY"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x0110 T=UINT32")
+}
+
+record(longin,"$(DEV):BP-SW-HOUR"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x0114 T=UINT32")
+}
+
+record(longin,"$(DEV):BP-SW-MINUTE"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x0118 T=UINT32")
+  field (FLNK, "$(DEV):BP-SW-DATE1")
+}
+
+record(scalcout,"$(DEV):BP-SW-DATE1"){
+   field (INPA, "$(DEV):BP-SW-YEAR")
+   field (INPB, "$(DEV):BP-SW-MONTH")
+   field (CALC, "PRINTF('%d',A)+PRINTF('.%02d.',B)")
+   field (FLNK, "$(DEV):BP-SW-DATE2")
+}
+
+record(scalcout,"$(DEV):BP-SW-DATE2"){
+   field (INPA, "$(DEV):BP-SW-HOUR")
+   field (INPB, "$(DEV):BP-SW-MINUTE")
+   field (CALC, "PRINTF(' %02d:',A)+PRINTF('%02d',B)")
+   field (FLNK, "$(DEV):BP-SW-DATE")
+}
+
+record(scalcout,"$(DEV):BP-SW-DATE"){
+   field (INAA, "$(DEV):BP-SW-DATE1.SVAL")
+   field (INBB, "$(DEV):BP-SW-DATE2.SVAL")
+   field (INPA, "$(DEV):BP-SW-DAY")
+   field (CALC, "AA+PRINTF('%02d',A)+BB")
+}
+
+#------------------------------------------------------------------------------
+# BPM1 Firmware 
+#------------------------------------------------------------------------------
+record(longin,"$(DEV):BPM1-FIRMWARE"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x0254 T=UINT32")
+}
+
+record(longin,"$(DEV):BPM1-FW-YEAR"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x0258 T=UINT32")
+}
+
+record(longin,"$(DEV):BPM1-FW-MONTH"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x025C T=UINT32")
+}
+
+record(longin,"$(DEV):BPM1-FW-DAY"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x015C T=UINT32")
+}
+
+record(longin,"$(DEV):BPM1-FW-HOUR"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x0160 T=UINT32")
+}
+
+record(longin,"$(DEV):BPM1-FW-MINUTE"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x0164 T=UINT32")
+  field (FLNK, "$(DEV):BPM1-FW-DATE1")
+}
+
+record(scalcout,"$(DEV):BPM1-FW-DATE1"){
+   field (INPA, "$(DEV):BPM1-FW-YEAR")
+   field (INPB, "$(DEV):BPM1-FW-MONTH")
+   field (CALC, "PRINTF('%d',A)+PRINTF('.%02d.',B)")
+   field (FLNK, "$(DEV):BPM1-FW-DATE2")
+}
+
+record(scalcout,"$(DEV):BPM1-FW-DATE2"){
+   field (INPA, "$(DEV):BPM1-FW-HOUR")
+   field (INPB, "$(DEV):BPM1-FW-MINUTE")
+   field (CALC, "PRINTF(' %02d:',A)+PRINTF('%02d',B)")
+   field (FLNK, "$(DEV):BPM1-FW-DATE")
+}
+
+record(scalcout,"$(DEV):BPM1-FW-DATE"){
+   field (INAA, "$(DEV):BPM1-FW-DATE1.SVAL")
+   field (INBB, "$(DEV):BPM1-FW-DATE2.SVAL")
+   field (INPA, "$(DEV):BPM1-FW-DAY")
+   field (CALC, "AA+PRINTF('%02d',A)+BB")
+}
+
+#--
+record(longin,"$(DEV):BPM1-SW-YEAR"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x011C T=UINT32")
+}
+
+record(longin,"$(DEV):BPM1-SW-MONTH"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x0120 T=UINT32")
+}
+
+record(longin,"$(DEV):BPM1-SW-DAY"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x0124 T=UINT32")
+}
+
+record(longin,"$(DEV):BPM1-SW-HOUR"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x0128 T=UINT32")
+}
+
+record(longin,"$(DEV):BPM1-SW-MINUTE"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x012C T=UINT32")
+  field (FLNK, "$(DEV):BPM1-SW-DATE1")
+}
+
+record(scalcout,"$(DEV):BPM1-SW-DATE1"){
+   field (INPA, "$(DEV):BPM1-SW-YEAR")
+   field (INPB, "$(DEV):BPM1-SW-MONTH")
+   field (CALC, "PRINTF('%d',A)+PRINTF('.%02d.',B)")
+   field (FLNK, "$(DEV):BPM1-SW-DATE2")
+}
+
+record(scalcout,"$(DEV):BPM1-SW-DATE2"){
+   field (INPA, "$(DEV):BPM1-SW-HOUR")
+   field (INPB, "$(DEV):BPM1-SW-MINUTE")
+   field (CALC, "PRINTF(' %02d:',A)+PRINTF('%02d',B)")
+   field (FLNK, "$(DEV):BPM1-SW-DATE")
+}
+
+record(scalcout,"$(DEV):BPM1-SW-DATE"){
+   field (INAA, "$(DEV):BPM1-SW-DATE1.SVAL")
+   field (INBB, "$(DEV):BPM1-SW-DATE2.SVAL")
+   field (INPA, "$(DEV):BPM1-SW-DAY")
+   field (CALC, "AA+PRINTF('%02d',A)+BB")
+}
+
+
+#------------------------------------------------------------------------------
+# BPM2 Firmware 
+#------------------------------------------------------------------------------
+record(longin,"$(DEV):BPM2-FIRMWARE"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x0260 T=UINT32")
+}
+
+record(longin,"$(DEV):BPM2-FW-YEAR"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x0048 T=UINT32")
+}
+
+record(longin,"$(DEV):BPM2-FW-MONTH"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x004C T=UINT32")
+}
+
+record(longin,"$(DEV):BPM2-FW-DAY"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x0168   T=UINT32")
+}
+
+record(longin,"$(DEV):BPM2-FW-HOUR"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x016C T=UINT32")
+}
+
+record(longin,"$(DEV):BPM2-FW-MINUTE"){
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x0170 T=UINT32")
+  field (SCAN, "I/O Intr")
+  field (FLNK, "$(DEV):BPM2-FW-DATE1")
+}
+
+record(scalcout,"$(DEV):BPM2-FW-DATE1"){
+   field (INPA, "$(DEV):BPM2-FW-YEAR")
+   field (INPB, "$(DEV):BPM2-FW-MONTH")
+   field (CALC, "PRINTF('%d',A)+PRINTF('.%02d.',B)")
+   field (FLNK, "$(DEV):BPM2-FW-DATE2")
+}
+
+record(scalcout,"$(DEV):BPM2-FW-DATE2"){
+   field (INPA, "$(DEV):BPM2-FW-HOUR")
+   field (INPB, "$(DEV):BPM2-FW-MINUTE")
+   field (CALC, "PRINTF(' %02d:',A)+PRINTF('%02d',B)")
+   field (FLNK, "$(DEV):BPM2-FW-DATE")
+}
+
+record(scalcout,"$(DEV):BPM2-FW-DATE"){
+   field (INAA, "$(DEV):BPM2-FW-DATE1.SVAL")
+   field (INBB, "$(DEV):BPM2-FW-DATE2.SVAL")
+   field (INPA, "$(DEV):BPM2-FW-DAY")
+   field (CALC, "AA+PRINTF('%02d',A)+BB")
+}
+
+record(longin,"$(DEV):GPAC2-CF-PRESENT"){
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x0050 T=UINT32")
+  field (SCAN, "I/O Intr")
+}
+
+record(longin,"$(DEV):GPAC2-FPGA-DONE"){
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x0054 T=UINT32")
+  field (SCAN, "I/O Intr")
+}
+
+#--
+record(longin,"$(DEV):BPM2-SW-YEAR"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x0130 T=UINT32")
+}
+
+record(longin,"$(DEV):BPM2-SW-MONTH"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x0134 T=UINT32")
+}
+
+record(longin,"$(DEV):BPM2-SW-DAY"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x0138 T=UINT32")
+}
+
+record(longin,"$(DEV):BPM2-SW-HOUR"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x013C T=UINT32")
+}
+
+record(longin,"$(DEV):BPM2-SW-MINUTE"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x0140 T=UINT32")
+  field (FLNK, "$(DEV):BPM2-SW-DATE1")
+}
+
+record(scalcout,"$(DEV):BPM2-SW-DATE1"){
+   field (INPA, "$(DEV):BPM2-SW-YEAR")
+   field (INPB, "$(DEV):BPM2-SW-MONTH")
+   field (CALC, "PRINTF('%d',A)+PRINTF('.%02d.',B)")
+   field (FLNK, "$(DEV):BPM2-SW-DATE2")
+}
+
+record(scalcout,"$(DEV):BPM2-SW-DATE2"){
+   field (INPA, "$(DEV):BPM2-SW-HOUR")
+   field (INPB, "$(DEV):BPM2-SW-MINUTE")
+   field (CALC, "PRINTF(' %02d:',A)+PRINTF('%02d',B)")
+   field (FLNK, "$(DEV):BPM2-SW-DATE")
+}
+
+record(scalcout,"$(DEV):BPM2-SW-DATE"){
+   field (INAA, "$(DEV):BPM2-SW-DATE1.SVAL")
+   field (INBB, "$(DEV):BPM2-SW-DATE2.SVAL")
+   field (INPA, "$(DEV):BPM2-SW-DAY")
+   field (CALC, "AA+PRINTF('%02d',A)+BB")
+}
+
+#------------------------------------------------------------------------------
+# Power Status
+#------------------------------------------------------------------------------
+
+record(longin,"$(DEV):GPAC2-PWR-STATUS"){
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x0058 T=UINT32")
+  field (SCAN, "I/O Intr")
+}
+
+record(longin,"$(DEV):GPAC2-PWR-FAULT"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x005C T=UINT32")
+}
+
+#------------------------------------------------------------------------------
+# HS Controllers
+#------------------------------------------------------------------------------
+
+#-- HS 5V CFG
+record(ai,"$(DEV):GPAC2-HS5V0CFG-VOUT"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x0061 T=UINT8")
+  field (PREC, "2")
+  field (LINR, "SLOPE")   
+  field (ESLO, "0.0605")
+  field (EOFF, "0")
+  field (EGU, "V")
+}
+
+record(ai,"$(DEV):GPAC2-HS5V0CFG-I"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x0062 T=UINT8")
+  field (PREC, "2")
+  field (LINR, "SLOPE")   
+  field (ESLO, "0.03775")
+  field (EOFF, "0")
+  field (EGU, "A")
+  field (FLNK, "$(DEV):GPAC2-HS5V0CFG-PWR PP")   
+}
+
+record(ai,"$(DEV):GPAC2-HS5V0CFG-VIN"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x0063 T=UINT8")
+  field (PREC, "2")
+  field (LINR, "SLOPE")   
+  field (ESLO, "0.023618")
+  field (EOFF, "0")
+  field (EGU, "V")
+}
+
+record(calcout, "$(DEV):GPAC2-HS5V0CFG-PWR") {
+  field(INPA, "$(DEV):GPAC2-HS5V0CFG-VOUT")
+  field(INPB, "$(DEV):GPAC2-HS5V0CFG-I")
+  field(CALC, "A*B")
+  field(PREC, "3")
+  field(EGU, "W")
+}
+
+#-- HS 3V3
+record(ai,"$(DEV):GPAC2-HS3V3-VOUT"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x0065 T=UINT8")
+  field (PREC, "2")
+  field (LINR, "SLOPE")   
+  field (ESLO, "0.0605")
+  field (EOFF, "0")
+  field (EGU, "V")
+}
+
+record(ai,"$(DEV):GPAC2-HS3V3-I"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x0066 T=UINT8")
+  field (PREC, "2")
+  field (LINR, "SLOPE")   
+  field (ESLO, "0.10067")
+  field (EOFF, "0")
+  field (EGU, "A")
+  field (FLNK, "$(DEV):GPAC2-HS3V3-PWR PP")   
+}
+
+record(ai,"$(DEV):GPAC2-HS3V3-VIN"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x0067 T=UINT8")
+  field (PREC, "2")
+  field (LINR, "SLOPE")   
+  field (ESLO, "0.015424")
+  field (EOFF, "0")
+  field (EGU, "V")
+}
+
+record(calcout, "$(DEV):GPAC2-HS3V3-PWR") {
+  field (INPA, "$(DEV):GPAC2-HS3V3-VOUT")
+  field (INPB, "$(DEV):GPAC2-HS3V3-I")
+  field (CALC, "A*B")
+  field (PREC, "3")
+  field (EGU, "W")
+}
+
+#-- HS 5V0
+record(ai,"$(DEV):GPAC2-HS5V0-VOUT"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x0069 T=UINT8")
+  field (PREC, "2")
+  field (LINR, "SLOPE")   
+  field (ESLO, "0.0605")
+  field (EOFF, "0")
+  field (EGU, "V")
+}
+
+record(ai,"$(DEV):GPAC2-HS5V0-I"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x006A T=UINT8")
+  field(PREC, "2")
+  field (LINR, "SLOPE")   
+  field (ESLO, "0.0604")
+  field (EOFF, "0")
+  field (EGU, "A")
+  field (FLNK, "$(DEV):GPAC2-HS5V0-PWR PP")   
+}
+
+record(ai,"$(DEV):GPAC2-HS5V0-VIN"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x006B T=UINT8")
+  field (PREC, "2")
+  field (LINR, "SLOPE")   
+  field (ESLO, "0.023618")
+  field (EOFF, "0")
+  field (EGU, "V")
+}
+
+record(calcout, "$(DEV):GPAC2-HS5V0-PWR") {
+  field (INPA, "$(DEV):GPAC2-HS5V0-VOUT")
+  field (INPB, "$(DEV):GPAC2-HS5V0-I")
+  field (CALC, "A*B")
+  field (PREC, "3")
+  field (EGU, "W")
+}
+
+#-- HS 3V3 PB
+record(ai,"$(DEV):GPAC2-HS3V3PB-VOUT"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x006D T=UINT8")
+  field (PREC, "2")
+  field (LINR, "SLOPE")   
+  field (ESLO, "0.0605")
+  field (EOFF, "0")
+  field (EGU, "V")
+}
+
+record(ai,"$(DEV):GPAC2-HS3V3PB-I"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x006E T=UINT8")
+  field (PREC, "2")
+  field (LINR, "SLOPE")   
+  field (ESLO, "0.0604")
+  field (EOFF, "0")
+  field (EGU, "A")
+  field (FLNK, "$(DEV):GPAC2-HS3V3PB-PWR PP")   
+}
+
+record(ai,"$(DEV):GPAC2-HS3V3PB-VIN"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x006F T=UINT8")
+  field (PREC, "2")
+  field (LINR, "SLOPE")   
+  field (ESLO, "0.015424")
+  field (EOFF, "0")
+  field (EGU, "V")
+}
+
+record(calcout, "$(DEV):GPAC2-HS3V3PB-PWR") {
+  field (INPA, "$(DEV):GPAC2-HS3V3PB-VOUT")
+  field (INPB, "$(DEV):GPAC2-HS3V3PB-I")
+  field (CALC, "A*B")
+  field (PREC, "3")
+  field (EGU, "W")
+}
+
+#-- HS 5V0 PB
+record(ai,"$(DEV):GPAC2-HS5V0PB-VOUT"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x0071 T=UINT8")
+  field (PREC, "2")
+  field (LINR, "SLOPE")   
+  field (ESLO, "0.0605")
+  field (EOFF, "0")
+  field (EGU, "V")
+}
+
+record(ai,"$(DEV):GPAC2-HS5V0PB-I"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x0072 T=UINT8")
+  field (PREC, "2")
+  field (LINR, "SLOPE")   
+  field (ESLO, "0.0604")
+  field (EOFF, "0")
+  field (EGU, "A")
+  field (FLNK, "$(DEV):GPAC2-HS5V0PB-PWR PP")   
+}
+
+record(ai,"$(DEV):GPAC2-HS5V0PB-VIN"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x0073 T=UINT8")
+  field (PREC, "2")
+  field (LINR, "SLOPE")   
+  field (ESLO, "0.023618")
+  field (EOFF, "0")
+  field (EGU, "V")
+}
+
+record(calcout, "$(DEV):GPAC2-HS5V0PB-PWR") {
+  field (INPA, "$(DEV):GPAC2-HS5V0PB-VOUT")
+  field (INPB, "$(DEV):GPAC2-HS5V0PB-I")
+  field (CALC, "A*B")
+  field (PREC, "3")
+  field (EGU, "W")
+  field (FLNK, "$(DEV):GPAC2-TOTAL-PWR PP")   
+}
+
+#-- Total power
+record(calcout, "$(DEV):GPAC2-TOTAL-PWR") {
+  field (INPA, "$(DEV):GPAC2-HS5V0CFG-PWR")
+  field (INPB, "$(DEV):GPAC2-HS3V3-PWR")
+  field (INPC, "$(DEV):GPAC2-HS5V0-PWR")
+  field (INPD, "$(DEV):GPAC2-HS3V3PB-PWR")
+  field (INPE, "$(DEV):GPAC2-HS5V0PB-PWR")
+  field (CALC, "A+B+C+D+E")
+  field (PREC, "3")
+  field (EGU, "W")
+}
+
+#------------------------------------------------------------------------------
+# Temperature readout
+#------------------------------------------------------------------------------
+
+record(longin,"$(DEV):GPAC2-CFG-TMP-WARNING"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x0218 T=UINT8")
+}
+
+record(longin,"$(DEV):GPAC2-CFG-TMP-ALARM"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x0219 T=UINT8")
+}
+
+record(ai,"$(DEV):GPAC2-CFG-TMP-BPM1-FPGA"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x0074 T=UINT16")
+  field (PREC, "2")
+  field (LINR, "SLOPE")   
+  field (ESLO, "0.0625")
+  field (EOFF, "-2048")
+  field (EGU, "degC")
+}
+
+record(ai,"$(DEV):GPAC2-CFG-TMP-BPM1-DDR2"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x0076 T=UINT16")
+  field (PREC, "2")
+  field (LINR, "SLOPE")   
+  field (ESLO, "0.0625")
+  field (EOFF, "-2048")
+  field (EGU, "degC")
+}
+
+record(ai,"$(DEV):GPAC2-CFG-TMP-BPM1-QDR2"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x0078 T=UINT16")
+  field (PREC, "2")
+  field (LINR, "SLOPE")   
+  field (ESLO, "0.0625")
+  field (EOFF, "-2048")
+  field (EGU, "degC")
+}
+
+record(ai,"$(DEV):GPAC2-CFG-TMP-BPM1-AIR"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x007A T=UINT16")
+  field (PREC, "2")
+  field (LINR, "SLOPE")   
+  field (ESLO, "0.0625")
+  field (EOFF, "-2048")
+  field (EGU, "degC")
+}
+
+record(ai,"$(DEV):GPAC2-CFG-TMP-BPM1-SENSOR"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x007C T=UINT16")
+  field (PREC, "2")
+  field (LINR, "SLOPE")   
+  field (ESLO, "0.0625")
+  field (EOFF, "-2048")
+  field (EGU, "degC")
+}
+
+record(ai,"$(DEV):GPAC2-CFG-TMP-BPM2-FPGA"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x007E T=UINT16")
+  field (PREC, "2")
+  field (LINR, "SLOPE")   
+  field (ESLO, "0.0625")
+  field (EOFF, "-2048")
+  field (EGU, "degC")
+}
+
+record(ai,"$(DEV):GPAC2-CFG-TMP-BPM2-DDR2"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x0080 T=UINT16")
+  field (PREC, "2")
+  field (LINR, "SLOPE")   
+  field (ESLO, "0.0625")
+  field (EOFF, "-2048")
+  field (EGU, "degC")
+}
+
+record(ai,"$(DEV):GPAC2-CFG-TMP-BPM2-QDR2"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x0082 T=UINT16")
+  field (PREC, "2")
+  field (LINR, "SLOPE")   
+  field (ESLO, "0.0625")
+  field (EOFF, "-2048")
+  field (EGU, "degC")
+}
+
+record(ai,"$(DEV):GPAC2-CFG-TMP-BPM2-AIR"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x0084 T=UINT16")
+  field (PREC, "2")
+  field (LINR, "SLOPE")   
+  field (ESLO, "0.0625")
+  field (EOFF, "-2048")
+  field (EGU, "degC")
+}
+
+record(ai,"$(DEV):GPAC2-CFG-TMP-BPM2-SENSOR"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x0086 T=UINT16")
+  field (PREC, "2")
+  field (LINR, "SLOPE")   
+  field (ESLO, "0.0625")
+  field (EOFF, "-2048")
+  field (EGU, "degC")
+}
+
+record(ai,"$(DEV):GPAC2-CFG-TMP-SYS-FPGA"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x0088 T=UINT16")
+  field (PREC, "2")
+  field (LINR, "SLOPE")   
+  field (ESLO, "0.0625")
+  field (EOFF, "-2048")
+  field (EGU, "degC")
+}
+
+record(ai,"$(DEV):GPAC2-CFG-TMP-SYS-DDR21"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x008A T=UINT16")
+  field (PREC, "2")
+  field (LINR, "SLOPE")   
+  field (ESLO, "0.0625")
+  field (EOFF, "-2048")
+  field (EGU, "degC")
+}
+
+record(ai,"$(DEV):GPAC2-CFG-TMP-SYS-DDR22"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x008C T=UINT16")
+  field (PREC, "2")
+  field (LINR, "SLOPE")   
+  field (ESLO, "0.0625")
+  field (EOFF, "-2048")
+  field (EGU, "degC")
+}
+
+record(ai,"$(DEV):GPAC2-CFG-TMP-SYS-SENSOR"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x0090 T=UINT16")
+  field (PREC, "2")
+  field (LINR, "SLOPE")   
+  field (ESLO, "0.0625")
+  field (EOFF, "-2048")
+  field (EGU, "degC")
+}
+
+#------------------------------------------------------------------------------
+# P0 HS Controllers
+#------------------------------------------------------------------------------
+
+record(longin,"$(DEV):P0HS1-STATUS"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x0094 T=UINT32")
+}
+
+record(longin,"$(DEV):P0HS2-STATUS"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x0098 T=UINT32")
+}
+
+record(longin,"$(DEV):P0HS3-STATUS"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x009C T=UINT32")
+}
+
+record(longin,"$(DEV):P0HS4-STATUS"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x00A0 T=UINT32")
+}
+
+record(longin,"$(DEV):P0HS6-STATUS"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x0264 T=UINT32")
+}
+
+record(longin,"$(DEV):P0HS7-STATUS"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x0174 T=UINT32")
+}
+
+#--
+record(stringin,"$(DEV):P0HS1-SN"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x00A4 L=7")
+}
+
+record(stringin,"$(DEV):P0HS2-SN"){
+   field (DTYP, "S7gpac")
+   field (INP,  "@$(SRV)/0x00AC L=7") 
+   field (SCAN, "10 second")
+}
+
+record(stringin,"$(DEV):P0HS3-SN"){
+   field (DTYP, "S7gpac")
+   field (INP,  "@$(SRV)/0x00B4 L=7")
+   field (SCAN, "10 second")
+}
+
+record(stringin,"$(DEV):P0HS4-SN"){
+   field (DTYP, "S7gpac")
+   field (INP,  "@$(SRV)/0x00BC L=7")
+   field (SCAN, "10 second")
+}
+ 
+record(stringin,"$(DEV):P0HS6-SN"){
+   field (DTYP, "S7gpac")
+   field (INP,  "@$(SRV)/0x0268 L=7")
+   field (SCAN, "10 second")
+}
+
+record(stringin,"$(DEV):P0HS7-SN"){
+   field (DTYP, "S7gpac")
+   field (INP,  "@$(SRV)/0x0178 L=7")
+   field (SCAN, "10 second")
+}
+
+#--
+record(ai,"$(DEV):P0HS1-TEMP"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x01BC T=UINT16")
+  field (PREC, "2")
+  field (LINR, "SLOPE")   
+  field (ESLO, "0.0625")
+}
+
+record(ai,"$(DEV):P0HS2-TEMP"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x01C0 T=UINT16")
+  field (PREC, "2")
+  field (LINR, "SLOPE")   
+  field (ESLO, "0.0625")
+}
+
+record(ai,"$(DEV):P0HS3-TEMP"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x01C4 T=UINT16")
+  field (PREC, "2")
+  field (LINR, "SLOPE")   
+  field (ESLO, "0.0625")
+}
+
+record(ai,"$(DEV):P0HS4-TEMP"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x01C8 T=UINT16")
+  field (PREC, "2")
+  field (LINR, "SLOPE")   
+  field (ESLO, "0.0625")
+}
+
+record(ai,"$(DEV):P0HS6-TEMP"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x0270 T=UINT16")
+  field (PREC, "2")
+  field (LINR, "SLOPE")   
+  field (ESLO, "0.0625")
+}
+
+record(ai,"$(DEV):P0HS7-TEMP"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x01CC T=UINT16")
+  field (PREC, "2")
+  field (LINR, "SLOPE")   
+  field (ESLO, "0.0625")
+}
+
+#-- HS ON
+
+record(longout, "$(DEV):P0HS1-ON") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0000 T=UINT32") 
+}
+
+#--
+record(longout, "$(DEV):P0HS2-ON") {
+   field (DTYP, "S7gpac")
+   field (OUT,  "@$(SRV)/0x0004 T=UINT32")
+}
+
+record(longout, "$(DEV):P0HS3-ON") {
+  field (DTYP, "S7gpac")
+  field (OUT,  "@$(SRV)/0x0008 T=UINT32")
+#  field (PINI, "YES")
+}
+
+record(longout, "$(DEV):P0HS4-ON") {
+  field (DTYP, "S7gpac")
+  field (OUT,  "@$(SRV)/0x000C T=UINT32")
+}
+
+record(longout, "$(DEV):P0HS6-ON") {
+   field (DTYP, "S7gpac")
+   field (OUT,  "@$(SRV)/0x0014 T=UINT32")
+}
+
+record(longout, "$(DEV):P0HS7-ON") {
+   field (DTYP, "S7gpac")
+   field (OUT,  "@$(SRV)/0x0018 T=UINT32")
+}
+
+#-- HS OFF
+record(longout, "$(DEV):P0HS1-OFF") {
+  field (DTYP, "S7gpac")
+  field (OUT,  "@$(SRV)/0x001C T=UINT32")
+}
+
+record(longout, "$(DEV):P0HS2-OFF") {
+   field (DTYP, "S7gpac")
+   field (OUT,  "@$(SRV)/0x0020 T=UINT32")
+}
+
+record(longout, "$(DEV):P0HS3-OFF") {
+   field (DTYP, "S7gpac")
+   field (OUT,  "@$(SRV)/0x0024 T=UINT32")
+}
+
+record(longout, "$(DEV):P0HS4-OFF") {
+   field (DTYP, "S7gpac")
+   field (OUT,  "@$(SRV)/0x0028 T=UINT32")
+}
+
+record(longout, "$(DEV):P0HS6-OFF") {
+   field (DTYP, "S7gpac")
+   field (OUT,  "@$(SRV)/0x0030 T=UINT32")
+}
+
+record(longout, "$(DEV):P0HS7-OFF") {
+   field (DTYP, "S7gpac")
+   field (OUT,  "@$(SRV)/0x0034 T=UINT32")
+}
+
+#------------------------------------------------------------------------------
+# MBU COM 
+#------------------------------------------------------------------------------
+
+record(longin,"$(DEV):COM-SFP-STATUS"){
+   field (SCAN, "I/O Intr")
+   field (DTYP, "S7gpac")
+   field (INP,  "@$(SRV)/0x01DC T=UINT32") 
+}
+
+record(longin,"$(DEV):COM-RJ45-STATUS"){
+   field (SCAN, "I/O Intr")
+   field (DTYP, "S7gpac")
+   field (INP,  "@$(SRV)/0x01E0 T=UINT32") 
+}
+
+record(longin,"$(DEV):XFELTIM-LOSS-CNT"){
+   field (SCAN, "I/O Intr")
+   field (DTYP, "S7gpac")
+   field (INP,  "@$(SRV)/0x0214 T=UINT32") 
+}
+
+#------------------------------------------------------------------------------
+# XFEL TIMING 
+#------------------------------------------------------------------------------
+
+record(longin,"$(DEV):XFELTIM-STATUS"){
+   field (SCAN, "I/O Intr")
+   field (DTYP, "S7gpac")
+   field (INP,  "@$(SRV)/0x01E4 T=UINT32") 
+}
+
+record(longin,"$(DEV):XFELTIM-PULSE"){
+   field (SCAN, "I/O Intr")
+   field (DTYP, "S7gpac")
+   field (INP,  "@$(SRV)/0x01E8 T=UINT32") 
+}
+
+record(longin,"$(DEV):XFELTIM-BEAM-MODE"){
+   field (SCAN, "I/O Intr")
+   field (DTYP, "S7gpac")
+   field (INP,  "@$(SRV)/0x01EC T=UINT32") 
+}
+
+record(longin,"$(DEV):XFELTIM-BEAM-PATTERN"){
+   field (SCAN, "I/O Intr")
+   field (DTYP, "S7gpac")
+   field (INP,  "@$(SRV)/0x01F0 T=UINT32") 
+}
+
+record(longin,"$(DEV):XFELTIM-B1-START"){
+   field (SCAN, "I/O Intr")
+   field (DTYP, "S7gpac")
+   field (INP,  "@$(SRV)/0x01F4 T=UINT32") 
+}
+
+record(longin,"$(DEV):XFELTIM-B1-DURATION"){
+   field (SCAN, "I/O Intr")
+   field (DTYP, "S7gpac")
+   field (INP,  "@$(SRV)/0x01F8 T=UINT32") 
+}
+
+record(longin,"$(DEV):XFELTIM-B1-INCREMENT"){
+   field (SCAN, "I/O Intr")
+   field (DTYP, "S7gpac")
+   field (INP,  "@$(SRV)/0x01FC T=UINT32") 
+}
+
+record(longin,"$(DEV):XFELTIM-B1-LENGTH"){
+   field (SCAN, "I/O Intr")
+   field (DTYP, "S7gpac")
+   field (INP,  "@$(SRV)/0x0200 T=UINT32") 
+}
+
+record(longin,"$(DEV):XFELTIM-B2-START"){
+   field (SCAN, "I/O Intr")
+   field (DTYP, "S7gpac")
+   field (INP,  "@$(SRV)/0x0204 T=UINT32") 
+}
+
+record(longin,"$(DEV):XFELTIM-B2-DURATION"){
+   field (SCAN, "I/O Intr")
+   field (DTYP, "S7gpac")
+   field (INP,  "@$(SRV)/0x0208 T=UINT32") 
+}
+
+record(longin,"$(DEV):XFELTIM-B2-INCREMENT"){
+   field (SCAN, "I/O Intr")
+   field (DTYP, "S7gpac")
+   field (INP,  "@$(SRV)/0x020C T=UINT32") 
+}
+
+record(longin,"$(DEV):XFELTIM-B2-LENGTH"){
+   field (SCAN, "I/O Intr")
+   field (DTYP, "S7gpac")
+   field (INP,  "@$(SRV)/0x0210 T=UINT32") 
+}
+
+#------------------------------------------------------------------------------
+# MMC readout 
+#------------------------------------------------------------------------------
+
+record(stringin,"$(DEV):MMC-FW-VERSION"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x0198 L=4")
+}
+
+record(stringin,"$(DEV):MMC-SW-VERSION"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x019C L=4")
+}
+
+record(stringin,"$(DEV):MMC-SN"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x0188 L=8")
+}
+
+record(stringin,"$(DEV):MMC-POWER-SN"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x0190 L=8")
+}
+
+record(stringin,"$(DEV):MMC-CRATE-ID"){
+  field (SCAN, "I/O Intr")
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x01A0 L=8")
+}
+
+record(longin,"$(DEV):MMC-MAC1"){
+   field (SCAN, "I/O Intr")
+   field (DTYP, "S7gpac")
+   field (INP,  "@$(SRV)/0x0182 T=UINT16") 
+   field (FLNK, "$(DEV):MMC-MAC2")
+}
+
+record(longin,"$(DEV):MMC-MAC2"){
+   field (SCAN, "I/O Intr")
+   field (DTYP, "S7gpac")
+   field (INP,  "@$(SRV)/0x0184 T=UINT32") 
+   field (FLNK, "$(DEV):MMC-MAC")
+}
+
+record(scalcout,"$(DEV):MMC-MAC"){
+   field (INPA, "$(DEV):MMC-MAC1")
+   field (INPB, "$(DEV):MMC-MAC2")
+   field (CALC, "PRINTF('0x%04x',A)+PRINTF('%08x',B)")
+}

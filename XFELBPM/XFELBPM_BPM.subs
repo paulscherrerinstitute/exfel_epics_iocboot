@@ -1,0 +1,90 @@
+
+################################################################################
+## SINGLE INSTANCE BPM SERVERS                                              ####
+################################################################################
+
+#-- Common
+file xfelbpm.template {
+  pattern {DEV     EEPROMDEV }    
+          {BUTBPM  BUTBPM    }    
+          {CAVBPM  DUMMY1    }    
+          {RENBPM  DUMMY2    }    
+}
+
+file S7gpac.template {
+  pattern {DEV          SRV           }    
+          {BUTBPM       BUTBPM        }    
+          {CAVBPM       CAVBPM        }    
+          {RENBPM       RENBPM        }    
+}
+
+#-- Button BPM
+file but_bpm_s7gpac.template {
+  pattern  {DEV             SRV        READ_OFFSET  }
+           {BUTBPM          BUTBPM             280  }
+}
+
+#-- Cavity BPM
+file GPAC_BPM_SMP.template {
+   pattern  {DEV           SRV        READ_OFFSET  }
+            {CAVBPM        CAVBPM             660  }
+}
+
+file GPAC_BPM_PB_ADC16HL.template {
+   pattern  {DEV           SRV        READ_OFFSET  }
+            {CAVBPM        CAVBPM             660  }
+}
+
+file RFFE_Cavity_3GHz3_120700B.template {
+   pattern  {DEV           SRV        READ_OFFSET  GLB}
+            {CAVBPM        CAVBPM             660  MTEST10-ETH0}
+}
+
+file GPAC_BPM_CONSISTENT_SET_VAL.template {
+   pattern {DEV           SRV         READ_OFFSET  }
+           {CAVBPM        CAVBPM              660  }
+}
+
+file GPAC_BPM_Calc_RMS_AVG.template { 
+   pattern {DEV        VAR    EGU PREC MIN MAX RMS-MAX DESC    }
+           {CAVBPM     Q      pC  3    0   500 10      "Charge avg"}
+           {CAVBPM     X      mm  4    -10 10  0.05    "Pos X avg" }
+           {CAVBPM     Y      mm  4    -10 10  0.05    "Pos Y avg" }
+}
+
+#-- Re-entrant BPM
+file EXFEL_ReCAV_BPM_SMP.template {
+  pattern  {DEV              SRV          READ_OFFSET  }
+           {RENBPM        RENBPM                  536  }
+}
+
+file GPAC_BPM_PB_ADC16HL.template {
+  pattern  {DEV              SRV          READ_OFFSET  }
+           {RENBPM        RENBPM                  536  }
+}
+
+file EXFEL_ReCAV_BPM_RFFE.template {
+  pattern  {DEV              SRV          READ_OFFSET  }
+           {RENBPM        RENBPM                  536  }
+}
+
+file GPAC_BPM_Calc_RMS_AVG.template { 
+  pattern {DEV         VAR    EGU PREC MIN MAX RMS-MAX DESC        }
+          {RENBPM      Q      pC  3    0   500 10      "Charge avg"}
+          {RENBPM      X      mm  4    -10 10  0.05    "Pos X avg" }
+          {RENBPM      Y      mm  4    -10 10  0.05    "Pos Y avg" }
+}
+
+################################################################################
+## BUTTON BPM SERVICE SERVER                                                ####
+################################################################################
+
+file S7gpac.template {
+  pattern {DEV          SRV           }    
+          {BUTBPMSERV   BUTBPMSERV    }    
+}
+
+file but_serv_s7gpac.template {
+  pattern {DEV         SRV        READ_OFFSET  }
+          {BUTBPMSERV  BUTBPMSERV         132  }
+}
