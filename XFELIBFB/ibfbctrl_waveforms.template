@@ -20,20 +20,22 @@ record(waveform, "$(DEV):$(PLANE)-FB-ANGLE-ERR") {
   field(FTVL, "FLOAT")
 }
 
-record(waveform, "$(DEV):$(PLANE)-RX-UPDOWN-TIME") {
+record(waveform, "$(DEV):$(PLANE)-RX-DOWN-BPM1") {
   field(SCAN, "I/O Intr")
   field(DTYP, "S7gpac")
   field(INP,  "@$(SRV)/$(READ_OFFSET)+0x54A0")
   field(NELM, "2708")
-  field(FTVL, "LONG")
+  field(PREC, "3")
+  field(FTVL, "FLOAT")
 }
 
-record(waveform, "$(DEV):$(PLANE)-RX-UPDOWN-CTRL") {
+record(waveform, "$(DEV):$(PLANE)-RX-DOWN-BPM2") {
   field(SCAN, "I/O Intr")
   field(DTYP, "S7gpac")
   field(INP,  "@$(SRV)/$(READ_OFFSET)+0x7EF0")
   field(NELM, "2708")
-  field(FTVL, "LONG")
+  field(PREC, "3")
+  field(FTVL, "FLOAT")
 }
 
 record(waveform, "$(DEV):$(PLANE)-RX-UPDOWN-POS") {

@@ -1,0 +1,101 @@
+# load General Purpose Memory Mapped driver 
+
+epicsEnvSet "EPICS_CA_MAX_ARRAY_BYTES", "131072"
+
+require "SynApps"
+require "s7gpac", "koprek_w"
+  
+# epicsEnvSet s7gpacDebug 6
+
+#  s7plcConfigure   ( PLCname,       IPaddr,     port, inSize,  outSize, bigEndian, recvTimeout, sendIntervall) 
+#___________________________________________________________________________________________                     
+# S7gpac Driver Test Server                                                                                                  
+#___________________________________________________________________________________________                     
+#  s7gpacConfigure  ("GPACTEST",     "xfelbutren", 51233,     12,       12,         1,       10000,          2000)    
+#___________________________________________________________________________________________                     
+# Button BPM Server                                                                                                  
+#___________________________________________________________________________________________                     
+#   s7gpacConfigure  ("XFELBUTREN",      "xfelbutren",    51234,    628,       72,         1,       10000,           200)    
+#   s7gpacConfigure  ("XFELBUTREN-BUT1", "xfelbutren",    51235,  45828,      260,         1,       10000,           200)    
+#   s7gpacConfigure  ("XFELBUTREN-BUT2", "xfelbutren",    51236,  45828,      260,         1,       10000,           200)
+#   s7gpacConfigure  ("XFELBUTREN-REN4", "xfelbutren",    51237,   1904,      536,         1,       10000,           200)    
+#  __                                               
+#   s7gpacConfigure  ("IPC1359",      "ipc1359",    51234,    628,       72,         1,       10000,           200)    
+#   s7gpacConfigure  ("IPC1359-BUT1", "ipc1359",    51235,  45828,      260,         1,       10000,           200)    
+#   s7gpacConfigure  ("IPC1359-BUT2", "ipc1359",    51236,  45828,      260,         1,       10000,           200)
+#   s7gpacConfigure  ("IPC1359-BUT3", "ipc1359",    51237,  45828,      260,         1,       10000,           200)    
+#   s7gpacConfigure  ("IPC1359-BUT4", "ipc1359",    51238,  45828,      260,         1,       10000,           200)    
+#  __                                              
+#   s7gpacConfigure  ("XFELBUT1",      "xfelbut1",   51234,    628,       72,         1,       10000,           200)    
+#   s7gpacConfigure  ("XFELBUT1-BUT1", "xfelbut1",   51235,  45828,      260,         1,       10000,           200)    
+#   s7gpacConfigure  ("XFELBUT1-BUT2", "xfelbut1",   51236,  45828,      260,         1,       10000,           200)
+#  __   
+   s7gpacConfigure  ("IBFBCTRL",     "ibfbctrl",   51234,    628,       72,         1,       10000,           200)    
+   s7gpacConfigure  ("IBFBCCOM",     "ibfbctrl",   51235,    108,        4,         1,       10000,           200)    
+   s7gpacConfigure  ("IBFBCTRL1",    "ibfbctrl",   51236,    584,      344,         1,       10000,           200)    
+   s7gpacConfigure  ("IBFBCWAV1",    "ibfbctrl",   51237,  54164,        4,         1,       10000,           200)    
+   s7gpacConfigure  ("IBFBCTAB1",    "ibfbctrl",   51238,  43712,    22048,         1,       10000,           200)    
+   s7gpacConfigure  ("IBFBCTRL2",    "ibfbctrl",   51246,    584,      344,         1,       10000,           200)    
+   s7gpacConfigure  ("IBFBCWAV2",    "ibfbctrl",   51247,  54164,        4,         1,       10000,           200)    
+   s7gpacConfigure  ("IBFBCTAB2",    "ibfbctrl",   51248,  43712,    22048,         1,       10000,           200)    
+#  __   
+   s7gpacConfigure  ("IBFBSW",       "ibfbsw",     51234,    628,       72,         1,       10000,           200)    
+   s7gpacConfigure  ("IBFBSCOM",     "ibfbsw",     51235,    208,       72,         1,       10000,           200)    
+   s7gpacConfigure  ("IBFBSW1",      "ibfbsw",     51236,     60,       20,         1,       10000,           200)    
+   s7gpacConfigure  ("IBFBSW2",      "ibfbsw",     51237,     60,       20,         1,       10000,           200)    
+#  __   
+   s7gpacConfigure  ("IBFBMON",      "ibfbmon",    51234,    628,       72,         1,       10000,           200)    
+   s7gpacConfigure  ("IBFBMCOM",     "ibfbmon",    51235,    144,       44,         1,       10000,           200)    
+   s7gpacConfigure  ("IBFBMON1",     "ibfbmon",    51236,  32816,       24,         1,       10000,           200)    
+   s7gpacConfigure  ("IBFBMON2",     "ibfbmon",    51237,  32816,       24,         1,       10000,           200)    
+#  __   
+   s7gpacConfigure  ("IBFBPLAY",     "ibfbplay",   51234,    628,       72,         1,       10000,           200)    
+   s7gpacConfigure  ("IBFBPCOM",     "ibfbplay",   51235,    144,       44,         1,       10000,           200)    
+   s7gpacConfigure  ("IBFBPLAY1",    "ibfbplay",   51236,  43236,    43224,         1,       10000,           200)    
+   s7gpacConfigure  ("IBFBPLAY2",    "ibfbplay",   51237,  43236,    43224,         1,       10000,           200)    
+
+# Cavity BPM Server for IBFB
+#___________________________________________________________________________________________                     
+#  s7gpacConfigure   ("IPC1492",      "ipc1492",    51234,    628,       72,         1,       10000,          200) 
+#  s7gpacConfigure   ("IPC1492-CAV1", "ipc1492",    51235,  34656,      660,         1,       10000,          200)  
+#  s7gpacConfigure   ("IPC1492-CAV2", "ipc1492",    51237,  34656,      660,         1,       10000,          200)      
+#  s7gpacConfigure   ("IPC1492-IBFB", "ipc1492",    51239,     76,       24,         1,       10000,          200)      
+#  s7gpacConfigure   ("IPC1530",      "ipc1530",    51234,    628,       72,         1,       10000,          200) 
+#  s7gpacConfigure   ("IPC1530-CAV1", "ipc1530",    51235,  34656,      660,         1,       10000,          200)  
+#  s7gpacConfigure   ("IPC1530-CAV2", "ipc1530",    51237,  34656,      660,         1,       10000,          200)      
+#  s7gpacConfigure   ("IPC1530-IBFB", "ipc1530",    51239,     76,       24,         1,       10000,          200)      
+#  s7gpacConfigure   ("IPC1551",      "ipc1551",    51234,    628,       72,         1,       10000,          200) 
+#  s7gpacConfigure   ("IPC1551-CAV1", "ipc1551",    51235,  34656,      660,         1,       10000,          200)  
+#  s7gpacConfigure   ("IPC1551-CAV2", "ipc1551",    51237,  34656,      660,         1,       10000,          200)      
+#  s7gpacConfigure   ("IPC1551-IBFB", "ipc1551",    51239,     76,       24,         1,       10000,          200)      
+#  s7gpacConfigure   ("IPC1539",      "ipc1539",    51234,    628,       72,         1,       10000,          200) 
+#  s7gpacConfigure   ("IPC1539-CAV1", "ipc1539",    51235,  34656,      660,         1,       10000,          200)  
+#  s7gpacConfigure   ("IPC1539-CAV2", "ipc1539",    51237,  34656,      660,         1,       10000,          200)      
+#  s7gpacConfigure   ("IPC1539-IBFB", "ipc1539",    51239,     76,       24,         1,       10000,          200)      
+#  s7gpacConfigure   ("IPC1627",      "ipc1627",    51234,    628,       72,         1,       10000,          200) 
+#  s7gpacConfigure   ("IPC1627-CAV1", "ipc1627",    51235,  34656,      660,         1,       10000,          200)  
+#  s7gpacConfigure   ("IPC1627-CAV2", "ipc1627",    51237,  34656,      660,         1,       10000,          200)      
+#  s7gpacConfigure   ("IPC1627-IBFB", "ipc1627",    51239,     76,       24,         1,       10000,          200)      
+#  s7gpacConfigure   ("IPC1623",      "ipc1623",    51234,    628,       72,         1,       10000,          200) 
+#  s7gpacConfigure   ("IPC1623-CAV1", "ipc1623",    51235,  34656,      660,         1,       10000,          200)  
+#  s7gpacConfigure   ("IPC1623-CAV2", "ipc1623",    51237,  34656,      660,         1,       10000,          200)      
+#  s7gpacConfigure   ("IPC1623-IBFB", "ipc1623",    51239,     76,       24,         1,       10000,          200)      
+#  s7gpacConfigure   ("IPC1488",      "ipc1488",    51234,    628,       72,         1,       10000,          200) 
+#  s7gpacConfigure   ("IPC1488-CAV1", "ipc1488",    51235,  34656,      660,         1,       10000,          200)  
+#  s7gpacConfigure   ("IPC1488-CAV2", "ipc1488",    51237,  34656,      660,         1,       10000,          200)      
+#  s7gpacConfigure   ("IPC1488-IBFB", "ipc1488",    51239,     76,       24,         1,       10000,          200)      
+#  s7gpacConfigure   ("IPC1576",      "ipc1576",    51234,    628,       72,         1,       10000,          200) 
+#  s7gpacConfigure   ("IPC1576-CAV1", "ipc1576",    51235,  34656,      660,         1,       10000,          200)  
+#  s7gpacConfigure   ("IPC1576-CAV2", "ipc1576",    51237,  34656,      660,         1,       10000,          200)      
+#  s7gpacConfigure   ("IPC1576-IBFB", "ipc1576",    51239,     76,       24,         1,       10000,          200)      
+#
+#   
+#___________________________________________________________________________________________                     
+# Button BPM Service Server                                                                                                  
+#___________________________________________________________________________________________                     
+#  s7gpacConfigure  ("XFEL-BUTSERV",   "ipc1358", 51245,   6884,      132,         1,        10000,  				 200)    
+#___________________________________________________________________________________________                     
+#___________________________________________________________________________________________                     
+# Re-entrant BPM Server                                                                                                  
+#___________________________________________________________________________________________                     
+#  s7gpacConfigure  ("RENBPM12",       "ipc1310", 51237,   1904,     536,         1,       10000,           200)    

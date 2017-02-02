@@ -45,25 +45,25 @@ record(longout, "$(DEV):$(SW)-TRG-DEL") {
   field(LOPR, "0")
 }
 
-record(longout, "$(DEV):$(SW)-BUNCH-NUM") {
-  field(DTYP, "S7gpac")
-  field(OUT,  "@$(SRV)/0x000C:0x000C T=UINT16")
-  field(SCAN, "I/O Intr")
-  field(DRVH, "2700")
-  field(DRVL, "1")
-  field(HOPR, "2700")
-  field(LOPR, "1")
-}
-
-record(longout, "$(DEV):$(SW)-BUNCH-SPACE") {
-  field(DTYP, "S7gpac")
-  field(OUT,  "@$(SRV)/0x000E:0x000E T=UINT16")
-  field(SCAN, "I/O Intr")
-  field(DRVH, "100")
-  field(DRVL, "1")
-  field(HOPR, "100")
-  field(LOPR, "1")
-}
+##record(longout, "$(DEV):$(SW)-BUNCH-NUM") {
+##  field(DTYP, "S7gpac")
+##  field(OUT,  "@$(SRV)/0x000C:0x000C T=UINT16")
+##  field(SCAN, "I/O Intr")
+##  field(DRVH, "2708")
+##  field(DRVL, "1")
+##  field(HOPR, "2708")
+##  field(LOPR, "1")
+##}
+##
+##record(longout, "$(DEV):$(SW)-BUNCH-SPACE") {
+##  field(DTYP, "S7gpac")
+##  field(OUT,  "@$(SRV)/0x000E:0x000E T=UINT16")
+##  field(SCAN, "I/O Intr")
+##  field(DRVH, "100")
+##  field(DRVL, "1")
+##  field(HOPR, "100")
+##  field(LOPR, "1")
+##}
 
 record(longin, "$(DEV):$(SW)-TRG-EXT-MISSING") {
   field(SCAN, "I/O Intr")

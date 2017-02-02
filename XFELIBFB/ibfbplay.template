@@ -84,25 +84,25 @@ record(longout, "$(DEV):$(PLAYER)-TRG-DEL") {
   field(LOPR, "0")
 }
 
-record(longout, "$(DEV):$(PLAYER)-BUNCH-NUM") {
-  field(DTYP, "S7gpac")
-  field(OUT,  "@$(SRV)/0xA8D0:0xA8D0 T=UINT16")
-  field(SCAN, "I/O Intr")
-  field(DRVH, "2700")
-  field(DRVL, "1")
-  field(HOPR, "2700")
-  field(LOPR, "1")
-}
-
-record(longout, "$(DEV):$(PLAYER)-BUNCH-SPACE") {
-  field(DTYP, "S7gpac")
-  field(OUT,  "@$(SRV)/0xA8D2:0xA8D2 T=UINT16")
-  field(SCAN, "I/O Intr")
-  field(DRVH, "100")
-  field(DRVL, "1")
-  field(HOPR, "100")
-  field(LOPR, "1")
-}
+## record(longout, "$(DEV):$(PLAYER)-BUNCH-NUM") {
+##   field(DTYP, "S7gpac")
+##   field(OUT,  "@$(SRV)/0xA8D0:0xA8D0 T=UINT16")
+##   field(SCAN, "I/O Intr")
+##   field(DRVH, "2700")
+##   field(DRVL, "1")
+##   field(HOPR, "2700")
+##   field(LOPR, "1")
+## }
+## 
+## record(longout, "$(DEV):$(PLAYER)-BUNCH-SPACE") {
+##   field(DTYP, "S7gpac")
+##   field(OUT,  "@$(SRV)/0xA8D2:0xA8D2 T=UINT16")
+##   field(SCAN, "I/O Intr")
+##   field(DRVH, "100")
+##   field(DRVL, "1")
+##   field(HOPR, "100")
+##   field(LOPR, "1")
+## }
 
 record(longin, "$(DEV):$(PLAYER)-TRG-EXT-MISSING") {
   field(SCAN, "I/O Intr")

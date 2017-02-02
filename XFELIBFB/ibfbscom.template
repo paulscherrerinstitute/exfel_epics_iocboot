@@ -627,13 +627,13 @@ record(longin, "$(DEV):FILT-COLL-PASSED") {
 
 record(longin, "$(DEV):ROUTER1-OUT-ENA") {
   field(DTYP, "S7gpac")
-  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0070 T=UINT8")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0070 T=UINT32")
   field(SCAN, "I/O Intr")
 }
 
 record(longin, "$(DEV):ROUTER2-OUT-ENA") {
   field(DTYP, "S7gpac")
-  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0074 T=UINT8")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0074 T=UINT32")
   field(SCAN, "I/O Intr")
 }
 
@@ -641,9 +641,9 @@ record(longout, "$(DEV):FILT-SASE1-BUCKET-START") {
   field(DTYP, "S7gpac")
   field(OUT,  "@$(SRV)/0x0038:0x0038 T=UINT16")
   field(SCAN, "I/O Intr")
-  field(DRVH, "2699")
+  field(DRVH, "2708")
   field(DRVL, "0")
-  field(HOPR, "2699")
+  field(HOPR, "2708")
   field(LOPR, "0")
 }
 
@@ -651,9 +651,9 @@ record(longout, "$(DEV):FILT-SASE1-BUCKET-STOP") {
   field(DTYP, "S7gpac")
   field(OUT,  "@$(SRV)/0x003A:0x003A T=UINT16")
   field(SCAN, "I/O Intr")
-  field(DRVH, "2699")
+  field(DRVH, "2708")
   field(DRVL, "0")
-  field(HOPR, "2699")
+  field(HOPR, "2708")
   field(LOPR, "0")
 }
 
@@ -661,9 +661,9 @@ record(longout, "$(DEV):FILT-SASE2-BUCKET-START") {
   field(DTYP, "S7gpac")
   field(OUT,  "@$(SRV)/0x003C:0x003C T=UINT16")
   field(SCAN, "I/O Intr")
-  field(DRVH, "2699")
+  field(DRVH, "2708")
   field(DRVL, "0")
-  field(HOPR, "2699")
+  field(HOPR, "2708")
   field(LOPR, "0")
 }
 
@@ -671,9 +671,9 @@ record(longout, "$(DEV):FILT-SASE2-BUCKET-STOP") {
   field(DTYP, "S7gpac")
   field(OUT,  "@$(SRV)/0x003E:0x003E T=UINT16")
   field(SCAN, "I/O Intr")
-  field(DRVH, "2699")
+  field(DRVH, "2708")
   field(DRVL, "0")
-  field(HOPR, "2699")
+  field(HOPR, "2708")
   field(LOPR, "0")
 }
 
@@ -681,9 +681,9 @@ record(longout, "$(DEV):FILT-SASE3-BUCKET-START") {
   field(DTYP, "S7gpac")
   field(OUT,  "@$(SRV)/0x0040:0x0040 T=UINT16")
   field(SCAN, "I/O Intr")
-  field(DRVH, "2699")
+  field(DRVH, "2708")
   field(DRVL, "0")
-  field(HOPR, "2699")
+  field(HOPR, "2708")
   field(LOPR, "0")
 }
 
@@ -691,9 +691,9 @@ record(longout, "$(DEV):FILT-SASE3-BUCKET-STOP") {
   field(DTYP, "S7gpac")
   field(OUT,  "@$(SRV)/0x0042:0x0042 T=UINT16")
   field(SCAN, "I/O Intr")
-  field(DRVH, "2699")
+  field(DRVH, "2708")
   field(DRVL, "0")
-  field(HOPR, "2699")
+  field(HOPR, "2708")
   field(LOPR, "0")
 }
 
@@ -701,9 +701,9 @@ record(longout, "$(DEV):FILT-COLLIM-BUCKET-START") {
   field(DTYP, "S7gpac")
   field(OUT,  "@$(SRV)/0x0044:0x0044 T=UINT16")
   field(SCAN, "I/O Intr")
-  field(DRVH, "2699")
+  field(DRVH, "2708")
   field(DRVL, "0")
-  field(HOPR, "2699")
+  field(HOPR, "2708")
   field(LOPR, "0")
 }
 
@@ -711,8 +711,8 @@ record(longout, "$(DEV):FILT-COLLIM-BUCKET-STOP") {
   field(DTYP, "S7gpac")
   field(OUT,  "@$(SRV)/0x0046:0x0046 T=UINT16")
   field(SCAN, "I/O Intr")
-  field(DRVH, "2699")
+  field(DRVH, "2708")
   field(DRVL, "0")
-  field(HOPR, "2699")
+  field(HOPR, "2708")
   field(LOPR, "0")
 }
