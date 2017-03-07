@@ -40,7 +40,7 @@ file S7gpac.template {
 #-- Button BPM
 file but_bpm_s7gpac.template {
   pattern  {DEV             SRV            READ_OFFSET  }
-           {XFELDEVL-BUT1   XFELDEVL-BUT1         280  }
+           {XFELDEVLBUT11   XFELDEVLBUT11         280  }
 }
 
 #-- Cavity BPM
