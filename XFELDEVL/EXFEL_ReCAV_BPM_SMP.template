@@ -1,0 +1,1542 @@
+# ADDRESSES OF FPGA CHIPS RELATIVE TO GPAC BASE ADDRESS
+# SYS  FPGA           0x00000000
+# CFG  FPGA           0x00001000
+# BP   FPGA           0x00100000
+# BPM1 FPGA           0x00800000
+#   FL_ADDR           0x00010000
+#   SYS_INIT          0x00038000
+#   I2C_ADDR          0x00040000
+#   SMP_ADDR_REG      0x00060000
+#   SMP_ADDR_MEM      0x00100000
+# BPM2 FPGA           0x01000000
+#   FL_ADDR           0x00010000
+#   SYS_INIT          0x00038000
+#   I2C_ADDR          0x00040000
+#   SMP_ADDR_REG      0x00060000
+#   SMP_ADDR_MEM      0x00100000
+#
+#------------------------------------------------------------------------------
+
+#------------------------------------------------------------------------------
+# Sample interface FSM
+#------------------------------------------------------------------------------
+record(mbbo, "$(DEV):SMP-ENA") {
+   field(DESC, "Sample enable")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0000:0x0000 T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(NOBT, "1")
+   field(SHFT, "0")
+   field(VAL,  "1")
+   field(ZRVL, "0" )
+   field(ONVL, "1" )
+   field(ZRST, "Disable" )
+   field(ONST, "Enable" )
+   field(PINI, "YES")
+}
+
+record(mbbo, "$(DEV):SMP-MODE") {
+   field(DESC, "Sample mode")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0004:0x0004 T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(NOBT, "1")
+   field(SHFT, "0")
+   field(VAL,  "0")
+   field(ZRVL, "0" )
+   field(ONVL, "1" )
+   field(ZRST, "External" )
+   field(ONST, "Signal" )
+}
+
+record(longout, "$(DEV):SMP-TRIG-VAL") {
+   field(DESC, "Trigger value")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0008:0x0008 T=UINT32")
+  field(SCAN, "I/O Intr")
+}
+
+record(ao, "$(DEV):SMP-B0-0") {
+   field(DESC, "Bunch timing B0.0")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x000C:0x000C T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(LOPR, "1")
+   field(HOPR, "4095")
+   field(EGU,  "bunches")
+}
+
+record(ao, "$(DEV):SMP-B1-0") {
+   field(DESC, "Bunch timing B1.0")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0010:0x0010 T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(LOPR, "0")
+   field(HOPR, "8000000")
+   field(EGU,  "clk cycles")
+}
+
+record(ao, "$(DEV):SMP-B2-0") {
+   field(DESC, "Bunch timing B2.0")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0014:0x0014 T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(LOPR, "1")
+   field(HOPR, "4095")
+   field(EGU,  "clk cycles")
+}
+
+record(ao, "$(DEV):SMP-B3-0") {
+   field(DESC, "Bunch timing B3.0")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0018:0x0018 T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(LOPR, "0")
+   field(HOPR, "134217727")
+   field(EGU,  "clk cycles")
+}
+
+record(ao, "$(DEV):SMP-S1-0") {
+   field(DESC, "Sampling timing S1.0")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x001C:0x001C T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(LOPR, "0")
+   field(HOPR, "255")
+   field(EGU,  "clk cycles")
+}
+
+record(ao, "$(DEV):SMP-S1-1") {
+   field(DESC, "Sampling timing S1.1")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0020:0x0020 T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(LOPR, "0")
+   field(HOPR, "255")
+   field(EGU,  "clk cycles")
+}
+
+record(ao, "$(DEV):SMP-S1-2") {
+   field(DESC, "Sampling timing S1.2")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0024:0x0024 T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(LOPR, "0")
+   field(HOPR, "255")
+   field(EGU,  "clk cycles")
+}
+
+record(mbbi, "$(DEV):SMP-DONE") {
+   field(DESC, "ADC sampling done")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x030B T=UINT8")
+  field(SCAN, "I/O Intr")
+   field(NOBT, "1")
+   field(SHFT, "0")
+   field(ZRVL, "0" )
+   field(ONVL, "1" )
+   field(ZRST, "Idle")
+   field(ONST, "Done")
+}
+
+record(longin, "$(DEV):TRIG-CNT-FW") {
+  field(DESC, "Trigger occurance cnt")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0300 T=UINT32")
+  field(SCAN, "I/O Intr")
+  field(EGU,  "counts")
+  field(FLNK, "$(DEV):TRIG-CNT-SW")
+}
+
+record(ai, "$(DEV):TRIG-DEL-CNT") {
+   field(DESC, "Trigger delay cnt")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0304 T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(EGU,  "clk cycles")
+}
+
+#------------------------------------------------------------------------------
+# Sample interface baseline
+#------------------------------------------------------------------------------
+record(mbbo, "$(DEV):BL-ENA") {
+   field(DESC, "Baseline calc enable")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0028:0x0028 T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(NOBT, "1")
+   field(SHFT, "0")
+   field(VAL,  "0")
+   field(ZRVL, "0" )
+   field(ONVL, "1" )
+   field(ZRST, "Disable" )
+   field(ONST, "Enable" )
+}
+
+record(ao, "$(DEV):BL-SMP-EXP") {
+   field(DESC, "Baseline 2^exponent")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x002C:0x002C T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(LOPR, "0")
+   field(HOPR, "4")
+   field(VAL,  "0")
+}
+
+record(ao, "$(DEV):BL-DEL") {
+   field(DESC, "Baseline delay")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0030:0x0030 T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(LOPR, "0")
+   field(HOPR, "1024")
+   field(VAL,  "0")
+   field(EGU,  "clk cycles")
+}
+
+record(ai, "$(DEV):ADC0-BL") {
+   field(DESC, "ADC0 baseline data")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x030E T=INT16")
+  field(SCAN, "I/O Intr")
+   field(PREC, "0")
+   field(LINR, "SLOPE")
+   field(ESLO, "1")
+   field(EOFF, "0")
+}
+
+record(ai, "$(DEV):ADC1-BL") {
+   field(DESC, "ADC1 baseline data")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0312 T=INT16")
+  field(SCAN, "I/O Intr")
+   field(PREC, "0")
+   field(LINR, "SLOPE")
+   field(ESLO, "1")
+   field(EOFF, "0")
+}
+
+record(ai, "$(DEV):ADC2-BL") {
+   field(DESC, "ADC2 baseline data")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0316 T=INT16")
+  field(SCAN, "I/O Intr")
+   field(PREC, "0")
+   field(LINR, "SLOPE")
+   field(ESLO, "1")
+   field(EOFF, "0")
+}
+
+record(ai, "$(DEV):ADC3-BL") {
+   field(DESC, "ADC3 baseline data")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x031A T=INT16")
+  field(SCAN, "I/O Intr")
+   field(PREC, "0")
+   field(LINR, "SLOPE")
+   field(ESLO, "1")
+   field(EOFF, "0")
+}
+
+record(ai, "$(DEV):ADC4-BL") {
+   field(DESC, "ADC4 baseline data")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x031E T=INT16")
+  field(SCAN, "I/O Intr")
+   field(PREC, "0")
+   field(LINR, "SLOPE")
+   field(ESLO, "1")
+   field(EOFF, "0")
+}
+
+record(ai, "$(DEV):ADC5-BL") {
+   field(DESC, "ADC5 baseline data")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0322 T=INT16")
+  field(SCAN, "I/O Intr")
+   field(PREC, "0")
+   field(LINR, "SLOPE")
+   field(ESLO, "1")
+   field(EOFF, "0")
+}
+
+#------------------------------------------------------------------------------
+# Sample interface adjustment
+#------------------------------------------------------------------------------
+record(bo, "$(DEV):ADC-SYNC") {
+   field(DESC, "ADC sync")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0034:0x0034 T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(HIGH, "1.0")
+   field(VAL,  "1")
+   field(ZNAM, "Sample" )
+   field(ONAM, "Synchronize" )
+}
+
+record(mbbi, "$(DEV):DCM-LOCK") {
+   field(DESC, "DCM lock status")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0327 T=UINT8")
+  field(SCAN, "I/O Intr")
+   field(NOBT, "1")
+   field(SHFT, "0")
+   field(ZRVL, "0" )
+   field(ONVL, "1" )
+   field(ZRST, "DCM locked" )
+   field(ONST, "DCM unlocked" )
+}
+
+record(mbbi, "$(DEV):ADC0-SYNC-DONE") {
+   field(DESC, "ADC0 sync done")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x032B T=UINT8")
+  field(SCAN, "I/O Intr")
+   field(NOBT, "1")
+   field(SHFT, "0")
+   field(ZRVL, "0" )
+   field(ONVL, "1" )
+   field(ZRST, "Busy" )
+   field(ONST, "Done" )
+}
+
+record(mbbiDirect, "$(DEV):ADC0-SYNC-IDELAY-CNT") {
+   field(DESC, "ADC0 data sync count")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0329 T=UINT8")
+  field(SCAN, "I/O Intr")
+   field(NOBT, "6")
+   field(SHFT, "0")
+}
+
+record(mbbi, "$(DEV):ADC1-SYNC-DONE") {
+   field(DESC, "ADC1 sync done")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x032F T=UINT8")
+  field(SCAN, "I/O Intr")
+   field(NOBT, "1")
+   field(SHFT, "0")
+   field(ZRVL, "0" )
+   field(ONVL, "1" )
+   field(ZRST, "Busy" )
+   field(ONST, "Done" )
+}
+
+record(mbbiDirect, "$(DEV):ADC1-SYNC-IDELAY-CNT") {
+   field(DESC, "ADC1 data sync count")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x032D T=UINT8")
+  field(SCAN, "I/O Intr")
+   field(NOBT, "6")
+   field(SHFT, "0")
+}
+
+record(mbbi, "$(DEV):ADC2-SYNC-DONE") {
+   field(DESC, "ADC2 sync done")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0333 T=UINT8")
+  field(SCAN, "I/O Intr")
+   field(NOBT, "1")
+   field(SHFT, "0")
+   field(ZRVL, "0" )
+   field(ONVL, "1" )
+   field(ZRST, "Busy" )
+   field(ONST, "Done" )
+}
+
+record(mbbiDirect, "$(DEV):ADC2-SYNC-IDELAY-CNT") {
+   field(DESC, "ADC2 data sync count")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0331 T=UINT8")
+  field(SCAN, "I/O Intr")
+   field(NOBT, "6")
+   field(SHFT, "0")
+}
+
+record(mbbi, "$(DEV):ADC3-SYNC-DONE") {
+   field(DESC, "ADC3 sync done")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0337 T=UINT8")
+  field(SCAN, "I/O Intr")
+   field(NOBT, "1")
+   field(SHFT, "0")
+   field(ZRVL, "0" )
+   field(ONVL, "1" )
+   field(ZRST, "Busy" )
+   field(ONST, "Done" )
+}
+
+record(mbbiDirect, "$(DEV):ADC3-SYNC-IDELAY-CNT") {
+   field(DESC, "ADC3 data sync count")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0335 T=UINT8")
+  field(SCAN, "I/O Intr")
+   field(NOBT, "6")
+   field(SHFT, "0")
+}
+
+record(mbbi, "$(DEV):ADC4-SYNC-DONE") {
+   field(DESC, "ADC4 sync done")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x033B T=UINT8")
+  field(SCAN, "I/O Intr")
+   field(NOBT, "1")
+   field(SHFT, "0")
+   field(ZRVL, "0" )
+   field(ONVL, "1" )
+   field(ZRST, "Busy" )
+   field(ONST, "Done" )
+}
+
+record(mbbiDirect, "$(DEV):ADC4-SYNC-IDELAY-CNT") {
+   field(DESC, "ADC4 data sync count")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0339 T=UINT8")
+  field(SCAN, "I/O Intr")
+   field(NOBT, "6")
+   field(SHFT, "0")
+}
+
+record(mbbi, "$(DEV):ADC5-SYNC-DONE") {
+   field(DESC, "ADC5 sync done")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x033F T=UINT8")
+  field(SCAN, "I/O Intr")
+   field(NOBT, "1")
+   field(SHFT, "0")
+   field(ZRVL, "0" )
+   field(ONVL, "1" )
+   field(ZRST, "Busy" )
+   field(ONST, "Done" )
+}
+
+record(mbbiDirect, "$(DEV):ADC5-SYNC-IDELAY-CNT") {
+   field(DESC, "ADC5 data sync count")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x033D T=UINT8")
+  field(SCAN, "I/O Intr")
+   field(NOBT, "6")
+   field(SHFT, "0")
+}
+
+#------------------------------------------------------------------------------
+# RFFE imbalance coefficients interface
+#------------------------------------------------------------------------------
+record(bo, "$(DEV):IB-ENA") {
+   field(DESC, "I/Q imbalance correction")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0038:0x0038 T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(ZNAM, "Off" )
+   field(ONAM, "On" )
+}
+
+record(ao, "$(DEV):IB-R-INDEX") {
+   field(DESC, "I/Q imbalance R index")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x003C:0x003C T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(PREC, "0")
+   field(VAL,  "0.0")
+   field(DRVL, "0.0")
+   field(DRVH, "359.0")
+   field(LOPR, "0.0")
+   field(HOPR, "359.0")
+}
+
+record(ao, "$(DEV):IB-R-PHASE") {
+   field(DESC, "I/Q imbalance R phase")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0040:0x0040 T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(PREC, "2")
+   field(ASLO, "0.015625")
+   field(EGU,  "deg")
+   field(VAL,  "0")
+   field(DRVL, "-180")
+   field(DRVH, "180")
+   field(LOPR, "-180")
+   field(HOPR, "180")
+}
+
+record(ao, "$(DEV):IB-R-AMPL") {
+   field(DESC, "I/Q imbalance R amplitude")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0044:0x0044 T=FLOAT")
+  field(SCAN, "I/O Intr")
+   field(PREC, "6")
+   field(VAL,  "1.000000")
+   field(DRVL, "0.000000")
+   field(DRVH, "2.000000")
+   field(LOPR, "0.000000")
+   field(HOPR, "2.000000")
+}
+
+record(ao, "$(DEV):IB-X-INDEX") {
+   field(DESC, "I/Q imbalance X index")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0048:0x0048 T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(PREC, "0")
+   field(VAL,  "0.0")
+   field(DRVL, "0.0")
+   field(DRVH, "359.0")
+   field(LOPR, "0.0")
+   field(HOPR, "359.0")
+}
+
+record(ao, "$(DEV):IB-X-PHASE") {
+   field(DESC, "I/Q imbalance X phase")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x004C:0x004C T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(PREC, "2")
+   field(ASLO, "0.015625")
+   field(EGU,  "deg")
+   field(VAL,  "0")
+   field(DRVL, "-180")
+   field(DRVH, "180")
+   field(LOPR, "-180")
+   field(HOPR, "180")
+}
+
+record(ao, "$(DEV):IB-X-AMPL") {
+   field(DESC, "I/Q imbalance X amplitude")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0050:0x0050 T=FLOAT")
+  field(SCAN, "I/O Intr")
+   field(PREC, "6")
+   field(VAL,  "1.000000")
+   field(DRVL, "0.000000")
+   field(DRVH, "2.000000")
+   field(LOPR, "0.000000")
+   field(HOPR, "2.000000")
+}
+
+record(ao, "$(DEV):IB-Y-INDEX") {
+   field(DESC, "I/Q imbalance Y index")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0054:0x0054 T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(PREC, "0")
+   field(VAL,  "0.0")
+   field(DRVL, "0.0")
+   field(DRVH, "359.0")
+   field(LOPR, "0.0")
+   field(HOPR, "359.0")
+}
+
+record(ao, "$(DEV):IB-Y-PHASE") {
+   field(DESC, "I/Q imbalance Y phase")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0058:0x0058 T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(PREC, "2")
+   field(ASLO, "0.015625")
+   field(EGU,  "deg")
+   field(VAL,  "0")
+   field(DRVL, "-180")
+   field(DRVH, "180")
+   field(LOPR, "-180")
+   field(HOPR, "180")
+}
+
+record(ao, "$(DEV):IB-Y-AMPL") {
+   field(DESC, "I/Q imbalance Y amplitude")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x005C:0x005C T=FLOAT")
+  field(SCAN, "I/O Intr")
+   field(PREC, "6")
+   field(VAL,  "1.000000")
+   field(DRVL, "0.000000")
+   field(DRVH, "2.000000")
+   field(LOPR, "0.000000")
+   field(HOPR, "2.000000")
+}
+
+#------------------------------------------------------------------------------
+# RFFE attenuator calibration interface
+#------------------------------------------------------------------------------
+record(bo, "$(DEV):AC-ENA") {
+   field(DESC, "Attenuator calibration")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0060:0x0060 T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(ZNAM, "Off" )
+   field(ONAM, "On" )
+}
+
+record(ao, "$(DEV):AC-R-PHASE") {
+   field(DESC, "Attenuator cal R phase")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0064:0x0064 T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(PREC, "2")
+   field(ASLO, "0.015625")
+   field(EGU,  "deg")
+   field(VAL,  "0")
+   field(DRVL, "-360")
+   field(DRVH, "360")
+   field(LOPR, "-360")
+   field(HOPR, "360")
+}
+
+record(ao, "$(DEV):AC-R-AMPL") {
+   field(DESC, "Attenuator cal R amplitude")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0068:0x0068 T=FLOAT")
+  field(SCAN, "I/O Intr")
+   field(PREC, "6")
+   field(VAL,  "0.000000")
+   field(DRVL, "0.000000")
+   field(DRVH, "64.000000")
+   field(LOPR, "0.000000")
+   field(HOPR, "64.000000")
+}
+
+record(ao, "$(DEV):AC-X-PHASE") {
+   field(DESC, "Attenuator cal X phase")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x006C:0x006C T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(PREC, "2")
+   field(ASLO, "0.015625")
+   field(EGU,  "deg")
+   field(VAL,  "0")
+   field(DRVL, "-360")
+   field(DRVH, "360")
+   field(LOPR, "-360")
+   field(HOPR, "360")
+}
+
+record(ao, "$(DEV):AC-X-AMPL") {
+   field(DESC, "Attenuator cal X amplitude")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0070:0x0070 T=FLOAT")
+  field(SCAN, "I/O Intr")
+   field(PREC, "6")
+   field(VAL,  "0.000000")
+   field(DRVL, "0.000000")
+   field(DRVH, "64.000000")
+   field(LOPR, "0.000000")
+   field(HOPR, "64.000000")
+}
+
+record(ao, "$(DEV):AC-Y-PHASE") {
+   field(DESC, "Attenuator cal Y phase")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0074:0x0074 T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(PREC, "2")
+   field(ASLO, "0.015625")
+   field(EGU,  "deg")
+   field(VAL,  "0")
+   field(DRVL, "-360")
+   field(DRVH, "360")
+   field(LOPR, "-360")
+   field(HOPR, "360")
+}
+
+record(ao, "$(DEV):AC-Y-AMPL") {
+   field(DESC, "Attenuator cal Y amplitude")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0078:0x0078 T=FLOAT")
+  field(SCAN, "I/O Intr")
+   field(PREC, "6")
+   field(VAL,  "0.000000")
+   field(DRVL, "0.000000")
+   field(DRVH, "64.000000")
+   field(LOPR, "0.000000")
+   field(HOPR, "64.000000")
+}
+
+#------------------------------------------------------------------------------
+# Beam angle correction interface
+#------------------------------------------------------------------------------
+record(bo, "$(DEV):BA-ENA") {
+   field(DESC, "Beam angle correction")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x007C:0x007C T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(ZNAM, "Off" )
+   field(ONAM, "On" )
+}
+
+record(ao, "$(DEV):BA-X") {
+   field(DESC, "Beam angle X offset")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0082:0x0082 T=INT16")
+  field(SCAN, "I/O Intr")
+   field(PREC, "2")
+   field(ASLO, "0.015625")
+   field(EGU,  "deg")
+   field(VAL,  "0")
+   field(DRVL, "-360")
+   field(DRVH, "360")
+   field(LOPR, "-360")
+   field(HOPR, "360")
+}
+
+record(ao, "$(DEV):BA-Y") {
+   field(DESC, "Beam angle Y offset")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0086:0x0086 T=INT16")
+  field(SCAN, "I/O Intr")
+   field(PREC, "2")
+   field(ASLO, "0.015625")
+   field(EGU,  "deg")
+   field(VAL,  "0")
+   field(DRVL, "-360")
+   field(DRVH, "360")
+   field(LOPR, "-360")
+   field(HOPR, "360")
+}
+
+record(bo, "$(DEV):BA-FB-ENA") {
+   field(DESC, "Beam angle fb")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0088:0x0088 T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(ZNAM, "Off" )
+   field(ONAM, "On" )
+}
+
+record(ao, "$(DEV):BA-FB-THR") {
+   field(DESC, "Beam angle fb threshold")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x008C:0x008C T=FLOAT")
+  field(SCAN, "I/O Intr")
+   field(PREC, "6")
+   field(VAL,  "0")
+   field(DRVL, "-10.000000")
+   field(DRVH, "10.000000")
+   field(LOPR, "-10.000000")
+   field(HOPR, "10.000000")
+}
+
+#------------------------------------------------------------------------------
+# Scaling calculation interface
+#------------------------------------------------------------------------------
+record(ao, "$(DEV):Q-SCALE-EGU") {
+   field(DESC, "Scale charge egu")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0090:0x0090 T=FLOAT")
+  field(SCAN, "I/O Intr")
+   field(PREC, "6")
+   field(VAL,  "0")
+   field(DRVL, "0.000000")
+   field(DRVH, "10.000000")
+   field(LOPR, "0.000000")
+   field(HOPR, "10.000000")
+}
+
+record(ao, "$(DEV):Q-SCALE") {
+   field(DESC, "Scale charge fine")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0094:0x0094 T=FLOAT")
+  field(SCAN, "I/O Intr")
+   field(PREC, "6")
+   field(VAL,  "0")
+   field(DRVL, "0.000000")
+   field(DRVH, "10.000000")
+   field(LOPR, "0.000000")
+   field(HOPR, "10.000000")
+}
+
+record(ao, "$(DEV):Q-SCALE-RAW") {
+   field(DESC, "Scale charge fpga")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0098:0x0098 T=FLOAT")
+  field(SCAN, "I/O Intr")
+   field(PREC, "6")
+   field(VAL,  "0")
+   field(DRVL, "0.000000")
+   field(DRVH, "100.000000")
+   field(LOPR, "0.000000")
+   field(HOPR, "100.000000")
+}
+
+record(ao, "$(DEV):X-SCALE-EGU") {
+   field(DESC, "Scale pos X egu")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x009C:0x009C T=FLOAT")
+  field(SCAN, "I/O Intr")
+   field(PREC, "6")
+   field(VAL,  "0")
+   field(DRVL, "-15.000000")
+   field(DRVH, "15.000000")
+   field(LOPR, "-15.000000")
+   field(HOPR, "15.000000")
+}
+
+record(ao, "$(DEV):X-SCALE") {
+   field(DESC, "Scale pos X fine")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x00A0:0x00A0 T=FLOAT")
+  field(SCAN, "I/O Intr")
+   field(PREC, "6")
+   field(VAL,  "0")
+   field(DRVL, "-15.000000")
+   field(DRVH, "15.000000")
+   field(LOPR, "-15.000000")
+   field(HOPR, "15.000000")
+}
+
+record(ao, "$(DEV):X-SCALE-RAW") {
+   field(DESC, "Scale pos X fpga")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x00A4:0x00A4 T=FLOAT")
+  field(SCAN, "I/O Intr")
+   field(PREC, "6")
+   field(VAL,  "0")
+   field(DRVL, "-25.000000")
+   field(DRVH, "25.000000")
+   field(LOPR, "-25.000000")
+   field(HOPR, "25.000000")
+}
+
+record(ao, "$(DEV):Y-SCALE-EGU") {
+   field(DESC, "Scale pos Y egu")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x00A8:0x00A8 T=FLOAT")
+  field(SCAN, "I/O Intr")
+   field(PREC, "6")
+   field(VAL,  "0")
+   field(DRVL, "-15.000000")
+   field(DRVH, "15.000000")
+   field(LOPR, "-15.000000")
+   field(HOPR, "15.000000")
+}
+
+record(ao, "$(DEV):Y-SCALE") {
+   field(DESC, "Scale pos Y fine")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x00AC:0x00AC T=FLOAT")
+  field(SCAN, "I/O Intr")
+   field(PREC, "6")
+   field(VAL,  "0")
+   field(DRVL, "-15.000000")
+   field(DRVH, "15.000000")
+   field(LOPR, "-15.000000")
+   field(HOPR, "15.000000")
+}
+
+record(ao, "$(DEV):Y-SCALE-RAW") {
+   field(DESC, "Scale pos Y fpga")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x00B0:0x00B0 T=FLOAT")
+  field(SCAN, "I/O Intr")
+   field(PREC, "6")
+   field(VAL,  "0")
+   field(DRVL, "-25.000000")
+   field(DRVH, "25.000000")
+   field(LOPR, "-25.000000")
+   field(HOPR, "25.000000")
+}
+
+#------------------------------------------------------------------------------
+# Pickup rotation coefficients interface
+#------------------------------------------------------------------------------
+record(ao, "$(DEV):ROT11") {
+   field(DESC, "rotation coef a11")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x00B4:0x00B4 T=FLOAT")
+  field(SCAN, "I/O Intr")
+   field(PREC, "4")
+   field(VAL,  "1.000000")
+   field(DRVL, "-1.000000")
+   field(DRVH, "1.000000")
+   field(LOPR, "-1.000000")
+   field(HOPR, "1.000000")
+}
+
+record(ao, "$(DEV):ROT12") {
+   field(DESC, "rotation coef a12")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x00B8:0x00B8 T=FLOAT")
+  field(SCAN, "I/O Intr")
+   field(PREC, "4")
+   field(VAL,  "0.000000")
+   field(DRVL, "-1.000000")
+   field(DRVH, "1.000000")
+   field(LOPR, "-1.000000")
+   field(HOPR, "1.000000")
+}
+
+record(ao, "$(DEV):ROT21") {
+   field(DESC, "rotation coef a21")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x00BC:0x00BC T=FLOAT")
+  field(SCAN, "I/O Intr")
+   field(PREC, "4")
+   field(VAL,  "0.000000")
+   field(DRVL, "-1.000000")
+   field(DRVH, "1.000000")
+   field(LOPR, "-1.000000")
+   field(HOPR, "1.000000")
+}
+
+record(ao, "$(DEV):ROT22") {
+   field(DESC, "rotation coef a22")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x00C0:0x00C0 T=FLOAT")
+  field(SCAN, "I/O Intr")
+   field(PREC, "4")
+   field(VAL,  "1.000000")
+   field(DRVL, "-1.000000")
+   field(DRVH, "1.000000")
+   field(LOPR, "-1.000000")
+   field(HOPR, "1.000000")
+}
+
+#------------------------------------------------------------------------------
+# Values of first bunch interface
+#------------------------------------------------------------------------------
+record(ai, "$(DEV):Q") {
+   field(DESC, "Q")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0340 T=FLOAT")
+  field(SCAN, "I/O Intr")
+   field(PREC, "1")
+   field(LOPR, "0.0")
+   field(HOPR, "1000.0")
+   field(EGU,  "pC")
+}
+
+record(mbbi, "$(DEV):Q-VALID") {
+   field(DESC, "Q valid")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0344 T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(NOBT, "1")
+   field(SHFT, "0")
+   field(ZRVL, "0" )
+   field(ONVL, "1" )
+   field(ZRST, "INVALID" )
+   field(ONST, "VALID" )
+}
+
+record(ai, "$(DEV):X") {
+   field(DESC, "X")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0348 T=FLOAT")
+  field(SCAN, "I/O Intr")
+   field(PREC, "6")
+   field(LOPR, "-20.0")
+   field(HOPR, "20.0")
+   field(EGU,  "mm")
+}
+
+record(mbbi, "$(DEV):X-VALID") {
+   field(DESC, "X valid")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x034C T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(NOBT, "1")
+   field(SHFT, "0")
+   field(ZRVL, "0" )
+   field(ONVL, "1" )
+   field(ZRST, "INVALID" )
+   field(ONST, "VALID" )
+}
+
+record(ai, "$(DEV):Y") {
+   field(DESC, "Y")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0350 T=FLOAT")
+  field(SCAN, "I/O Intr")
+   field(PREC, "6")
+   field(LOPR, "-20.0")
+   field(HOPR, "20.0")
+   field(EGU,  "mm")
+}
+
+record(mbbi, "$(DEV):Y-VALID") {
+   field(DESC, "Y valid")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0354 T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(NOBT, "1")
+   field(SHFT, "0")
+   field(ZRVL, "0" )
+   field(ONVL, "1" )
+   field(ZRST, "INVALID" )
+   field(ONST, "VALID" )
+}
+
+#------------------------------------------------------------------------------
+# Values of bunch  interface
+#------------------------------------------------------------------------------
+record(ai, "$(DEV):Q-TRAIN-AVG") {
+   field(DESC, "Q bunch train average")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0358 T=FLOAT")
+  field(SCAN, "I/O Intr")
+   field(PREC, "1")
+   field(EGU,  "pC")
+}
+
+record(ai, "$(DEV):X-TRAIN-AVG") {
+   field(DESC, "X bunch train average")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x035C T=FLOAT")
+  field(SCAN, "I/O Intr")
+   field(PREC, "6")
+   field(EGU,  "mm")
+}
+
+
+record(ai, "$(DEV):Y-TRAIN-AVG") {
+   field(DESC, "Y bunch train average")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0360 T=FLOAT")
+  field(SCAN, "I/O Intr")
+   field(PREC, "6")
+   field(EGU,  "mm")
+}
+
+#------------------------------------------------------------------------------
+# Charge threshold
+#------------------------------------------------------------------------------
+record(ao, "$(DEV):Q-FB-THR") {
+   field(DESC, "Charge threshold")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x00C4:0x00C4 T=FLOAT")
+  field(SCAN, "I/O Intr")
+   field(PREC, "1")
+   field(EGU,  "pC")
+   field(DRVL, "0.0")
+   field(DRVH, "5000.0")
+   field(LOPR, "0.0")
+   field(HOPR, "5000.0")
+}
+
+
+#------------------------------------------------------------------------------
+# Trigger counter interface
+#------------------------------------------------------------------------------
+
+record(calcout, "$(DEV):TRIG-CNT-SW") {
+  field(DESC, "Trigger cnt SW")
+  field(INPA, "$(DEV):TRIG-CNT-SW.VAL")
+  field(CALC, "A+1")
+  field(OOPT, "Every Time" )
+  field(DOPT, "Use CALC" )
+  field(EGU,  "counts")
+  field(FLNK, "$(DEV):TRIG-CNT-DIFF")
+}
+
+record(ao, "$(DEV):TRIG-CNT-OFFS") {
+   field(DESC, "Trigger cnt offs")
+   field(VAL, "0")
+   field(EGU, "counts")
+}
+
+record(calcout, "$(DEV):TRIG-CNT-DIFF") {
+   field(DESC, "Trigger cnt diff")
+   field(INPA, "$(DEV):TRIG-CNT-FW")
+   field(INPB, "$(DEV):TRIG-CNT-SW")
+   field(INPC, "$(DEV):TRIG-CNT-OFFS")
+   field(CALC, "A-B-C")
+   field(EGU,  "counts")
+}
+
+#------------------------------------------------------------------------------
+# Sample interface FIFO
+#------------------------------------------------------------------------------
+record(waveform, "$(DEV):WAV-X-I") {
+  field(DESC, "ADC0 sampled data")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0000")
+  field(SCAN, "I/O Intr")
+  field(NELM, "32")
+  field(FTVL, "LONG")
+}
+
+record(waveform, "$(DEV):WAV-X-Q") {
+   field(DESC, "ADC1 sampled data")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0080")
+  field(SCAN, "I/O Intr")
+   field(NELM, "32")
+   field(FTVL, "LONG")
+}
+
+record(waveform, "$(DEV):WAV-REF-I") {
+   field(DESC, "ADC2 sampled data")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0100")
+  field(SCAN, "I/O Intr")
+   field(NELM, "32")
+   field(FTVL, "LONG")
+}
+
+record(waveform, "$(DEV):WAV-REF-Q") {
+   field(DESC, "ADC3 sampled data")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0180")
+  field(SCAN, "I/O Intr")
+   field(NELM, "32")
+   field(FTVL, "LONG")
+}
+
+record(waveform, "$(DEV):WAV-Y-I") {
+   field(DESC, "ADC4 sampled data")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0200")
+  field(SCAN, "I/O Intr")
+   field(NELM, "32")
+   field(FTVL, "LONG")
+}
+
+record(waveform, "$(DEV):WAV-Y-Q") {
+   field(DESC, "ADC5 sampled data")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0280")
+  field(SCAN, "I/O Intr")
+   field(NELM, "32")
+   field(FTVL, "LONG")
+}
+
+#------------------------------------------------------------------------------
+# ADC display interface
+#------------------------------------------------------------------------------
+record(waveform, "$(DEV):WAV-X-I-DISP") {
+   field(DESC, "ADC0 sampled data")
+   field(SCAN, "2 second")
+   field(DTYP, "Soft Channel")
+   field(INP,  "$(DEV):WAV-X-I NPP")
+   field(NELM, "32")
+   field(FTVL, "SHORT")
+}
+
+record(waveform, "$(DEV):WAV-X-Q-DISP") {
+   field(DESC, "ADC1 sampled data")
+   field(SCAN, "2 second")
+   field(DTYP, "Soft Channel")
+   field(INP,  "$(DEV):WAV-X-Q NPP")
+   field(NELM, "32")
+   field(FTVL, "SHORT")
+}
+
+record(waveform, "$(DEV):WAV-REF-I-DISP") {
+   field(DESC, "ADC2 sampled data")
+   field(SCAN, "2 second")
+   field(DTYP, "Soft Channel")
+   field(INP,  "$(DEV):WAV-REF-I NPP")
+   field(NELM, "32")
+   field(FTVL, "SHORT")
+}
+
+record(waveform, "$(DEV):WAV-REF-Q-DISP") {
+   field(DESC, "ADC3 sampled data")
+   field(SCAN, "2 second")
+   field(DTYP, "Soft Channel")
+   field(INP,  "$(DEV):WAV-REF-Q NPP")
+   field(NELM, "32")
+   field(FTVL, "SHORT")
+}
+
+record(waveform, "$(DEV):WAV-Y-I-DISP") {
+   field(DESC, "ADC4 sampled data")
+   field(SCAN, "2 second")
+   field(DTYP, "Soft Channel")
+   field(INP,  "$(DEV):WAV-Y-I NPP")
+   field(NELM, "32")
+   field(FTVL, "SHORT")
+}
+
+record(waveform, "$(DEV):WAV-Y-Q-DISP") {
+   field(DESC, "ADC5 sampled data")
+   field(SCAN, "2 second")
+   field(DTYP, "Soft Channel")
+   field(INP,  "$(DEV):WAV-Y-Q NPP")
+   field(NELM, "32")
+   field(FTVL, "SHORT")
+}
+
+
+#------------------------------------------------------------------------------
+# Waveform of calculated bunch charges and positions
+#------------------------------------------------------------------------------
+record(waveform, "$(DEV):WAV-Q") {
+   field(DESC, "Calculated Q")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0364")
+  field(SCAN, "I/O Intr")
+   field(NELM, "32")
+   field(FTVL, "FLOAT")
+   field(PREC, "6")
+}
+
+record(waveform, "$(DEV):WAV-X") {
+   field(DESC, "Calculated X")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x03E4")
+  field(SCAN, "I/O Intr")
+   field(NELM, "32")
+   field(FTVL, "FLOAT")
+   field(PREC, "6")
+}
+
+record(waveform, "$(DEV):WAV-Y") {
+   field(DESC, "Calculated Y")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0464")
+  field(SCAN, "I/O Intr")
+   field(NELM, "32")
+   field(FTVL, "FLOAT")
+   field(PREC, "6")
+}
+
+#------------------------------------------------------------------------------
+# ADC single trigger to normal trigger clock cycles
+#------------------------------------------------------------------------------
+record(ai, "$(DEV):PH-REF-R") {
+   field(DESC, "PH-REF-R")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x04E4 T=INT32")
+  field(SCAN, "I/O Intr")
+   field(PREC, "2")
+   field(ASLO, "0.0000002384185791")
+   field(EGU,  "deg")
+}
+
+record(mbbi, "$(DEV):PH-REF-R-VALID") {
+   field(DESC, "PH-REF-R valid")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x04E8 T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(NOBT, "1")
+   field(SHFT, "0")
+   field(ZRVL, "0" )
+   field(ONVL, "1" )
+   field(ZRST, "INVALID" )
+   field(ONST, "VALID" )
+}
+
+record(ai, "$(DEV):AMP-REF-R") {
+   field(DESC, "AMP-REF-R")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x04EC T=INT32")
+  field(SCAN, "I/O Intr")
+   field(PREC, "0")
+   field(ASLO, "0.60716454")
+}
+
+record(mbbi, "$(DEV):AMP-REF-R-VALID") {
+   field(DESC, "AMP-REF-R valid")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x04F0 T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(NOBT, "1")
+   field(SHFT, "0")
+   field(ZRVL, "0" )
+   field(ONVL, "1" )
+   field(ZRST, "INVALID" )
+   field(ONST, "VALID" )
+}
+
+record(ai, "$(DEV):PH-X-R") {
+   field(DESC, "PH-X-R")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x04F4 T=INT32")
+  field(SCAN, "I/O Intr")
+   field(PREC, "2")
+   field(ASLO, "0.0000002384185791")
+   field(EGU,  "deg")
+}
+
+record(mbbi, "$(DEV):PH-X-R-VALID") {
+   field(DESC, "PH-X-R valid")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x04F8 T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(NOBT, "1")
+   field(SHFT, "0")
+   field(ZRVL, "0" )
+   field(ONVL, "1" )
+   field(ZRST, "INVALID" )
+   field(ONST, "VALID" )
+}
+
+record(ai, "$(DEV):AMP-X-R") {
+   field(DESC, "AMP-X-R")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x04FC T=INT32")
+  field(SCAN, "I/O Intr")
+   field(PREC, "0")
+   field(ASLO, "0.60716454")
+}
+
+record(mbbi, "$(DEV):AMP-X-R-VALID") {
+   field(DESC, "AMP-X-R valid")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0500 T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(NOBT, "1")
+   field(SHFT, "0")
+   field(ZRVL, "0" )
+   field(ONVL, "1" )
+   field(ZRST, "INVALID" )
+   field(ONST, "VALID" )
+}
+
+record(ai, "$(DEV):PH-Y-R") {
+   field(DESC, "PH-Y-R")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0504 T=INT32")
+  field(SCAN, "I/O Intr")
+   field(PREC, "2")
+   field(ASLO, "0.0000002384185791")
+   field(EGU,  "deg")
+}
+
+record(mbbi, "$(DEV):PH-Y-R-VALID") {
+   field(DESC, "PH-Y-R valid")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0508 T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(NOBT, "1")
+   field(SHFT, "0")
+   field(ZRVL, "0" )
+   field(ONVL, "1" )
+   field(ZRST, "INVALID" )
+   field(ONST, "VALID" )
+}
+
+record(ai, "$(DEV):AMP-Y-R") {
+   field(DESC, "AMP-Y-R")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x050C T=INT32")
+  field(SCAN, "I/O Intr")
+   field(PREC, "0")
+   field(ASLO, "0.60716454")
+}
+
+record(mbbi, "$(DEV):AMP-Y-R-VALID") {
+   field(DESC, "AMP-Y-R valid")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0510 T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(NOBT, "1")
+   field(SHFT, "0")
+   field(ZRVL, "0" )
+   field(ONVL, "1" )
+   field(ZRST, "INVALID" )
+   field(ONST, "VALID" )
+}
+
+record(ai, "$(DEV):PH-TOP-R") {
+   field(DESC, "PH-TOP-R")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0514 T=INT32")
+  field(SCAN, "I/O Intr")
+   field(PREC, "2")
+   field(ASLO, "0.0009765625")
+   field(EGU,  "deg")
+}
+
+record(mbbi, "$(DEV):PH-TOP-R-VALID") {
+   field(DESC, "PH-TOP-R valid")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0518 T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(NOBT, "1")
+   field(SHFT, "0")
+   field(ZRVL, "0" )
+   field(ONVL, "1" )
+   field(ZRST, "INVALID" )
+   field(ONST, "VALID" )
+}
+
+record(ai, "$(DEV):AMP-TOP-R") {
+   field(DESC, "AMP-TOP-R")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x051C T=INT32")
+  field(SCAN, "I/O Intr")
+   field(ASLO, "2")
+}
+
+record(mbbi, "$(DEV):AMP-TOP-R-VALID") {
+   field(DESC, "AMP-TOP-R valid")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0520 T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(NOBT, "1")
+   field(SHFT, "0")
+   field(ZRVL, "0" )
+   field(ONVL, "1" )
+   field(ZRST, "INVALID" )
+   field(ONST, "VALID" )
+}
+
+#------------------------------------------------------------------------------
+# DDS phase feedback
+#------------------------------------------------------------------------------
+record(bo, "$(DEV):PHASE-FB-ON") {
+   field(DESC, "Phase feedback on/off")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x00C8:0x00C8 T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(ZNAM, "Off" )
+   field(ONAM, "On" )
+}
+
+record(ao, "$(DEV):PHASE-FB-REF") {
+   field(DESC, "Phase feedback ref")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x00CC:0x00CC T=FLOAT")
+  field(SCAN, "I/O Intr")
+   field(PREC, "3")
+   field(DRVL, "-180.000000")
+   field(DRVH, "180.000000")
+   field(LOPR, "-180.000000")
+   field(HOPR, "180.000000")
+}
+
+record(ao, "$(DEV):PHASE-FB-KP") {
+   field(DESC, "Phase feedback kp")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x00D0:0x00D0 T=FLOAT")
+  field(SCAN, "I/O Intr")
+   field(PREC, "3")
+   field(DRVL, "-10.000000")
+   field(DRVH, "10.000000")
+   field(LOPR, "-10.000000")
+   field(HOPR, "10.000000")
+}
+
+record(ao, "$(DEV):PHASE-FB-KI") {
+   field(DESC, "Phase feedback ki")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x00D4:0x00D4 T=FLOAT")
+  field(SCAN, "I/O Intr")
+   field(PREC, "3")
+   field(VAL,  "0")
+   field(DRVL, "-10.000000")
+   field(DRVH, "10.000000")
+   field(LOPR, "-10.000000")
+   field(HOPR, "10.000000")
+}
+
+record(ai, "$(DEV):PHASE-FB-VAL") {
+   field(DESC, "Phase feedback ref")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0524 T=FLOAT")
+  field(SCAN, "I/O Intr")
+   field(PREC, "3")
+   field(FLNK, "$(DEV):PHASE-FB-CHECK")
+}
+
+record(calcout, "$(DEV):PHASE-FB-CHECK") {
+   field(INPA, "$(DEV):PH-TOP-R")
+   field(CALC, "ABS(A)>10")
+}
+
+#------------------------------------------------------------------------------
+# REF I/Q phase feedback
+#------------------------------------------------------------------------------
+record(bo, "$(DEV):PH-REF-FB-ON") {
+   field(DESC, "I/Q feedback on/off")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x00D8:0x00D8 T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(ZNAM, "Off" )
+   field(ONAM, "On" )
+}
+
+record(ao, "$(DEV):PH-REF-FB-REF") {
+   field(DESC, "I/Q feedback ref")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x00DC:0x00DC T=FLOAT")
+  field(SCAN, "I/O Intr")
+   field(PREC, "3")
+   field(DRVL, "-180.000000")
+   field(DRVH, "180.000000")
+   field(LOPR, "-180.000000")
+   field(HOPR, "180.000000")
+}
+
+record(ao, "$(DEV):PH-REF-FB-KP") {
+   field(DESC, "I/Q feedback kp")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x00E0:0x00E0 T=FLOAT")
+  field(SCAN, "I/O Intr")
+   field(PREC, "3")
+   field(DRVL, "-10.000000")
+   field(DRVH, "10.000000")
+   field(LOPR, "-10.000000")
+   field(HOPR, "10.000000")
+}
+
+record(ao, "$(DEV):PH-REF-FB-KI") {
+   field(DESC, "I/Q feedback ki")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x00E4:0x00E4 T=FLOAT")
+  field(SCAN, "I/O Intr")
+   field(PREC, "3")
+   field(VAL,  "0")
+   field(DRVL, "-10.000000")
+   field(DRVH, "10.000000")
+   field(LOPR, "-10.000000")
+   field(HOPR, "10.000000")
+}
+
+record(ai, "$(DEV):PH-REF-FB-VAL") {
+   field(DESC, "Phase feedback ref")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0528 T=FLOAT")
+  field(SCAN, "I/O Intr")
+   field(PREC, "3")
+}
+
+#------------------------------------------------------------------------------
+# Gain feedback
+#------------------------------------------------------------------------------
+record(bo, "$(DEV):REF-GAIN-FB-ON") {
+   field(DESC, "REF gain fb on/off")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x00E8:0x00E8 T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(ZNAM, "Off" )
+   field(ONAM, "On" )
+}
+
+record(ai, "$(DEV):REF-GAIN-FB-VAL") {
+   field(DESC, "REF gain fb")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x052C T=UINT32")
+  field(SCAN, "I/O Intr")
+}
+
+record(bo, "$(DEV):XY-GAIN-FB-ON") {
+   field(DESC, "X gain fb on/off")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x00EC:0x00EC T=UINT32")
+  field(SCAN, "I/O Intr")
+   field(ZNAM, "Off" )
+   field(ONAM, "On" )
+}
+
+record(ai, "$(DEV):XY-GAIN-FB-VAL") {
+   field(DESC, "X gain fb")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0530 T=UINT32")
+  field(SCAN, "I/O Intr")
+  field(FLNK, "$(DEV):ADC-DATA-CALC")
+}
+
+record(seq, "$(DEV):ADC-DATA-CALC") { 
+   field(DO1,  "1")
+   field(LNK1, "$(DEV):DONE PP")
+   field(LNK2, "$(DEV):#Q-CALC-AVG-RMS PP")
+   field(LNK3, "$(DEV):#X-CALC-AVG-RMS PP")
+   field(LNK4, "$(DEV):#Y-CALC-AVG-RMS PP")
+   field(LNK5, "$(DEV):#AMP-REF-R-CALC-AVG-RMS PP")
+   field(LNK6, "$(DEV):#PH-REF-R-CALC-AVG-RMS PP")
+   field(LNK7, "$(DEV):#AMP-X-R-CALC-AVG-RMS PP")
+   field(LNK8, "$(DEV):#PH-X-R-CALC-AVG-RMS PP")
+   field(LNK9, "$(DEV):#AMP-Y-R-CALC-AVG-RMS PP")
+   field(LNKA, "$(DEV):#PH-Y-R-CALC-AVG-RMS PP")
+}
