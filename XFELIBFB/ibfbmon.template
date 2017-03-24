@@ -165,28 +165,36 @@ record(longin, "$(DEV):$(MON)-P0-GTX0-LOSS-CNT") {
   field(INP,  "@$(SRV)/$(READ_OFFSET)+0x800E T=UINT16")
 }
 
-record(longin, "$(DEV):$(MON)-ADC01-SMP") {
+record(ai, "$(DEV):$(MON)-ADC01-SMP") {
   field(SCAN, "I/O Intr")
   field(DTYP, "S7gpac")
   field(INP,  "@$(SRV)/$(READ_OFFSET)+0x8010 T=INT16")
+  field(ESLO, "16")
+  field (LINR, "SLOPE")   
 }
 
-record(longin, "$(DEV):$(MON)-ADC23-SMP") {
+record(ai, "$(DEV):$(MON)-ADC23-SMP") {
   field(SCAN, "I/O Intr")
   field(DTYP, "S7gpac")
   field(INP,  "@$(SRV)/$(READ_OFFSET)+0x8012 T=INT16")
+  field(ESLO, "16")
+  field (LINR, "SLOPE")   
 }
 
-record(longin, "$(DEV):$(MON)-ADC45-SMP") {
+record(ai, "$(DEV):$(MON)-ADC45-SMP") {
   field(SCAN, "I/O Intr")
   field(DTYP, "S7gpac")
   field(INP,  "@$(SRV)/$(READ_OFFSET)+0x8014 T=INT16")
+  field(ESLO, "16")
+  field (LINR, "SLOPE")   
 }
 
-record(longin, "$(DEV):$(MON)-ADC67-SMP") {
+record(ai, "$(DEV):$(MON)-ADC67-SMP") {
   field(SCAN, "I/O Intr")
   field(DTYP, "S7gpac")
   field(INP,  "@$(SRV)/$(READ_OFFSET)+0x8016 T=INT16")
+  field(ESLO, "16")
+  field (LINR, "SLOPE")   
 }
 
 record(longout, "$(DEV):$(MON)-P0-GTX-BUCKETS") {

@@ -107,6 +107,59 @@ record(longout, "$(DEV):$(PLAYER)-TRG-DEL") {
 record(longin, "$(DEV):$(PLAYER)-TRG-EXT-MISSING") {
   field(SCAN, "I/O Intr")
   field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0027 T=UINT8")
+}
+
+record(longin, "$(DEV):$(PLAYER)-GTX-QSFP02-LOSS") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x000A T=UINT8")
+}
+
+record(longin, "$(DEV):$(PLAYER)-GTX-QSFP13-LOSS") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
   field(INP,  "@$(SRV)/$(READ_OFFSET)+0x000B T=UINT8")
 }
 
+record(longin, "$(DEV):$(PLAYER)-ENA") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x000E T=UINT8")
+}
+
+record(longin, "$(DEV):$(PLAYER)-GTX-P01-LOSS") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x000F T=UINT8")
+}
+
+record(longin, "$(DEV):$(PLAYER)-SFP0-PACKETS") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0010 T=UINT32")
+}
+
+record(longin, "$(DEV):$(PLAYER)-SFP1-PACKETS") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0014 T=UINT32")
+}
+
+record(longin, "$(DEV):$(PLAYER)-SFP2-PACKETS") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0018 T=UINT32")
+}
+
+record(longin, "$(DEV):$(PLAYER)-SFP3-PACKETS") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x001C T=UINT32")
+}
+
+record(longin, "$(DEV):$(PLAYER)-P0-0-PACKETS") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0020 T=UINT32")
+}

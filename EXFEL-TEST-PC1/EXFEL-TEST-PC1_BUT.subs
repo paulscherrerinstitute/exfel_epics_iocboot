@@ -1,0 +1,51 @@
+
+################################################################################
+## GPAC SPECIFIC SERVER - ASYNCHRONOUSE                                     ####
+################################################################################
+
+file S7gpac.template {
+  pattern  {DEV                   SRV           }
+           {IPC1587               IPC1587       }
+           {IPC1587-BUT1          IPC1587-BUT1  }
+           {IPC1587-BUT2          IPC1587-BUT2  }
+           {IPC1587-BUT3          IPC1587-BUT3  }
+           {IPC1587-BUT4          IPC1587-BUT4  }
+}
+
+################################################################################
+## GPAC SERVICE SERVERS                                                     ####
+################################################################################
+
+file gpac2_service.template {
+  pattern  {DEV                   SRV           }
+           {IPC1587               IPC1587       }
+}
+ 
+################################################################################
+## BUTTON BPM OPERATION                                                     ####
+################################################################################
+
+file but_bpm_s7gpac.template {
+   pattern  {DEV              SRV           READ_OFFSET  }
+           {IPC1587-BUT1      IPC1587-BUT1          308  }
+           {IPC1587-BUT2      IPC1587-BUT2          308  }
+           {IPC1587-BUT3      IPC1587-BUT3          308  }
+           {IPC1587-BUT4      IPC1587-BUT4          308  }
+                                            
+           
+}
+
+################################################################################
+## BUTTON BPM SERVICE SERVER                                                ####
+################################################################################
+
+##file S7gpac.template {
+##  pattern {DEV            SRV             }    
+##          {EXFEL-BUTCFG   EXFEL-BUTCFG    }     
+##}
+##
+##file but_serv_s7gpac.template {
+##  pattern {DEV           SRV          READ_OFFSET  }
+##          {EXFEL-BUTCFG  EXFEL-BUTCFG         132  }
+##}
+
