@@ -1,0 +1,389 @@
+#------------------------------------------------------------------------------
+#-----------                 GPAC SMP channels                 ----------------
+
+#------------------------------------------------------------------------------
+# Sample interface FSM
+#------------------------------------------------------------------------------
+record(ai, "$(DEV):SMP-B0-0-RD") {
+   field(DESC, "Bunch timing B0.0")
+   field(DTYP, "S7gpac")
+   field(INP,  "@$(SRV)/$(READ_OFFSET)+0x059C T=UINT32")
+   field(SCAN, "I/O Intr")
+   field(EGU,  "bunches")
+}
+
+#------------------------------------------------------------------------------
+# RFFE imbalance coefficients interface
+#------------------------------------------------------------------------------
+record(bi, "$(DEV):IB-ENA-RD") {
+   field(DESC, "I/Q imbalance correction")
+   field(DTYP, "S7gpac")
+   field(INP,  "@$(SRV)/$(READ_OFFSET)+0x05A0 T=UINT32")
+   field(SCAN, "I/O Intr")
+   field(ZNAM, "Off" )
+   field(ONAM, "On" )
+}
+
+record(ai, "$(DEV):IB-R-INDEX-RD") {
+   field(DESC, "I/Q imbalance R index")
+   field(DTYP, "S7gpac")
+   field(INP,  "@$(SRV)/$(READ_OFFSET)+0x05A4 T=UINT32")
+   field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(DEV):IB-R-PHASE-RD") {
+   field(DESC, "I/Q imbalance R phase")
+   field(DTYP, "S7gpac")
+   field(INP,  "@$(SRV)/$(READ_OFFSET)+0x05A8 T=UINT32")
+   field(SCAN, "I/O Intr")
+   field(PREC, "2")
+   field(LINR, "SLOPE")
+   field(ESLO, "0.015625")
+   field(EOFF, "0")
+   field(EGU,  "deg")
+}
+
+record(ai, "$(DEV):IB-R-AMPL-RD") {
+   field(DESC, "I/Q imbalance R amplitude")
+   field(DTYP, "S7gpac")
+   field(INP,  "@$(SRV)/$(READ_OFFSET)+0x05AC T=FLOAT")
+   field(SCAN, "I/O Intr")
+   field(PREC, "6")
+}
+
+record(ai, "$(DEV):IB-X-INDEX-RD") {
+   field(DESC, "I/Q imbalance X index")
+   field(DTYP, "S7gpac")
+   field(INP,  "@$(SRV)/$(READ_OFFSET)+0x05B0 T=UINT32")
+   field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(DEV):IB-X-PHASE-RD") {
+   field(DESC, "I/Q imbalance X phase")
+   field(DTYP, "S7gpac")
+   field(INP,  "@$(SRV)/$(READ_OFFSET)+0x05B4 T=INT32")
+   field(SCAN, "I/O Intr")
+   field(PREC, "2")
+   field(LINR, "SLOPE")
+   field(ESLO, "0.015625")
+   field(EOFF, "0")
+   field(EGU,  "deg")
+}
+
+record(ai, "$(DEV):IB-X-AMPL-RD") {
+   field(DESC, "I/Q imbalance X amplitude")
+   field(DTYP, "S7gpac")
+   field(INP,  "@$(SRV)/$(READ_OFFSET)+0x05B8 T=FLOAT")
+   field(SCAN, "I/O Intr")
+   field(PREC, "6")
+}
+
+record(ai, "$(DEV):IB-Y-INDEX-RD") {
+   field(DESC, "I/Q imbalance Y index")
+   field(DTYP, "S7gpac")
+   field(INP,  "@$(SRV)/$(READ_OFFSET)+0x05BC T=UINT32")
+   field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(DEV):IB-Y-PHASE-RD") {
+   field(DESC, "I/Q imbalance Y phase")
+   field(DTYP, "S7gpac")
+   field(INP,  "@$(SRV)/$(READ_OFFSET)+0x05C0 T=INT32")
+   field(SCAN, "I/O Intr")
+   field(PREC, "2")
+   field(LINR, "SLOPE")
+   field(ESLO, "0.015625")
+   field(EOFF, "0")
+   field(EGU,  "deg")
+}
+
+record(ai, "$(DEV):IB-Y-AMPL-RD") {
+   field(DESC, "I/Q imbalance Y amplitude")
+   field(DTYP, "S7gpac")
+   field(INP,  "@$(SRV)/$(READ_OFFSET)+0x05C4 T=FLOAT")
+   field(SCAN, "I/O Intr")
+   field(PREC, "6")
+}
+
+#------------------------------------------------------------------------------
+# RFFE attenuator calibration interface
+#------------------------------------------------------------------------------
+record(bi, "$(DEV):AC-ENA-RD") {
+   field(DESC, "Attenuator calibration")
+   field(DTYP, "S7gpac")
+   field(INP,  "@$(SRV)/$(READ_OFFSET)+0x05C8 T=UINT32")
+   field(SCAN, "I/O Intr")
+   field(ZNAM, "Off" )
+   field(ONAM, "On" )
+}
+
+record(ai, "$(DEV):AC-R-PHASE-RD") {
+   field(DESC, "Attenuator cal R phase")
+   field(DTYP, "S7gpac")
+   field(INP,  "@$(SRV)/$(READ_OFFSET)+0x05CE T=INT16")
+   field(SCAN, "I/O Intr")
+   field(PREC, "2")
+   field(LINR, "SLOPE")
+   field(ESLO, "0.015625")
+   field(EOFF, "0")
+   field(EGU,  "deg")
+}
+
+record(ai, "$(DEV):AC-R-AMPL-RD") {
+   field(DESC, "Attenuator cal R amplitude")
+   field(DTYP, "S7gpac")
+   field(INP,  "@$(SRV)/$(READ_OFFSET)+0x05D0 T=FLOAT")
+   field(SCAN, "I/O Intr")
+   field(PREC, "6")
+}
+
+record(ai, "$(DEV):AC-X-PHASE-RD") {
+   field(DESC, "Attenuator cal X phase")
+   field(DTYP, "S7gpac")
+   field(INP,  "@$(SRV)/$(READ_OFFSET)+0x05D6 T=INT16")
+   field(SCAN, "I/O Intr")
+   field(PREC, "2")
+   field(LINR, "SLOPE")
+   field(ESLO, "0.015625")
+   field(EOFF, "0")
+   field(EGU,  "deg")
+}
+
+record(ai, "$(DEV):AC-X-AMPL-RD") {
+   field(DESC, "Attenuator cal X amplitude")
+   field(DTYP, "S7gpac")
+   field(INP,  "@$(SRV)/$(READ_OFFSET)+0x05D8 T=FLOAT")
+   field(SCAN, "I/O Intr")
+   field(PREC, "6")
+}
+
+record(ai, "$(DEV):AC-Y-PHASE-RD") {
+   field(DESC, "Attenuator cal Y phase")
+   field(DTYP, "S7gpac")
+   field(INP,  "@$(SRV)/$(READ_OFFSET)+0x05DE T=INT16")
+   field(SCAN, "I/O Intr")
+   field(PREC, "2")
+   field(LINR, "SLOPE")
+   field(ESLO, "0.015625")
+   field(EOFF, "0")
+   field(EGU,  "deg")
+}
+
+record(ai, "$(DEV):AC-Y-AMPL-RD") {
+   field(DESC, "Attenuator cal Y amplitude")
+   field(DTYP, "S7gpac")
+   field(INP,  "@$(SRV)/$(READ_OFFSET)+0x05E0 T=FLOAT")
+   field(SCAN, "I/O Intr")
+   field(PREC, "6")
+}
+
+#------------------------------------------------------------------------------
+# Beam angle correction interface
+#------------------------------------------------------------------------------
+record(bi, "$(DEV):BA-ENA-RD") {
+   field(DESC, "Beam angle correction")
+   field(DTYP, "S7gpac")
+   field(INP,  "@$(SRV)/$(READ_OFFSET)+0x05E4 T=UINT32")
+   field(SCAN, "I/O Intr")
+   field(ZNAM, "Off" )
+   field(ONAM, "On" )
+}
+
+record(ai, "$(DEV):BA-X-RD") {
+   field(DESC, "Beam angle X offset")
+   field(DTYP, "S7gpac")
+   field(INP,  "@$(SRV)/$(READ_OFFSET)+0x05EA T=INT16")
+   field(SCAN, "I/O Intr")
+   field(PREC, "2")
+   field(LINR, "SLOPE")
+   field(ESLO, "0.015625")
+   field(EOFF, "0")
+   field(EGU,  "deg")
+}
+
+record(ai, "$(DEV):BA-Y-RD") {
+   field(DESC, "Beam angle Y offset")
+   field(DTYP, "S7gpac")
+   field(INP,  "@$(SRV)/$(READ_OFFSET)+0x05EE T=INT16")
+   field(SCAN, "I/O Intr")
+   field(PREC, "2")
+   field(LINR, "SLOPE")
+   field(ESLO, "0.015625")
+   field(EOFF, "0")
+   field(EGU,  "deg")
+}
+
+record(bi, "$(DEV):BA-FB-ENA-RD") {
+   field(DESC, "Beam angle fb")
+   field(DTYP, "S7gpac")
+   field(INP,  "@$(SRV)/$(READ_OFFSET)+0x05F0 T=UINT32")
+   field(SCAN, "I/O Intr")
+   field(ZNAM, "Off" )
+   field(ONAM, "On" )
+}
+
+record(ai, "$(DEV):BA-FB-THR-RD") {
+   field(DESC, "Beam angle fb threshold")
+   field(DTYP, "S7gpac")
+   field(INP,  "@$(SRV)/$(READ_OFFSET)+0x05F4 T=FLOAT")
+   field(SCAN, "I/O Intr")
+   field(PREC, "6")
+}
+
+#------------------------------------------------------------------------------
+# Charge threshold
+#------------------------------------------------------------------------------
+record(ai, "$(DEV):Q-FB-THR-RD") {
+   field(DESC, "Charge threshold")
+   field(DTYP, "S7gpac")
+   field(INP,  "@$(SRV)/$(READ_OFFSET)+0x05F8 T=FLOAT")
+   field(SCAN, "I/O Intr")
+   field(PREC, "1")
+   field(EGU,  "pC")
+}
+
+#------------------------------------------------------------------------------
+# DDS phase feedback
+#------------------------------------------------------------------------------
+record(bi, "$(DEV):PHASE-FB-ON-RD") {
+   field(DESC, "Phase feedback on/off")
+   field(DTYP, "S7gpac")
+   field(INP,  "@$(SRV)/$(READ_OFFSET)+0x05FC T=UINT32")
+   field(SCAN, "I/O Intr")
+   field(ZNAM, "Off" )
+   field(ONAM, "On" )
+}
+
+record(ai, "$(DEV):PHASE-FB-REF-RD") {
+   field(DESC, "Phase feedback ref")
+   field(DTYP, "S7gpac")
+   field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0600 T=FLOAT")
+   field(SCAN, "I/O Intr")
+   field(PREC, "3")
+}
+
+record(ai, "$(DEV):PHASE-FB-KP-RD") {
+   field(DESC, "Phase feedback kp")
+   field(DTYP, "S7gpac")
+   field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0604 T=FLOAT")
+   field(SCAN, "I/O Intr")
+   field(PREC, "3")
+}
+
+record(ai, "$(DEV):PHASE-FB-KI-RD") {
+   field(DESC, "Phase feedback ki")
+   field(DTYP, "S7gpac")
+   field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0608 T=FLOAT")
+   field(SCAN, "I/O Intr")
+   field(PREC, "3")
+}
+
+record(ai, "$(DEV):DDS-PHASE-RD") {
+   field(DESC, "Phase feedback ref")
+   field(DTYP, "S7gpac")
+   field(INP,  "@$(SRV)/$(READ_OFFSET)+0x060C T=FLOAT")
+   field(SCAN, "I/O Intr")
+   field(PREC, "3")
+}
+
+#------------------------------------------------------------------------------
+# REF I/Q phase feedback
+#------------------------------------------------------------------------------
+record(bi, "$(DEV):PH-REF-FB-ON-RD") {
+   field(DESC, "I/Q feedback on/off")
+   field(DTYP, "S7gpac")
+   field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0610 T=UINT32")
+   field(SCAN, "I/O Intr")
+   field(ZNAM, "Off" )
+   field(ONAM, "On" )
+}
+
+record(ai, "$(DEV):PH-REF-FB-REF-RD") {
+   field(DESC, "I/Q feedback ref")
+   field(DTYP, "S7gpac")
+   field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0614 T=FLOAT")
+   field(SCAN, "I/O Intr")
+   field(PREC, "3")
+}
+
+record(ai, "$(DEV):PH-REF-FB-KP-RD") {
+   field(DESC, "I/Q feedback kp")
+   field(DTYP, "S7gpac")
+   field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0618 T=FLOAT")
+   field(SCAN, "I/O Intr")
+   field(PREC, "3")
+}
+
+record(ai, "$(DEV):PH-REF-FB-KI-RD") {
+   field(DESC, "I/Q feedback ki")
+   field(DTYP, "S7gpac")
+   field(INP,  "@$(SRV)/$(READ_OFFSET)+0x061C T=FLOAT")
+   field(SCAN, "I/O Intr")
+   field(PREC, "3")
+}
+
+record(ai, "$(DEV):PH-REF-FB-VAL-RD") {
+   field(DESC, "Phase feedback ref")
+   field(DTYP, "S7gpac")
+   field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0620 T=FLOAT")
+   field(SCAN, "I/O Intr")
+   field(PREC, "3")
+}
+
+#------------------------------------------------------------------------------
+# Gain feedback
+#------------------------------------------------------------------------------
+record(bi, "$(DEV):REF-GAIN-FB-ON-RD") {
+   field(DESC, "REF gain fb on/off")
+   field(DTYP, "S7gpac")
+   field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0624 T=UINT32")
+   field(SCAN, "I/O Intr")
+   field(ZNAM, "Off" )
+   field(ONAM, "On" )
+}
+
+record(ai, "$(DEV):REF-GAIN-FB-VAL-RD") {
+   field(DESC, "REF gain fb")
+   field(DTYP, "S7gpac")
+   field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0628 T=UINT32")
+   field(SCAN, "I/O Intr")
+   field(PREC, "0")
+}
+
+record(bi, "$(DEV):X-GAIN-FB-ON-RD") {
+   field(DESC, "X gain fb on/off")
+   field(DTYP, "S7gpac")
+   field(INP,  "@$(SRV)/$(READ_OFFSET)+0x062C T=UINT32")
+   field(SCAN, "I/O Intr")
+   field(ZNAM, "Off" )
+   field(ONAM, "On" )
+}
+
+record(ai, "$(DEV):X-GAIN-FB-VAL-RD") {
+   field(DESC, "X gain fb")
+   field(DTYP, "S7gpac")
+   field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0630 T=UINT32")
+   field(SCAN, "I/O Intr")
+   field(PREC, "0")
+}
+
+record(bi, "$(DEV):Y-GAIN-FB-ON-RD") {
+   field(DESC, "Y gain fb on/off")
+   field(DTYP, "S7gpac")
+   field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0634 T=UINT32")
+   field(SCAN, "I/O Intr")
+   field(ZNAM, "Off" )
+   field(ONAM, "On" )
+}
+
+record(ai, "$(DEV):Y-GAIN-FB-VAL-RD") {
+   field(DESC, "Y gain fb")
+   field(DTYP, "S7gpac")
+   field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0638 T=UINT32")
+   field(SCAN, "I/O Intr")
+   field(PREC, "0")
+}
+
+#------------------------------------------------------------------------------
+# EOF
+#------------------------------------------------------------------------------
