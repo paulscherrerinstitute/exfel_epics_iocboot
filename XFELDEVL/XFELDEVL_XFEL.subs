@@ -34,78 +34,87 @@ file S7gpac.template {
   pattern  {DEV             SRV              }    
            {XFELDEVLBUT11   XFELDEVLBUT11    }    
            {XFELDEVLCAV11   XFELDEVLCAV11    }    
+           {XFELDEVLCAV12   XFELDEVLCAV12    }    
            {XFELDEVLREN11   XFELDEVLREN11    }    
+           {XFELDEVLREN12   XFELDEVLREN12    }    
 }
 
 #-- Button BPM
 file but_bpm_s7gpac.template {
-  pattern  {DEV             SRV            READ_OFFSET  }
-           {XFELDEVLBUT11   XFELDEVLBUT11         280  }
+  pattern  {DEV                   SRV               READ_OFFSET  }
+           {XFELDEVLBUT11         XFELDEVLBUT11            308   }
 }
 
 #-- Cavity BPM
 file GPAC_BPM_SMP.template {
-   pattern  {DEV           SRV        READ_OFFSET  }
+   pattern  {DEV                  SRV               READ_OFFSET  }
             {XFELDEVLCAV11        XFELDEVLCAV11             660  }
+            {XFELDEVLCAV12        XFELDEVLCAV12             660  }
 }
 
 file GPAC_BPM_PB_ADC16HL.template {
    pattern  {DEV           SRV        READ_OFFSET  }
             {XFELDEVLCAV11        XFELDEVLCAV11             660  }
+            {XFELDEVLCAV12        XFELDEVLCAV12             660  }
 }
 
 file RFFE_Cavity_3GHz3_120700B.template {
    pattern  {DEV           SRV        READ_OFFSET  GLB}
             {XFELDEVLCAV11        XFELDEVLCAV11             660  MTEST10-ETH0}
+            {XFELDEVLCAV12        XFELDEVLCAV12             660  MTEST10-ETH0}
 }
 
 file GPAC_BPM_CONSISTENT_SET_VAL.template {
    pattern {DEV           SRV         READ_OFFSET  }
            {XFELDEVLCAV11        XFELDEVLCAV11              660  }
+           {XFELDEVLCAV12        XFELDEVLCAV12              660  }
 }
 
-file GPAC_BPM_Calc_RMS_AVG.template { 
-   pattern {DEV        VAR    EGU PREC MIN MAX RMS-MAX DESC    }
-           {XFELDEVLCAV11     Q      pC  3    0   500 10      "Charge avg"}
-           {XFELDEVLCAV11     X      mm  4    -10 10  0.05    "Pos X avg" }
-           {XFELDEVLCAV11     Y      mm  4    -10 10  0.05    "Pos Y avg" }
-}
+#file GPAC_BPM_Calc_RMS_AVG.template { 
+#   pattern {DEV        VAR    EGU PREC MIN MAX RMS-MAX DESC    }
+#           {XFELDEVLCAV11     Q      pC  3    0   500 10      "Charge avg"}
+#           {XFELDEVLCAV11     X      mm  4    -10 10  0.05    "Pos X avg" }
+#           {XFELDEVLCAV11     Y      mm  4    -10 10  0.05    "Pos Y avg" }
+#}
 
 #-- Re-entrant BPM
 file EXFEL_ReCAV_BPM_SMP.template {
   pattern  {DEV              SRV          READ_OFFSET  }
            {XFELDEVLREN11        XFELDEVLREN11                  536  }
+           {XFELDEVLREN12        XFELDEVLREN12                  536  }
 }
 
 file GPAC_BPM_PB_ADC16HL.template {
   pattern  {DEV              SRV          READ_OFFSET  }
            {XFELDEVLREN11        XFELDEVLREN11                  536  }
+           {XFELDEVLREN12        XFELDEVLREN12                  536  }
 }
 
 file EXFEL_ReCAV_BPM_RFFE.template {
   pattern  {DEV              SRV          READ_OFFSET  }
            {XFELDEVLREN11        XFELDEVLREN11                  536  }
+           {XFELDEVLREN12        XFELDEVLREN12                  536  }
 }
 
-file GPAC_BPM_Calc_RMS_AVG.template { 
-  pattern {DEV         VAR    EGU PREC MIN MAX RMS-MAX DESC        }
-          {XFELDEVLREN11      Q      pC  3    0   500 10      "Charge avg"}
-          {XFELDEVLREN11      X      mm  4    -10 10  0.05    "Pos X avg" }
-          {XFELDEVLREN11      Y      mm  4    -10 10  0.05    "Pos Y avg" }
-}
+#file GPAC_BPM_Calc_RMS_AVG.template { 
+#  pattern {DEV         VAR    EGU PREC MIN MAX RMS-MAX DESC        }
+#          {XFELDEVLREN11      Q      pC  3    0   500 10      "Charge avg"}
+#          {XFELDEVLREN11      X      mm  4    -10 10  0.05    "Pos X avg" }
+#          {XFELDEVLREN11      Y      mm  4    -10 10  0.05    "Pos Y avg" }
+#}
 
 
 ################################################################################
 ## BUTTON BPM SERVICE SERVER                                                ####
 ################################################################################
 
-#file S7gpac.template {
-#  pattern {DEV            SRV             }    
-#          {FLASHBUTSERV   FLASHBUTSERV    }    
-#}
-#
-#
-#file but_serv_s7gpac.template {
-#  pattern {DEV           SRV          READ_OFFSET  }
-#          {FLASHBUTSERV  FLASHBUTSERV         112  }
-#}
+file S7gpac.template {
+  pattern {DEV                 SRV             }    
+          {XFELDEVLBUTSERV11   XFELDEVLBUTSERV11    }    
+}
+
+
+file but_serv_s7gpac.template {
+  pattern {DEV                SRV                 READ_OFFSET  }
+          {XFELDEVLBUTSERV11  XFELDEVLBUTSERV11           132  }
+}

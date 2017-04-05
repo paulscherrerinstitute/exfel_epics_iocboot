@@ -19,18 +19,18 @@ require "s7gpac", "koprek_w"
   s7gpacConfigure  ("XFELDEVLCAV1",  "mdi7psicav1",      51234,    628,       72,         1,       10000,  200)  # ipc????, cpu???
   s7gpacConfigure  ("XFELDEVLREN1",  "mdi7psiren1",      51234,    628,       72,         1,       10000,  200)  # ipc????, cpu???
 #___________________________________________________________________________________________                     
-# Injector BPMs                                                                                                  
+# BPM Servers                                                                                           
 #___________________________________________________________________________________________                     
-#**** FLASHLXBUTBPM1, flashlxbutbpm1, 4xButton *******************************************
-#  s7gpacConfigure  ("XFELDEVL-BUT1",       "mdi7psibut1",     51235,   45852,      280,         1,       10000,  200)  # Button BPM
-  s7gpacConfigure  ("XFELDEVLBUT11",       "mdi7psibut1",     51235,   45852,      280,         1,        5000,  200)  # Button BPM
-  s7gpacConfigure  ("XFELDEVLCAV11",       "mdi7psicav1",     51235,   34656,      660,         1,        5000,  200)  # Cavity BPM
-  s7gpacConfigure  ("XFELDEVLREN11",       "mdi7psiren1",     51235,    1904,      536,         1,        5000,  200)  # Re-entrant BPM
+  s7gpacConfigure  ("XFELDEVLBUT11",       "mdi7psibut1",     51235,   45884,      308,         1,        5000,  200)  # Button BPM
+  s7gpacConfigure  ("XFELDEVLCAV11",       "mdi7psicav1",     51236,   34656,      660,         1,        5000,  200)  # Cavity BPM
+  s7gpacConfigure  ("XFELDEVLCAV12",       "mdi7psicav1",     51238,   34656,      660,         1,        5000,  200)  # Cavity BPM
+  s7gpacConfigure  ("XFELDEVLREN11",       "mdi7psiren1",     51236,    1904,      536,         1,        5000,  200)  # Re-entrant BPM
+  s7gpacConfigure  ("XFELDEVLREN12",       "mdi7psiren1",     51238,    1904,      536,         1,        5000,  200)  # Re-entrant BPM
 
 #___________________________________________________________________________________________                     
 # Button BPM Service Server                                                                                                  
 #___________________________________________________________________________________________                     
-# s7gpacConfigure  ("FLASHBUTSERV",                      "",     51245,    6864,      112,         1,       10000,  400)    
+  s7gpacConfigure  ("XFELDEVLBUTSERV11",   "mdi7psibut1",     51245,   6884,      132,         1,        5000,  200)  # Button BPM
 
 cd /ioc/XFELDEVL
 dbLoadTemplate("XFELDEVL_XFEL.subs") 
