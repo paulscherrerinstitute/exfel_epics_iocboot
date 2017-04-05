@@ -106,13 +106,13 @@ file EXFEL_ReCAV_BPM_RFFE.template {
 ## BUTTON BPM SERVICE SERVER                                                ####
 ################################################################################
 
-#file S7gpac.template {
-#  pattern {DEV            SRV             }    
-#          {FLASHBUTSERV   FLASHBUTSERV    }    
-#}
-#
-#
-#file but_serv_s7gpac.template {
-#  pattern {DEV           SRV          READ_OFFSET  }
-#          {FLASHBUTSERV  FLASHBUTSERV         112  }
-#}
+file S7gpac.template {
+  pattern {DEV                 SRV             }    
+          {XFELDEVLBUTSERV11   XFELDEVLBUTSERV11    }    
+}
+
+
+file but_serv_s7gpac.template {
+  pattern {DEV                SRV                 READ_OFFSET  }
+          {XFELDEVLBUTSERV11  XFELDEVLBUTSERV11           112  }
+}
