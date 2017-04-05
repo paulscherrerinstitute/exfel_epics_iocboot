@@ -34,7 +34,9 @@ file S7gpac.template {
   pattern  {DEV             SRV              }    
            {XFELDEVLBUT11   XFELDEVLBUT11    }    
            {XFELDEVLCAV11   XFELDEVLCAV11    }    
+           {XFELDEVLCAV12   XFELDEVLCAV12    }    
            {XFELDEVLREN11   XFELDEVLREN11    }    
+           {XFELDEVLREN12   XFELDEVLREN12    }    
 }
 
 #-- Button BPM
