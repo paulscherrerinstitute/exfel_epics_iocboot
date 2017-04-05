@@ -39,13 +39,13 @@ file S7gpac.template {
 
 #-- Button BPM
 file but_bpm_s7gpac.template {
-  pattern  {DEV             SRV            READ_OFFSET  }
-           {XFELDEVLBUT11   XFELDEVLBUT11         280  }
+  pattern  {DEV                   SRV               READ_OFFSET  }
+           {XFELDEVLBUT11         XFELDEVLBUT11            308   }
 }
 
 #-- Cavity BPM
 file GPAC_BPM_SMP.template {
-   pattern  {DEV           SRV        READ_OFFSET  }
+   pattern  {DEV                  SRV               READ_OFFSET  }
             {XFELDEVLCAV11        XFELDEVLCAV11             660  }
             {XFELDEVLCAV12        XFELDEVLCAV12             660  }
 }
@@ -114,5 +114,5 @@ file S7gpac.template {
 
 file but_serv_s7gpac.template {
   pattern {DEV                SRV                 READ_OFFSET  }
-          {XFELDEVLBUTSERV11  XFELDEVLBUTSERV11           112  }
+          {XFELDEVLBUTSERV11  XFELDEVLBUTSERV11           132  }
 }

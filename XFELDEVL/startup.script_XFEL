@@ -30,7 +30,7 @@ require "s7gpac", "koprek_w"
 #___________________________________________________________________________________________                     
 # Button BPM Service Server                                                                                                  
 #___________________________________________________________________________________________                     
-  s7gpacConfigure  ("XFELDEVLBUTSERV11",   "mdi7psibut1",     51245,   6864,      112,         1,        5000,  200)  # Button BPM
+  s7gpacConfigure  ("XFELDEVLBUTSERV11",   "mdi7psibut1",     51245,   6884,      132,         1,        5000,  200)  # Button BPM
 
 cd /ioc/XFELDEVL
 dbLoadTemplate("XFELDEVL_XFEL.subs") 
