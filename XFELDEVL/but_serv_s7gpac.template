@@ -672,6 +672,62 @@ record(longout, "$(DEV):GAIN-SEL-IDX") {
   field(DRVL, "0")
 }
 
+record(longout, "$(DEV):GAIN-TAB-IDX-RD") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x001F:0x001F T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(HOPR, "63")
+  field(LOPR, "0")
+  field(DRVH, "63")
+  field(DRVL, "0")
+}
+
+
+record(ao, "$(DEV):RFFE-EEPROM-ATTN-INP1") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0074:0x0074 T=FLOAT")
+  field(SCAN, "I/O Intr")
+  field(HOPR, "100")
+  field(LOPR, "-100")
+  field(DRVH, "100")
+  field(DRVL, "-100")
+  field(PREC, "2")
+}
+
+record(ao, "$(DEV):RFFE-EEPROM-ATTN-INP2") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0078:0x0078 T=FLOAT")
+  field(SCAN, "I/O Intr")
+  field(HOPR, "100")
+  field(LOPR, "-100")
+  field(DRVH, "100")
+  field(DRVL, "-100")
+  field(PREC, "2")
+}
+
+record(ao, "$(DEV):RFFE-EEPROM-ATTN-INP3") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x007C:0x007C T=FLOAT")
+  field(SCAN, "I/O Intr")
+  field(HOPR, "100")
+  field(LOPR, "-100")
+  field(DRVH, "100")
+  field(DRVL, "-100")
+  field(PREC, "2")
+}
+
+record(ao, "$(DEV):RFFE-EEPROM-ATTN-INP4") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0080:0x0080 T=FLOAT")
+  field(SCAN, "I/O Intr")
+  field(HOPR, "100")
+  field(LOPR, "-100")
+  field(DRVH, "100")
+  field(DRVL, "-100")
+  field(PREC, "2")
+}
+
+
 record(ao, "$(DEV):GAIN-SEL-VALUE") {
   field(DTYP, "S7gpac")
   field(OUT,  "@$(SRV)/0x0020:0x0020 T=FLOAT")
@@ -846,6 +902,12 @@ record(longin, "$(DEV):BPM-EEPROM-STATUS") {
   field(SCAN, "I/O Intr")
 }
 
+record(longout, "$(DEV):BPM-EEPROM-MAGIC-WORD") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0070:0x0070 T=UINT32")
+  field(SCAN, "I/O Intr")
+}
+
 record(mbbo, "$(DEV):BPM-EEPROM-SELECT-SET") {
   field(DTYP, "S7gpac")
   field(OUT,  "@$(SRV)/0x0028:0x0028 T=UINT32")
@@ -908,6 +970,12 @@ record(longout, "$(DEV):BPM-EEPROM-ATTN-LIMIT") {
   field(SCAN, "I/O Intr")
 }
 
+record(longout, "$(DEV):BPM-EEPROM-SAT-REDUCE") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x006D:0x006D T=UINT8")
+  field(SCAN, "I/O Intr")
+}
+
 record(longin, "$(DEV):BPM-EEPROM-WORK-SET") {
   field(DTYP, "S7gpac")
   field(INP,  "@$(SRV)/$(READ_OFFSET)+0x1A58 T=UINT32")
@@ -925,3 +993,4 @@ record(stringout,"$(DEV):DEV-NAME"){
   field(OUT,  "@$(SRV)/0x004C:0x004C L=32")
   field(SCAN, "I/O Intr")
 }
+
