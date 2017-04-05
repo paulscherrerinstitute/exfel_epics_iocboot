@@ -122,7 +122,7 @@ require "s7gpac", "koprek_w"
    s7gpacConfigure  ("XFELGPAC1DI2590T4",      "xfelgpac1di2590t4",       51234,    628,       72,         1,       10000,  200)  #
    s7gpacConfigure  ("XFELGPAC1DI2623T4",      "xfelgpac1di2623t4",       51234,    628,       72,         1,       10000,  200)  #
    s7gpacConfigure  ("XFELGPAC1DI2686T4",      "xfelgpac1di2686t4",       51234,    628,       72,         1,       10000,  200)  #
-#   s7gpacConfigure  ("XFELGPAC1DIXS3UG2T4",    "xfelgpac1dixs3ug2t4",     51234,    628,       72,         1,       10000,  200)  #
+   s7gpacConfigure  ("XFELGPAC1DIXS3UG2T4",    "xfelgpac1dixs3ug2t4",     51234,    628,       72,         1,       10000,  200)  #
    s7gpacConfigure  ("XFELGPAC1DI2793T4",      "xfelgpac1di2793t4",       51234,    628,       72,         1,       10000,  200)  #
    s7gpacConfigure  ("XFELGPAC1DI2808SA3",     "xfelgpac1di2808sa3",      51234,    628,       72,         1,       10000,  200)  #
    s7gpacConfigure  ("XFELGPAC1DI2820SA3",     "xfelgpac1di2820sa3",      51234,    628,       72,         1,       10000,  200)  #
@@ -178,11 +178,11 @@ require "s7gpac", "koprek_w"
 #  s7gpacConfigure  ("XFELGPAC1DI3145T5D",     "xfelgpac1di3145t5d",      51234,    628,       72,         1,       10000,  200)  #
 #  s7gpacConfigure  ("XFELGPAC1DIXSDU1UG1T5D", "xfelgpac1dixsdu1ug1t5d",  51234,    628,       72,         1,       10000,  200)  #
 #  s7gpacConfigure  ("XFELGPAC2DIXSDU1UG1T5D", "xfelgpac2dixsdu1ug1t5d",  51234,    628,       72,         1,       10000,  200)  #
-  s7gpacConfigure  ("XFELGPAC1DI2018TLD",     "xfelgpac1di2018tld",      51234,    628,       72,         1,       10000,  200)  #
-  s7gpacConfigure  ("XFELGPAC1DI2047TLD",     "xfelgpac1di2047tld",      51234,    628,       72,         1,       10000,  200)  #
-  s7gpacConfigure  ("XFELGPAC1DI2074TLD",     "xfelgpac1di2074tld",      51234,    628,       72,         1,       10000,  200)  #
-  s7gpacConfigure  ("XFELGPAC3DI2100TLD",     "xfelgpac3di2100tld",      51234,    628,       72,         1,       10000,  200)  #
-  s7gpacConfigure  ("XFELGPAC1DIXS1UG3TLD",   "xfelgpac1dixs1ug3tld",    51234,    628,       72,         1,       10000,  200)  #
+#  s7gpacConfigure  ("XFELGPAC1DI2018TLD",     "xfelgpac1di2018tld",      51234,    628,       72,         1,       10000,  200)  #
+#  s7gpacConfigure  ("XFELGPAC1DI2047TLD",     "xfelgpac1di2047tld",      51234,    628,       72,         1,       10000,  200)  #
+#  s7gpacConfigure  ("XFELGPAC1DI2074TLD",     "xfelgpac1di2074tld",      51234,    628,       72,         1,       10000,  200)  #
+#  s7gpacConfigure  ("XFELGPAC3DI2100TLD",     "xfelgpac3di2100tld",      51234,    628,       72,         1,       10000,  200)  #
+#  s7gpacConfigure  ("XFELGPAC1DIXS1UG3TLD",   "xfelgpac1dixs1ug3tld",    51234,    628,       72,         1,       10000,  200)  #
   
     
 #___________________________________________________________________________________________                     
