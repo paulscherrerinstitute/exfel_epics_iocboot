@@ -2,7 +2,7 @@
 #-----------            GPAC2 SERVICE FUNCTIONS                ----------------
 #------------------------------------------------------------------------------
 
-record(longout,"$(DEV):FW-SW-VER"){
+record(longout,"$(DEV):FW-SW-CHECK"){
 }
 
 
