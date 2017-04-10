@@ -1,0 +1,32 @@
+#------------------------------------------------------------------------------
+#-----------     XFEL BPMs Firwmware/Software Reference        ----------------
+#------------------------------------------------------------------------------
+
+record(scalcout,"$(DEV):CFG-FW-DATE")       { field (SVAL, "2016.04.26 22:11") }
+record(scalcout,"$(DEV):CFG-SW-DATE")       { field (SVAL, "2016.05.17 09:56") }
+
+record(scalcout,"$(DEV):SYS-FW-DATE")       { field (SVAL, "2016.07.15 15:58") }
+record(scalcout,"$(DEV):SYS-SW-DATE")       { field (SVAL, "2016.07.15 13:29") }
+
+record(scalcout,"$(DEV):BP-FW-DATE-BBBB")   { field (SVAL, "2016.05.02 11:10") }
+record(scalcout,"$(DEV):BP-SW-DATE-BBBB")   { field (SVAL, "2016.05.23 13:59") }
+record(scalcout,"$(DEV):BP-FW-DATE-BB")     { field (SVAL, "2016.05.02 11:10") }
+record(scalcout,"$(DEV):BP-SW-DATE-BB")     { field (SVAL, "2016.05.23 13:59") }
+record(scalcout,"$(DEV):BP-FW-DATE-BBR")    { field (SVAL, "2016.04.25 22:10") }
+record(scalcout,"$(DEV):BP-SW-DATE-BBR")    { field (SVAL, "2016.05.20 09:53") }
+record(scalcout,"$(DEV):BP-FW-DATE-CC")     { field (SVAL, "2016.05.03 11:47") }
+record(scalcout,"$(DEV):BP-SW-DATE-CC")     { field (SVAL, "2016.05.03 13:57") }
+record(scalcout,"$(DEV):BP-FW-DATE-BBC")    { field (SVAL, "2016.05.02 14:26") }
+record(scalcout,"$(DEV):BP-SW-DATE-BBC")    { field (SVAL, "2016.05.23 14:02") }
+record(scalcout,"$(DEV):BP-FW-DATE-R")      { field (SVAL, "2016.08.12 09:07") }
+record(scalcout,"$(DEV):BP-SW-DATE-R")      { field (SVAL, "2016.08.12 09:35") }
+
+record(scalcout,"$(DEV):BPM-FW-DATE-B")     { field (SVAL, "2016.07.18 15:41") }
+record(scalcout,"$(DEV):BPM-SW-DATE-B")     { field (SVAL, "2016.07.19 09:02") }
+record(scalcout,"$(DEV):BPM-FW-DATE-C")     { field (SVAL, "2016.05.03 12:06") }
+record(scalcout,"$(DEV):BPM-SW-DATE-C")     { field (SVAL, "2016.05.03 13:54") }
+record(scalcout,"$(DEV):BPM-FW-DATE-R")     { field (SVAL, "2016.08.11 16:07") }
+record(scalcout,"$(DEV):BPM-SW-DATE-R")     { field (SVAL, "2016.08.12 08:53") }
+
+record(scalcout,"$(DEV):MMC-FW-VERSION")    { field (SVAL, "0103")             }
+record(scalcout,"$(DEV):MMC-SW-VERSION")    { field (SVAL, "5.11")             }
