@@ -23,10 +23,10 @@ file S7gpac.template {
 #           {IBFBPCOM           IBFBPCOM      }
 #           {IBFBPLAY1          IBFBPLAY1     }
 #           {IBFBPLAY2          IBFBPLAY2     }
-#           {IBFBYUP            IBFBYUP       }
-#           {IBFBYDOWN          IBFBYDOWN     }
-#           {IBFBXUP            IBFBXUP       }
-#           {IBFBXDOWN          IBFBXDOWN     }
+           {IBFBYUP            IBFBYUP       }
+           {IBFBYDOWN          IBFBYDOWN     }
+           {IBFBXUP            IBFBXUP       }
+           {IBFBXDOWN          IBFBXDOWN     }
 }
  
 ################################################################################
