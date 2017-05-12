@@ -41,10 +41,10 @@ file S7gpac.template {
 #           {IPC1539-CAV1       IPC1539-CAV1  }
 #           {IPC1539-CAV2       IPC1539-CAV2  }
 #           {IPC1539-IBFB       IPC1539-IBFB  }
-#           {IPC1627            IPC1627       }
+           {IPC1647            IPC1647       }
 #           {IPC1627-CAV1       IPC1627-CAV1  }
 #           {IPC1627-CAV2       IPC1627-CAV2  }
-#           {IPC1627-IBFB       IPC1627-IBFB  }
+           {IPC1647-IBFB       IPC1647-IBFB  }
 #           {IPC1623            IPC1623       }
 #           {IPC1623-CAV1       IPC1623-CAV1  }
 #           {IPC1623-CAV2       IPC1623-CAV2  }
@@ -73,7 +73,7 @@ file gpac2_service.template {
 #           {IPC1530            IPC1530       }
 #           {IPC1551            IPC1551       }
 #           {IPC1539            IPC1539       }
-#           {IPC1627            IPC1627       }
+           {IPC1647            IPC1647       }
 #           {IPC1623            IPC1623       }
 #           {IPC1488            IPC1488       }
 #           {IPC1576            IPC1576       }
@@ -243,14 +243,14 @@ file ibfbplay.template {
 ###           {IPC1492-CAV2     Y      mm  4    -10 10  0.05    "Pos Y avg" }
 ###}
 #
-#file ibfbcav.template {
-#   pattern  {DEV             SRV          READ_OFFSET  }
+file ibfbcav.template {
+   pattern  {DEV             SRV          READ_OFFSET  }
 #            {IPC1492-IBFB    IPC1492-IBFB          24  }
 #            {IPC1530-IBFB    IPC1530-IBFB          24  }
 #            {IPC1551-IBFB    IPC1551-IBFB          24  }
 #            {IPC1539-IBFB    IPC1539-IBFB          24  }
-#            {IPC1627-IBFB    IPC1627-IBFB          24  }
+            {IPC1647-IBFB    IPC1647-IBFB          24  }
 #            {IPC1623-IBFB    IPC1623-IBFB          24  }
 #            {IPC1488-IBFB    IPC1488-IBFB          24  }
 #            {IPC1576-IBFB    IPC1576-IBFB          24  }
-#}
+}
