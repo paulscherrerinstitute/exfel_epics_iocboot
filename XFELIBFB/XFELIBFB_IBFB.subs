@@ -123,11 +123,11 @@ file ibfbmon.template {
 ### IBFB Cavity BPMs                                                         ####
 #################################################################################
 
-#file ibfbcav.template {
-#   pattern  {DEV              SRV          READ_OFFSET  }
-#            {IBFBYUP          IBFBYUP               32  }
-#            {IBFBYDOWN        IBFBYDOWN             32  }
-#            {IBFBXUP          IBFBXUP               32  }
-#            {IBFBXDOWN        IBFBXDOWN             32  }
-#}
+file ibfbcav.template {
+   pattern  {DEV              SRV          READ_OFFSET  }
+            {IBFBYUP          IBFBYUP               32  }
+            {IBFBYDOWN        IBFBYDOWN             32  }
+            {IBFBXUP          IBFBXUP               32  }
+            {IBFBXDOWN        IBFBXDOWN             32  }
+}
 
