@@ -91,7 +91,7 @@ record(bo, "$(DEV):BPM1-ENABLED") {
   field(DTYP, "S7gpac")
   field(OUT,  "@$(SRV)/0x0013:0x0013 T=UINT8")
   field(SCAN, "I/O Intr")
-  field(ZNAM, "Off" )
+  field(ZNAM, "Ping" )
   field(ONAM, "On" )
 }
 
@@ -193,7 +193,7 @@ record(bo, "$(DEV):BPM2-ENABLED") {
   field(DTYP, "S7gpac")
   field(OUT,  "@$(SRV)/0x0017:0x0017 T=UINT8")
   field(SCAN, "I/O Intr")
-  field(ZNAM, "Off" )
+  field(ZNAM, "Ping" )
   field(ONAM, "On" )
 }
 
