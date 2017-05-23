@@ -402,11 +402,11 @@ record(longin, "$(DEV):$(PLANE)-FB-COMP-PIPE-ERR") {
   field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0054 T=UINT32")
 }
 
-record(longin, "$(DEV):$(PLANE)-FB-RX-DELAY-MEAS") {
-  field(SCAN, "I/O Intr")
-  field(DTYP, "S7gpac")
-  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0058 T=UINT32")
-}
+##record(longin, "$(DEV):$(PLANE)-FB-RX-DELAY-MEAS") {
+##  field(SCAN, "I/O Intr")
+##  field(DTYP, "S7gpac")
+##  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0058 T=UINT32")
+##}
 
 record(bo, "$(DEV):$(PLANE)-FB-SEL-UPDOWN") {
   field(DTYP, "S7gpac")
@@ -845,6 +845,18 @@ record(longin, "$(DEV):$(PLANE)-FB-RDY-DEL-MAX") {
   field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0059 T=UINT8")
 }
 
+record(longin, "$(DEV):$(PLANE)-FAST-FB-DEL") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x005A T=UINT8")
+}
+
+record(longin, "$(DEV):$(PLANE)-SASE1-FB-DEL") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x005B T=UINT8")
+}
+
 ##-- beam trains
 
 record(bo, "$(DEV):$(PLANE)-FB-SASE1-ON") {
@@ -1021,4 +1033,44 @@ record(longin, "$(DEV):$(PLANE)-EEPROM-VER") {
   field(DTYP, "S7gpac")
   field(INP,  "@$(SRV)/$(READ_OFFSET)+0x00D7 T=UINT8")
   field(SCAN, "I/O Intr")
+}
+
+#--- RX Histograms ------------------------------------------
+
+record(acalcout, "$(DEV):$(PLANE)-TDIFF-HIST") {
+  field(NELM, "8")
+  field(PINI, "YES")
+  field(CALC, "IX+45")
+}
+
+record(waveform, "$(DEV):$(PLANE)-UP-BPM1-HIST") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x00F0 T=INT16")
+  field(NELM, "8")
+  field(FTVL, "SHORT")
+}
+
+record(waveform, "$(DEV):$(PLANE)-UP-BPM2-HIST") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0100 T=INT16")
+  field(NELM, "8")
+  field(FTVL, "SHORT")
+}
+
+record(waveform, "$(DEV):$(PLANE)-DOWN-BPM1-HIST") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0110 T=INT16")
+  field(NELM, "8")
+  field(FTVL, "SHORT")
+}
+
+record(waveform, "$(DEV):$(PLANE)-DOWN-BPM2-HIST") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0120 T=INT16")
+  field(NELM, "8")
+  field(FTVL, "SHORT")
 }
