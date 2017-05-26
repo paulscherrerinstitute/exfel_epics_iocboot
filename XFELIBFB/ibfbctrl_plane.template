@@ -1074,3 +1074,29 @@ record(waveform, "$(DEV):$(PLANE)-DOWN-BPM2-HIST") {
   field(NELM, "8")
   field(FTVL, "SHORT")
 }
+
+#--- Lattice verification ------------------------------------------
+
+record(ai, "$(DEV):$(PLANE)-LATVER-BPM1-UP-POS-M") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x01A0 T=FLOAT")
+}
+
+record(ai, "$(DEV):$(PLANE)-LATVER-BPM2-UP-POS-M") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x01A8 T=FLOAT")
+}
+
+record(ai, "$(DEV):$(PLANE)-LATVER-BPM1-DOWN-POS-M") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x01B0 T=FLOAT")
+}
+
+record(ai, "$(DEV):$(PLANE)-LATVER-BPM2-DOWN-POS-M") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x01B8 T=FLOAT")
+}
