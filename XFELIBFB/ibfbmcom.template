@@ -17,49 +17,49 @@ record(longin, "$(DEV):RTMG-SFP2") {
 ## trigger level
 record(longout, "$(DEV):KICK-TRG-LEVEL-0") {
   field(DTYP, "S7gpac")
-  field(OUT,  "@$(SRV)/0x0004:0x0004 T=UINT16")
+  field(OUT,  "@$(SRV)/0x0004:0x0004 T=INT16")
   field(SCAN, "I/O Intr")
 }
 
 record(longout, "$(DEV):KICK-TRG-LEVEL-1") {
   field(DTYP, "S7gpac")
-  field(OUT,  "@$(SRV)/0x0006:0x0006 T=UINT16")
+  field(OUT,  "@$(SRV)/0x0006:0x0006 T=INT16")
   field(SCAN, "I/O Intr")
 }
 
 record(longout, "$(DEV):KICK-TRG-LEVEL-2") {
   field(DTYP, "S7gpac")
-  field(OUT,  "@$(SRV)/0x0008:0x0008 T=UINT16")
+  field(OUT,  "@$(SRV)/0x0008:0x0008 T=INT16")
   field(SCAN, "I/O Intr")
 }
 
 record(longout, "$(DEV):KICK-TRG-LEVEL-3") {
   field(DTYP, "S7gpac")
-  field(OUT,  "@$(SRV)/0x000A:0x000A T=UINT16")
+  field(OUT,  "@$(SRV)/0x000A:0x000A T=INT16")
   field(SCAN, "I/O Intr")
 }
 
 record(longout, "$(DEV):KICK-TRG-LEVEL-4") {
   field(DTYP, "S7gpac")
-  field(OUT,  "@$(SRV)/0x000C:0x000C T=UINT16")
+  field(OUT,  "@$(SRV)/0x000C:0x000C T=INT16")
   field(SCAN, "I/O Intr")
 }
 
 record(longout, "$(DEV):KICK-TRG-LEVEL-5") {
   field(DTYP, "S7gpac")
-  field(OUT,  "@$(SRV)/0x000E:0x000E T=UINT16")
+  field(OUT,  "@$(SRV)/0x000E:0x000E T=INT16")
   field(SCAN, "I/O Intr")
 }
 
 record(longout, "$(DEV):KICK-TRG-LEVEL-6") {
   field(DTYP, "S7gpac")
-  field(OUT,  "@$(SRV)/0x0010:0x0010 T=UINT16")
+  field(OUT,  "@$(SRV)/0x0010:0x0010 T=INT16")
   field(SCAN, "I/O Intr")
 }
 
 record(longout, "$(DEV):KICK-TRG-LEVEL-7") {
   field(DTYP, "S7gpac")
-  field(OUT,  "@$(SRV)/0x0012:0x0012 T=UINT16")
+  field(OUT,  "@$(SRV)/0x0012:0x0012 T=INT16")
   field(SCAN, "I/O Intr")
 }
 
