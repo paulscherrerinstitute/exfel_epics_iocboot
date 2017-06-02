@@ -45,9 +45,9 @@ require "s7gpac", "koprek_w"
    s7gpacConfigure  ("IBFBSW2",      "xfelgpacibfbsw",     51237,     60,       20,         1,       10000,           200)    
 #  __   
    s7gpacConfigure  ("IBFBMON",      "xfelgpacibfbmon",    51234,    628,       72,         1,       10000,           200)    
-   s7gpacConfigure  ("IBFBMCOM",     "xfelgpacibfbmon",    51235,     76,       28,         1,       10000,           200)    
-   s7gpacConfigure  ("IBFBMON1",     "xfelgpacibfbmon",    51236,  32816,       24,         1,       10000,           200)    
-   s7gpacConfigure  ("IBFBMON2",     "xfelgpacibfbmon",    51237,  32816,       24,         1,       10000,           200)    
+   s7gpacConfigure  ("IBFBMCOM",     "xfelgpacibfbmon",    51235,     12,        4,         1,       10000,           200)    
+   s7gpacConfigure  ("IBFBMON1",     "xfelgpacibfbmon",    51236,  32880,       48,         1,       10000,           200)    
+   s7gpacConfigure  ("IBFBMON2",     "xfelgpacibfbmon",    51237,  32880,       48,         1,       10000,           200)    
 #  __   
    s7gpacConfigure  ("IBFBPLAY",     "xfelgpacibfbplay",   51234,    628,       72,         1,       10000,           200)    
    s7gpacConfigure  ("IBFBPCOM",     "xfelgpacibfbplay",   51235,    144,       44,         1,       10000,           200)    
