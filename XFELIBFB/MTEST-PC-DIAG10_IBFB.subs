@@ -135,7 +135,7 @@ file ibfbsw.template {
 #-- monitor
 file ibfbmcom.template {
    pattern  {DEV           SRV     		   READ_OFFSET        }
-            {IBFBMON       IBFBMCOM                4        }
+            {IBFBMON       IBFBMCOM               28        }
 }
 
 file ibfbmon.template {
