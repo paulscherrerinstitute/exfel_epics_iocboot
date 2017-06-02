@@ -135,13 +135,13 @@ file ibfbsw.template {
 #-- monitor
 file ibfbmcom.template {
    pattern  {DEV           SRV     		   READ_OFFSET        }
-            {IBFBMON       IBFBMCOM               28        }
+            {IBFBMON       IBFBMCOM               4        }
 }
 
 file ibfbmon.template {
    pattern  {DEV           SRV     		   READ_OFFSET  MON   }
-            {IBFBMON       IBFBMON1               24  AMP   }
-            {IBFBMON       IBFBMON2               24  KICK  }
+            {IBFBMON       IBFBMON1               48  AMP   }
+            {IBFBMON       IBFBMON2               48  KICK  }
 }
 
 #-- player
