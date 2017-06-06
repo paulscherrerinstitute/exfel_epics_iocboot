@@ -226,6 +226,9 @@ record(longout, "$(DEV):$(MON)-ADC-SMP-DELAY") {
 
 
 
+#########################################################
+### Trigger detection
+#########################################################
 
 ## trigger level
 record(longout, "$(DEV):$(MON)-TRG-LEVEL-0") {
@@ -347,49 +350,49 @@ record(bo, "$(DEV):$(MON)-TRG-EDGE-7") {
 record(longin, "$(DEV):$(MON)-TRG-DELAY-0") {
   field(SCAN, "I/O Intr")
   field(DTYP, "S7gpac")
-  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0018 T=UINT32")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x8018 T=UINT32")
 }
 
 record(longin, "$(DEV):$(MON)-TRG-DELAY-1") {
   field(SCAN, "I/O Intr")
   field(DTYP, "S7gpac")
-  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x001C T=UINT32")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x801C T=UINT32")
 }
 
 record(longin, "$(DEV):$(MON)-TRG-DELAY-2") {
   field(SCAN, "I/O Intr")
   field(DTYP, "S7gpac")
-  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0020 T=UINT32")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x8020 T=UINT32")
 }
 
 record(longin, "$(DEV):$(MON)-TRG-DELAY-3") {
   field(SCAN, "I/O Intr")
   field(DTYP, "S7gpac")
-  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0024 T=UINT32")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x8024 T=UINT32")
 }
 
 record(longin, "$(DEV):$(MON)-TRG-DELAY-4") {
   field(SCAN, "I/O Intr")
   field(DTYP, "S7gpac")
-  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0028 T=UINT32")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x8028 T=UINT32")
 }
 
 record(longin, "$(DEV):$(MON)-TRG-DELAY-5") {
   field(SCAN, "I/O Intr")
   field(DTYP, "S7gpac")
-  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x002C T=UINT32")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x802C T=UINT32")
 }
 
 record(longin, "$(DEV):$(MON)-TRG-DELAY-6") {
   field(SCAN, "I/O Intr")
   field(DTYP, "S7gpac")
-  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0030 T=UINT32")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x8030 T=UINT32")
 }
 
 record(longin, "$(DEV):$(MON)-TRG-DELAY-7") {
   field(SCAN, "I/O Intr")
   field(DTYP, "S7gpac")
-  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0034 T=UINT32")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x8034 T=UINT32")
 }
 
 ## -- found edge
@@ -397,47 +400,47 @@ record(longin, "$(DEV):$(MON)-TRG-DELAY-7") {
 record(longin, "$(DEV):$(MON)-TRG-FOUND-0") {
   field(SCAN, "I/O Intr")
   field(DTYP, "S7gpac")
-  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0038 T=UINT8")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x8038 T=UINT8")
 }
 
 record(longin, "$(DEV):$(MON)-TRG-FOUND-1") {
   field(SCAN, "I/O Intr")
   field(DTYP, "S7gpac")
-  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0039 T=UINT8")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x8039 T=UINT8")
 }
 
 record(longin, "$(DEV):$(MON)-TRG-FOUND-2") {
   field(SCAN, "I/O Intr")
   field(DTYP, "S7gpac")
-  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x003A T=UINT8")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x803A T=UINT8")
 }
 
 record(longin, "$(DEV):$(MON)-TRG-FOUND-3") {
   field(SCAN, "I/O Intr")
   field(DTYP, "S7gpac")
-  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x003B T=UINT8")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x803B T=UINT8")
 }
 
 record(longin, "$(DEV):$(MON)-TRG-FOUND-4") {
   field(SCAN, "I/O Intr")
   field(DTYP, "S7gpac")
-  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x003C T=UINT8")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x803C T=UINT8")
 }
 
 record(longin, "$(DEV):$(MON)-TRG-FOUND-5") {
   field(SCAN, "I/O Intr")
   field(DTYP, "S7gpac")
-  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x003D T=UINT8")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x803D T=UINT8")
 }
 
 record(longin, "$(DEV):$(MON)-TRG-FOUND-6") {
   field(SCAN, "I/O Intr")
   field(DTYP, "S7gpac")
-  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x003E T=UINT8")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x803E T=UINT8")
 }
 
 record(longin, "$(DEV):$(MON)-TRG-FOUND-7") {
   field(SCAN, "I/O Intr")
   field(DTYP, "S7gpac")
-  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x003F T=UINT8")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x803F T=UINT8")
 }
