@@ -860,7 +860,7 @@ record(longin, "$(DEV):$(PLANE)-SASE1-FB-DEL") {
 record(longin, "$(DEV):$(PLANE)-FF-TABLE-CNT") {
   field(SCAN, "I/O Intr")
   field(DTYP, "S7gpac")
-  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x01C0 T=UINT32")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x01A0 T=UINT32")
 }
 
 
@@ -1082,60 +1082,60 @@ record(waveform, "$(DEV):$(PLANE)-DOWN-BPM2-HIST") {
   field(FTVL, "SHORT")
 }
 
-#--- Lattice verification ------------------------------------------
+#--- First bunch readouts ------------------------------------------
 
-record(ai, "$(DEV):$(PLANE)-LATVER-BPM1-UP-POS-M") {
-  field(SCAN, "I/O Intr")
-  field(DTYP, "S7gpac")
-  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x01A0 T=FLOAT")
-  field(PREC, "3")
-}
-
-record(ai, "$(DEV):$(PLANE)-LATVER-BPM1-UP-ANGLE-M") {
+record(ai, "$(DEV):$(PLANE)-BPM1-UP-POS") {
   field(SCAN, "I/O Intr")
   field(DTYP, "S7gpac")
   field(INP,  "@$(SRV)/$(READ_OFFSET)+0x01A4 T=FLOAT")
   field(PREC, "3")
 }
 
-record(ai, "$(DEV):$(PLANE)-LATVER-BPM2-UP-POS-M") {
+record(ai, "$(DEV):$(PLANE)-BPM1-UP-VALID") {
   field(SCAN, "I/O Intr")
   field(DTYP, "S7gpac")
   field(INP,  "@$(SRV)/$(READ_OFFSET)+0x01A8 T=FLOAT")
   field(PREC, "3")
 }
 
-record(ai, "$(DEV):$(PLANE)-LATVER-BPM2-UP-ANGLE-M") {
+record(ai, "$(DEV):$(PLANE)-BPM2-UP-POS") {
   field(SCAN, "I/O Intr")
   field(DTYP, "S7gpac")
   field(INP,  "@$(SRV)/$(READ_OFFSET)+0x01AC T=FLOAT")
   field(PREC, "3")
 }
 
-record(ai, "$(DEV):$(PLANE)-LATVER-BPM1-DOWN-POS-M") {
+record(ai, "$(DEV):$(PLANE)-BPM2-UP-VALID") {
   field(SCAN, "I/O Intr")
   field(DTYP, "S7gpac")
   field(INP,  "@$(SRV)/$(READ_OFFSET)+0x01B0 T=FLOAT")
   field(PREC, "3")
 }
 
-record(ai, "$(DEV):$(PLANE)-LATVER-BPM1-DOWN-ANGLE-M") {
+record(ai, "$(DEV):$(PLANE)-BPM1-DOWN-POS") {
   field(SCAN, "I/O Intr")
   field(DTYP, "S7gpac")
   field(INP,  "@$(SRV)/$(READ_OFFSET)+0x01B4 T=FLOAT")
   field(PREC, "3")
 }
 
-record(ai, "$(DEV):$(PLANE)-LATVER-BPM2-DOWN-POS-M") {
+record(ai, "$(DEV):$(PLANE)-BPM1-DOWN-VALID") {
   field(SCAN, "I/O Intr")
   field(DTYP, "S7gpac")
   field(INP,  "@$(SRV)/$(READ_OFFSET)+0x01B8 T=FLOAT")
   field(PREC, "3")
 }
 
-record(ai, "$(DEV):$(PLANE)-LATVER-BPM2-DOWN-ANGLE-M") {
+record(ai, "$(DEV):$(PLANE)-BPM2-DOWN-POS") {
   field(SCAN, "I/O Intr")
   field(DTYP, "S7gpac")
   field(INP,  "@$(SRV)/$(READ_OFFSET)+0x01BC T=FLOAT")
+  field(PREC, "3")
+}
+
+record(ai, "$(DEV):$(PLANE)-BPM2-DOWN-VALID") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x01C0 T=FLOAT")
   field(PREC, "3")
 }
