@@ -857,6 +857,13 @@ record(longin, "$(DEV):$(PLANE)-SASE1-FB-DEL") {
   field(INP,  "@$(SRV)/$(READ_OFFSET)+0x005B T=UINT8")
 }
 
+record(longin, "$(DEV):$(PLANE)-FF-TABLE-CNT") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x01C0 T=UINT32")
+}
+
+
 ##-- beam trains
 
 record(bo, "$(DEV):$(PLANE)-FB-SASE1-ON") {
