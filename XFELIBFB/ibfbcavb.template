@@ -1,0 +1,113 @@
+#------------------------------------------------------------------------------
+#
+#
+
+##---- BP FPGA -----------------------------------------------
+
+record(longin, "$(DEV):COM-SFP-STATUS") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0000 T=UINT32")
+}
+
+
+##---- BPM2 FPGA -----------------------------------------------
+record(longin, "$(DEV):BPM2-IBFB-GTX-STATUS") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0004 T=UINT32")
+}
+
+record(longin, "$(DEV):BPM2-IBFB-GTX-COM0-LOSS-CNT") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0008 T=UINT16")
+}
+
+record(longin, "$(DEV):BPM2-IBFB-GTX-COM1-LOSS-CNT") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x000A T=UINT16")
+}
+
+record(longin, "$(DEV):BPM2-IBFB-GTX-BPM0-LOSS-CNT") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x000C T=UINT16")
+}
+
+record(longin, "$(DEV):BPM2-IBFB-GTX-BPM1-LOSS-CNT") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x000E T=UINT16")
+}
+
+record(longin, "$(DEV):BPM2-IBFB-GTX-BPM2-LOSS-CNT") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0010 T=UINT16")
+}
+
+record(longin, "$(DEV):BPM2-IBFB-GTX-BPM3-LOSS-CNT") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0012 T=UINT16")
+}
+
+record(longin, "$(DEV):BPM2-PACKET-FIFO-WR-ERR-CNT") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0014 T=UINT16")
+}
+
+record(longin, "$(DEV):BPM2-PACKET-FIFO-RD-ERR-CNT") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0016 T=UINT16")
+}
+
+record(longin, "$(DEV):BPM2-ROUTER-ERR-CNT0") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0018 T=UINT16")
+}
+
+record(longin, "$(DEV):BPM2-ROUTER-ERR-CNT1") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x001A T=UINT16")
+}
+
+record(longout, "$(DEV):BPM2-BPM-ID") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0004:0x0004 T=UINT8")
+  field(DRVH, "255")
+  field(DRVL, "0")
+  field(HOPR, "255")
+  field(LOPR, "0")
+}
+
+record(bo, "$(DEV):BPM2-ENABLED") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x000B:0x000B T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(ZNAM, "Ping" )
+  field(ONAM, "On" )
+}
+
+record(longout, "$(DEV):BPM2-TRG-DELAY") {
+   field(DESC, "Bunch timing B1.0")
+   field(DTYP, "S7gpac")
+   field(OUT,  "@$(SRV)/0x000C:0x000C T=UINT32")
+   field(SCAN, "I/O Intr")
+   field(LOPR, "0")
+   field(HOPR, "8000000")
+   field(EGU,  "clk cycles")
+}
+
+record(longout, "$(DEV):BPM2-ROUTER-ENA") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x000A:0x000A T=UINT8")
+  field(SCAN, "I/O Intr")
+}
