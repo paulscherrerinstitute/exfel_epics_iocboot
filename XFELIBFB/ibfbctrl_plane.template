@@ -109,6 +109,12 @@ record(longin, "$(DEV):RTMG-SFP2") {
   field(INP,  "@$(SRV)/$(READ_OFFSET)+0x000C T=UINT32")
 }
 
+record(longin, "$(DEV):$(PLANE)-XFELTIM-PULSE") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x01D4 T=UINT32")
+}
+
 record(ao,"$(DEV):$(PLANE)-FF-FAST-GAIN") {
   field(DTYP, "S7gpac")
   field(OUT,  "@$(SRV)/0x0014:0x0014 T=FLOAT")
