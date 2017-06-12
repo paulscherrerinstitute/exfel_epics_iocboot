@@ -14,10 +14,10 @@ require "s7gpac", "koprek_w"
 #___________________________________________________________________________________________                     
    s7gpacConfigure  ("IBFBCTRL",     "xfelgpacibfbctrl",   51234,    628,       72,         1,       10000,           200)    
    s7gpacConfigure  ("IBFBCCOM",     "xfelgpacibfbctrl",   51235,    108,        4,         1,       10000,           200)    
-   s7gpacConfigure  ("IBFBCTRL1",    "xfelgpacibfbctrl",   51236,    796,      344,         1,       10000,           200)    
+   s7gpacConfigure  ("IBFBCTRL1",    "xfelgpacibfbctrl",   51236,    816,      344,         1,       10000,           200)    
    s7gpacConfigure  ("IBFBCWAV1",    "xfelgpacibfbctrl",   51237,  54164,        4,         1,       10000,           200)     
    s7gpacConfigure  ("IBFBCTAB1",    "xfelgpacibfbctrl",   51238,  43712,    22048,         1,       10000,           200)    
-   s7gpacConfigure  ("IBFBCTRL2",    "xfelgpacibfbctrl",   51246,    796,      344,         1,       10000,           200)    
+   s7gpacConfigure  ("IBFBCTRL2",    "xfelgpacibfbctrl",   51246,    816,      344,         1,       10000,           200)    
    s7gpacConfigure  ("IBFBCWAV2",    "xfelgpacibfbctrl",   51247,  54164,        4,         1,       10000,           200)    
    s7gpacConfigure  ("IBFBCTAB2",    "xfelgpacibfbctrl",   51248,  43712,    22048,         1,       10000,           200)    
 #  __   
