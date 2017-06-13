@@ -142,7 +142,7 @@ file ibfbcavb.template {
 ### Permament Cavity BPMs                                                    ####
 #################################################################################
 
-- Cavity BPM
+## Cavity BPM
 file GPAC_BPM_SMP.template {
    pattern  {DEV                 SRV              READ_OFFSET  }
             {BPMI-1837-CL        BPMI-1837-CL             660  }
