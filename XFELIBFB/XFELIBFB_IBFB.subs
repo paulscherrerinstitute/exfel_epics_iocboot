@@ -182,15 +182,15 @@ file RFFE_Cavity_3GHz3_120700B.template {
             {BPMI-1939-TL        BPMI-1939-TL             660  }
 }
 
-file GPAC_BPM_CONSISTENT_SET_VAL.template {
-   pattern {DEV                  SRV              READ_OFFSET  }
-            {BPMI-1837-CL        BPMI-1837-CL             660  }
-            {BPMI-1860-TL        BPMI-1860-TL             660  }
-            {BPMI-1878-TL        BPMI-1878-TL             660  }
-            {BPMI-1910-TL        BPMI-1910-TL             660  }
-            {BPMI-1930-TL        BPMI-1930-TL             660  }
-            {BPMI-1863-TL        BPMI-1863-TL             660  }
-            {BPMI-1889-TL        BPMI-1889-TL             660  }
-            {BPMI-1925-TL        BPMI-1925-TL             660  }
-            {BPMI-1939-TL        BPMI-1939-TL             660  }
-}
+#file GPAC_BPM_CONSISTENT_SET_VAL.template {
+#   pattern {DEV                  SRV              READ_OFFSET  }
+#            {BPMI-1837-CL        BPMI-1837-CL             660  }
+#            {BPMI-1860-TL        BPMI-1860-TL             660  }
+#            {BPMI-1878-TL        BPMI-1878-TL             660  }
+#            {BPMI-1910-TL        BPMI-1910-TL             660  }
+#            {BPMI-1930-TL        BPMI-1930-TL             660  }
+#            {BPMI-1863-TL        BPMI-1863-TL             660  }
+#            {BPMI-1889-TL        BPMI-1889-TL             660  }
+#            {BPMI-1925-TL        BPMI-1925-TL             660  }
+#            {BPMI-1939-TL        BPMI-1939-TL             660  }
+#}
