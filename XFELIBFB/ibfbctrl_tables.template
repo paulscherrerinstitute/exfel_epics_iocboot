@@ -2,53 +2,53 @@
 #
 #
 
-record(aao, "$(DEV):$(PLANE)-KICK1-P-PATTERN") {
-  field(SCAN, "I/O Intr")
-  field(DTYP, "S7gpac")
-  field(OUT,  "@$(SRV)/0x54A0:0x54A0 T=INT16")
-  field(NELM, "48")
-  field(FTVL, "SHORT")
-}
-
-record(aao, "$(DEV):$(PLANE)-KICK1-N-PATTERN") {
-  field(SCAN, "I/O Intr")
-  field(DTYP, "S7gpac")
-  field(OUT,  "@$(SRV)/0x5500:0x5500 T=INT16")
-  field(NELM, "48")
-  field(FTVL, "SHORT")
-}
-
-record(aao, "$(DEV):$(PLANE)-KICK2-P-PATTERN") {
-  field(SCAN, "I/O Intr")
-  field(DTYP, "S7gpac")
-  field(OUT,  "@$(SRV)/0x5560:0x5560 T=INT16")
-  field(NELM, "48")
-  field(FTVL, "SHORT")
-}
-
-record(aao, "$(DEV):$(PLANE)-KICK2-N-PATTERN") {
-  field(SCAN, "I/O Intr")
-  field(DTYP, "S7gpac")
-  field(OUT,  "@$(SRV)/0x55C0:0x55C0 T=INT16")
-  field(NELM, "48")
-  field(FTVL, "SHORT")
-}
-
-record(waveform, "$(DEV):$(PLANE)-KICK1-OUT") {
-  field(SCAN, "I/O Intr")
-  field(DTYP, "S7gpac")
-  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0000")
-  field(NELM, "2708")
-  field(FTVL, "LONG")
-}
-
-record(waveform, "$(DEV):$(PLANE)-KICK2-OUT") {
-  field(SCAN, "I/O Intr")
-  field(DTYP, "S7gpac")
-  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x2A50")
-  field(NELM, "2708")
-  field(FTVL, "LONG")
-}
+# record(aao, "$(DEV):$(PLANE)-KICK1-P-PATTERN") {
+#   field(SCAN, "I/O Intr")
+#   field(DTYP, "S7gpac")
+#   field(OUT,  "@$(SRV)/0x54A0:0x54A0 T=INT16")
+#   field(NELM, "48")
+#   field(FTVL, "SHORT")
+# }
+# 
+# record(aao, "$(DEV):$(PLANE)-KICK1-N-PATTERN") {
+#   field(SCAN, "I/O Intr")
+#   field(DTYP, "S7gpac")
+#   field(OUT,  "@$(SRV)/0x5500:0x5500 T=INT16")
+#   field(NELM, "48")
+#   field(FTVL, "SHORT")
+# }
+# 
+# record(aao, "$(DEV):$(PLANE)-KICK2-P-PATTERN") {
+#   field(SCAN, "I/O Intr")
+#   field(DTYP, "S7gpac")
+#   field(OUT,  "@$(SRV)/0x5560:0x5560 T=INT16")
+#   field(NELM, "48")
+#   field(FTVL, "SHORT")
+# }
+# 
+# record(aao, "$(DEV):$(PLANE)-KICK2-N-PATTERN") {
+#   field(SCAN, "I/O Intr")
+#   field(DTYP, "S7gpac")
+#   field(OUT,  "@$(SRV)/0x55C0:0x55C0 T=INT16")
+#   field(NELM, "48")
+#   field(FTVL, "SHORT")
+# }
+# 
+# record(waveform, "$(DEV):$(PLANE)-KICK1-OUT") {
+#   field(SCAN, "I/O Intr")
+#   field(DTYP, "S7gpac")
+#   field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0000")
+#   field(NELM, "2708")
+#   field(FTVL, "LONG")
+# }
+# 
+# record(waveform, "$(DEV):$(PLANE)-KICK2-OUT") {
+#   field(SCAN, "I/O Intr")
+#   field(DTYP, "S7gpac")
+#   field(INP,  "@$(SRV)/$(READ_OFFSET)+0x2A50")
+#   field(NELM, "2708")
+#   field(FTVL, "LONG")
+# }
 
 record(aao, "$(DEV):$(PLANE)-FF-TABLE-POS") {
   field(SCAN, "I/O Intr")
