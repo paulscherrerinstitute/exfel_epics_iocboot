@@ -55,6 +55,7 @@ record(aao, "$(DEV):$(PLANE)-FF-TABLE-POS") {
   field(DTYP, "S7gpac")
   field(OUT,  "@$(SRV)/0x0000:0x0000 T=FLOAT")
   field(NELM, "2708")
+  field(PREC, "3")
   field(FTVL, "FLOAT")
 }
 
@@ -63,6 +64,7 @@ record(aao, "$(DEV):$(PLANE)-FF-TABLE-ANGLE") {
   field(DTYP, "S7gpac")
   field(OUT,  "@$(SRV)/0x2A50:0x2A50 T=FLOAT")
   field(NELM, "2708")
+  field(PREC, "3")
   field(FTVL, "FLOAT")
 }
 
