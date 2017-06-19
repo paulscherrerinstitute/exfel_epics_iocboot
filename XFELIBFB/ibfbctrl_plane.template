@@ -462,6 +462,13 @@ record(bo, "$(DEV):$(PLANE)-FF-FAST-MODE") {
   field(ONAM, "Manual" )
 }
 
+record(ao,"$(DEV):$(PLANE)-FB-FAST-I-CONST") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0144:0x0144 T=FLOAT")
+  field(SCAN, "I/O Intr")
+  field(PREC, "4")  
+}
+
 ##-- orbit matrices
 
 record(ao,"$(DEV):$(PLANE)-FB-UP-ORBIT-M11") {
