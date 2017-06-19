@@ -123,15 +123,26 @@ record(longin, "$(DEV):$(PLANE)-XFELTIM-PULSE") {
   field(INP,  "@$(SRV)/$(READ_OFFSET)+0x01D4 T=UINT32")
 }
 
-record(ao,"$(DEV):$(PLANE)-FF-FAST-GAIN") {
+record(ao,"$(DEV):$(PLANE)-FB-FAST-KP") {
   field(DTYP, "S7gpac")
   field(OUT,  "@$(SRV)/0x0014:0x0014 T=FLOAT")
   field(SCAN, "I/O Intr")
   field(DRVL, "0.0")  
-  field(DRVH, "1.0")
+  field(DRVH, "3.0")
   field(LOPR, "0.0")
-  field(HOPR, "1.0")  
-  field(PREC, "3")  
+  field(HOPR, "3.0")  
+  field(PREC, "2")  
+}
+
+record(ao,"$(DEV):$(PLANE)-FB-FAST-KI") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0144:0x0144 T=FLOAT")
+  field(SCAN, "I/O Intr")
+  field(DRVL, "0.0")  
+  field(DRVH, "3.0")
+  field(LOPR, "0.0")
+  field(HOPR, "3.0")  
+  field(PREC, "2")  
 }
 
 record(longout, "$(DEV):$(PLANE)-KICK2-DELAY") { 
@@ -476,12 +487,6 @@ record(bo, "$(DEV):$(PLANE)-FF-FAST-MODE") {
   field(ONAM, "Manual" )
 }
 
-record(ao,"$(DEV):$(PLANE)-FB-FAST-I-CONST") {
-  field(DTYP, "S7gpac")
-  field(OUT,  "@$(SRV)/0x0144:0x0144 T=FLOAT")
-  field(SCAN, "I/O Intr")
-  field(PREC, "4")  
-}
 
 ##-- orbit matrices
 
