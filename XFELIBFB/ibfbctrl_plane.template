@@ -454,12 +454,18 @@ record(bo, "$(DEV):$(PLANE)-FB-FAST-ON") {
   field(ONAM, "On" )
 }
 
-record(bo, "$(DEV):$(PLANE)-FB-PARAMS-MODE") {
+record(mbbo, "$(DEV):$(PLANE)-FB-PARAMS-MODE") {
   field(DTYP, "S7gpac")
   field(OUT,  "@$(SRV)/0x013A:0x013A T=UINT8")
   field(SCAN, "I/O Intr")
-  field(ZNAM, "Automatic" )
-  field(ONAM, "Manual" )
+  field(NOBT,"2")
+  field(SHFT, "0")
+  field(ZRVL, "0" )
+  field(ONVL, "1" )
+  field(TWVL, "2" )
+  field(ZRST, "Orbit" )
+  field(ONST, "Position" )
+  field(TWST, "Manual" )
 }
 
 record(bo, "$(DEV):$(PLANE)-FF-FAST-MODE") {
