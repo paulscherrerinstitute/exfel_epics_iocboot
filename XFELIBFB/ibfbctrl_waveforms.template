@@ -38,10 +38,18 @@ record(waveform, "$(DEV):$(PLANE)-RX-DOWN-BPM2") {
   field(FTVL, "FLOAT")
 }
 
-record(waveform, "$(DEV):$(PLANE)-RX-UPDOWN-POS") {
+record(waveform, "$(DEV):$(PLANE)-FP-I-BPM1") {
   field(SCAN, "I/O Intr")
   field(DTYP, "S7gpac")
   field(INP,  "@$(SRV)/$(READ_OFFSET)+0xA940")
+  field(NELM, "2708")
+  field(FTVL, "FLOAT")
+}
+
+record(waveform, "$(DEV):$(PLANE)-FB-I-BPM2") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0xD390")
   field(NELM, "2708")
   field(FTVL, "FLOAT")
 }
