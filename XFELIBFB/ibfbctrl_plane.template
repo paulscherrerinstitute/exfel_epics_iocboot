@@ -65,6 +65,14 @@ record(bo, "$(DEV):$(PLANE)-AMP-GATE-ENA") {
   field(ONAM, "Open" )
 }
 
+record(bo, "$(DEV):$(PLANE)-RX-HIST-ENA") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0158:0x0158 T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(ZNAM, "Disabled" )
+  field(ONAM, "Enabled" )
+}
+
 # record(longout, "$(DEV):$(PLANE)-BUNCH-NUM") {
 #   field(DTYP, "S7gpac")
 #   field(OUT,  "@$(SRV)/0x000C:0x000C T=UINT16")

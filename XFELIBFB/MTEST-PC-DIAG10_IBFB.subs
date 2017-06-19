@@ -87,14 +87,14 @@ file gpac2_service.template {
 
 file ibfbctrl_plane.template {
    pattern  {DEV           SRV     		   READ_OFFSET  PLANE }
-            {IBFBCTRL      IBFBCTRL1             344      Y }
-            {IBFBCTRL      IBFBCTRL2             344      X }
+            {IBFBCTRL      IBFBCTRL1             348      Y }
+            {IBFBCTRL      IBFBCTRL2             348      X }
 }
 
 file ibfbctrl_dac.template {
    pattern  {DEV           SRV     		   READ_OFFSET  PLANE }
-            {IBFBCTRL      IBFBCTRL1             344      Y }
-            {IBFBCTRL      IBFBCTRL2             344      X }
+            {IBFBCTRL      IBFBCTRL1             348      Y }
+            {IBFBCTRL      IBFBCTRL2             348      X }
 }
 
 file ibfbctrl_common.template {
