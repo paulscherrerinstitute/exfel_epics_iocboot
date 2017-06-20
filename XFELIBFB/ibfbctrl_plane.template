@@ -81,8 +81,10 @@ record(mbbo, "$(DEV):$(PLANE)-DAQ-MUX0") {
   field(SHFT, "0")
   field(ZRVL, "0" )
   field(ONVL, "1" )
+  field(TWVL, "2" )
   field(ZRST, "Position" )
   field(ONST, "FF Table" )
+  field(TWST, "Integrator" )
 }
 
 record(mbbo, "$(DEV):$(PLANE)-DAQ-MUX1") {
@@ -93,8 +95,10 @@ record(mbbo, "$(DEV):$(PLANE)-DAQ-MUX1") {
   field(SHFT, "0")
   field(ZRVL, "0" )
   field(ONVL, "1" )
+  field(TWVL, "2" )
   field(ZRST, "Pos error" )
   field(ONST, "FB output" )
+  field(TWST, "PI output" )
 }
 
 record(mbbo, "$(DEV):$(PLANE)-DAQ-MUX2") {
@@ -105,7 +109,7 @@ record(mbbo, "$(DEV):$(PLANE)-DAQ-MUX2") {
   field(SHFT, "0")
   field(ZRVL, "0" )
   field(ONVL, "1" )
-  field(ZRST, "Integrator output" )
+  field(ZRST, "Integrator gated" )
   field(ONST, "Sync pos error" )
 }
 
