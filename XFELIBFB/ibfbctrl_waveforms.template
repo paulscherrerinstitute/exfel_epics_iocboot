@@ -4,7 +4,7 @@
 
 # -- dynamic waveforms
 
-record(waveform, "$(DEV):$(PLANE)-FB-POS-ERR") {
+record(waveform, "$(DEV):$(PLANE)-DAQ-CH00") {
   field(SCAN, "I/O Intr")
   field(DTYP, "S7gpac")
   field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0000")
@@ -13,7 +13,7 @@ record(waveform, "$(DEV):$(PLANE)-FB-POS-ERR") {
   field(FTVL, "FLOAT")
 }
 
-record(waveform, "$(DEV):$(PLANE)-FB-ANGLE-ERR") {
+record(waveform, "$(DEV):$(PLANE)-DAQ-CH01") {
   field(SCAN, "I/O Intr")
   field(DTYP, "S7gpac")
   field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0400")
@@ -22,7 +22,7 @@ record(waveform, "$(DEV):$(PLANE)-FB-ANGLE-ERR") {
   field(FTVL, "FLOAT")
 }
 
-record(waveform, "$(DEV):$(PLANE)-RX-DOWN-BPM1") {
+record(waveform, "$(DEV):$(PLANE)-DAQ-CH10") {
   field(SCAN, "I/O Intr")
   field(DTYP, "S7gpac")
   field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0800")
@@ -31,7 +31,7 @@ record(waveform, "$(DEV):$(PLANE)-RX-DOWN-BPM1") {
   field(FTVL, "FLOAT")
 }
 
-record(waveform, "$(DEV):$(PLANE)-RX-DOWN-BPM2") {
+record(waveform, "$(DEV):$(PLANE)-DAQ-CH11") {
   field(SCAN, "I/O Intr")
   field(DTYP, "S7gpac")
   field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0C00")
@@ -40,7 +40,7 @@ record(waveform, "$(DEV):$(PLANE)-RX-DOWN-BPM2") {
   field(FTVL, "FLOAT")
 }
 
-record(waveform, "$(DEV):$(PLANE)-FB-I-BPM1") {
+record(waveform, "$(DEV):$(PLANE)-DAQ-CH20") {
   field(SCAN, "I/O Intr")
   field(DTYP, "S7gpac")
   field(INP,  "@$(SRV)/$(READ_OFFSET)+0x1000")
@@ -49,7 +49,7 @@ record(waveform, "$(DEV):$(PLANE)-FB-I-BPM1") {
   field(FTVL, "FLOAT")
 }
 
-record(waveform, "$(DEV):$(PLANE)-FB-I-BPM2") {
+record(waveform, "$(DEV):$(PLANE)-DAQ-CH21") {
   field(SCAN, "I/O Intr")
   field(DTYP, "S7gpac")
   field(INP,  "@$(SRV)/$(READ_OFFSET)+0x1400")
@@ -57,3 +57,67 @@ record(waveform, "$(DEV):$(PLANE)-FB-I-BPM2") {
   field(PREC, "3")
   field(FTVL, "FLOAT")
 }
+
+record(waveform, "$(DEV):$(PLANE)-DAQ-CH30") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x1800")
+  field(NELM, "256")
+  field(PREC, "3")
+  field(FTVL, "FLOAT")
+}
+
+record(waveform, "$(DEV):$(PLANE)-DAQ-CH31") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x1c00")
+  field(NELM, "256")
+  field(PREC, "3")
+  field(FTVL, "FLOAT")
+}
+
+##record(waveform, "$(DEV):$(PLANE)-FB-ANGLE-ERR") {
+##  field(SCAN, "I/O Intr")
+##  field(DTYP, "S7gpac")
+##  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0400")
+##  field(NELM, "256")
+##  field(PREC, "3")
+##  field(FTVL, "FLOAT")
+##}
+##
+##record(waveform, "$(DEV):$(PLANE)-RX-DOWN-BPM1") {
+##  field(SCAN, "I/O Intr")
+##  field(DTYP, "S7gpac")
+##  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0800")
+##  field(NELM, "256")
+##  field(PREC, "3")
+##  field(FTVL, "FLOAT")
+##}
+##
+##record(waveform, "$(DEV):$(PLANE)-RX-DOWN-BPM2") {
+##  field(SCAN, "I/O Intr")
+##  field(DTYP, "S7gpac")
+##  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0C00")
+##  field(NELM, "256")
+##  field(PREC, "3")
+##  field(FTVL, "FLOAT")
+##}
+##
+##record(waveform, "$(DEV):$(PLANE)-FB-I-BPM1") {
+##  field(SCAN, "I/O Intr")
+##  field(DTYP, "S7gpac")
+##  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x1000")
+##  field(NELM, "256")
+##  field(PREC, "3")
+##  field(FTVL, "FLOAT")
+##}
+##
+##record(waveform, "$(DEV):$(PLANE)-FB-I-BPM2") {
+##  field(SCAN, "I/O Intr")
+##  field(DTYP, "S7gpac")
+##  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x1400")
+##  field(NELM, "256")
+##  field(PREC, "3")
+##  field(FTVL, "FLOAT")
+##}
+##
