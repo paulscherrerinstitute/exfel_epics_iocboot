@@ -73,7 +73,7 @@ record(bo, "$(DEV):$(PLANE)-RX-HIST-ENA") {
   field(ONAM, "Enabled" )
 }
 
-record(mbbo, "$(DEV):$(PLANE)-DAQ-CH0") {
+record(mbbo, "$(DEV):$(PLANE)-DAQ-MUX0") {
   field(DTYP, "S7gpac")
   field(OUT,  "@$(SRV)/0x015C:0x015C T=UINT8")
   field(SCAN, "I/O Intr")
@@ -85,7 +85,7 @@ record(mbbo, "$(DEV):$(PLANE)-DAQ-CH0") {
   field(ONST, "FF Table" )
 }
 
-record(mbbo, "$(DEV):$(PLANE)-DAQ-CH1") {
+record(mbbo, "$(DEV):$(PLANE)-DAQ-MUX1") {
   field(DTYP, "S7gpac")
   field(OUT,  "@$(SRV)/0x015D:0x015D T=UINT8")
   field(SCAN, "I/O Intr")
@@ -97,7 +97,7 @@ record(mbbo, "$(DEV):$(PLANE)-DAQ-CH1") {
   field(ONST, "FB output" )
 }
 
-record(mbbo, "$(DEV):$(PLANE)-DAQ-CH2") {
+record(mbbo, "$(DEV):$(PLANE)-DAQ-MUX2") {
   field(DTYP, "S7gpac")
   field(OUT,  "@$(SRV)/0x015E:0x015E T=UINT8")
   field(SCAN, "I/O Intr")
@@ -109,7 +109,7 @@ record(mbbo, "$(DEV):$(PLANE)-DAQ-CH2") {
   field(ONST, "Sync pos error" )
 }
 
-record(mbbo, "$(DEV):$(PLANE)-DAQ-CH3") {
+record(mbbo, "$(DEV):$(PLANE)-DAQ-MUX3") {
   field(DTYP, "S7gpac")
   field(OUT,  "@$(SRV)/0x015F:0x015F T=UINT8")
   field(SCAN, "I/O Intr")
