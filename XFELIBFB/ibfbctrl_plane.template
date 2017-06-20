@@ -82,7 +82,7 @@ record(mbbo, "$(DEV):$(PLANE)-DAQ-MUX0") {
   field(ZRVL, "0" )
   field(ONVL, "1" )
   field(TWVL, "2" )
-  field(ZRST, "Position" )
+  field(ZRST, "BPM position Mux" )
   field(ONST, "FF Table" )
   field(TWST, "Integrator" )
 }
@@ -109,8 +109,10 @@ record(mbbo, "$(DEV):$(PLANE)-DAQ-MUX2") {
   field(SHFT, "0")
   field(ZRVL, "0" )
   field(ONVL, "1" )
+  field(TWVL, "2" )
   field(ZRST, "Integrator gated" )
   field(ONST, "Sync pos error" )
+  field(TWST, "Downstream BPMs" )
 }
 
 record(mbbo, "$(DEV):$(PLANE)-DAQ-MUX3") {
