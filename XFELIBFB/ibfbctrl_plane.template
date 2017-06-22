@@ -84,7 +84,7 @@ record(mbbo, "$(DEV):$(PLANE)-DAQ-MUX0") {
   field(TWVL, "2" )
   field(ZRST, "DAQ00: BPM position Mux" )
   field(ONST, "DAQ01: Integrator gated" )
-  field(TWST, "DAQ02: Feedback kick (int)" )
+  field(TWST, "DAQ02: Feedback kick [int]" )
 }
 
 record(mbbo, "$(DEV):$(PLANE)-DAQ-MUX1") {
@@ -98,7 +98,7 @@ record(mbbo, "$(DEV):$(PLANE)-DAQ-MUX1") {
   field(TWVL, "2" )
   field(ZRST, "DAQ10: Pos error" )
   field(ONST, "DAQ11: Feedback kick" )
-  field(TWST, "DAQ12: FF table (int)" )
+  field(TWST, "DAQ12: FF table [int]" )
 }
 
 record(mbbo, "$(DEV):$(PLANE)-DAQ-MUX2") {
@@ -124,9 +124,9 @@ record(mbbo, "$(DEV):$(PLANE)-DAQ-MUX3") {
   field(ZRVL, "0" )
   field(ONVL, "1" )
   field(TWVL, "2" )
-  field(ZRST, "DAQ30: FB kicker (int)" )
-  field(ONST, "DAQ31: FF table (int)" )
-  field(TWST, "DAQ32: Kicker output (int)" )
+  field(ZRST, "DAQ30: FB kicker [int]" )
+  field(ONST, "DAQ31: FF table [int]" )
+  field(TWST, "DAQ32: Kicker output [int]" )
 }
 
 # record(longout, "$(DEV):$(PLANE)-BUNCH-NUM") {
