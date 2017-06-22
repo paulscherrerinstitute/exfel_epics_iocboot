@@ -63,15 +63,15 @@ record(waveform, "$(DEV):$(PLANE)-DAQ-CH30-INT") {
   field(DTYP, "S7gpac")
   field(INP,  "@$(SRV)/$(READ_OFFSET)+0x1800")
   field(NELM, "256")
-  field(FTVL, "INT32")
+  field(FTVL, "LONG")
 }
 
-record(waveform, "$(DEV):$(PLANE)-DAQ-CH31") {
+record(waveform, "$(DEV):$(PLANE)-DAQ-CH31-INT") {
   field(SCAN, "I/O Intr")
   field(DTYP, "S7gpac")
   field(INP,  "@$(SRV)/$(READ_OFFSET)+0x1c00")
   field(NELM, "256")
-  field(FTVL, "INT32")
+  field(FTVL, "LONG")
 }
 
 record(waveform, "$(DEV):$(PLANE)-DAQ-CH00-INT") {
@@ -79,7 +79,7 @@ record(waveform, "$(DEV):$(PLANE)-DAQ-CH00-INT") {
   field(DTYP, "S7gpac")
   field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0000")
   field(NELM, "256")
-  field(FTVL, "INT32")
+  field(FTVL, "LONG")
 }
 
 record(waveform, "$(DEV):$(PLANE)-DAQ-CH01-INT") {
@@ -87,7 +87,7 @@ record(waveform, "$(DEV):$(PLANE)-DAQ-CH01-INT") {
   field(DTYP, "S7gpac")
   field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0400")
   field(NELM, "256")
-  field(FTVL, "INT32")
+  field(FTVL, "LONG")
 }
 
 record(waveform, "$(DEV):$(PLANE)-DAQ-CH10-INT") {
@@ -95,7 +95,7 @@ record(waveform, "$(DEV):$(PLANE)-DAQ-CH10-INT") {
   field(DTYP, "S7gpac")
   field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0800")
   field(NELM, "256")
-  field(FTVL, "INT32")
+  field(FTVL, "LONG")
 }
 
 record(waveform, "$(DEV):$(PLANE)-DAQ-CH11-INT") {
@@ -103,7 +103,7 @@ record(waveform, "$(DEV):$(PLANE)-DAQ-CH11-INT") {
   field(DTYP, "S7gpac")
   field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0C00")
   field(NELM, "256")
-  field(FTVL, "INT32")
+  field(FTVL, "LONG")
 }
 
 
@@ -113,7 +113,7 @@ record(waveform, "$(DEV):$(PLANE)-RX-DOWN-BPM1") {
   field(INP,  "@$(SRV)/$(READ_OFFSET)+0x2000")
   field(NELM, "256")
   field(PREC, "3")
-  field(FTVL, "INT32")
+  field(FTVL, "LONG")
 }
 
 record(waveform, "$(DEV):$(PLANE)-RX-DOWN-BPM2") {
