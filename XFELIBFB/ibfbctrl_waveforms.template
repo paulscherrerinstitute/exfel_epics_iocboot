@@ -64,7 +64,7 @@ record(waveform, "$(DEV):$(PLANE)-DAQ-CH30") {
   field(INP,  "@$(SRV)/$(READ_OFFSET)+0x1800")
   field(NELM, "256")
   field(PREC, "3")
-  field(FTVL, "FLOAT")
+  field(FTVL, "INT32")
 }
 
 record(waveform, "$(DEV):$(PLANE)-DAQ-CH31") {
@@ -73,7 +73,7 @@ record(waveform, "$(DEV):$(PLANE)-DAQ-CH31") {
   field(INP,  "@$(SRV)/$(READ_OFFSET)+0x1c00")
   field(NELM, "256")
   field(PREC, "3")
-  field(FTVL, "FLOAT")
+  field(FTVL, "INT32")
 }
 
 record(waveform, "$(DEV):$(PLANE)-RX-DOWN-BPM1") {
