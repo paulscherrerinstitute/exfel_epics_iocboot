@@ -113,7 +113,7 @@ record(waveform, "$(DEV):$(PLANE)-RX-DOWN-BPM1") {
   field(INP,  "@$(SRV)/$(READ_OFFSET)+0x2000")
   field(NELM, "256")
   field(PREC, "3")
-  field(FTVL, "LONG")
+  field(FTVL, "FLOAT")
 }
 
 record(waveform, "$(DEV):$(PLANE)-RX-DOWN-BPM2") {
