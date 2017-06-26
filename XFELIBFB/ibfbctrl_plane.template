@@ -82,9 +82,11 @@ record(mbbo, "$(DEV):$(PLANE)-DAQ-MUX0") {
   field(ZRVL, "0" )
   field(ONVL, "1" )
   field(TWVL, "2" )
+  field(THVL, "3" )
   field(ZRST, "00: BPM Mux" )  
   field(ONST, "01: Int gated" )
   field(TWST, "02: FB kick int" )
+  field(THST, "03: SP Table" )
 }
 
 record(mbbo, "$(DEV):$(PLANE)-DAQ-MUX1") {
@@ -96,9 +98,11 @@ record(mbbo, "$(DEV):$(PLANE)-DAQ-MUX1") {
   field(ZRVL, "0" )
   field(ONVL, "1" )
   field(TWVL, "2" )
+  field(THVL, "3" )
   field(ZRST, "10: Pos error" )
   field(ONST, "11: FB kick" )
   field(TWST, "12: FF tab int" )
+  field(THST, "13: SP signal" )
 }
 
 record(mbbo, "$(DEV):$(PLANE)-DAQ-MUX2") {
