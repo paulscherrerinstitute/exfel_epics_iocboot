@@ -73,6 +73,12 @@ record(bo, "$(DEV):$(PLANE)-RX-HIST-ENA") {
   field(ONAM, "Enabled" )
 }
 
+record(longout, "$(DEV):$(PLANE)-FB-I-SMP-APPLY") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0159:0x0159 T=UINT8")
+  field(SCAN, "I/O Intr")
+}
+
 record(mbbo, "$(DEV):$(PLANE)-DAQ-MUX0") {
   field(DTYP, "S7gpac")
   field(OUT,  "@$(SRV)/0x015C:0x015C T=UINT8")
@@ -980,12 +986,6 @@ record(bo, "$(DEV):$(PLANE)-FB-SASE3-ON") {
   field(SCAN, "I/O Intr")
   field(ZNAM, "Off" )
   field(ONAM, "On" )
-}
-
-record(longout, "$(DEV):$(PLANE)-FB-I-SMP-APPLY") {
-  field(DTYP, "S7gpac")
-  field(OUT,  "@$(SRV)/0x0127:0x0127 T=UINT8")
-  field(SCAN, "I/O Intr")
 }
 
 record(bo, "$(DEV):$(PLANE)-FF-APPLY-TABLES") {
