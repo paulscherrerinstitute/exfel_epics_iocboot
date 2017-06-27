@@ -982,6 +982,12 @@ record(bo, "$(DEV):$(PLANE)-FB-SASE3-ON") {
   field(ONAM, "On" )
 }
 
+record(longout, "$(DEV):$(PLANE)-FB-I-SMP-APPLY") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0127:0x0127 T=UINT8")
+  field(SCAN, "I/O Intr")
+}
+
 record(bo, "$(DEV):$(PLANE)-FF-APPLY-TABLES") {
   field(DTYP, "S7gpac")
   field(OUT,  "@$(SRV)/0x0127:0x0127 T=UINT8")
