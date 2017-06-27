@@ -1250,13 +1250,13 @@ record(ai, "$(DEV):$(PLANE)-COL-VALID-WAV") {
 record(ai, "$(DEV):$(PLANE)-KICK1-WAV") {
   field(SCAN, "I/O Intr")
   field(DTYP, "S7gpac")
-  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x01CC T=UINT32")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x01CC T=INT32")
 }
 
 record(ai, "$(DEV):$(PLANE)-KICK2-WAV") {
   field(SCAN, "I/O Intr")
   field(DTYP, "S7gpac")
-  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x01D0 T=UINT32")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x01D0 T=INT32")
 }
 
 record(longin, "$(DEV):$(PLANE)-FF-SCAN-STATUS") {
