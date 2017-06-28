@@ -116,14 +116,14 @@ file ibfbctrl_waveforms.template {
 
 file ibfbctrl_tables.template {
    pattern  {DEV           SRV     		   READ_OFFSET  PLANE }
-            {IBFBCTRL      IBFBCTAB1             384      Y }
-            {IBFBCTRL      IBFBCTAB2             384      X }
+            {IBFBCTRL      IBFBCTAB1            2048      Y }
+            {IBFBCTRL      IBFBCTAB2            2048      X }
 }
 
 file ibfbctrl_patterns.template {
    pattern  {DEV           SRV     		   READ_OFFSET  PLANE }
-            {IBFBCTRL      IBFBCPAT1           21664      Y }
-            {IBFBCTRL      IBFBCPAT2           21664      X }
+            {IBFBCTRL      IBFBCPAT1             384      Y }
+            {IBFBCTRL      IBFBCPAT2             384      X }
 }
 
 #-- switch
