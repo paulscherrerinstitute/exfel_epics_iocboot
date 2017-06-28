@@ -62,7 +62,7 @@ record(aao, "$(DEV):$(PLANE)-FF-TABLE-POS") {
 record(aao, "$(DEV):$(PLANE)-FF-TABLE-ANGLE") {
   field(SCAN, "I/O Intr")
   field(DTYP, "S7gpac")
-  field(OUT,  "@$(SRV)/0x0100:0x0100 T=FLOAT")
+  field(OUT,  "@$(SRV)/0x0100:0x0400 T=FLOAT")
   field(NELM, "256")
   field(PREC, "3")
   field(FTVL, "FLOAT")
