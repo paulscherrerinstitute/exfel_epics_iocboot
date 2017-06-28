@@ -126,6 +126,12 @@ file ibfbctrl_patterns.template {
             {IBFBCTRL      IBFBCPAT2             384      X }
 }
 
+file ibfbctrl_ff_scan.template {
+   pattern  {DEV           SRV     		   READ_OFFSET  PLANE }
+            {IBFBCTRL      IBFBSCAN1               4      Y }
+            {IBFBCTRL      IBFBSCAN2               4      X }
+}
+
 #-- switch
 file ibfbscom.template {
    pattern  {DEV           SRV     		   READ_OFFSET        }

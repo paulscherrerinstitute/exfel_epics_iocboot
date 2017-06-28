@@ -1,0 +1,50 @@
+#------------------------------------------------------------------------------
+#
+#
+
+# -- dynamic waveforms
+
+record(waveform, "$(DEV):$(PLANE)-FF-SCAN-KICK") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0000")
+  field(NELM, "16")
+  field(PREC, "0")
+  field(FTVL, "FLOAT")
+}
+
+record(waveform, "$(DEV):$(PLANE)-FF-SCAN-K1-BPM1") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0040")
+  field(NELM, "16")
+  field(PREC, "3")
+  field(FTVL, "FLOAT")
+}
+
+record(waveform, "$(DEV):$(PLANE)-FF-SCAN-K1-BPM2") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0080")
+  field(NELM, "16")
+  field(PREC, "3")
+  field(FTVL, "FLOAT")
+}
+
+record(waveform, "$(DEV):$(PLANE)-FF-SCAN-K2-BPM1") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x00C0")
+  field(NELM, "16")
+  field(PREC, "3")
+  field(FTVL, "FLOAT")
+}
+
+record(waveform, "$(DEV):$(PLANE)-FF-SCAN-K2-BPM2") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0100")
+  field(NELM, "16")
+  field(PREC, "3")
+  field(FTVL, "FLOAT")
+}
