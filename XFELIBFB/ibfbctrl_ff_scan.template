@@ -153,4 +153,32 @@ record(waveform, "$(DEV):$(PLANE)-FF-SCAN-Y-K2-BPM2") {
   field(FTVL, "FLOAT")
 }
 
+##------
 
+record(ai, "$(DEV):$(PLANE)-FF-SCAN-KICK-M11") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0188 T=FLOAT")
+  field(PREC, "5")
+}
+
+record(ai, "$(DEV):$(PLANE)-FF-SCAN-KICK-M12") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x018C T=FLOAT")
+  field(PREC, "5")
+}
+
+record(ai, "$(DEV):$(PLANE)-FF-SCAN-KICK-M21") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0190 T=FLOAT")
+  field(PREC, "5")
+}
+
+record(ai, "$(DEV):$(PLANE)-FF-SCAN-KICK-M22") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0194 T=FLOAT")
+  field(PREC, "5")
+}
