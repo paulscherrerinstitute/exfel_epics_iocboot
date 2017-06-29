@@ -700,28 +700,28 @@ record(ao,"$(DEV):$(PLANE)-FB-KICKER-M11") {
   field(DTYP, "S7gpac")
   field(OUT,  "@$(SRV)/0x00EC:0x00EC T=FLOAT")
   field(SCAN, "I/O Intr")
-  field(PREC, "4")  
+  field(PREC, "5")  
 }
 
 record(ao,"$(DEV):$(PLANE)-FB-KICKER-M12") {
   field(DTYP, "S7gpac")
   field(OUT,  "@$(SRV)/0x00F0:0x00F0 T=FLOAT")
   field(SCAN, "I/O Intr")
-  field(PREC, "4")  
+  field(PREC, "5")  
 }
 
 record(ao,"$(DEV):$(PLANE)-FB-KICKER-M21") {
   field(DTYP, "S7gpac")
   field(OUT,  "@$(SRV)/0x00F4:0x00F4 T=FLOAT")
   field(SCAN, "I/O Intr")
-  field(PREC, "4")  
+  field(PREC, "5")  
 }
 
 record(ao,"$(DEV):$(PLANE)-FB-KICKER-M22") {
   field(DTYP, "S7gpac")
   field(OUT,  "@$(SRV)/0x00F8:0x00F8 T=FLOAT")
   field(SCAN, "I/O Intr")
-  field(PREC, "4")  
+  field(PREC, "5")  
 }
 
 record(ao,"$(DEV):$(PLANE)-FB-SASE1-CORR-M11") {
