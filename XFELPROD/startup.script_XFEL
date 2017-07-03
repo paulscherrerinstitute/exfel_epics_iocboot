@@ -139,9 +139,9 @@ require "s7gpac", "koprek_w"
   s7gpacConfigure  ("XFELGPAC2DI3065T4D",     "xfelgpac2di3065t4d",      51234,    628,       72,         1,       10000,  200)  #
   s7gpacConfigure  ("XFELGPAC1DI3090T4D",     "xfelgpac1di3090t4d",      51234,    628,       72,         1,       10000,  200)  #
   s7gpacConfigure  ("XFELGPAC1DIXS1UG3R02T1", "xfelgpac1dixs1ug3r02t1",  51234,    628,       72,         1,       10000,  200)  #
-#  s7gpacConfigure  ("XFELGPAC1DI2047T1" ,     "xfelgpac1di2047t1" ,      51234,    628,       72,         1,       10000,  200)  #
-#  s7gpacConfigure  ("XFELGPAC1DI2074T1" ,     "xfelgpac1di2074t1" ,      51234,    628,       72,         1,       10000,  200)  #
-#  s7gpacConfigure  ("XFELGPAC2DI2100T1" ,     "xfelgpac2di2100t1" ,      51234,    628,       72,         1,       10000,  200)  #
+  s7gpacConfigure  ("XFELGPAC1DI2047T1" ,     "xfelgpac1di2047t1" ,      51234,    628,       72,         1,       10000,  200)  #
+  s7gpacConfigure  ("XFELGPAC1DI2074T1" ,     "xfelgpac1di2074t1" ,      51234,    628,       72,         1,       10000,  200)  #
+  s7gpacConfigure  ("XFELGPAC2DI2100T1" ,     "xfelgpac2di2100t1" ,      51234,    628,       72,         1,       10000,  200)  #
 #  s7gpacConfigure  ("XFELGPAC1DI2175T1" ,     "xfelgpac1di2175t1" ,      51234,    628,       72,         1,       10000,  200)  #
 #  s7gpacConfigure  ("XFELGPAC1DI2194T1" ,     "xfelgpac1di2194t1" ,      51234,    628,       72,         1,       10000,  200)  #
 #  s7gpacConfigure  ("XFELGPAC1DI2207SA2",     "xfelgpac1di2207sa2",      51234,    628,       72,         1,       10000,  200)  #
