@@ -1,0 +1,36 @@
+#------------------------------------------------------------------------------
+#
+#
+
+record(aao, "$(DEV):$(PLANE)-KICK1-P-PATTERN") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0000:0x0000 T=INT16")
+  field(NELM, "48")
+  field(FTVL, "SHORT")
+}
+
+record(aao, "$(DEV):$(PLANE)-KICK1-N-PATTERN") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0060:0x0060 T=INT16")
+  field(NELM, "48")
+  field(FTVL, "SHORT")
+}
+
+record(aao, "$(DEV):$(PLANE)-KICK2-P-PATTERN") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x00C0:0x00C0 T=INT16")
+  field(NELM, "48")
+  field(FTVL, "SHORT")
+}
+
+record(aao, "$(DEV):$(PLANE)-KICK2-N-PATTERN") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0120:0x0120 T=INT16")
+  field(NELM, "48")
+  field(FTVL, "SHORT")
+}
+

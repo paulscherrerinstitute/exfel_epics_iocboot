@@ -23,6 +23,7 @@ file S7gpac.template {
 #           {IBFBPCOM           IBFBPCOM      }
 #           {IBFBPLAY1          IBFBPLAY1     }
 #           {IBFBPLAY2          IBFBPLAY2     }
+           {IBFBYCOL          IBFBYCOL       }
            {IBFBYUP            IBFBYUP       }
            {IBFBYDOWN          IBFBYDOWN     }
            {IBFBXUP            IBFBXUP       }
@@ -49,14 +50,14 @@ file gpac2_service.template {
 
 file ibfbctrl_plane.template {
    pattern  {DEV           SRV     		   READ_OFFSET  PLANE }
-            {IBFBCTRL      IBFBCTRL1             344      Y }
-            {IBFBCTRL      IBFBCTRL2             344      X }
+            {IBFBCTRL      IBFBCTRL1             352      Y }
+            {IBFBCTRL      IBFBCTRL2             352      X }
 }
 
 file ibfbctrl_dac.template {
    pattern  {DEV           SRV     		   READ_OFFSET  PLANE }
-            {IBFBCTRL      IBFBCTRL1             344      Y }
-            {IBFBCTRL      IBFBCTRL2             344      X }
+            {IBFBCTRL      IBFBCTRL1             352      Y }
+            {IBFBCTRL      IBFBCTRL2             352      X }
 }
 
 file ibfbctrl_common.template {
@@ -71,15 +72,27 @@ file ibfbctrl_amplifier.template {
 
 
 file ibfbctrl_waveforms.template {
-   pattern  {DEV           SRV     	       READ_OFFSET  PLANE }
-            {IBFBCTRL      IBFBCWAV1           4            Y }
-            {IBFBCTRL      IBFBCWAV2           4            X }
+   pattern  {DEV           SRV     		   READ_OFFSET  PLANE }
+            {IBFBCTRL      IBFBCWAV1               4      Y }
+            {IBFBCTRL      IBFBCWAV2               4      X }
 }
 
 file ibfbctrl_tables.template {
    pattern  {DEV           SRV     		   READ_OFFSET  PLANE }
-            {IBFBCTRL      IBFBCTAB1           22048      Y }
-            {IBFBCTRL      IBFBCTAB2           22048      X }
+            {IBFBCTRL      IBFBCTAB1            2048      Y }
+            {IBFBCTRL      IBFBCTAB2            2048      X }
+}
+
+file ibfbctrl_patterns.template {
+   pattern  {DEV           SRV     		   READ_OFFSET  PLANE }
+            {IBFBCTRL      IBFBCPAT1             384      Y }
+            {IBFBCTRL      IBFBCPAT2             384      X }
+}
+
+file ibfbctrl_ff_scan.template {
+   pattern  {DEV           SRV     		   READ_OFFSET  PLANE }
+            {IBFBCTRL      IBFBSCAN1               4      Y }
+            {IBFBCTRL      IBFBSCAN2               4      X }
 }
 
 #-- switch
@@ -131,3 +144,65 @@ file ibfbcav.template {
             {IBFBXDOWN        IBFBXDOWN             32  }
 }
 
+file ibfbcavb.template {
+   pattern  {DEV              SRV          READ_OFFSET  }
+            {IBFBYCOL         IBFBYCOL              16  }
+}
+
+
+## #################################################################################
+## ### Permament Cavity BPMs                                                    ####
+## #################################################################################
+## 
+## ## Cavity BPM
+## file GPAC_BPM_SMP.template {
+##    pattern  {DEV                 SRV              READ_OFFSET  }
+##             {BPMI-1837-CL        BPMI-1837-CL             660  }
+##             {BPMI-1860-TL        BPMI-1860-TL             660  }
+##             {BPMI-1878-TL        BPMI-1878-TL             660  }
+##             {BPMI-1910-TL        BPMI-1910-TL             660  }
+##             {BPMI-1930-TL        BPMI-1930-TL             660  }
+##             {BPMI-1863-TL        BPMI-1863-TL             660  }
+##             {BPMI-1889-TL        BPMI-1889-TL             660  }
+##             {BPMI-1925-TL        BPMI-1925-TL             660  }
+##             {BPMI-1939-TL        BPMI-1939-TL             660  }
+## }
+## 
+## file GPAC_BPM_PB_ADC16HL.template {
+##    pattern  {DEV                 SRV        READ_OFFSET  }
+##             {BPMI-1837-CL        BPMI-1837-CL             660  }
+##             {BPMI-1860-TL        BPMI-1860-TL             660  }
+##             {BPMI-1878-TL        BPMI-1878-TL             660  }
+##             {BPMI-1910-TL        BPMI-1910-TL             660  }
+##             {BPMI-1930-TL        BPMI-1930-TL             660  }
+##             {BPMI-1863-TL        BPMI-1863-TL             660  }
+##             {BPMI-1889-TL        BPMI-1889-TL             660  }
+##             {BPMI-1925-TL        BPMI-1925-TL             660  }
+##             {BPMI-1939-TL        BPMI-1939-TL             660  }
+## }
+## 
+## file RFFE_Cavity_3GHz3_120700B.template {
+##    pattern  {DEV                 SRV              READ_OFFSET  GLB  }
+##             {BPMI-1837-CL        BPMI-1837-CL             660    0  }
+##             {BPMI-1860-TL        BPMI-1860-TL             660    0  }
+##             {BPMI-1878-TL        BPMI-1878-TL             660    0  }
+##             {BPMI-1910-TL        BPMI-1910-TL             660    0  }
+##             {BPMI-1930-TL        BPMI-1930-TL             660    0  }
+##             {BPMI-1863-TL        BPMI-1863-TL             660    0  }
+##             {BPMI-1889-TL        BPMI-1889-TL             660    0  }
+##             {BPMI-1925-TL        BPMI-1925-TL             660    0  }
+##             {BPMI-1939-TL        BPMI-1939-TL             660    0  }
+## }
+## 
+## #file GPAC_BPM_CONSISTENT_SET_VAL.template {
+## #   pattern {DEV                  SRV              READ_OFFSET  }
+## #            {BPMI-1837-CL        BPMI-1837-CL             660  }
+## #            {BPMI-1860-TL        BPMI-1860-TL             660  }
+## #            {BPMI-1878-TL        BPMI-1878-TL             660  }
+## #            {BPMI-1910-TL        BPMI-1910-TL             660  }
+## #            {BPMI-1930-TL        BPMI-1930-TL             660  }
+## #            {BPMI-1863-TL        BPMI-1863-TL             660  }
+## #            {BPMI-1889-TL        BPMI-1889-TL             660  }
+## #            {BPMI-1925-TL        BPMI-1925-TL             660  }
+## #            {BPMI-1939-TL        BPMI-1939-TL             660  }
+## #}
