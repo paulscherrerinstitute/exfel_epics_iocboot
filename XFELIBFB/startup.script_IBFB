@@ -12,7 +12,7 @@ require "s7gpac", "koprek_w"
 #___________________________________________________________________________________________                     
 # IBFB Servers                                                                                                  
 #___________________________________________________________________________________________                     
-   s7gpacConfigure  ("IBFBCTRL",     "xfelgpacibfbctrl",   51234,    628,       72,         1,       10000,           200)    
+   s7gpacConfigure  ("IBFBCTRL",     "xfelgpacibfbctrl",   51234,    632,       72,         1,       10000,           200)    
    s7gpacConfigure  ("IBFBCCOM",     "xfelgpacibfbctrl",   51235,    108,        4,         1,       10000,           200)    
    s7gpacConfigure  ("IBFBCTRL1",    "xfelgpacibfbctrl",   51236,    828,      352,         1,       10000,           200)    
    s7gpacConfigure  ("IBFBCWAV1",    "xfelgpacibfbctrl",   51237,  10244,        4,         1,       10000,           200)    
@@ -25,17 +25,17 @@ require "s7gpac", "koprek_w"
    s7gpacConfigure  ("IBFBCPAT2",    "xfelgpacibfbctrl",   51249,    388,      384,         1,       10000,           200)    
    s7gpacConfigure  ("IBFBSCAN2",    "xfelgpacibfbctrl",   51250,    412,        4,         1,       10000,           200)    
 #  __   
-   s7gpacConfigure  ("IBFBSW",       "xfelgpacibfbsw",     51234,    628,       72,         1,       10000,           200)    
+   s7gpacConfigure  ("IBFBSW",       "xfelgpacibfbsw",     51234,    632,       72,         1,       10000,           200)    
    s7gpacConfigure  ("IBFBSCOM",     "xfelgpacibfbsw",     51235,    208,       72,         1,       10000,           200)    
    s7gpacConfigure  ("IBFBSW1",      "xfelgpacibfbsw",     51236,     60,       20,         1,       10000,           200)    
    s7gpacConfigure  ("IBFBSW2",      "xfelgpacibfbsw",     51237,     60,       20,         1,       10000,           200)    
 #  __   
-   s7gpacConfigure  ("IBFBMON",      "xfelgpacibfbmon",    51234,    628,       72,         1,       10000,           200)    
+   s7gpacConfigure  ("IBFBMON",      "xfelgpacibfbmon",    51234,    632,       72,         1,       10000,           200)    
    s7gpacConfigure  ("IBFBMCOM",     "xfelgpacibfbmon",    51235,     12,        4,         1,       10000,           200)    
    s7gpacConfigure  ("IBFBMON1",     "xfelgpacibfbmon",    51236,  32880,       48,         1,       10000,           200)    
    s7gpacConfigure  ("IBFBMON2",     "xfelgpacibfbmon",    51237,  32880,       48,         1,       10000,           200)    
 #  __   
-#  s7gpacConfigure  ("IBFBPLAY",     "xfelgpacibfbplay",   51234,    628,       72,         1,       10000,           200)    
+#  s7gpacConfigure  ("IBFBPLAY",     "xfelgpacibfbplay",   51234,    632,       72,         1,       10000,           200)    
 #  s7gpacConfigure  ("IBFBPCOM",     "xfelgpacibfbplay",   51235,    144,       44,         1,       10000,           200)    
 #  s7gpacConfigure  ("IBFBPLAY1",    "xfelgpacibfbplay",   51236,  43236,    43224,         1,       10000,           200)    
 #  s7gpacConfigure  ("IBFBPLAY2",    "xfelgpacibfbplay",   51237,  43236,    43224,         1,       10000,           200)    
