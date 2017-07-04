@@ -1514,3 +1514,10 @@ record(scalcout,"$(DEV):MMC-MAC"){
    field (CALC, "PRINTF('0x%04x',A)+PRINTF('%08x',B)")
 }
 
+record(longin,"$(DEV):MMC-PS-FAIL"){
+   field (SCAN, "I/O Intr")
+   field (DTYP, "S7gpac")
+   field (INP,  "@$(SRV)/0x0276 T=UINT8") 
+   field (FLNK, "$(DEV):MMC-MAC2")
+}
+
