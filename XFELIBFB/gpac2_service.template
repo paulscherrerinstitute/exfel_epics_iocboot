@@ -1513,3 +1513,4 @@ record(scalcout,"$(DEV):MMC-MAC"){
    field (INPB, "$(DEV):MMC-MAC2")
    field (CALC, "PRINTF('0x%04x',A)+PRINTF('%08x',B)")
 }
+
