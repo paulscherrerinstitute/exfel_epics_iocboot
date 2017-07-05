@@ -59,18 +59,18 @@ file S7gpac.template {
             {XFELGPAC2DI610L3         XFELGPAC2DI610L3      }
             {XFELGPAC1DI661L3         XFELGPAC1DI661L3      }
             {XFELGPAC1DI709L3         XFELGPAC1DI709L3      }
-#           {XFELGPAC2DI709L3         XFELGPAC2DI709L3      }    # not installed
+            {XFELGPAC2DI709L3         XFELGPAC2DI709L3      }    
             {XFELGPAC1DI757L3         XFELGPAC1DI757L3      }	    
-#           {XFELGPAC2DI757L3         XFELGPAC2DI757L3      }    # not installed
+            {XFELGPAC2DI757L3         XFELGPAC2DI757L3      }    
             {XFELGPAC1DI808L3         XFELGPAC1DI808L3      }
-#           {XFELGPAC2DI808L3         XFELGPAC2DI808L3      }    # not installed
+            {XFELGPAC2DI808L3         XFELGPAC2DI808L3      }    
             {XFELGPAC1DI856L3         XFELGPAC1DI856L3      }
             {XFELGPAC1DI904L3         XFELGPAC1DI904L3      }
             {XFELGPAC1DI955L3         XFELGPAC1DI955L3      }
             {XFELGPAC1DI1003L3        XFELGPAC1DI1003L3     }
             {XFELGPAC1DI1051L3        XFELGPAC1DI1051L3     }
             {XFELGPAC1DI1102L3        XFELGPAC1DI1102L3     }
-#           {XFELGPAC2DI1102L3        XFELGPAC2DI1102L3     }    # not installed
+            {XFELGPAC2DI1102L3        XFELGPAC2DI1102L3     }    
             {XFELGPAC1DI1150L3        XFELGPAC1DI1150L3     }
             {XFELGPAC1DI1198L3        XFELGPAC1DI1198L3     }
 #           {XFELGPAC2DI1198L3        XFELGPAC2DI1198L3     }    # not installed
@@ -231,18 +231,18 @@ file gpac2_service.template {
             {XFELGPAC2DI610L3         XFELGPAC2DI610L3      }
             {XFELGPAC1DI661L3         XFELGPAC1DI661L3      }
             {XFELGPAC1DI709L3         XFELGPAC1DI709L3      }
-#           {XFELGPAC2DI709L3         XFELGPAC2DI709L3      }    # not installed
-            {XFELGPAC1DI757L3         XFELGPAC1DI757L3      }	    
-#           {XFELGPAC2DI757L3         XFELGPAC2DI757L3      }    # not installed
+            {XFELGPAC2DI709L3         XFELGPAC2DI709L3      }    
+            {XFELGPAC1DI757L3         XFELGPAC1DI757L3      }	   
+            {XFELGPAC2DI757L3         XFELGPAC2DI757L3      }    
             {XFELGPAC1DI808L3         XFELGPAC1DI808L3      }
-#           {XFELGPAC2DI808L3         XFELGPAC2DI808L3      }    # not installed
+            {XFELGPAC2DI808L3         XFELGPAC2DI808L3      }    
             {XFELGPAC1DI856L3         XFELGPAC1DI856L3      }
             {XFELGPAC1DI904L3         XFELGPAC1DI904L3      }
             {XFELGPAC1DI955L3         XFELGPAC1DI955L3      }
             {XFELGPAC1DI1003L3        XFELGPAC1DI1003L3     }
             {XFELGPAC1DI1051L3        XFELGPAC1DI1051L3     }
             {XFELGPAC1DI1102L3        XFELGPAC1DI1102L3     }
-#           {XFELGPAC2DI1102L3        XFELGPAC2DI1102L3     }    # not installed
+            {XFELGPAC2DI1102L3        XFELGPAC2DI1102L3     }    
             {XFELGPAC1DI1150L3        XFELGPAC1DI1150L3     }
             {XFELGPAC1DI1198L3        XFELGPAC1DI1198L3     }
 #           {XFELGPAC2DI1198L3        XFELGPAC2DI1198L3     }    # not installed
