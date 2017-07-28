@@ -1327,5 +1327,5 @@ record(acalcout, "$(DEV):$(PLANE)-BPM1-SP-WAV") {
    field(INPA, "$(DEV):$(PLANE)-FP-SP-POS NPP")
    field(PREC, "3")
    field(NELM, "100")
-   field(CALC, "(ARR(A)")
+   field(CALC, "ARR(A)")
 }
