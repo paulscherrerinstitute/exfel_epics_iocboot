@@ -1327,13 +1327,21 @@ record(acalcout, "$(DEV):$(PLANE)-BPM1-SP-WAV") {
    field(INPA, "$(DEV):$(PLANE)-FB-SP-POS NPP")
    field(SCAN, "1 second")
    field(PREC, "3")
-   field(NELM, "2")
+   field(NELM, "256")
    field(CALC, "ARR(A)")
 }
 
-record(acalcout, "$(DEV):$(PLANE)-SP-X-WAV") {
+record(acalcout, "$(DEV):$(PLANE)-BPM2-SP-WAV") {
+   field(INPA, "$(DEV):$(PLANE)-FB-SP-ANGLE NPP")
    field(SCAN, "1 second")
-   field(PREC, "0")
-   field(NELM, "2")
-   field(CALC, "ARR(0)+(ARR(255)>>1)")
+   field(PREC, "3")
+   field(NELM, "256")
+   field(CALC, "ARR(A)")
 }
+
+#record(acalcout, "$(DEV):$(PLANE)-SP-X-WAV") {
+#   field(SCAN, "1 second")
+#   field(PREC, "0")
+#   field(NELM, "256")
+#   field(CALC, "ARR(0)+(ARR(255)>>1)")
+#}
