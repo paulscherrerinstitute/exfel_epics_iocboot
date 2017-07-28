@@ -1325,6 +1325,7 @@ record(longin, "$(DEV):$(PLANE)-FF-SCAN-POINT") {
 
 record(acalcout, "$(DEV):$(PLANE)-BPM1-SP-WAV") {
    field(INPA, "$(DEV):$(PLANE)-FB-SP-POS NPP")
+   field(SCAN, "1 second")
    field(PREC, "3")
    field(NELM, "100")
    field(CALC, "ARR(A)")
