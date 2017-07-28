@@ -73,6 +73,14 @@ record(bo, "$(DEV):$(PLANE)-RX-HIST-ENA") {
   field(ONAM, "Enabled" )
 }
 
+record(bo, "$(DEV):$(PLANE)-BPM-CLEAN-SMP-ENA") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x015B:0x015B T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(ZNAM, "Disabled" )
+  field(ONAM, "Enabled" )
+}
+
 record(longout, "$(DEV):$(PLANE)-FB-I-SMP-APPLY") {
   field(DTYP, "S7gpac")
   field(OUT,  "@$(SRV)/0x0159:0x0159 T=UINT8")
@@ -519,6 +527,14 @@ record(bo, "$(DEV):$(PLANE)-FB-SEL-BPM") {
   field(SCAN, "I/O Intr")
   field(ZNAM, "BPM1" )
   field(ONAM, "BPM2" )
+}
+
+record(bo, "$(DEV):$(PLANE)-BPM-CLEAN-SMP-METHOD") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0033:0x0033 T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(ZNAM, "Zero" )
+  field(ONAM, "Hold" )
 }
 
 record(bo, "$(DEV):$(PLANE)-FF-FAST-ON") {
