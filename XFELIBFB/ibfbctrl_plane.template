@@ -1322,3 +1322,10 @@ record(longin, "$(DEV):$(PLANE)-FF-SCAN-POINT") {
   field(DTYP, "S7gpac")
   field(INP,  "@$(SRV)/$(READ_OFFSET)+0x01DB T=UINT8")
 }
+
+record(acalcout, "$(DEV):$(PLANE)-BPM1-SP-WAV") {
+   field(INPA, "$(DEV):$(PLANE)-FP-SP-POS NPP")
+   field(PREC, "3")
+   field(NELM, "100")
+   field(CALC, "(ARR(A)")
+}
