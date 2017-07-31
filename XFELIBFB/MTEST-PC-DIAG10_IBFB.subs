@@ -10,9 +10,13 @@ file S7gpac.template {
            {IBFBCTRL1          IBFBCTRL1     }
            {IBFBCWAV1          IBFBCWAV1     }
            {IBFBCTAB1          IBFBCTAB1     }
+           {IBFBCTAB1          IBFBCPAT1     }
+           {IBFBSCAN1          IBFBSCAN1     }
            {IBFBCTRL2          IBFBCTRL2     }
            {IBFBCWAV2          IBFBCWAV2     }
            {IBFBCTAB2          IBFBCTAB2     }
+           {IBFBCTAB2          IBFBCPAT2     }
+           {IBFBSCAN2          IBFBSCAN2     }
            {IBFBSW             IBFBSW        }
            {IBFBSCOM           IBFBSCOM      }
            {IBFBSW1            IBFBSW1       }
