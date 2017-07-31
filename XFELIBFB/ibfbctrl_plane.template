@@ -1302,7 +1302,7 @@ record(ai, "$(DEV):$(PLANE)-KICK2-WAV") {
 record(longin, "$(DEV):$(PLANE)-FF-SCAN-STATUS") {
   field(SCAN, "I/O Intr")
   field(DTYP, "S7gpac")
-  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x01D8 T=UINT8")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x01A8 T=UINT8")
 }
 
 record(longin, "$(DEV):$(PLANE)-FF-SCAN-KICKER") {
