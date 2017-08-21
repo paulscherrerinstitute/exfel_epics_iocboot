@@ -168,8 +168,8 @@ file ibfbpcom.template {
 
 file ibfbplay.template {
    pattern  {DEV           SRV     		   READ_OFFSET  PLAYER}
-            {IBFBPLAY      IBFBPLAY1           43224  PLAY1 }
-            {IBFBPLAY      IBFBPLAY2           43224  PLAY2 }
+            {IBFBPLAY      IBFBPLAY1           43544  PLAY1 }
+            {IBFBPLAY      IBFBPLAY2           43544  PLAY2 }
 }
 
 
