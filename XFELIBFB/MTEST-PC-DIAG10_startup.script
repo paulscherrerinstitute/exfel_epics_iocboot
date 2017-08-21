@@ -54,9 +54,9 @@ require "s7gpac", "koprek_w"
    s7gpacConfigure  ("IBFBMON2",     "xfelgpacibfbmon",    51237,  32880,       48,         1,       10000,           200)    
 #  __   
    s7gpacConfigure  ("IBFBPLAY",     "xfelgpacibfbplay",   51234,    632,       72,         1,       10000,           200)    
-   s7gpacConfigure  ("IBFBPCOM",     "xfelgpacibfbplay",   51235,    144,       44,         1,       10000,           200)    
-   s7gpacConfigure  ("IBFBPLAY1",    "xfelgpacibfbplay",   51236,  43264,    43224,         1,       10000,           200)    
-   s7gpacConfigure  ("IBFBPLAY2",    "xfelgpacibfbplay",   51237,  43264,    43224,         1,       10000,           200)    
+   s7gpacConfigure  ("IBFBPCOM",     "xfelgpacibfbplay",   51235,     16,        4,         1,       10000,           200)    
+   s7gpacConfigure  ("IBFBPLAY1",    "xfelgpacibfbplay",   51236,  43584,    43544,         1,       10000,           200)    
+   s7gpacConfigure  ("IBFBPLAY2",    "xfelgpacibfbplay",   51237,  43584,    43544,         1,       10000,           200)    
 
 # Cavity BPM Server for IBFB
 #___________________________________________________________________________________________                     
