@@ -669,7 +669,7 @@ record(longin, "$(DEV):ROUTER2-X-OUT-P0") {
 
 record(longin, "$(DEV):ROUTER2-X-OUT-BPM0") {
   field(DTYP, "S7gpac")
-  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x00892 T=UINT16")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0092 T=UINT16")
   field(SCAN, "I/O Intr")
 }
 
