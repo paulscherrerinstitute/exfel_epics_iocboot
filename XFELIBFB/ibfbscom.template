@@ -637,6 +637,54 @@ record(longin, "$(DEV):ROUTER2-OUT-ENA") {
   field(SCAN, "I/O Intr")
 }
 
+record(longin, "$(DEV):ROUTER1-X-OUT-P0") {
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0088 T=UINT16")
+  field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(DEV):ROUTER1-X-OUT-BPM0") {
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x008A T=UINT16")
+  field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(DEV):ROUTER1-Y-OUT-P0") {
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x008C T=UINT16")
+  field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(DEV):ROUTER1-Y-OUT-BPM0") {
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x008E T=UINT16")
+  field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(DEV):ROUTER2-X-OUT-P0") {
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0090 T=UINT16")
+  field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(DEV):ROUTER2-X-OUT-BPM0") {
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x00892 T=UINT16")
+  field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(DEV):ROUTER2-Y-OUT-P0") {
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0094 T=UINT16")
+  field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(DEV):ROUTER2-Y-OUT-BPM0") {
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0096 T=UINT16")
+  field(SCAN, "I/O Intr")
+}
+
 record(longout, "$(DEV):FILT-SASE1-BUCKET-START") {
   field(DTYP, "S7gpac")
   field(OUT,  "@$(SRV)/0x0038:0x0038 T=UINT16")
