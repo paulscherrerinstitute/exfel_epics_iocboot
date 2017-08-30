@@ -669,7 +669,7 @@ record(longin, "$(DEV):ROUTER2-OUT-P0") {
 
 record(longin, "$(DEV):ROUTER2-OUT-BPM0") {
   field(DTYP, "S7gpac")
-  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0092 T=UINT16")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0096 T=UINT16")
   field(SCAN, "I/O Intr")
 }
 
@@ -681,7 +681,7 @@ record(longin, "$(DEV):ROUTER2-OUT-P1") {
 
 record(longin, "$(DEV):ROUTER2-OUT-BPM1") {
   field(DTYP, "S7gpac")
-  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0096 T=UINT16")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0092 T=UINT16")
   field(SCAN, "I/O Intr")
 }
 
