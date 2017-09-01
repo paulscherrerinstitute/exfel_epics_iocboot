@@ -44,10 +44,10 @@ file S7gpac.template {
            {XFELDEVLREN11         XFELDEVLREN11           }    
            {LUXGPAC1MDIBPM1       LUXGPAC1MDIBPM1         }    
            {LUXGPAC1MDIBPM2       LUXGPAC1MDIBPM2         }    
-           {FLASHFGPACMAFFBPM1    FLASHFGPACMAFFBPM1      }    
-           {FLASHFGPACMAFFBPM2    FLASHFGPACMAFFBPM2      }    
-           {FLASHFGPACDIAG1BPM1   FLASHFGPACDIAG1BPM1     }    
-           {FLASHFGPACDIAG1BPM2   FLASHFGPACDIAG1BPM2     }    
+           {11FLFMAFF             11FLFMAFF               }    
+           {14FLFMAFF             14FLFMAFF               }    
+           {1FLFDIAG              1FLFDIAG                }    
+           {3FLFDIAG              3FLFDIAG                }    
 }
 
 #-- Button BPM
@@ -63,10 +63,10 @@ file GPAC_BPM_SMP.template {
             {XFELDEVLCAV12            XFELDEVLCAV12                 660  }
             {LUXGPAC1MDIBPM1          LUXGPAC1MDIBPM1               660  }
             {LUXGPAC1MDIBPM2          LUXGPAC1MDIBPM2               660  }
-            {FLASHFGPACMAFFBPM1       FLASHFGPACMAFFBPM1            660  }
-            {FLASHFGPACMAFFBPM2       FLASHFGPACMAFFBPM2            660  }
-            {FLASHFGPACDIAG1BPM1      FLASHFGPACDIAG1BPM1           660  }
-            {FLASHFGPACDIAG1BPM2      FLASHFGPACDIAG1BPM2           660  }
+            {11FLFMAFF                11FLFMAFF                     660  }
+            {14FLFMAFF                14FLFMAFF                     660  }
+            {1FLFDIAG                 1FLFDIAG                      660  }
+            {3FLFDIAG                 3FLFDIAG                      660  }
 }
 
 file GPAC_BPM_PB_ADC16HL.template {
@@ -75,10 +75,10 @@ file GPAC_BPM_PB_ADC16HL.template {
             {XFELDEVLCAV12            XFELDEVLCAV12                 660  }
             {LUXGPAC1MDIBPM1          LUXGPAC1MDIBPM1               660  }
             {LUXGPAC1MDIBPM2          LUXGPAC1MDIBPM2               660  }
-            {FLASHFGPACMAFFBPM1       FLASHFGPACMAFFBPM1            660  }
-            {FLASHFGPACMAFFBPM2       FLASHFGPACMAFFBPM2            660  }
-            {FLASHFGPACDIAG1BPM1      FLASHFGPACDIAG1BPM1           660  }
-            {FLASHFGPACDIAG1BPM2      FLASHFGPACDIAG1BPM2           660  }
+            {11FLFMAFF                11FLFMAFF                     660  }
+            {14FLFMAFF                14FLFMAFF                     660  }
+            {1FLFDIAG                 1FLFDIAG                      660  }
+            {3FLFDIAG                 3FLFDIAG                      660  }
 }
 
 file RFFE_Cavity_3GHz3_120700B.template {
@@ -87,10 +87,10 @@ file RFFE_Cavity_3GHz3_120700B.template {
             {XFELDEVLCAV12            XFELDEVLCAV12                 660  MTEST10-ETH0}
             {LUXGPAC1MDIBPM1          LUXGPAC1MDIBPM1               660  MTEST10-ETH0}
             {LUXGPAC1MDIBPM2          LUXGPAC1MDIBPM2               660  MTEST10-ETH0}
-            {FLASHFGPACMAFFBPM1       FLASHFGPACMAFFBPM1            660  MTEST10-ETH0}
-            {FLASHFGPACMAFFBPM2       FLASHFGPACMAFFBPM2            660  MTEST10-ETH0}
-            {FLASHFGPACDIAG1BPM1      FLASHFGPACDIAG1BPM1           660  MTEST10-ETH0}
-            {FLASHFGPACDIAG1BPM2      FLASHFGPACDIAG1BPM2           660  MTEST10-ETH0}
+            {11FLFMAFF                11FLFMAFF                     660  MTEST10-ETH0}
+            {14FLFMAFF                14FLFMAFF                     660  MTEST10-ETH0}
+            {1FLFDIAG                 1FLFDIAG                      660  MTEST10-ETH0}
+            {3FLFDIAG                 3FLFDIAG                      660  MTEST10-ETH0}
 }
 
 file GPAC_BPM_CONSISTENT_SET_VAL.template {
@@ -99,10 +99,10 @@ file GPAC_BPM_CONSISTENT_SET_VAL.template {
             {XFELDEVLCAV12            XFELDEVLCAV12                 660  }
             {LUXGPAC1MDIBPM1          LUXGPAC1MDIBPM1               660  }
             {LUXGPAC1MDIBPM2          LUXGPAC1MDIBPM2               660  }
-            {FLASHFGPACMAFFBPM1       FLASHFGPACMAFFBPM1            660  }
-            {FLASHFGPACMAFFBPM2       FLASHFGPACMAFFBPM2            660  }
-            {FLASHFGPACDIAG1BPM1      FLASHFGPACDIAG1BPM1           660  }
-            {FLASHFGPACDIAG1BPM2      FLASHFGPACDIAG1BPM2           660  }
+            {11FLFMAFF                11FLFMAFF                     660  }
+            {14FLFMAFF                14FLFMAFF                     660  }
+            {1FLFDIAG                 1FLFDIAG                      660  }
+            {3FLFDIAG                 3FLFDIAG                      660  }
 }
 
 #file GPAC_BPM_Calc_RMS_AVG.template { 
