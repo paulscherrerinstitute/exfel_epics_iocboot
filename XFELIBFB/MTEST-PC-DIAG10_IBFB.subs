@@ -97,8 +97,8 @@ file ibfbctrl_plane.template {
 
 file ibfbctrl_dac.template {
    pattern  {DEV           SRV     		   READ_OFFSET  PLANE }
-            {IBFBCTRL      IBFBCTRL1             352      Y }
-            {IBFBCTRL      IBFBCTRL2             352      X }
+            {IBFBCTRL      IBFBCTRL1             356      Y }
+            {IBFBCTRL      IBFBCTRL2             356      X }
 }
 
 file ibfbctrl_common.template {
