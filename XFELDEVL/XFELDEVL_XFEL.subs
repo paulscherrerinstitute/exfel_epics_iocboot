@@ -13,19 +13,23 @@
 ################################################################################
 
 file S7gpac.template {
-   pattern  {DEV                  SRV             }
-            {XFELDEVLBUT1         XFELDEVLBUT1 }
-            {XFELDEVLCAV1         XFELDEVLCAV1 }
-            {XFELDEVLREN1         XFELDEVLREN1 }
-            {LUXGPAC1MDI           LUXGPAC1MDI }
+   pattern  {DEV                       SRV              }
+            {XFELDEVLBUT1              XFELDEVLBUT1     }
+            {XFELDEVLCAV1              XFELDEVLCAV1     }
+            {XFELDEVLREN1              XFELDEVLREN1     }
+            {LUXGPAC1MDI               LUXGPAC1MDI      }
+            {FLASHFGPACMAFF            FLASHFGPACMAFF   }
+            {FLASHFGPACDIAG1           FLASHFGPACDIAG1  }
 }
 
 file gpac2_service.template {
-   pattern  {DEV                  SRV             }
-            {XFELDEVLBUT1         XFELDEVLBUT1 }
-            {XFELDEVLCAV1         XFELDEVLCAV1 }
-            {XFELDEVLREN1         XFELDEVLREN1 }
-            {LUXGPAC1MDI           LUXGPAC1MDI }
+   pattern  {DEV                      SRV               }
+            {XFELDEVLBUT1             XFELDEVLBUT1      }
+            {XFELDEVLCAV1             XFELDEVLCAV1      }
+            {XFELDEVLREN1             XFELDEVLREN1      }
+            {LUXGPAC1MDI              LUXGPAC1MDI       }
+            {FLASHFGPACMAFF           FLASHFGPACMAFF    }
+            {FLASHFGPACDIAG1          FLASHFGPACDIAG1   }
 }
 
 ################################################################################
@@ -33,13 +37,17 @@ file gpac2_service.template {
 ################################################################################
 
 file S7gpac.template {
-  pattern  {DEV               SRV              }    
-           {XFELDEVLBUT11     XFELDEVLBUT11    }    
-           {XFELDEVLCAV11     XFELDEVLCAV11    }    
-           {XFELDEVLCAV12     XFELDEVLCAV12    }    
-           {XFELDEVLREN11     XFELDEVLREN11    }    
-           {LUXGPAC1MDIBPM1   LUXGPAC1MDIBPM1    }    
-           {LUXGPAC1MDIBPM2   LUXGPAC1MDIBPM2    }    
+  pattern  {DEV                   SRV                     }    
+           {XFELDEVLBUT11         XFELDEVLBUT11           }    
+           {XFELDEVLCAV11         XFELDEVLCAV11           }    
+           {XFELDEVLCAV12         XFELDEVLCAV12           }    
+           {XFELDEVLREN11         XFELDEVLREN11           }    
+           {LUXGPAC1MDIBPM1       LUXGPAC1MDIBPM1         }    
+           {LUXGPAC1MDIBPM2       LUXGPAC1MDIBPM2         }    
+           {11FLFMAFF             11FLFMAFF               }    
+           {14FLFMAFF             14FLFMAFF               }    
+           {1FLFDIAG              1FLFDIAG                }    
+           {3FLFDIAG              3FLFDIAG                }    
 }
 
 #-- Button BPM
@@ -50,35 +58,51 @@ file but_bpm_s7gpac.template {
 
 #-- Cavity BPM
 file GPAC_BPM_SMP.template {
-   pattern  {DEV                  SRV               READ_OFFSET  }
-            {XFELDEVLCAV11        XFELDEVLCAV11             660  }
-            {XFELDEVLCAV12        XFELDEVLCAV12             660  }
-            {LUXGPAC1MDIBPM1      LUXGPAC1MDIBPM1           660  }
-            {LUXGPAC1MDIBPM2      LUXGPAC1MDIBPM2           660  }
+   pattern  {DEV                      SRV                   READ_OFFSET  }
+            {XFELDEVLCAV11            XFELDEVLCAV11                 660  }
+            {XFELDEVLCAV12            XFELDEVLCAV12                 660  }
+            {LUXGPAC1MDIBPM1          LUXGPAC1MDIBPM1               660  }
+            {LUXGPAC1MDIBPM2          LUXGPAC1MDIBPM2               660  }
+            {11FLFMAFF                11FLFMAFF                     660  }
+            {14FLFMAFF                14FLFMAFF                     660  }
+            {1FLFDIAG                 1FLFDIAG                      660  }
+            {3FLFDIAG                 3FLFDIAG                      660  }
 }
 
 file GPAC_BPM_PB_ADC16HL.template {
-   pattern  {DEV           SRV        READ_OFFSET  }
-            {XFELDEVLCAV11        XFELDEVLCAV11             660  }
-            {XFELDEVLCAV12        XFELDEVLCAV12             660  }
-            {LUXGPAC1MDIBPM1      LUXGPAC1MDIBPM1           660  }
-            {LUXGPAC1MDIBPM2      LUXGPAC1MDIBPM2           660  }
+   pattern  {DEV                      SRV                   READ_OFFSET  }
+            {XFELDEVLCAV11            XFELDEVLCAV11                 660  }
+            {XFELDEVLCAV12            XFELDEVLCAV12                 660  }
+            {LUXGPAC1MDIBPM1          LUXGPAC1MDIBPM1               660  }
+            {LUXGPAC1MDIBPM2          LUXGPAC1MDIBPM2               660  }
+            {11FLFMAFF                11FLFMAFF                     660  }
+            {14FLFMAFF                14FLFMAFF                     660  }
+            {1FLFDIAG                 1FLFDIAG                      660  }
+            {3FLFDIAG                 3FLFDIAG                      660  }
 }
 
 file RFFE_Cavity_3GHz3_120700B.template {
-   pattern  {DEV           SRV        READ_OFFSET  GLB}
-            {XFELDEVLCAV11        XFELDEVLCAV11             660  MTEST10-ETH0}
-            {XFELDEVLCAV12        XFELDEVLCAV12             660  MTEST10-ETH0}
-            {LUXGPAC1MDIBPM1      LUXGPAC1MDIBPM1           660  MTEST10-ETH0}
-            {LUXGPAC1MDIBPM2      LUXGPAC1MDIBPM2           660  MTEST10-ETH0}
+   pattern  {DEV                      SRV                   READ_OFFSET  GLB}
+            {XFELDEVLCAV11            XFELDEVLCAV11                 660  MTEST10-ETH0}
+            {XFELDEVLCAV12            XFELDEVLCAV12                 660  MTEST10-ETH0}
+            {LUXGPAC1MDIBPM1          LUXGPAC1MDIBPM1               660  MTEST10-ETH0}
+            {LUXGPAC1MDIBPM2          LUXGPAC1MDIBPM2               660  MTEST10-ETH0}
+            {11FLFMAFF                11FLFMAFF                     660  MTEST10-ETH0}
+            {14FLFMAFF                14FLFMAFF                     660  MTEST10-ETH0}
+            {1FLFDIAG                 1FLFDIAG                      660  MTEST10-ETH0}
+            {3FLFDIAG                 3FLFDIAG                      660  MTEST10-ETH0}
 }
 
 file GPAC_BPM_CONSISTENT_SET_VAL.template {
-   pattern {DEV           SRV         READ_OFFSET  }
-           {XFELDEVLCAV11        XFELDEVLCAV11              660  }
-           {XFELDEVLCAV12        XFELDEVLCAV12              660  }
-           {LUXGPAC1MDIBPM1      LUXGPAC1MDIBPM1            660  }
-           {LUXGPAC1MDIBPM2      LUXGPAC1MDIBPM2            660  }
+   pattern  {DEV                      SRV                   READ_OFFSET  }
+            {XFELDEVLCAV11            XFELDEVLCAV11                 660  }
+            {XFELDEVLCAV12            XFELDEVLCAV12                 660  }
+            {LUXGPAC1MDIBPM1          LUXGPAC1MDIBPM1               660  }
+            {LUXGPAC1MDIBPM2          LUXGPAC1MDIBPM2               660  }
+            {11FLFMAFF                11FLFMAFF                     660  }
+            {14FLFMAFF                14FLFMAFF                     660  }
+            {1FLFDIAG                 1FLFDIAG                      660  }
+            {3FLFDIAG                 3FLFDIAG                      660  }
 }
 
 #file GPAC_BPM_Calc_RMS_AVG.template { 

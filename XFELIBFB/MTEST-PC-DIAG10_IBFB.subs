@@ -91,14 +91,14 @@ file gpac2_service.template {
 
 file ibfbctrl_plane.template {
    pattern  {DEV           SRV     		   READ_OFFSET  PLANE }
-            {IBFBCTRL      IBFBCTRL1             352      Y }
-            {IBFBCTRL      IBFBCTRL2             352      X }
+            {IBFBCTRL      IBFBCTRL1             356      Y }
+            {IBFBCTRL      IBFBCTRL2             356      X }
 }
 
 file ibfbctrl_dac.template {
    pattern  {DEV           SRV     		   READ_OFFSET  PLANE }
-            {IBFBCTRL      IBFBCTRL1             352      Y }
-            {IBFBCTRL      IBFBCTRL2             352      X }
+            {IBFBCTRL      IBFBCTRL1             356      Y }
+            {IBFBCTRL      IBFBCTRL2             356      X }
 }
 
 file ibfbctrl_common.template {
@@ -139,7 +139,7 @@ file ibfbctrl_ff_scan.template {
 #-- switch
 file ibfbscom.template {
    pattern  {DEV           SRV     		   READ_OFFSET        }
-            {IBFBSW        IBFBSCOM               72        }
+            {IBFBSW        IBFBSCOM               80        }
 }
 
 file ibfbsw.template {
@@ -168,8 +168,8 @@ file ibfbpcom.template {
 
 file ibfbplay.template {
    pattern  {DEV           SRV     		   READ_OFFSET  PLAYER}
-            {IBFBPLAY      IBFBPLAY1           43224  PLAY1 }
-            {IBFBPLAY      IBFBPLAY2           43224  PLAY2 }
+            {IBFBPLAY      IBFBPLAY1           43544  PLAY1 }
+            {IBFBPLAY      IBFBPLAY2           43544  PLAY2 }
 }
 
 

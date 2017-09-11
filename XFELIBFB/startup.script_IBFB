@@ -36,9 +36,9 @@ require "s7gpac", "koprek_w"
    s7gpacConfigure  ("IBFBMON2",     "xfelgpacibfbmon",    51237,  32880,       48,         1,       10000,           200)    
 #  __   
 #  s7gpacConfigure  ("IBFBPLAY",     "xfelgpacibfbplay",   51234,    632,       72,         1,       10000,           200)    
-#  s7gpacConfigure  ("IBFBPCOM",     "xfelgpacibfbplay",   51235,    144,       44,         1,       10000,           200)    
-#  s7gpacConfigure  ("IBFBPLAY1",    "xfelgpacibfbplay",   51236,  43236,    43224,         1,       10000,           200)    
-#  s7gpacConfigure  ("IBFBPLAY2",    "xfelgpacibfbplay",   51237,  43236,    43224,         1,       10000,           200)    
+#  s7gpacConfigure  ("IBFBPCOM",     "xfelgpacibfbplay",   51235,     16,        4,         1,       10000,           200)    
+#  s7gpacConfigure  ("IBFBPLAY1",    "xfelgpacibfbplay",   51236,  43584,    43544,         1,       10000,           200)    
+#  s7gpacConfigure  ("IBFBPLAY2",    "xfelgpacibfbplay",   51237,  43584,    43544,         1,       10000,           200)    
 
 #___________________________________________________________________________________________                     
 # Cavity BPM Server for IBFB
@@ -60,8 +60,12 @@ require "s7gpac", "koprek_w"
 # s7gpacConfigure  ("BPMI-1863-TL",   "xfelgpac3di1899tl",     51238,   34656,      660,         1,        5000,  200)  # IBFBXUP-BPM2
 # s7gpacConfigure  ("BPMI-1889-TL",   "xfelgpac3di1899tl",     51236,   34656,      660,         1,        5000,  200)  # IBFBXUP-BPM1
 # s7gpacConfigure  ("BPMI-1925-TL",   "xfelgpac4di1899tl",     51238,   34656,      660,         1,        5000,  200)  # IBFBXDOWN-BPM2
-# s7gpacConfigure  ("BPMI-1939-TL",   "xfelgpac4di1899tl",     51236,   34656,      660,         1,        5000,  200)  # IBFBXDOWN-BPM1
-  
+# s7gpacConfigure  ("BPMI-1939-TL",   "xfelgpac4di1899tl",     51236,   34656,      660,         1,        5000,  200)  # IBFBXDOWN-BPM1  
+
+# s7gpacConfigure  ("BPMI-2241-SA1",  "xfelgpac1di2244sa1",    51236,   34656,      660,         1,        5000,  200)  # IBFBXDOWN-BPM2
+# s7gpacConfigure  ("BPMI-2247-SA1",  "xfelgpac1di2244sa1",    51238,   34656,      660,         1,        5000,  200)  # IBFBXDOWN-BPM1
+# s7gpacConfigure  ("BPMI-2253-SA1",  "xfelgpac1di2256sa1",    51236,   34656,      660,         1,        5000,  200)  # IBFBXDOWN-BPM2
+# s7gpacConfigure  ("BPMI-2259-SA1",  "xfelgpac1di2256sa1",    51238,   34656,      660,         1,        5000,  200)  # IBFBXDOWN-BPM1
 
 cd /ioc/XFELIBFB
 dbLoadTemplate("XFELIBFB_IBFB.subs") 

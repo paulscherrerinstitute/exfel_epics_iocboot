@@ -637,6 +637,78 @@ record(longin, "$(DEV):ROUTER2-OUT-ENA") {
   field(SCAN, "I/O Intr")
 }
 
+record(longin, "$(DEV):ROUTER1-OUT-P0") {
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0088 T=UINT16")
+  field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(DEV):ROUTER1-OUT-BPM0") {
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x008A T=UINT16")
+  field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(DEV):ROUTER1-OUT-P1") {
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x008C T=UINT16")
+  field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(DEV):ROUTER1-OUT-BPM1") {
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x008E T=UINT16")
+  field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(DEV):ROUTER2-OUT-P0") {
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0090 T=UINT16")
+  field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(DEV):ROUTER2-OUT-BPM0") {
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0096 T=UINT16")
+  field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(DEV):ROUTER2-OUT-P1") {
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0094 T=UINT16")
+  field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(DEV):ROUTER2-OUT-BPM1") {
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0092 T=UINT16")
+  field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(DEV):ROUTER1-X-ERROR") {
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0098 T=UINT16")
+  field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(DEV):ROUTER1-Y-ERROR") {
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x009A T=UINT16")
+  field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(DEV):ROUTER2-X-ERROR") {
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x009C T=UINT16")
+  field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(DEV):ROUTER2-Y-ERROR") {
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x009E T=UINT16")
+  field(SCAN, "I/O Intr")
+}
+
 record(longout, "$(DEV):FILT-SASE1-BUCKET-START") {
   field(DTYP, "S7gpac")
   field(OUT,  "@$(SRV)/0x0038:0x0038 T=UINT16")
@@ -715,4 +787,129 @@ record(longout, "$(DEV):FILT-COLLIM-BUCKET-STOP") {
   field(DRVL, "0")
   field(HOPR, "2708")
   field(LOPR, "0")
+}
+
+#---------------
+# ping settings
+#---------------
+
+
+record(bo, "$(DEV):SASE1-UP-PING-ENA") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0048:0x0048 T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(ZNAM, "Off" )
+  field(ONAM, "On" )
+}
+
+record(bo, "$(DEV):SASE2-UP-PING-ENA") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0049:0x0049 T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(ZNAM, "Off" )
+  field(ONAM, "On" )
+}
+
+record(bo, "$(DEV):SASE1-DOWN-PING-ENA") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x004A:0x004A T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(ZNAM, "Off" )
+  field(ONAM, "On" )
+}
+
+record(bo, "$(DEV):SASE2-DOWN-PING-ENA") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x004B:0x004B T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(ZNAM, "Off" )
+  field(ONAM, "On" )
+}
+
+record(bo, "$(DEV):SASE3-UP-PING-ENA") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x004C:0x004C T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(ZNAM, "Off" )
+  field(ONAM, "On" )
+}
+
+record(bo, "$(DEV):SASE3-DOWN-PING-ENA") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x004E:0x004E T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(ZNAM, "Off" )
+  field(ONAM, "On" )
+}
+
+record(longin, "$(DEV):SASE1-UP-PING-RECEIVED") {
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x00A0 T=UINT8")
+  field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(DEV):SASE2-UP-PING-RECEIVED") {
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x00A1 T=UINT8")
+  field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(DEV):SASE1-DOWN-PING-RECEIVED") {
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x00A2 T=UINT8")
+  field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(DEV):SASE2-DOWN-PING-RECEIVED") {
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x00A3 T=UINT8")
+  field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(DEV):SASE3-UP-PING-RECEIVED") {
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x00A4 T=UINT8")
+  field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(DEV):SASE3-DOWN-PING-RECEIVED") {
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x00A6 T=UINT8")
+  field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(DEV):SASE1-UP-PING-LATENCY") {
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x00A8 T=UINT32")
+  field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(DEV):SASE2-UP-PING-LATENCY") {
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x00AC T=UINT32")
+  field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(DEV):SASE1-DOWN-PING-LATENCY") {
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x00B0 T=UINT32")
+  field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(DEV):SASE2-DOWN-PING-LATENCY") {
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x00B4 T=UINT32")
+  field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(DEV):SASE3-UP-PING-LATENCY") {
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x00B8 T=UINT32")
+  field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(DEV):SASE3-DOWN-PING-LATENCY") {
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x00BC T=UINT32")
+  field(SCAN, "I/O Intr")
 }

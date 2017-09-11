@@ -15,20 +15,26 @@ require "s7gpac", "koprek_w"
 #___________________________________________________________________________________________
 # GPAC service servers
 #___________________________________________________________________________________________
-  s7gpacConfigure  ("XFELDEVLBUT1",  "mdi7psibut1",      51234,    632,       72,         1,       10000,  200)  # ipc????, cpu???
-  s7gpacConfigure  ("XFELDEVLCAV1",  "mdi7psicav1",      51234,    632,       72,         1,       10000,  200)  # ipc????, cpu???
-  s7gpacConfigure  ("XFELDEVLREN1",  "mdi7psiren1",      51234,    632,       72,         1,       10000,  200)  # ipc????, cpu???
-  s7gpacConfigure  ("LUXGPAC1MDI",   "luxgpac1mdi",      51234,    632,       72,         1,       10000,  200)  # ipc????, cpu???
+  s7gpacConfigure  ("XFELDEVLBUT1",     "mdi7psibut1",         51234,    632,       72,         1,       10000,  200)  # ipc????, cpu???
+  s7gpacConfigure  ("XFELDEVLCAV1",     "mdi7psicav1",         51234,    632,       72,         1,       10000,  200)  # ipc????, cpu???
+  s7gpacConfigure  ("XFELDEVLREN1",     "mdi7psiren1",         51234,    632,       72,         1,       10000,  200)  # ipc????, cpu???
+  s7gpacConfigure  ("LUXGPAC1MDI",      "luxgpac1mdi",         51234,    632,       72,         1,       10000,  200)  # ipc????, cpu???
+  s7gpacConfigure  ("FLASHFGPACMAFF",   "flashfgpacmaff",      51234,    632,       72,         1,       10000,  200)  # ipc????, cpu???
+  s7gpacConfigure  ("FLASHFGPACDIAG1",  "flashfgpacdiag1",     51234,    632,       72,         1,       10000,  200)  # ipc????, cpu???
 #___________________________________________________________________________________________                     
 # BPM Servers                                                                                           
 #___________________________________________________________________________________________                     
-  s7gpacConfigure  ("XFELDEVLBUT11",       "mdi7psibut1",     51235,   45884,      308,         1,        5000,  200)  # Button BPM
-  s7gpacConfigure  ("XFELDEVLCAV11",       "mdi7psicav1",     51236,   34656,      660,         1,        5000,  200)  # Cavity BPM
-  s7gpacConfigure  ("XFELDEVLCAV12",       "mdi7psicav1",     51238,   34656,      660,         1,        5000,  200)  # Cavity BPM
-  s7gpacConfigure  ("XFELDEVLREN11",       "mdi7psiren1",     51236,    1904,      536,         1,        5000,  200)  # Re-entrant BPM
-  s7gpacConfigure  ("XFELDEVLREN12",       "mdi7psiren1",     51238,    1904,      536,         1,        5000,  200)  # Re-entrant BPM
-  s7gpacConfigure  ("LUXGPAC1MDIBPM1",     "luxgpac1mdi",     51236,   34656,      660,         1,        5000,  200)  # Cavity BPM
-  s7gpacConfigure  ("LUXGPAC1MDIBPM2",     "luxgpac1mdi",     51238,   34656,      660,         1,        5000,  200)  # Cavity BPM
+  s7gpacConfigure  ("XFELDEVLBUT11",       "mdi7psibut1",       51235,   45884,      308,         1,        5000,  200)  # Button BPM
+  s7gpacConfigure  ("XFELDEVLCAV11",       "mdi7psicav1",       51236,   34656,      660,         1,        5000,  200)  # Cavity BPM
+  s7gpacConfigure  ("XFELDEVLCAV12",       "mdi7psicav1",       51238,   34656,      660,         1,        5000,  200)  # Cavity BPM
+  s7gpacConfigure  ("XFELDEVLREN11",       "mdi7psiren1",       51236,    1904,      536,         1,        5000,  200)  # Re-entrant BPM
+  s7gpacConfigure  ("XFELDEVLREN12",       "mdi7psiren1",       51238,    1904,      536,         1,        5000,  200)  # Re-entrant BPM
+  s7gpacConfigure  ("LUXGPAC1MDIBPM1",     "luxgpac1mdi",       51236,   34656,      660,         1,        5000,  200)  # Cavity BPM
+  s7gpacConfigure  ("LUXGPAC1MDIBPM2",     "luxgpac1mdi",       51238,   34656,      660,         1,        5000,  200)  # Cavity BPM
+  s7gpacConfigure  ("11FLFMAFF",           "flashfgpacmaff",    51236,   34656,      660,         1,        5000,  200)  # Cavity BPM
+  s7gpacConfigure  ("14FLFMAFF",           "flashfgpacmaff",    51238,   34656,      660,         1,        5000,  200)  # Cavity BPM
+  s7gpacConfigure  ("1FLFDIAG",            "flashfgpacdiag1",   51236,   34656,      660,         1,        5000,  200)  # Cavity BPM
+  s7gpacConfigure  ("3FLFDIAG",            "flashfgpacdiag1",   51238,   34656,      660,         1,        5000,  200)  # Cavity BPM
 
 #___________________________________________________________________________________________                     
 # Button BPM Service Server                                                                                                  
