@@ -575,6 +575,21 @@ record(bo, "$(DEV):$(PLANE)-FF-FAST-MODE") {
   field(ONAM, "Manual" )
 }
 
+record(bo, "$(DEV):$(PLANE)-TAB-SP-MODE") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0164:0x0164 T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(ZNAM, "Automatic" )
+  field(ONAM, "Manual" )
+}
+
+record(bo, "$(DEV):$(PLANE)-TAB-GAIN-MODE") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0165:0x0165 T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(ZNAM, "Automatic" )
+  field(ONAM, "Manual" )
+}
 
 ##-- orbit matrices
 
