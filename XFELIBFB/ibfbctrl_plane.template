@@ -208,9 +208,9 @@ record(ao,"$(DEV):$(PLANE)-FB-FAST-KP") {
   field(OUT,  "@$(SRV)/0x0014:0x0014 T=FLOAT")
   field(SCAN, "I/O Intr")
   field(DRVL, "0.0")  
-  field(DRVH, "3.0")
+  field(DRVH, "30.0")
   field(LOPR, "0.0")
-  field(HOPR, "3.0")  
+  field(HOPR, "30.0")  
   field(PREC, "2")  
 }
 
