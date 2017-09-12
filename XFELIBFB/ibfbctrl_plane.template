@@ -1335,7 +1335,7 @@ record(waveform, "$(DEV):$(PLANE)-BPM1-DOWN-POS-WAV") {
 record(waveform, "$(DEV):$(PLANE)-BPM2-DOWN-POS-WAV") {
   field(SCAN, "I/O Intr")
   field(DTYP, "S7gpac")
-  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x02D8")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x05D8")
   field(NELM, "256")
   field(PREC, "3")
   field(FTVL, "FLOAT")
