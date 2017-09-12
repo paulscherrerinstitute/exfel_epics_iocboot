@@ -1219,6 +1219,11 @@ record(waveform, "$(DEV):$(PLANE)-DOWN-BPM2-HIST") {
 
 #--- First bunch readouts ------------------------------------------
 
+record(longout, "$(DEV):$(PLANE)-BUCKET-SEL") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0160 T=UINT16")
+}
+
 record(ai, "$(DEV):$(PLANE)-BPM1-UP-POS-NTH") {
   field(SCAN, "I/O Intr")
   field(DTYP, "S7gpac")
