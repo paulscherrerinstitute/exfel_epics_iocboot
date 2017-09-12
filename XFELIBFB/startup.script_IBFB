@@ -26,7 +26,7 @@ require "s7gpac", "koprek_w"
    s7gpacConfigure  ("IBFBSCAN2",    "xfelgpacibfbctrl",   51250,    412,        4,         1,       10000,           200)    
 #  __   
    s7gpacConfigure  ("IBFBSW",       "xfelgpacibfbsw",     51234,    632,       72,         1,       10000,           200)    
-   s7gpacConfigure  ("IBFBSCOM",     "xfelgpacibfbsw",     51235,    208,       72,         1,       10000,           200)    
+   s7gpacConfigure  ("IBFBSCOM",     "xfelgpacibfbsw",     51235,    272,       80,         1,       10000,           200)    
    s7gpacConfigure  ("IBFBSW1",      "xfelgpacibfbsw",     51236,     60,       20,         1,       10000,           200)    
    s7gpacConfigure  ("IBFBSW2",      "xfelgpacibfbsw",     51237,     60,       20,         1,       10000,           200)    
 #  __   

@@ -104,7 +104,7 @@ file ibfbctrl_ff_scan.template {
 #-- switch
 file ibfbscom.template {
    pattern  {DEV           SRV     		   READ_OFFSET        }
-            {IBFBSW        IBFBSCOM               72        }
+            {IBFBSW        IBFBSCOM               80        }
 }
 
 file ibfbsw.template {
