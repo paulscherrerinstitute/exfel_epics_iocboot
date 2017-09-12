@@ -1,7 +1,17 @@
 #------------------------------------------------------------------------------
 #
-#
 
+#-- archiver additions
+
+record(bo, "$(DEV):ARCHIVER-STATE") {
+  field(ZNAM, "Stop" )
+  field(ONAM, "Running" )
+}
+
+record(stringout,"$(DEV):ARCHIVER-DESCRIPTION"){
+}
+
+#--------------------------------
 record(mbbo, "$(DEV):TRG-SOURCE") {
   field(NOBT,"3")
   field(SHFT, "0")
