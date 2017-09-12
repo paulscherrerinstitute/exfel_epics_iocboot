@@ -1222,6 +1222,10 @@ record(waveform, "$(DEV):$(PLANE)-DOWN-BPM2-HIST") {
 record(longout, "$(DEV):$(PLANE)-BUCKET-SEL") {
   field(DTYP, "S7gpac")
   field(OUT,  "@$(SRV)/0x0160 T=UINT16")
+  field(DRVH, "2707")
+  field(DRVL, "0")
+  field(HOPR, "2707")
+  field(LOPR, "0")
 }
 
 record(ai, "$(DEV):$(PLANE)-BPM1-UP-POS-NTH") {
