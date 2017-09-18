@@ -225,6 +225,17 @@ record(ao,"$(DEV):$(PLANE)-FB-FAST-KI") {
   field(PREC, "2")  
 }
 
+record(ao,"$(DEV):$(PLANE)-FB-FAST-KD") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0168:0x0168 T=FLOAT")
+  field(SCAN, "I/O Intr")
+  field(DRVL, "-3.0")  
+  field(DRVH, "3.0")
+  field(LOPR, "-3.0")
+  field(HOPR, "3.0")  
+  field(PREC, "2")  
+}
+
 record(longout, "$(DEV):$(PLANE)-KICK2-DELAY") { 
   field(DTYP, "S7gpac")
   field(OUT,  "@$(SRV)/0x0006:0x0006 T=UINT8")
