@@ -102,11 +102,11 @@ record(mbbo, "$(DEV):$(PLANE)-DAQ-MUX0") {
   field(ZRVL, "0" )
   field(ONVL, "1" )
   field(TWVL, "2" )
-  field(THVL, "3" )
-  field(ZRST, "00: BPM Mux" )  
-  field(ONST, "01: Int gated" )
-  field(TWST, "02: FB kick int" )
-  field(THST, "03: SP Table" )
+#  field(THVL, "3" )
+  field(ZRST, "00: BPM Pos" )  
+  field(ONST, "01: FB I" )
+  field(TWST, "02: FB out int" )
+#  field(THST, "03: SP Table" )
 }
 
 record(mbbo, "$(DEV):$(PLANE)-DAQ-MUX1") {
@@ -122,7 +122,7 @@ record(mbbo, "$(DEV):$(PLANE)-DAQ-MUX1") {
   field(ZRST, "10: Pos error" )
   field(ONST, "11: FB kick" )
   field(TWST, "12: FF tab int" )
-  field(THST, "13: SP signal" )
+  field(THST, "13: SP tab" )
 }
 
 record(mbbo, "$(DEV):$(PLANE)-DAQ-MUX2") {
@@ -134,9 +134,9 @@ record(mbbo, "$(DEV):$(PLANE)-DAQ-MUX2") {
   field(ZRVL, "0" )
   field(ONVL, "1" )
   field(TWVL, "2" )
-  field(ZRST, "20: I output" )
-  field(ONST, "21: PI output" )
-  field(TWST, "22: BPMs pos" )
+  field(ZRST, "20: I acc" )
+  field(ONST, "21: PID sum" )
+  field(TWST, "22: Gain tab" )
 }
 
 record(mbbo, "$(DEV):$(PLANE)-DAQ-MUX3") {
@@ -148,9 +148,9 @@ record(mbbo, "$(DEV):$(PLANE)-DAQ-MUX3") {
   field(ZRVL, "0" )
   field(ONVL, "1" )
   field(TWVL, "2" )
-  field(ZRST, "30: FB kick int" )
+  field(ZRST, "30: FB out int" )
   field(ONST, "31: FF tab int" )
-  field(TWST, "32: Kickout int" )
+  field(TWST, "32: Ctrl out int" )
 }
 
 # record(longout, "$(DEV):$(PLANE)-BUNCH-NUM") {
