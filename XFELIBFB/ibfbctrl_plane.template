@@ -134,9 +134,11 @@ record(mbbo, "$(DEV):$(PLANE)-DAQ-MUX2") {
   field(ZRVL, "0" )
   field(ONVL, "1" )
   field(TWVL, "2" )
+  field(THVL, "3" )
   field(ZRST, "20: I acc" )
   field(ONST, "21: PID sum" )
-  field(TWST, "22: Gain tab" )
+  field(TWST, "22: FB D" )
+  field(THST, "23: Gain tab" )
 }
 
 record(mbbo, "$(DEV):$(PLANE)-DAQ-MUX3") {
