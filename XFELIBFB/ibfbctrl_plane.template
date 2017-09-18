@@ -1418,3 +1418,40 @@ record(acalcout, "$(DEV):$(PLANE)-BPM2-SP-WAV") {
 #   field(NELM, "256")
 #   field(CALC, "ARR(0)+(ARR(255)>>1)")
 #}
+
+#--------------------------------------------------------------------
+#-- SP tables
+#--------------------------------------------------------------------
+
+record(longin, "$(DEV):$(PLANE)-AFF-STATUS") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x05DC T=UINT32")
+}
+
+record(bo, "$(DEV):$(PLANE)-AFF-ENA") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x016C:0x016C T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(ZNAM, "Disabled" )
+  field(ONAM, "Enabled" )
+}
+
+record(bo, "$(DEV):$(PLANE)-AFF-MODE") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x016D:0x016D T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(ZNAM, "Continues" )
+  field(ONAM, "Once" )
+}
+
+record(ao,"$(DEV):$(PLANE)-AFF-GAIN") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0170:0x0170 T=FLOAT")
+  field(SCAN, "I/O Intr")
+  field(DRVL, "0.0")  
+  field(DRVH, "1.0")
+  field(LOPR, "0.0")
+  field(HOPR, "1.0")  
+  field(PREC, "2")  
+}
