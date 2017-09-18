@@ -1455,3 +1455,20 @@ record(ao,"$(DEV):$(PLANE)-AFF-GAIN") {
   field(HOPR, "1.0")  
   field(PREC, "2")  
 }
+
+#--------------------------------------------------------------------
+#-- Output mean values
+#--------------------------------------------------------------------
+
+record(longin, "$(DEV):$(PLANE)-KICK1-OUT-MEAN") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x05E0 T=FLOAT")
+}
+
+record(longin, "$(DEV):$(PLANE)-KICK2-OUT-MEAN") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x05E4 T=FLOAT")
+}
+
