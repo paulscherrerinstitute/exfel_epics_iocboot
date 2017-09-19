@@ -231,10 +231,10 @@ record(ao,"$(DEV):$(PLANE)-FB-FAST-KD") {
   field(DTYP, "S7gpac")
   field(OUT,  "@$(SRV)/0x0168:0x0168 T=FLOAT")
   field(SCAN, "I/O Intr")
-  field(DRVL, "-3.0")  
-  field(DRVH, "3.0")
-  field(LOPR, "-3.0")
-  field(HOPR, "3.0")  
+  field(DRVL, "-30.0")  
+  field(DRVH, "30.0")
+  field(LOPR, "-30.0")
+  field(HOPR, "30.0")  
   field(PREC, "2")  
 }
 
