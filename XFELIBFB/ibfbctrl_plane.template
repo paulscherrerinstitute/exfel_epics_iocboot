@@ -103,10 +103,10 @@ record(mbbo, "$(DEV):$(PLANE)-DAQ-MUX0") {
   field(ONVL, "1" )
   field(TWVL, "2" )
   field(THVL, "3" )
-  field(ZRST, "00: BPM Mux" )  
-  field(ONST, "01: Int gated" )
+  field(ZRST, "00: BPM Pos" )  
+  field(ONST, "01: FB I" )
   field(TWST, "02: FB kick int" )
-  field(THST, "03: SP Table" )
+  field(THST, "03: FB D" )
 }
 
 record(mbbo, "$(DEV):$(PLANE)-DAQ-MUX1") {
@@ -120,9 +120,9 @@ record(mbbo, "$(DEV):$(PLANE)-DAQ-MUX1") {
   field(TWVL, "2" )
   field(THVL, "3" )
   field(ZRST, "10: Pos error" )
-  field(ONST, "11: FB kick" )
+  field(ONST, "11: FB kick sin" )
   field(TWST, "12: FF tab int" )
-  field(THST, "13: SP signal" )
+  field(THST, "13: SP tab" )
 }
 
 record(mbbo, "$(DEV):$(PLANE)-DAQ-MUX2") {
@@ -134,9 +134,11 @@ record(mbbo, "$(DEV):$(PLANE)-DAQ-MUX2") {
   field(ZRVL, "0" )
   field(ONVL, "1" )
   field(TWVL, "2" )
-  field(ZRST, "20: I output" )
-  field(ONST, "21: PI output" )
-  field(TWST, "22: BPMs pos" )
+  field(THVL, "3" )
+  field(ZRST, "20: I acc" )
+  field(ONST, "21: PID sum" )
+  field(TWST, "22: empty" )
+  field(THST, "23: Gain tab" )
 }
 
 record(mbbo, "$(DEV):$(PLANE)-DAQ-MUX3") {
@@ -148,9 +150,9 @@ record(mbbo, "$(DEV):$(PLANE)-DAQ-MUX3") {
   field(ZRVL, "0" )
   field(ONVL, "1" )
   field(TWVL, "2" )
-  field(ZRST, "30: FB kick int" )
+  field(ZRST, "30: FB out int" )
   field(ONST, "31: FF tab int" )
-  field(TWST, "32: Kickout int" )
+  field(TWST, "32: Ctrl out int" )
 }
 
 # record(longout, "$(DEV):$(PLANE)-BUNCH-NUM") {
@@ -222,6 +224,17 @@ record(ao,"$(DEV):$(PLANE)-FB-FAST-KI") {
   field(DRVH, "3.0")
   field(LOPR, "0.0")
   field(HOPR, "3.0")  
+  field(PREC, "2")  
+}
+
+record(ao,"$(DEV):$(PLANE)-FB-FAST-KD") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0168:0x0168 T=FLOAT")
+  field(SCAN, "I/O Intr")
+  field(DRVL, "-30.0")  
+  field(DRVH, "30.0")
+  field(LOPR, "-30.0")
+  field(HOPR, "30.0")  
   field(PREC, "2")  
 }
 
@@ -1405,3 +1418,59 @@ record(acalcout, "$(DEV):$(PLANE)-BPM2-SP-WAV") {
 #   field(NELM, "256")
 #   field(CALC, "ARR(0)+(ARR(255)>>1)")
 #}
+
+#--------------------------------------------------------------------
+#-- SP tables
+#--------------------------------------------------------------------
+
+record(longin, "$(DEV):$(PLANE)-AFF-STATUS") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x09D8 T=UINT32")
+}
+
+record(bo, "$(DEV):$(PLANE)-AFF-ENA") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x016C:0x016C T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(ZNAM, "Disabled" )
+  field(ONAM, "Enabled" )
+}
+
+record(bo, "$(DEV):$(PLANE)-AFF-MODE") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x016D:0x016D T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(ZNAM, "Continues" )
+  field(ONAM, "Once" )
+}
+
+record(ao,"$(DEV):$(PLANE)-AFF-GAIN") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0170:0x0170 T=FLOAT")
+  field(SCAN, "I/O Intr")
+  field(DRVL, "0.0")  
+  field(DRVH, "1.0")
+  field(LOPR, "0.0")
+  field(HOPR, "1.0")  
+  field(PREC, "2")  
+}
+
+#--------------------------------------------------------------------
+#-- Output mean values
+#--------------------------------------------------------------------
+
+record(ai, "$(DEV):$(PLANE)-KICK1-OUT-MEAN") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x09DC T=FLOAT")
+  field(PREC, "3")  
+}
+
+record(ai, "$(DEV):$(PLANE)-KICK2-OUT-MEAN") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x09E0 T=FLOAT")
+  field(PREC, "3")  
+}
+
