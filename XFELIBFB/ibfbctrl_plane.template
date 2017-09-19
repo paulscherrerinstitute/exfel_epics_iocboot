@@ -1426,7 +1426,7 @@ record(acalcout, "$(DEV):$(PLANE)-BPM2-SP-WAV") {
 record(longin, "$(DEV):$(PLANE)-AFF-STATUS") {
   field(SCAN, "I/O Intr")
   field(DTYP, "S7gpac")
-  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x05DC T=UINT32")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x09D8 T=UINT32")
 }
 
 record(bo, "$(DEV):$(PLANE)-AFF-ENA") {
@@ -1463,14 +1463,14 @@ record(ao,"$(DEV):$(PLANE)-AFF-GAIN") {
 record(ai, "$(DEV):$(PLANE)-KICK1-OUT-MEAN") {
   field(SCAN, "I/O Intr")
   field(DTYP, "S7gpac")
-  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x05E0 T=FLOAT")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x09DC T=FLOAT")
   field(PREC, "3")  
 }
 
 record(ai, "$(DEV):$(PLANE)-KICK2-OUT-MEAN") {
   field(SCAN, "I/O Intr")
   field(DTYP, "S7gpac")
-  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x05E4 T=FLOAT")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x09E0 T=FLOAT")
   field(PREC, "3")  
 }
 
