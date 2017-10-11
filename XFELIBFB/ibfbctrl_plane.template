@@ -542,12 +542,18 @@ record(bo, "$(DEV):$(PLANE)-FB-SEL-BPM") {
   field(ONAM, "BPM2" )
 }
 
-record(bo, "$(DEV):$(PLANE)-BPM-CLEAN-SMP-METHOD") {
+record(mbbo, "$(DEV):$(PLANE)-BPM-CLEAN-SMP-METHOD") {
   field(DTYP, "S7gpac")
   field(OUT,  "@$(SRV)/0x0033:0x0033 T=UINT8")
   field(SCAN, "I/O Intr")
-  field(ZNAM, "Zero" )
-  field(ONAM, "Hold" )
+  field(NOBT,"2")
+  field(SHFT, "0")
+  field(ZRVL, "0" )
+  field(ONVL, "1" )
+  field(TWVL, "2" )
+  field(ZRST, "Zero" )
+  field(ONST, "Hold" )
+  field(TWST, "To SP" )
 }
 
 record(bo, "$(DEV):$(PLANE)-FF-FAST-ON") {
