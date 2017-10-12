@@ -1488,7 +1488,7 @@ record(acalcout, "$(DEV):$(PLANE)-STATS-DOWN-BPM2-MAX-WAV") {
 
 record(longout, "$(DEV):$(PLANE)-STATS-DOWN-BPM-BKT-START") {
   field(DTYP, "S7gpac")
-  field(OUT,  "@$(SRV)/0x0010:0x0010 T=INT32")
+  field(OUT,  "@$(SRV)/0x0174:0x0174 T=INT16")
   field(SCAN, "I/O Intr")
   field(DRVH, "2707")
   field(DRVL, "0")
