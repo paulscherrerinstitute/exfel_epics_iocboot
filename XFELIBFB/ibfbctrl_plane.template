@@ -1418,6 +1418,70 @@ record(acalcout, "$(DEV):$(PLANE)-BPM2-SP-WAV") {
    field(CALC, "ARR(A)")
 }
 
+#--------------------------------------------------------------------
+#-- Plot limiters
+#--------------------------------------------------------------------
+
+record(ai, "$(DEV):$(PLANE)-STATS-DOWN-BPM1-MIN") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x09E4 T=FLOAT")
+  field(PREC, "3")
+}
+
+record(acalcout, "$(DEV):$(PLANE)-STATS-DOWN-BPM1-MIN-WAV") {
+   field(INPA, "$(DEV):$(PLANE)-STATS-DOWN-BPM1-MIN NPP")
+   field(SCAN, "1 second")
+   field(PREC, "3")
+   field(NELM, "256")
+   field(CALC, "ARR(A)")
+}
+
+record(ai, "$(DEV):$(PLANE)-STATS-DOWN-BPM1-MAX") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x09E8 T=FLOAT")
+  field(PREC, "3")
+}
+
+record(acalcout, "$(DEV):$(PLANE)-STATS-DOWN-BPM1-MAX-WAV") {
+   field(INPA, "$(DEV):$(PLANE)-STATS-DOWN-BPM1-MAX NPP")
+   field(SCAN, "1 second")
+   field(PREC, "3")
+   field(NELM, "256")
+   field(CALC, "ARR(A)")
+}
+
+record(ai, "$(DEV):$(PLANE)-STATS-DOWN-BPM2-MIN") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x09EC T=FLOAT")
+  field(PREC, "3")
+}
+
+record(acalcout, "$(DEV):$(PLANE)-STATS-DOWN-BPM2-MIN-WAV") {
+   field(INPA, "$(DEV):$(PLANE)-STATS-DOWN-BPM2-MIN NPP")
+   field(SCAN, "1 second")
+   field(PREC, "3")
+   field(NELM, "256")
+   field(CALC, "ARR(A)")
+}
+
+record(ai, "$(DEV):$(PLANE)-STATS-DOWN-BPM2-MAX") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x09F0 T=FLOAT")
+  field(PREC, "3")
+}
+
+record(acalcout, "$(DEV):$(PLANE)-STATS-DOWN-BPM2-MAX-WAV") {
+   field(INPA, "$(DEV):$(PLANE)-STATS-DOWN-BPM2-MAX NPP")
+   field(SCAN, "1 second")
+   field(PREC, "3")
+   field(NELM, "256")
+   field(CALC, "ARR(A)")
+}
+
 #record(acalcout, "$(DEV):$(PLANE)-SP-X-WAV") {
 #   field(SCAN, "1 second")
 #   field(PREC, "0")
