@@ -1482,12 +1482,48 @@ record(acalcout, "$(DEV):$(PLANE)-STATS-DOWN-BPM2-MAX-WAV") {
    field(CALC, "ARR(A)")
 }
 
-#record(acalcout, "$(DEV):$(PLANE)-SP-X-WAV") {
-#   field(SCAN, "1 second")
-#   field(PREC, "0")
-#   field(NELM, "256")
-#   field(CALC, "ARR(0)+(ARR(255)>>1)")
-#}
+#--------------------------------------------------------------------
+#-- Statistics
+#--------------------------------------------------------------------
+
+record(longout, "$(DEV):$(PLANE)-STATS-DOWN-BPM-BKT-START") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0010:0x0010 T=INT32")
+  field(SCAN, "I/O Intr")
+  field(DRVH, "2707")
+  field(DRVL, "0")
+  field(HOPR, "2707")
+  field(LOPR, "0")
+}
+
+record(ai, "$(DEV):$(PLANE)-STATS-DOWN-BPM1-STD") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x09F4 T=FLOAT")
+  field(PREC, "6")
+}
+
+record(ai, "$(DEV):$(PLANE)-STATS-DOWN-BPM2-STD") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x09F8 T=FLOAT")
+  field(PREC, "6")
+}
+
+record(ai, "$(DEV):$(PLANE)-STATS-DOWN-BPM1-P-P") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x09FC T=FLOAT")
+  field(PREC, "6")
+}
+
+record(ai, "$(DEV):$(PLANE)-STATS-DOWN-BPM2-P-P") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0A00 T=FLOAT")
+  field(PREC, "6")
+}
+
 
 #--------------------------------------------------------------------
 #-- SP tables
