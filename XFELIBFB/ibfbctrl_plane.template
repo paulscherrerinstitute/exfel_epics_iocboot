@@ -1543,8 +1543,8 @@ record(bo, "$(DEV):$(PLANE)-AFF-ENA") {
   field(DTYP, "S7gpac")
   field(OUT,  "@$(SRV)/0x016C:0x016C T=UINT8")
   field(SCAN, "I/O Intr")
-  field(ZNAM, "Disabled" )
-  field(ONAM, "Enabled" )
+  field(ZNAM, "Off" )
+  field(ONAM, "On" )
 }
 
 record(bo, "$(DEV):$(PLANE)-AFF-MODE") {
