@@ -210,9 +210,15 @@ record(ao,"$(DEV):$(PLANE)-FB-FAST-KP") {
   field(OUT,  "@$(SRV)/0x0014:0x0014 T=FLOAT")
   field(SCAN, "I/O Intr")
   field(DRVL, "0.0")  
+<<<<<<< HEAD
   field(DRVH, "30.0")
   field(LOPR, "0.0")
   field(HOPR, "30.0")  
+=======
+  field(DRVH, "10000.0")
+  field(LOPR, "0.0")
+  field(HOPR, "10000.0")  
+>>>>>>> 818fd981e00c0d3768db645c2912cd0274a8aa2f
   field(PREC, "2")  
 }
 
@@ -221,9 +227,9 @@ record(ao,"$(DEV):$(PLANE)-FB-FAST-KI") {
   field(OUT,  "@$(SRV)/0x0144:0x0144 T=FLOAT")
   field(SCAN, "I/O Intr")
   field(DRVL, "0.0")  
-  field(DRVH, "3.0")
+  field(DRVH, "10000.0")
   field(LOPR, "0.0")
-  field(HOPR, "3.0")  
+  field(HOPR, "10000.0")  
   field(PREC, "2")  
 }
 
@@ -231,10 +237,10 @@ record(ao,"$(DEV):$(PLANE)-FB-FAST-KD") {
   field(DTYP, "S7gpac")
   field(OUT,  "@$(SRV)/0x0168:0x0168 T=FLOAT")
   field(SCAN, "I/O Intr")
-  field(DRVL, "-30.0")  
-  field(DRVH, "30.0")
-  field(LOPR, "-30.0")
-  field(HOPR, "30.0")  
+  field(DRVL, "-10000.0")  
+  field(DRVH, "10000.0")
+  field(LOPR, "-10000.0")
+  field(HOPR, "10000.0")  
   field(PREC, "2")  
 }
 
