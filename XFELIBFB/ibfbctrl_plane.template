@@ -1568,10 +1568,10 @@ record(ao,"$(DEV):$(PLANE)-AFF-GAIN") {
   field(DTYP, "S7gpac")
   field(OUT,  "@$(SRV)/0x0170:0x0170 T=FLOAT")
   field(SCAN, "I/O Intr")
-  field(DRVL, "-100.0")  
-  field(DRVH, "100.0")
-  field(LOPR, "-100.0")
-  field(HOPR, "100.0")  
+  field(DRVL, "-1000.0")  
+  field(DRVH, "1000.0")
+  field(LOPR, "-1000.0")
+  field(HOPR, "1000.0")  
   field(PREC, "2")  
 }
 
