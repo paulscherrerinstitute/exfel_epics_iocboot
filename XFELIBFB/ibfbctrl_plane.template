@@ -1555,6 +1555,15 @@ record(bo, "$(DEV):$(PLANE)-AFF-MODE") {
   field(ONAM, "Once" )
 }
 
+record(bo, "$(DEV):$(PLANE)-AFF-USE-CORR") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x016E:0x016E T=UINT8")
+  field(SCAN, "I/O Intr")
+  field(ZNAM, "Off" )
+  field(ONAM, "On" )
+}
+
+
 record(ao,"$(DEV):$(PLANE)-AFF-GAIN") {
   field(DTYP, "S7gpac")
   field(OUT,  "@$(SRV)/0x0170:0x0170 T=FLOAT")
