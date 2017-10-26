@@ -1358,7 +1358,7 @@ record(ai, "$(DEV):$(PLANE)-COL-VALID-NTH") {
 record(waveform, "$(DEV):$(PLANE)-BPM1-DOWN-POS-WAV") {
   field(SCAN, "I/O Intr")
   field(DTYP, "S7gpac")
-  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x01D8")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0214")
   field(NELM, "512")
   field(PREC, "3")
   field(FTVL, "FLOAT")
@@ -1367,7 +1367,7 @@ record(waveform, "$(DEV):$(PLANE)-BPM1-DOWN-POS-WAV") {
 record(waveform, "$(DEV):$(PLANE)-BPM2-DOWN-POS-WAV") {
   field(SCAN, "I/O Intr")
   field(DTYP, "S7gpac")
-  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x05D8")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0A14")
   field(NELM, "512")
   field(PREC, "3")
   field(FTVL, "FLOAT")
