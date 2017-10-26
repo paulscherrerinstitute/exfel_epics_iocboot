@@ -1508,7 +1508,7 @@ record(ai, "$(DEV):$(PLANE)-STATS-DOWN-BPM1-STD") {
   field(SCAN, "I/O Intr")
   field(DTYP, "S7gpac")
   field(INP,  "@$(SRV)/$(READ_OFFSET)+0x01F4 T=FLOAT")
-  field(ASLO, "0.001")
+  field(ASLO, "1000")
   field(PREC, "6")
 }
 
@@ -1516,7 +1516,7 @@ record(ai, "$(DEV):$(PLANE)-STATS-DOWN-BPM2-STD") {
   field(SCAN, "I/O Intr")
   field(DTYP, "S7gpac")
   field(INP,  "@$(SRV)/$(READ_OFFSET)+0x01F8 T=FLOAT")
-  field(ASLO, "0.001")
+  field(ASLO, "1000")
   field(PREC, "6")
 }
 
@@ -1524,7 +1524,7 @@ record(ai, "$(DEV):$(PLANE)-STATS-DOWN-BPM1-P-P") {
   field(SCAN, "I/O Intr")
   field(DTYP, "S7gpac")
   field(INP,  "@$(SRV)/$(READ_OFFSET)+0x01FC T=FLOAT")
-  field(ASLO, "0.001")
+  field(ASLO, "1000")
   field(PREC, "6")
 }
 
@@ -1532,7 +1532,7 @@ record(ai, "$(DEV):$(PLANE)-STATS-DOWN-BPM2-P-P") {
   field(SCAN, "I/O Intr")
   field(DTYP, "S7gpac")
   field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0200 T=FLOAT")
-  field(ASLO, "0.001")
+  field(ASLO, "1000")
   field(PREC, "6")
 }
 
