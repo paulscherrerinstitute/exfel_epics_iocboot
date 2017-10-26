@@ -1601,26 +1601,26 @@ record(ai, "$(DEV):$(PLANE)-KICK1-OUT-MIN") {
   field(SCAN, "I/O Intr")
   field(DTYP, "S7gpac")
   field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0204 T=FLOAT")
-  field(PREC, "3")  
+  field(PREC, "0")  
 }
 
 record(ai, "$(DEV):$(PLANE)-KICK2-OUT-MIN") {
   field(SCAN, "I/O Intr")
   field(DTYP, "S7gpac")
   field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0208 T=FLOAT")
-  field(PREC, "3")  
+  field(PREC, "0")  
 }
 
 record(ai, "$(DEV):$(PLANE)-KICK1-OUT-MAX") {
   field(SCAN, "I/O Intr")
   field(DTYP, "S7gpac")
   field(INP,  "@$(SRV)/$(READ_OFFSET)+0x020C T=FLOAT")
-  field(PREC, "3")  
+  field(PREC, "0")  
 }
 
 record(ai, "$(DEV):$(PLANE)-KICK2-OUT-MAX") {
   field(SCAN, "I/O Intr")
   field(DTYP, "S7gpac")
   field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0210 T=FLOAT")
-  field(PREC, "3")  
+  field(PREC, "0")  
 }
