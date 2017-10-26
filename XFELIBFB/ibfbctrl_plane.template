@@ -1355,7 +1355,7 @@ record(waveform, "$(DEV):$(PLANE)-BPM1-DOWN-POS-WAV") {
   field(SCAN, "I/O Intr")
   field(DTYP, "S7gpac")
   field(INP,  "@$(SRV)/$(READ_OFFSET)+0x01D8")
-  field(NELM, "256")
+  field(NELM, "512")
   field(PREC, "3")
   field(FTVL, "FLOAT")
 }
@@ -1364,7 +1364,7 @@ record(waveform, "$(DEV):$(PLANE)-BPM2-DOWN-POS-WAV") {
   field(SCAN, "I/O Intr")
   field(DTYP, "S7gpac")
   field(INP,  "@$(SRV)/$(READ_OFFSET)+0x05D8")
-  field(NELM, "256")
+  field(NELM, "512")
   field(PREC, "3")
   field(FTVL, "FLOAT")
 }
@@ -1406,7 +1406,7 @@ record(acalcout, "$(DEV):$(PLANE)-BPM1-SP-WAV") {
    field(INPA, "$(DEV):$(PLANE)-FB-SP-POS NPP")
    field(SCAN, "1 second")
    field(PREC, "3")
-   field(NELM, "256")
+   field(NELM, "512")
    field(CALC, "ARR(A)")
 }
 
@@ -1414,7 +1414,7 @@ record(acalcout, "$(DEV):$(PLANE)-BPM2-SP-WAV") {
    field(INPA, "$(DEV):$(PLANE)-FB-SP-ANGLE NPP")
    field(SCAN, "1 second")
    field(PREC, "3")
-   field(NELM, "256")
+   field(NELM, "512")
    field(CALC, "ARR(A)")
 }
 
@@ -1425,7 +1425,7 @@ record(acalcout, "$(DEV):$(PLANE)-BPM2-SP-WAV") {
 record(ai, "$(DEV):$(PLANE)-STATS-DOWN-BPM1-MIN") {
   field(SCAN, "I/O Intr")
   field(DTYP, "S7gpac")
-  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x09E4 T=FLOAT")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x01E4 T=FLOAT")
   field(PREC, "3")
   field(FLNK, "$(DEV):$(PLANE)-STATS-DOWN-BPM1-MIN-WAV")
 }
@@ -1434,14 +1434,14 @@ record(acalcout, "$(DEV):$(PLANE)-STATS-DOWN-BPM1-MIN-WAV") {
    field(INPA, "$(DEV):$(PLANE)-STATS-DOWN-BPM1-MIN NPP")
 #   field(SCAN, "1 second")
    field(PREC, "3")
-   field(NELM, "256")
+   field(NELM, "512")
    field(CALC, "ARR(A)")
 }
 
 record(ai, "$(DEV):$(PLANE)-STATS-DOWN-BPM1-MAX") {
   field(SCAN, "I/O Intr")
   field(DTYP, "S7gpac")
-  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x09E8 T=FLOAT")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x01E8 T=FLOAT")
   field(PREC, "3")
   field(FLNK, "$(DEV):$(PLANE)-STATS-DOWN-BPM1-MAX-WAV")
 }
@@ -1450,14 +1450,14 @@ record(acalcout, "$(DEV):$(PLANE)-STATS-DOWN-BPM1-MAX-WAV") {
    field(INPA, "$(DEV):$(PLANE)-STATS-DOWN-BPM1-MAX NPP")
 #   field(SCAN, "1 second")
    field(PREC, "3")
-   field(NELM, "256")
+   field(NELM, "512")
    field(CALC, "ARR(A)")
 }
 
 record(ai, "$(DEV):$(PLANE)-STATS-DOWN-BPM2-MIN") {
   field(SCAN, "I/O Intr")
   field(DTYP, "S7gpac")
-  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x09EC T=FLOAT")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x01EC T=FLOAT")
   field(PREC, "3")
   field(FLNK, "$(DEV):$(PLANE)-STATS-DOWN-BPM2-MIN-WAV")
 }
@@ -1466,14 +1466,14 @@ record(acalcout, "$(DEV):$(PLANE)-STATS-DOWN-BPM2-MIN-WAV") {
    field(INPA, "$(DEV):$(PLANE)-STATS-DOWN-BPM2-MIN NPP")
 #   field(SCAN, "1 second")
    field(PREC, "3")
-   field(NELM, "256")
+   field(NELM, "512")
    field(CALC, "ARR(A)")
 }
 
 record(ai, "$(DEV):$(PLANE)-STATS-DOWN-BPM2-MAX") {
   field(SCAN, "I/O Intr")
   field(DTYP, "S7gpac")
-  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x09F0 T=FLOAT")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x01F0 T=FLOAT")
   field(PREC, "3")
   field(FLNK, "$(DEV):$(PLANE)-STATS-DOWN-BPM2-MAX-WAV")
 }
@@ -1482,7 +1482,7 @@ record(acalcout, "$(DEV):$(PLANE)-STATS-DOWN-BPM2-MAX-WAV") {
    field(INPA, "$(DEV):$(PLANE)-STATS-DOWN-BPM2-MAX NPP")
 #   field(SCAN, "1 second")
    field(PREC, "3")
-   field(NELM, "256")
+   field(NELM, "512")
    field(CALC, "ARR(A)")
 }
 
@@ -1503,28 +1503,28 @@ record(longout, "$(DEV):$(PLANE)-STATS-DOWN-BPM-BKT-START") {
 record(ai, "$(DEV):$(PLANE)-STATS-DOWN-BPM1-STD") {
   field(SCAN, "I/O Intr")
   field(DTYP, "S7gpac")
-  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x09F4 T=FLOAT")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x01F4 T=FLOAT")
   field(PREC, "6")
 }
 
 record(ai, "$(DEV):$(PLANE)-STATS-DOWN-BPM2-STD") {
   field(SCAN, "I/O Intr")
   field(DTYP, "S7gpac")
-  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x09F8 T=FLOAT")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x01F8 T=FLOAT")
   field(PREC, "6")
 }
 
 record(ai, "$(DEV):$(PLANE)-STATS-DOWN-BPM1-P-P") {
   field(SCAN, "I/O Intr")
   field(DTYP, "S7gpac")
-  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x09FC T=FLOAT")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x01FC T=FLOAT")
   field(PREC, "6")
 }
 
 record(ai, "$(DEV):$(PLANE)-STATS-DOWN-BPM2-P-P") {
   field(SCAN, "I/O Intr")
   field(DTYP, "S7gpac")
-  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0A00 T=FLOAT")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0200 T=FLOAT")
   field(PREC, "6")
 }
 
@@ -1536,7 +1536,7 @@ record(ai, "$(DEV):$(PLANE)-STATS-DOWN-BPM2-P-P") {
 record(longin, "$(DEV):$(PLANE)-AFF-STATUS") {
   field(SCAN, "I/O Intr")
   field(DTYP, "S7gpac")
-  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x09D8 T=UINT32")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x01D8 T=UINT32")
 }
 
 record(bo, "$(DEV):$(PLANE)-AFF-ENA") {
@@ -1582,14 +1582,41 @@ record(ao,"$(DEV):$(PLANE)-AFF-GAIN") {
 record(ai, "$(DEV):$(PLANE)-KICK1-OUT-MEAN") {
   field(SCAN, "I/O Intr")
   field(DTYP, "S7gpac")
-  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x09DC T=FLOAT")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x01DC T=FLOAT")
   field(PREC, "3")  
 }
 
 record(ai, "$(DEV):$(PLANE)-KICK2-OUT-MEAN") {
   field(SCAN, "I/O Intr")
   field(DTYP, "S7gpac")
-  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x09E0 T=FLOAT")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x01E0 T=FLOAT")
   field(PREC, "3")  
 }
 
+record(ai, "$(DEV):$(PLANE)-KICK1-OUT-MIN") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0204 T=FLOAT")
+  field(PREC, "3")  
+}
+
+record(ai, "$(DEV):$(PLANE)-KICK2-OUT-MIN") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0208 T=FLOAT")
+  field(PREC, "3")  
+}
+
+record(ai, "$(DEV):$(PLANE)-KICK1-OUT-MAX") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x020C T=FLOAT")
+  field(PREC, "3")  
+}
+
+record(ai, "$(DEV):$(PLANE)-KICK2-OUT-MAX") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0210 T=FLOAT")
+  field(PREC, "3")  
+}
