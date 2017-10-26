@@ -35,6 +35,10 @@ record(longout, "$(DEV):$(PLANE)-TRG-SINGLE") {
   field(OUT,  "@$(SRV)/0x001C T=UINT32")
 }
 
+record(longout, "$(DEV):$(PLANE)-KICK-PATTERN-START") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0178:0x0178 T=UINT8")
+}
 
 record(longout, "$(DEV):$(PLANE)-TRG-DEL") {
   field(DTYP, "S7gpac")
