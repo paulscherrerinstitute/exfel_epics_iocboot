@@ -212,3 +212,23 @@ record(longout, "$(DEV):BPM2-ROUTER-ENA") {
   field(OUT,  "@$(SRV)/0x0016:0x0016 T=UINT8")
   field(SCAN, "I/O Intr")
 }
+
+record(ao, "$(DEV):BPM1-Q-THRESHOLD") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0020:0x0020 T=FLOAT")
+  field(SCAN, "I/O Intr")
+  field(DRVH, "2000")
+  field(DRVL, "0")
+  field(HOPR, "2000")
+  field(LOPR, "0")
+}
+
+record(ao, "$(DEV):BPM2-Q-THRESHOLD") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0024:0x0024 T=FLOAT")
+  field(SCAN, "I/O Intr")
+  field(DRVH, "2000")
+  field(DRVL, "0")
+  field(HOPR, "2000")
+  field(LOPR, "0")
+}

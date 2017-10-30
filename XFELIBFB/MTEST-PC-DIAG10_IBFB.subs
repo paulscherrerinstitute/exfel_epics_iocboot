@@ -265,7 +265,7 @@ file ibfbcav.template {
 #            {IPC1530-IBFB    IPC1530-IBFB          24  }
 #            {IPC1551-IBFB    IPC1551-IBFB          24  }
 #            {IPC1539-IBFB    IPC1539-IBFB          24  }
-            {IPC1647-IBFB    IPC1647-IBFB          32  }
+             {IPC1647-IBFB    IPC1647-IBFB          40  }
 #            {IPC1623-IBFB    IPC1623-IBFB          24  }
 #            {IPC1488-IBFB    IPC1488-IBFB          24  }
 #            {IPC1576-IBFB    IPC1576-IBFB          24  }

@@ -79,7 +79,7 @@ require "s7gpac", "koprek_w"
   s7gpacConfigure   ("IPC1647",      "ipc1647",    51234,    632,       72,         1,       10000,          200) 
 #  s7gpacConfigure   ("IPC1647-CAV1", "ipc1647",    51235,  34656,      660,         1,       10000,          200)  
 #  s7gpacConfigure   ("IPC1647-CAV2", "ipc1647",    51237,  34656,      660,         1,       10000,          200)      
-  s7gpacConfigure   ("IPC1647-IBFB", "ipc1647",    51239,     84,       32,         1,       10000,          200)      
+  s7gpacConfigure   ("IPC1647-IBFB", "ipc1647",    51239,     92,       40,         1,       10000,          200)      
 #  s7gpacConfigure   ("IPC1623",      "ipc1623",    51234,    632,       72,         1,       10000,          200) 
 #  s7gpacConfigure   ("IPC1623-CAV1", "ipc1623",    51235,  34656,      660,         1,       10000,          200)  
 #  s7gpacConfigure   ("IPC1623-CAV2", "ipc1623",    51237,  34656,      660,         1,       10000,          200)      
