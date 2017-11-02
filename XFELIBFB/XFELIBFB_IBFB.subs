@@ -152,7 +152,7 @@ file ibfbcav.template {
 
 file ibfbcavb.template {
    pattern  {DEV              SRV          READ_OFFSET  }
-            {IBFBYCOL         IBFBYCOL              16  }
+            {IBFBYCOL         IBFBYCOL              20  }
 }
 
 
