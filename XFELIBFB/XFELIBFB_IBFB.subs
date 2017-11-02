@@ -144,10 +144,10 @@ file ibfbmon.template {
 
 file ibfbcav.template {
    pattern  {DEV              SRV          READ_OFFSET  }
-            {IBFBYUP          IBFBYUP               32  }
-            {IBFBYDOWN        IBFBYDOWN             32  }
-            {IBFBXUP          IBFBXUP               32  }
-            {IBFBXDOWN        IBFBXDOWN             32  }
+            {IBFBYUP          IBFBYUP               40  }
+            {IBFBYDOWN        IBFBYDOWN             40  }
+            {IBFBXUP          IBFBXUP               40  }
+            {IBFBXDOWN        IBFBXDOWN             40  }
 }
 
 file ibfbcavb.template {

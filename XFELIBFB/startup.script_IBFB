@@ -44,10 +44,10 @@ require "s7gpac", "koprek_w"
 # Cavity BPM Server for IBFB
 #___________________________________________________________________________________________                     
    s7gpacConfigure   ("IBFBYCOL",   "xfelgpac1di1828cl",    51239,     44,       16,         1,       10000,          200)   # BPMI-1837-CL
-   s7gpacConfigure   ("IBFBYUP",    "xfelgpac1di1899tl",    51239,     84,       32,         1,       10000,          200)   # BPMI-1860-TL, BPMI-1878-TL
-   s7gpacConfigure   ("IBFBYDOWN",  "xfelgpac2di1899tl",    51239,     84,       32,         1,       10000,          200)   # BPMI-1910-TL, BPMI-1930-TL   
-   s7gpacConfigure   ("IBFBXUP",    "xfelgpac3di1899tl",    51239,     84,       32,         1,       10000,          200)   # BPMI-1863-TL, BPMI-1889-TL   
-   s7gpacConfigure   ("IBFBXDOWN",  "xfelgpac4di1899tl",    51239,     84,       32,         1,       10000,          200)   # BPMI-1925-TL, BPMI-1939-TL
+   s7gpacConfigure   ("IBFBYUP",    "xfelgpac1di1899tl",    51239,     92,       40,         1,       10000,          200)   # BPMI-1860-TL, BPMI-1878-TL
+   s7gpacConfigure   ("IBFBYDOWN",  "xfelgpac2di1899tl",    51239,     92,       40,         1,       10000,          200)   # BPMI-1910-TL, BPMI-1930-TL   
+   s7gpacConfigure   ("IBFBXUP",    "xfelgpac3di1899tl",    51239,     92,       40,         1,       10000,          200)   # BPMI-1863-TL, BPMI-1889-TL   
+   s7gpacConfigure   ("IBFBXDOWN",  "xfelgpac4di1899tl",    51239,     92,       40,         1,       10000,          200)   # BPMI-1925-TL, BPMI-1939-TL
 
 #___________________________________________________________________________________________                     
 # Permanent Cavity BPM Servers
