@@ -65,8 +65,8 @@ record(bo, "$(DEV):$(PLANE)-AMP-GATE-ENA") {
   field(DTYP, "S7gpac")
   field(OUT,  "@$(SRV)/0x0000:0x0000 T=UINT32")
   field(SCAN, "I/O Intr")
-  field(ZNAM, "Closed" )
-  field(ONAM, "Open" )
+  field(ZNAM, "Disabled" )
+  field(ONAM, "Enabled" )
 }
 
 record(bo, "$(DEV):$(PLANE)-RX-HIST-ENA") {
@@ -1605,26 +1605,26 @@ record(ai, "$(DEV):$(PLANE)-KICK1-OUT-MIN") {
   field(SCAN, "I/O Intr")
   field(DTYP, "S7gpac")
   field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0204 T=FLOAT")
-  field(PREC, "0")  
+  field(PREC, "3")  
 }
 
 record(ai, "$(DEV):$(PLANE)-KICK2-OUT-MIN") {
   field(SCAN, "I/O Intr")
   field(DTYP, "S7gpac")
   field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0208 T=FLOAT")
-  field(PREC, "0")  
+  field(PREC, "3")  
 }
 
 record(ai, "$(DEV):$(PLANE)-KICK1-OUT-MAX") {
   field(SCAN, "I/O Intr")
   field(DTYP, "S7gpac")
   field(INP,  "@$(SRV)/$(READ_OFFSET)+0x020C T=FLOAT")
-  field(PREC, "0")  
+  field(PREC, "3")  
 }
 
 record(ai, "$(DEV):$(PLANE)-KICK2-OUT-MAX") {
   field(SCAN, "I/O Intr")
   field(DTYP, "S7gpac")
   field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0210 T=FLOAT")
-  field(PREC, "0")  
+  field(PREC, "3")  
 }
