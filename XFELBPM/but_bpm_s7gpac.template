@@ -2371,7 +2371,7 @@ record(mbbo, "$(DEV):GAIN-TAB-IDX") {
 }
 
 #-------------------------------------------------------------------------------
-# BPM EEPROM
+# BPM MPS
 #-------------------------------------------------------------------------------
 
 record(ao, "$(DEV):MPS-Q-MAX") {
@@ -2420,4 +2420,10 @@ record(ao, "$(DEV):MPS-Y-MIN") {
   field(SCAN, "I/O Intr")
    field(PREC, "4")
    field(PINI, "NO")
+}
+
+record(longin, "$(DEV):MPS-GENERATED") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0xB204 T=UINT32")
 }
