@@ -1481,56 +1481,56 @@ record(longin,"$(DEV):MMC-PS-FAIL"){
 
 record(bo, "$(DEV):DIO-XF-ALARM") {
   field (DTYP, "S7gpac")
-  field (INP,  "@$(SRV)/0x0048 T=UINT8") 
+  field (OUT,  "@$(SRV)/0x0048 T=UINT8") 
   field(ZNAM, "Off" )
   field(ONAM, "On" )
 }
 
 record(bo, "$(DEV):DIO-XF-ALARM-TEST-1") {
   field (DTYP, "S7gpac")
-  field (INP,  "@$(SRV)/0x0049 T=UINT8") 
+  field (OUT,  "@$(SRV)/0x0049 T=UINT8") 
   field(ZNAM, "Off" )
   field(ONAM, "On" )
 }
 
 record(bo, "$(DEV):DIO-XF-ALARM-TEST-2") {
   field (DTYP, "S7gpac")
-  field (INP,  "@$(SRV)/0x004A T=UINT8") 
+  field (OUT,  "@$(SRV)/0x004A T=UINT8") 
   field(ZNAM, "Off" )
   field(ONAM, "On" )
 }
 
 record(bo, "$(DEV):DIO-XF-ALARM-TEST-3") {
   field (DTYP, "S7gpac")
-  field (INP,  "@$(SRV)/0x004B T=UINT8") 
+  field (OUT,  "@$(SRV)/0x004B T=UINT8") 
   field(ZNAM, "Off" )
   field(ONAM, "On" )
 }
 
 record(bo, "$(DEV):DIO-RESET") {
   field (DTYP, "S7gpac")
-  field (INP,  "@$(SRV)/0x004C T=UINT8") 
+  field (OUT,  "@$(SRV)/0x004C T=UINT8") 
   field(ZNAM, "Off" )
   field(ONAM, "On" )
 }
 
 record(bo, "$(DEV):DIO-SLEEP-MODE") {
   field (DTYP, "S7gpac")
-  field (INP,  "@$(SRV)/0x004D T=UINT8") 
+  field (OUT,  "@$(SRV)/0x004D T=UINT8") 
   field(ZNAM, "Off" )
   field(ONAM, "On" )
 }
 
-record(bo, "$(DEV):DIO-SF-ALARM-2") {
-  field (DTYP, "S7gpac")
-  field (INP,  "@$(SRV)/0x004E T=UINT8") 
-  field(ZNAM, "Off" )
-  field(ONAM, "On" )
-}
-
-record(bo, "$(DEV):DIO-SF-ALARM-1") {
-  field (DTYP, "S7gpac")
-  field (INP,  "@$(SRV)/0x004F T=UINT8") 
-  field(ZNAM, "Off" )
-  field(ONAM, "On" )
-}
+# record(bo, "$(DEV):DIO-SF-ALARM-2") {
+#   field (DTYP, "S7gpac")
+#   field (OUT,  "@$(SRV)/0x004E T=UINT8") 
+#   field(ZNAM, "Off" )
+#   field(ONAM, "On" )
+# }
+# 
+# record(bo, "$(DEV):DIO-SF-ALARM-1") {
+#   field (DTYP, "S7gpac")
+#   field (OUT,  "@$(SRV)/0x004F T=UINT8") 
+#   field(ZNAM, "Off" )
+#   field(ONAM, "On" )
+# }
