@@ -2369,3 +2369,61 @@ record(mbbo, "$(DEV):GAIN-TAB-IDX") {
   field(TWST, "2" )
   field(THST, "3" )
 }
+
+#-------------------------------------------------------------------------------
+# BPM MPS
+#-------------------------------------------------------------------------------
+
+record(ao, "$(DEV):MPS-Q-MAX") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0118:0x0118 T=FLOAT")
+  field(SCAN, "I/O Intr")
+   field(PREC, "4")
+   field(PINI, "NO")
+}
+
+record(ao, "$(DEV):MPS-Q-MIN") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0118:0x011C T=FLOAT")
+  field(SCAN, "I/O Intr")
+   field(PREC, "4")
+   field(PINI, "NO")
+}
+
+record(ao, "$(DEV):MPS-X-MAX") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0120:0x0120 T=FLOAT")
+  field(SCAN, "I/O Intr")
+   field(PREC, "4")
+   field(PINI, "NO")
+}
+
+record(ao, "$(DEV):MPS-X-MIN") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0124:0x0124 T=FLOAT")
+  field(SCAN, "I/O Intr")
+   field(PREC, "4")
+   field(PINI, "NO")
+}
+
+record(ao, "$(DEV):MPS-Y-MAX") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0128:0x0128 T=FLOAT")
+  field(SCAN, "I/O Intr")
+   field(PREC, "4")
+   field(PINI, "NO")
+}
+
+record(ao, "$(DEV):MPS-Y-MIN") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x012C:0x012C T=FLOAT")
+  field(SCAN, "I/O Intr")
+   field(PREC, "4")
+   field(PINI, "NO")
+}
+
+record(longin, "$(DEV):MPS-GENERATED") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0xB204 T=UINT32")
+}
