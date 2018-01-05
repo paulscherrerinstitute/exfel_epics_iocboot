@@ -143,26 +143,26 @@ require "s7gpac", "koprek_w"
   s7gpacConfigure  ("XFELGPAC1DI2074T1" ,     "xfelgpac1di2074t1" ,      51234,    640,       80,         1,       10000,  200)  #
   s7gpacConfigure  ("XFELGPAC2DI2100T1" ,     "xfelgpac2di2100t1" ,      51234,    640,       80,         1,       10000,  200)  #
   s7gpacConfigure  ("XFELGPAC1DI2175T1" ,     "xfelgpac1di2175t1" ,      51234,    640,       80,         1,       10000,  200)  #
-# s7gpacConfigure  ("XFELGPAC1DI2194T1" ,     "xfelgpac1di2194t1" ,      51234,    640,       80,         1,       10000,  200)  #
-# s7gpacConfigure  ("XFELGPAC1DI2207SA2",     "xfelgpac1di2207sa2",      51234,    640,       80,         1,       10000,  200)  #
-# s7gpacConfigure  ("XFELGPAC1DI2219SA2",     "xfelgpac1di2219sa2",      51234,    640,       80,         1,       10000,  200)  #
-# s7gpacConfigure  ("XFELGPAC1DI2231SA2",     "xfelgpac1di2231sa2",      51234,    640,       80,         1,       10000,  200)  #
-# s7gpacConfigure  ("XFELGPAC1DI2244SA2",     "xfelgpac1di2244sa2",      51234,    640,       80,         1,       10000,  200)  #
-# s7gpacConfigure  ("XFELGPAC1DI2256SA2",     "xfelgpac1di2256sa2",      51234,    640,       80,         1,       10000,  200)  #
-# s7gpacConfigure  ("XFELGPAC1DI2268SA2",     "xfelgpac1di2268sa2",      51234,    640,       80,         1,       10000,  200)  #
-# s7gpacConfigure  ("XFELGPAC1DI2280SA2",     "xfelgpac1di2280sa2",      51234,    640,       80,         1,       10000,  200)  #
-# s7gpacConfigure  ("XFELGPAC1DI2292SA2",     "xfelgpac1di2292sa2",      51234,    640,       80,         1,       10000,  200)  #
-# s7gpacConfigure  ("XFELGPAC1DI2305SA2",     "xfelgpac1di2305sa2",      51234,    640,       80,         1,       10000,  200)  #
-# s7gpacConfigure  ("XFELGPAC1DI2317SA2",     "xfelgpac1di2317sa2",      51234,    640,       80,         1,       10000,  200)  #
-# s7gpacConfigure  ("XFELGPAC1DI2329SA2",     "xfelgpac1di2329sa2",      51234,    640,       80,         1,       10000,  200)  #
-# s7gpacConfigure  ("XFELGPAC1DI2341SA2",     "xfelgpac1di2341sa2",      51234,    640,       80,         1,       10000,  200)  #
-# s7gpacConfigure  ("XFELGPAC1DI2353SA2",     "xfelgpac1di2353sa2",      51234,    640,       80,         1,       10000,  200)  #
-# s7gpacConfigure  ("XFELGPAC1DI2366SA2",     "xfelgpac1di2366sa2",      51234,    640,       80,         1,       10000,  200)  #
-# s7gpacConfigure  ("XFELGPAC1DI2378SA2",     "xfelgpac1di2378sa2",      51234,    640,       80,         1,       10000,  200)  #
-# s7gpacConfigure  ("XFELGPAC1DI2390SA2",     "xfelgpac1di2390sa2",      51234,    640,       80,         1,       10000,  200)  #
-# s7gpacConfigure  ("XFELGPAC1DI2402SA2",     "xfelgpac1di2402sa2",      51234,    640,       80,         1,       10000,  200)  #
-# s7gpacConfigure  ("XFELGPAC1DI2414SA2",     "xfelgpac1di2414sa2",      51234,    640,       80,         1,       10000,  200)  #
-# s7gpacConfigure  ("XFELGPAC1DI2423SA2",     "xfelgpac1di2423sa2",      51234,    640,       80,         1,       10000,  200)  #
+  s7gpacConfigure  ("XFELGPAC1DI2194T1" ,     "xfelgpac1di2194t1" ,      51234,    640,       80,         1,       10000,  200)  #
+  s7gpacConfigure  ("XFELGPAC1DI2207SA2",     "xfelgpac1di2207sa2",      51234,    640,       80,         1,       10000,  200)  #
+  s7gpacConfigure  ("XFELGPAC1DI2219SA2",     "xfelgpac1di2219sa2",      51234,    640,       80,         1,       10000,  200)  #
+  s7gpacConfigure  ("XFELGPAC1DI2231SA2",     "xfelgpac1di2231sa2",      51234,    640,       80,         1,       10000,  200)  #
+  s7gpacConfigure  ("XFELGPAC1DI2244SA2",     "xfelgpac1di2244sa2",      51234,    640,       80,         1,       10000,  200)  #
+  s7gpacConfigure  ("XFELGPAC1DI2256SA2",     "xfelgpac1di2256sa2",      51234,    640,       80,         1,       10000,  200)  #
+  s7gpacConfigure  ("XFELGPAC1DI2268SA2",     "xfelgpac1di2268sa2",      51234,    640,       80,         1,       10000,  200)  #
+  s7gpacConfigure  ("XFELGPAC1DI2280SA2",     "xfelgpac1di2280sa2",      51234,    640,       80,         1,       10000,  200)  #
+  s7gpacConfigure  ("XFELGPAC1DI2292SA2",     "xfelgpac1di2292sa2",      51234,    640,       80,         1,       10000,  200)  #
+  s7gpacConfigure  ("XFELGPAC1DI2305SA2",     "xfelgpac1di2305sa2",      51234,    640,       80,         1,       10000,  200)  #
+  s7gpacConfigure  ("XFELGPAC1DI2317SA2",     "xfelgpac1di2317sa2",      51234,    640,       80,         1,       10000,  200)  #
+  s7gpacConfigure  ("XFELGPAC1DI2329SA2",     "xfelgpac1di2329sa2",      51234,    640,       80,         1,       10000,  200)  #
+  s7gpacConfigure  ("XFELGPAC1DI2341SA2",     "xfelgpac1di2341sa2",      51234,    640,       80,         1,       10000,  200)  #
+  s7gpacConfigure  ("XFELGPAC1DI2353SA2",     "xfelgpac1di2353sa2",      51234,    640,       80,         1,       10000,  200)  #
+  s7gpacConfigure  ("XFELGPAC1DI2366SA2",     "xfelgpac1di2366sa2",      51234,    640,       80,         1,       10000,  200)  #
+  s7gpacConfigure  ("XFELGPAC1DI2378SA2",     "xfelgpac1di2378sa2",      51234,    640,       80,         1,       10000,  200)  #
+  s7gpacConfigure  ("XFELGPAC1DI2390SA2",     "xfelgpac1di2390sa2",      51234,    640,       80,         1,       10000,  200)  #
+  s7gpacConfigure  ("XFELGPAC1DI2402SA2",     "xfelgpac1di2402sa2",      51234,    640,       80,         1,       10000,  200)  #
+  s7gpacConfigure  ("XFELGPAC1DI2414SA2",     "xfelgpac1di2414sa2",      51234,    640,       80,         1,       10000,  200)  #
+  s7gpacConfigure  ("XFELGPAC1DI2423SA2",     "xfelgpac1di2423sa2",      51234,    640,       80,         1,       10000,  200)  #
 # s7gpacConfigure  ("XFELGPAC1DI2444T3",      "xfelgpac1di2444t3",       51234,    640,       80,         1,       10000,  200)  #
 # s7gpacConfigure  ("XFELGPAC1DI2500T3",      "xfelgpac1di2500t3",       51234,    640,       80,         1,       10000,  200)  #
 # s7gpacConfigure  ("XFELGPAC1DI2550T3",      "xfelgpac1di2550t3",       51234,    640,       80,         1,       10000,  200)  #
