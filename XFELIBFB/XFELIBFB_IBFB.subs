@@ -34,6 +34,61 @@ file S7gpac.template {
            {IBFBYDOWN          IBFBYDOWN     }
            {IBFBXUP            IBFBXUP       }
            {IBFBXDOWN          IBFBXDOWN     }
+
+           {BPME-2241-SA1       BPME-2241-SA1}
+           {BPME-2253-SA1       BPME-2253-SA1}
+           {BPME-2265-SA1       BPME-2265-SA1}
+           {BPME-2278-SA1       BPME-2278-SA1}
+           {BPME-2290-SA1       BPME-2290-SA1}
+           {BPME-2302-SA1       BPME-2302-SA1}
+           {BPME-2314-SA1       BPME-2314-SA1}
+           {BPME-2326-SA1       BPME-2326-SA1}
+           {BPME-2339-SA1       BPME-2339-SA1}
+           {BPME-2351-SA1       BPME-2351-SA1}
+           {BPME-2363-SA1       BPME-2363-SA1}
+           {BPME-2375-SA1       BPME-2375-SA1}
+           {BPME-2387-SA1       BPME-2387-SA1}
+           {BPME-2400-SA1       BPME-2400-SA1}
+           {BPME-2412-SA1       BPME-2412-SA1}
+           {BPME-2424-SA1       BPME-2424-SA1}
+           {BPME-2436-SA1       BPME-2436-SA1}
+           {BPME-2448-SA1       BPME-2448-SA1}
+           {BPME-2461-SA1       BPME-2461-SA1}
+
+           {BPME-2203-SA2       BPME-2203-SA2}
+           {BPME-2215-SA2       BPME-2215-SA2}
+           {BPME-2227-SA2       BPME-2227-SA2}
+           {BPME-2239-SA2       BPME-2239-SA2}
+           {BPME-2252-SA2       BPME-2252-SA2}
+           {BPME-2264-SA2       BPME-2264-SA2}
+           {BPME-2276-SA2       BPME-2276-SA2}
+           {BPME-2288-SA2       BPME-2288-SA2}
+           {BPME-2300-SA2       BPME-2300-SA2}
+           {BPME-2313-SA2       BPME-2313-SA2}
+           {BPME-2325-SA2       BPME-2325-SA2}
+           {BPME-2337-SA2       BPME-2337-SA2}
+           {BPME-2349-SA2       BPME-2349-SA2}
+           {BPME-2361-SA2       BPME-2361-SA2}
+           {BPME-2373-SA2       BPME-2373-SA2}
+           {BPME-2386-SA2       BPME-2386-SA2}
+           {BPME-2398-SA2       BPME-2398-SA2}
+           {BPME-2410-SA2       BPME-2410-SA2}
+           {BPME-2422-SA2       BPME-2422-SA2}
+
+           {BPME-2806-SA3       BPME-2806-SA3}
+           {BPME-2818-SA3       BPME-2818-SA3}
+           {BPME-2830-SA3       BPME-2830-SA3}
+           {BPME-2842-SA3       BPME-2842-SA3}
+           {BPME-2861-SA3       BPME-2861-SA3}
+           {BPME-2867-SA3       BPME-2867-SA3}
+           {BPME-2879-SA3       BPME-2879-SA3}
+           {BPME-2891-SA3       BPME-2891-SA3}
+           {BPME-2903-SA3       BPME-2903-SA3}
+           {BPME-2916-SA3       BPME-2916-SA3}
+           {BPME-2928-SA3       BPME-2928-SA3}
+           {BPME-2940-SA3       BPME-2940-SA3}
+
+
 }
  
 ################################################################################
@@ -148,6 +203,59 @@ file ibfbcav.template {
             {IBFBYDOWN        IBFBYDOWN             40  }
             {IBFBXUP          IBFBXUP               40  }
             {IBFBXDOWN        IBFBXDOWN             40  }
+
+            {BPME-2241-SA1       BPME-2241-SA1      40  }
+            {BPME-2253-SA1       BPME-2253-SA1      40  }
+            {BPME-2265-SA1       BPME-2265-SA1      40  }
+            {BPME-2278-SA1       BPME-2278-SA1      40  }
+            {BPME-2290-SA1       BPME-2290-SA1      40  }
+            {BPME-2302-SA1       BPME-2302-SA1      40  }
+            {BPME-2314-SA1       BPME-2314-SA1      40  }
+            {BPME-2326-SA1       BPME-2326-SA1      40  }
+            {BPME-2339-SA1       BPME-2339-SA1      40  }
+            {BPME-2351-SA1       BPME-2351-SA1      40  }
+            {BPME-2363-SA1       BPME-2363-SA1      40  }
+            {BPME-2375-SA1       BPME-2375-SA1      40  }
+            {BPME-2387-SA1       BPME-2387-SA1      40  }
+            {BPME-2400-SA1       BPME-2400-SA1      40  }
+            {BPME-2412-SA1       BPME-2412-SA1      40  }
+            {BPME-2424-SA1       BPME-2424-SA1      40  }
+            {BPME-2436-SA1       BPME-2436-SA1      40  }
+            {BPME-2448-SA1       BPME-2448-SA1      40  }
+            {BPME-2461-SA1       BPME-2461-SA1      40  }
+
+            {BPME-2203-SA2       BPME-2203-SA2      40  }
+            {BPME-2215-SA2       BPME-2215-SA2      40  }
+            {BPME-2227-SA2       BPME-2227-SA2      40  }
+            {BPME-2239-SA2       BPME-2239-SA2      40  }
+            {BPME-2252-SA2       BPME-2252-SA2      40  }
+            {BPME-2264-SA2       BPME-2264-SA2      40  }
+            {BPME-2276-SA2       BPME-2276-SA2      40  }
+            {BPME-2288-SA2       BPME-2288-SA2      40  }
+            {BPME-2300-SA2       BPME-2300-SA2      40  }
+            {BPME-2313-SA2       BPME-2313-SA2      40  }
+            {BPME-2325-SA2       BPME-2325-SA2      40  }
+            {BPME-2337-SA2       BPME-2337-SA2      40  }
+            {BPME-2349-SA2       BPME-2349-SA2      40  }
+            {BPME-2361-SA2       BPME-2361-SA2      40  }
+            {BPME-2373-SA2       BPME-2373-SA2      40  }
+            {BPME-2386-SA2       BPME-2386-SA2      40  }
+            {BPME-2398-SA2       BPME-2398-SA2      40  }
+            {BPME-2410-SA2       BPME-2410-SA2      40  }
+            {BPME-2422-SA2       BPME-2422-SA2      40  }
+
+            {BPME-2806-SA3       BPME-2806-SA3      40  }
+            {BPME-2818-SA3       BPME-2818-SA3      40  }
+            {BPME-2830-SA3       BPME-2830-SA3      40  }
+            {BPME-2842-SA3       BPME-2842-SA3      40  }
+            {BPME-2861-SA3       BPME-2861-SA3      40  }
+            {BPME-2867-SA3       BPME-2867-SA3      40  }
+            {BPME-2879-SA3       BPME-2879-SA3      40  }
+            {BPME-2891-SA3       BPME-2891-SA3      40  }
+            {BPME-2903-SA3       BPME-2903-SA3      40  }
+            {BPME-2916-SA3       BPME-2916-SA3      40  }
+            {BPME-2928-SA3       BPME-2928-SA3      40  }
+            {BPME-2940-SA3       BPME-2940-SA3      40  }
 }
 
 file ibfbcavb.template {
