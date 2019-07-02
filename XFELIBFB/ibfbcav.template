@@ -80,7 +80,7 @@ record(longin, "$(DEV):BPM1-ROUTER-ERR-CNT1") {
 record(longin, "$(DEV):BPM1-IBFB-ROUTER-STATUS") {
   field(SCAN, "I/O Intr")
   field(DTYP, "S7gpac")
-  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x001C T=UINT8")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x001F T=UINT8")
 }
 
 record(longout, "$(DEV):BPM1-BPM-ID") {
@@ -188,7 +188,7 @@ record(longin, "$(DEV):BPM2-ROUTER-ERR-CNT1") {
 record(longin, "$(DEV):BPM2-IBFB-ROUTER-STATUS") {
   field(SCAN, "I/O Intr")
   field(DTYP, "S7gpac")
-  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0038 T=UINT8")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x003B T=UINT8")
 }
 
 record(longout, "$(DEV):BPM2-BPM-ID") {
