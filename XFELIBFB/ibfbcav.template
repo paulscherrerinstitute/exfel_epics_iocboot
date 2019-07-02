@@ -77,6 +77,12 @@ record(longin, "$(DEV):BPM1-ROUTER-ERR-CNT1") {
   field(INP,  "@$(SRV)/$(READ_OFFSET)+0x001A T=UINT16")
 }
 
+record(longin, "$(DEV):BPM1-IBFB-ROUTER-STATUS") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x001C T=UINT8")
+}
+
 record(longout, "$(DEV):BPM1-BPM-ID") {
   field(SCAN, "I/O Intr")
   field(DTYP, "S7gpac")
@@ -116,67 +122,73 @@ record(longout, "$(DEV):BPM1-ROUTER-ENA") {
 record(longin, "$(DEV):BPM2-IBFB-GTX-STATUS") {
   field(SCAN, "I/O Intr")
   field(DTYP, "S7gpac")
-  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x001C T=UINT32")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0020 T=UINT32")
 }
 
 record(longin, "$(DEV):BPM2-IBFB-GTX-COM0-LOSS-CNT") {
   field(SCAN, "I/O Intr")
   field(DTYP, "S7gpac")
-  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0020 T=UINT16")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0024 T=UINT16")
 }
 
 record(longin, "$(DEV):BPM2-IBFB-GTX-COM1-LOSS-CNT") {
   field(SCAN, "I/O Intr")
   field(DTYP, "S7gpac")
-  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0022 T=UINT16")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0026 T=UINT16")
 }
 
 record(longin, "$(DEV):BPM2-IBFB-GTX-BPM0-LOSS-CNT") {
   field(SCAN, "I/O Intr")
   field(DTYP, "S7gpac")
-  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0024 T=UINT16")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0028 T=UINT16")
 }
 
 record(longin, "$(DEV):BPM2-IBFB-GTX-BPM1-LOSS-CNT") {
   field(SCAN, "I/O Intr")
   field(DTYP, "S7gpac")
-  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0026 T=UINT16")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x002A T=UINT16")
 }
 
 record(longin, "$(DEV):BPM2-IBFB-GTX-BPM2-LOSS-CNT") {
   field(SCAN, "I/O Intr")
   field(DTYP, "S7gpac")
-  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0028 T=UINT16")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x002C T=UINT16")
 }
 
 record(longin, "$(DEV):BPM2-IBFB-GTX-BPM3-LOSS-CNT") {
   field(SCAN, "I/O Intr")
   field(DTYP, "S7gpac")
-  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x002A T=UINT16")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x002E T=UINT16")
 }
 
 record(longin, "$(DEV):BPM2-PACKET-FIFO-WR-ERR-CNT") {
   field(SCAN, "I/O Intr")
   field(DTYP, "S7gpac")
-  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x002C T=UINT16")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0030 T=UINT16")
 }
 
 record(longin, "$(DEV):BPM2-PACKET-FIFO-RD-ERR-CNT") {
   field(SCAN, "I/O Intr")
   field(DTYP, "S7gpac")
-  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x002E T=UINT16")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0032 T=UINT16")
 }
 
 record(longin, "$(DEV):BPM2-ROUTER-ERR-CNT0") {
   field(SCAN, "I/O Intr")
   field(DTYP, "S7gpac")
-  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0030 T=UINT16")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0034 T=UINT16")
 }
 
 record(longin, "$(DEV):BPM2-ROUTER-ERR-CNT1") {
   field(SCAN, "I/O Intr")
   field(DTYP, "S7gpac")
-  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0032 T=UINT16")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0036 T=UINT16")
+}
+
+record(longin, "$(DEV):BPM2-IBFB-ROUTER-STATUS") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "S7gpac")
+  field(INP,  "@$(SRV)/$(READ_OFFSET)+0x0038 T=UINT8")
 }
 
 record(longout, "$(DEV):BPM2-BPM-ID") {
