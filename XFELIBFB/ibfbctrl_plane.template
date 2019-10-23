@@ -534,8 +534,8 @@ record(bo, "$(DEV):$(PLANE)-FB-SEL-UPDOWN") {
   field(DTYP, "S7gpac")
   field(OUT,  "@$(SRV)/0x0030:0x0030 T=UINT8")
   field(SCAN, "I/O Intr")
-  field(ZNAM, "Downstream" )
-  field(ONAM, "Upstream" )
+  field(ZNAM, "Enabled" )
+  field(ONAM, "Disabled" )
 }
 
 record(bo, "$(DEV):$(PLANE)-FB-SEL-BPM") {
