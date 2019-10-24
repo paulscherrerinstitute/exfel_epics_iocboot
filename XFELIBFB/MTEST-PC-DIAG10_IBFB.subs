@@ -46,8 +46,8 @@ file S7gpac.template {
 #           {IPC1539-CAV2       IPC1539-CAV2  }
 #           {IPC1539-IBFB       IPC1539-IBFB  }
            {IPC1629            IPC1629       }
-#           {IPC1627-CAV1       IPC1627-CAV1  }
-#           {IPC1627-CAV2       IPC1627-CAV2  }
+           {IPC1629-CAV1       IPC1629-CAV1  }
+           {IPC1629-CAV2       IPC1629-CAV2  }
            {IPC1629-IBFB       IPC1629-IBFB  }
 #           {IPC1623            IPC1623       }
 #           {IPC1623-CAV1       IPC1623-CAV1  }
@@ -177,8 +177,32 @@ file ibfbplay.template {
 ### IBFB Cavity BPMs                                                         ####
 #################################################################################
 #
-#file GPAC_BPM_SMP.template {
-#   pattern  {DEV             SRV          READ_OFFSET  }
+file GPAC_BPM_SMP.template {
+   pattern  {DEV             SRV          READ_OFFSET  }
+            {IPC1629-CAV1       IPC1629-CAV1   660}
+            {IPC1629-CAV2       IPC1629-CAV2   660}
+ #            {IPC1492-CAV1    IPC1492-CAV1         660  }
+#            {IPC1492-CAV2    IPC1492-CAV2         660  }
+#            {IPC1530-CAV1    IPC1530-CAV1         660  }
+#            {IPC1530-CAV2    IPC1530-CAV2         660  }
+#            {IPC1551-CAV1    IPC1551-CAV1         660  }
+#            {IPC1551-CAV2    IPC1551-CAV2         660  }
+#            {IPC1539-CAV1    IPC1539-CAV1         660  }
+#            {IPC1539-CAV2    IPC1539-CAV2         660  }
+#            {IPC1627-CAV1    IPC1627-CAV1         660  }
+#            {IPC1627-CAV2    IPC1627-CAV2         660  }
+#            {IPC1623-CAV1    IPC1623-CAV1         660  }
+#            {IPC1623-CAV2    IPC1623-CAV2         660  }
+#            {IPC1488-CAV1    IPC1488-CAV1         660  }
+#            {IPC1488-CAV2    IPC1488-CAV2         660  }
+#            {IPC1576-CAV1    IPC1576-CAV1         660  }
+#            {IPC1576-CAV2    IPC1576-CAV2         660  }
+}
+#
+file GPAC_BPM_PB_ADC16HL.template {
+   pattern  {DEV             SRV          READ_OFFSET  }
+            {IPC1629-CAV1       IPC1629-CAV1   660}
+            {IPC1629-CAV2       IPC1629-CAV2   660}
 #            {IPC1492-CAV1    IPC1492-CAV1         660  }
 #            {IPC1492-CAV2    IPC1492-CAV2         660  }
 #            {IPC1530-CAV1    IPC1530-CAV1         660  }
@@ -195,30 +219,12 @@ file ibfbplay.template {
 #            {IPC1488-CAV2    IPC1488-CAV2         660  }
 #            {IPC1576-CAV1    IPC1576-CAV1         660  }
 #            {IPC1576-CAV2    IPC1576-CAV2         660  }
-#}
+}
 #
-#file GPAC_BPM_PB_ADC16HL.template {
-#   pattern  {DEV             SRV          READ_OFFSET  }
-#            {IPC1492-CAV1    IPC1492-CAV1         660  }
-#            {IPC1492-CAV2    IPC1492-CAV2         660  }
-#            {IPC1530-CAV1    IPC1530-CAV1         660  }
-#            {IPC1530-CAV2    IPC1530-CAV2         660  }
-#            {IPC1551-CAV1    IPC1551-CAV1         660  }
-#            {IPC1551-CAV2    IPC1551-CAV2         660  }
-#            {IPC1539-CAV1    IPC1539-CAV1         660  }
-#            {IPC1539-CAV2    IPC1539-CAV2         660  }
-#            {IPC1627-CAV1    IPC1627-CAV1         660  }
-#            {IPC1627-CAV2    IPC1627-CAV2         660  }
-#            {IPC1623-CAV1    IPC1623-CAV1         660  }
-#            {IPC1623-CAV2    IPC1623-CAV2         660  }
-#            {IPC1488-CAV1    IPC1488-CAV1         660  }
-#            {IPC1488-CAV2    IPC1488-CAV2         660  }
-#            {IPC1576-CAV1    IPC1576-CAV1         660  }
-#            {IPC1576-CAV2    IPC1576-CAV2         660  }
-#}
-#
-#file RFFE_Cavity_3GHz3_120700B.template {
-#   pattern  {DEV             SRV          READ_OFFSET  GLB         }
+file RFFE_Cavity_3GHz3_120700B.template {
+   pattern  {DEV             SRV          READ_OFFSET  GLB         }
+            {IPC1629-CAV1       IPC1629-CAV1   660     MTEST10-ETH0}
+            {IPC1629-CAV2       IPC1629-CAV2   660     MTEST10-ETH0}
 #            {IPC1492-CAV1    IPC1492-CAV1         660  MTEST10-ETH0}
 #            {IPC1492-CAV2    IPC1492-CAV2         660  MTEST10-ETH0}
 #            {IPC1530-CAV1    IPC1530-CAV1         660  MTEST10-ETH0}
@@ -235,10 +241,12 @@ file ibfbplay.template {
 #            {IPC1488-CAV2    IPC1488-CAV2         660  MTEST10-ETH0}
 #            {IPC1576-CAV1    IPC1576-CAV1         660  MTEST10-ETH0}
 #            {IPC1576-CAV2    IPC1576-CAV2         660  MTEST10-ETH0}
-#}
+}
 #
-###file GPAC_BPM_CONSISTENT_SET_VAL.template {
-###   pattern {DEV           SRV           READ_OFFSET  }
+file GPAC_BPM_CONSISTENT_SET_VAL.template {
+   pattern {DEV           SRV           READ_OFFSET  }
+            {IPC1629-CAV1       IPC1629-CAV1   660}
+            {IPC1629-CAV2       IPC1629-CAV2   660}
 ###           {IPC1492-CAV1  IPC1492-CAV1          660  }
 ###           {IPC1492-CAV2  IPC1492-CAV2          660  }
 ###           {IPC1492-CAV1  IPC1492-CAV1          660  }
@@ -247,17 +255,17 @@ file ibfbplay.template {
 ###           {IPC1492-CAV2  IPC1492-CAV2          660  }
 ###           {IPC1492-CAV1  IPC1492-CAV1          660  }
 ###           {IPC1492-CAV2  IPC1492-CAV2          660  }
-###}
+}
 ###
-###file GPAC_BPM_Calc_RMS_AVG.template { 
-###   pattern {DEV            VAR    EGU PREC MIN MAX RMS-MAX DESC        }
-###           {IPC1492-CAV1     Q      pC  3    0   500 10      "Charge avg"}
-###           {IPC1492-CAV1     X      mm  4    -10 10  0.05    "Pos X avg" }
-###           {IPC1492-CAV1     Y      mm  4    -10 10  0.05    "Pos Y avg" }
-###           {IPC1492-CAV2     Q      pC  3    0   500 10      "Charge avg"}
-###           {IPC1492-CAV2     X      mm  4    -10 10  0.05    "Pos X avg" }
-###           {IPC1492-CAV2     Y      mm  4    -10 10  0.05    "Pos Y avg" }
-###}
+file GPAC_BPM_Calc_RMS_AVG.template { 
+   pattern {DEV            VAR    EGU PREC MIN MAX RMS-MAX DESC        }
+           {IPC1629-CAV1     Q      pC  3    0   500 10      "Charge avg"}
+           {IPC1629-CAV1     X      mm  4    -10 10  0.05    "Pos X avg" }
+           {IPC1629-CAV1     Y      mm  4    -10 10  0.05    "Pos Y avg" }
+           {IPC1629-CAV2     Q      pC  3    0   500 10      "Charge avg"}
+           {IPC1629-CAV2     X      mm  4    -10 10  0.05    "Pos X avg" }
+           {IPC1629-CAV2     Y      mm  4    -10 10  0.05    "Pos Y avg" }
+}
 #
 file ibfbcav.template {
    pattern  {DEV             SRV          READ_OFFSET  }
