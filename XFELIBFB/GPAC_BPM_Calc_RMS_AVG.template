@@ -1,0 +1,231 @@
+# -----------------------------
+# -----------------------------
+# Calculation of RMS & average
+# -----------------------------
+# -----------------------------
+
+# $(DEV):$(VAR) : 
+#   Record name to calculate the average from. The names for the 
+#   records defined below are generated from this prefix and postfix, 
+#   they should not be used elsewhere.
+# $(DESC): Short description of $(DEV):$(VAR) (max. 11 characters)
+# $(EGU)
+# $(PREC)
+# $(MIN)
+# $(MAX)
+# $(RMS-MAX)
+
+# Fanout record that triggers the different records for RMS and
+# average calculation
+
+record ( fanout, "$(DEV):#$(VAR)-CALC-AVG-RMS" ) {
+  field ( LNK1, "$(DEV):$(VAR)-AVG PP" )
+  field ( LNK2, "$(DEV):$(VAR)-RMS PP" )
+  field ( LNK3, "$(DEV):#TRIG-$(VAR)-RMS-AVG PP" )
+  field ( LNK4, "$(DEV):#TRIG-$(VAR)-AVG2 PP" )
+  field ( LNK5, "$(DEV):#TRIG-$(VAR)-AVG-RMS PP" )
+  field ( SELM, "All" )
+}
+
+# Sliding average over 10 samples
+# -------------------------------
+
+record ( ai, "$(DEV):$(VAR)-AVG" ) {
+  field ( DESC, "$(DESC) 10-sample-aver." )
+  field ( DTYP, "Soft Channel" )
+  field ( INP, "$(DEV):#CALC-$(VAR)-AVG.OVAL PP" )
+  field ( SCAN, "Passive" )
+  field ( EGU, "$(EGU)" )
+  field ( PREC, "$(PREC)" )
+  field ( LOPR, "$(MIN)" )
+  field ( HOPR, "$(MAX)" )
+}
+
+record ( calcout, "$(DEV):#CALC-$(VAR)-AVG" ) {
+  field ( DESC, "" )
+  field ( INPA, "$(DEV):#CALC-$(VAR)-AVG.B NPP" )
+  field ( INPB, "$(DEV):#CALC-$(VAR)-AVG.C NPP" )
+  field ( INPC, "$(DEV):#CALC-$(VAR)-AVG.D NPP" )
+  field ( INPD, "$(DEV):#CALC-$(VAR)-AVG.E NPP" )
+  field ( INPE, "$(DEV):#CALC-$(VAR)-AVG.F NPP" )
+  field ( INPF, "$(DEV):#CALC-$(VAR)-AVG.G NPP" )
+  field ( INPG, "$(DEV):#CALC-$(VAR)-AVG.H NPP" )
+  field ( INPH, "$(DEV):#CALC-$(VAR)-AVG.I NPP" )
+  field ( INPI, "$(DEV):#CALC-$(VAR)-AVG.J NPP" )
+  field ( INPJ, "$(DEV):$(VAR) NPP" )
+  field ( VAL,  "0" )
+  field ( INPL, "$(DEV):#CALC-$(VAR)-AVG NPP" )
+# CALC = STRING[36]
+  field ( DOPT, "Use OCAL" )
+  field ( OCAL, "(A+B+C+D+E+F+G+H+I+J)/10.0" )
+  field ( CALC, "(L+1)%10" )
+}
+
+# RMS (using 10 samples)
+# ----------------------
+
+record ( ai, "$(DEV):$(VAR)-RMS" ) {
+  field ( DESC, "$(DESC) 10-sample-RMS" )
+  field ( DTYP, "Soft Channel" )
+  field ( INP, "$(DEV):#CALC-$(VAR)-RMS.OVAL PP" )
+  field ( SCAN, "Passive" )
+  field ( EGU, "$(EGU)" )
+  field ( PREC, "$(PREC)" ) 
+  field ( LOPR, "0" )
+  field ( HOPR, "$(RMS-MAX)" )
+}
+
+record ( calcout, "$(DEV):#CALC-$(VAR)-RMS" ) {
+  field ( DESC, "" )
+  field ( VAL,  "0" )
+  field ( INPA, "$(DEV):#CALC-$(VAR)-RMS NPP" )
+  field ( INPB, "$(DEV):#CALC-$(VAR)-RMS.C NPP" )
+  field ( INPC, "$(DEV):#CALC-$(VAR)-RMS.D NPP" )
+  field ( INPD, "$(DEV):#CALC-$(VAR)-RMS.E NPP" )
+  field ( INPE, "$(DEV):#CALC-$(VAR)-RMS.F NPP" )
+  field ( INPF, "$(DEV):#CALC-$(VAR)-RMS.G NPP" )
+  field ( INPG, "$(DEV):#CALC-$(VAR)-RMS.H NPP" )
+  field ( INPH, "$(DEV):#CALC-$(VAR)-RMS.I NPP" )
+  field ( INPI, "$(DEV):#CALC-$(VAR)-RMS.J NPP" )
+  field ( INPJ, "$(DEV):$(VAR) NPP" )
+  field ( INPK, "$(DEV):$(VAR)-AVG NPP" )
+# CALC = STRING[36]
+  field ( DOPT, "Use OCAL" )
+  field ( CALC, "B*B+C*C+D*D+E*E+F*F+G*G+H*H+I*I+J*J" )
+# Calculate unbiased expectation value for the RMS
+  field ( OCAL, "SQRT(((A+J*J)/10.0-K*K)*10.0/9.0)" )
+}
+
+# Average over 100 samples (10-tap sliding
+# average of 10-tap sliding average)
+# -----------------------------------------
+
+record ( calcout, "$(DEV):#TRIG-$(VAR)-AVG2" ) {
+  field ( DESC, "" )
+  field ( INPA, "$(DEV):#CALC-$(VAR)-AVG.VAL" )
+  field ( CALC, "A" )
+  field ( OOPT, "When Zero" )
+  field ( DOPT, "Use OCAL" )
+  field ( OCAL, "1" )
+  field ( OUT,  "$(DEV):$(VAR)-AVG2.PROC" )
+}
+
+record ( ai, "$(DEV):$(VAR)-AVG2" ) {
+  field ( DESC, "$(DESC) 100-sample-aver." )
+  field ( DTYP, "Soft Channel" )
+  field ( INP, "$(DEV):#CALC-$(VAR)-AVG2.OVAL PP" )
+  field ( SCAN, "Passive" )
+  field ( EGU, "$(EGU)" )
+  field ( PREC, "$(PREC)" ) 
+  field ( LOPR, "$(MIN)" )
+  field ( HOPR, "$(MAX)" )
+}
+
+record ( calcout, "$(DEV):#CALC-$(VAR)-AVG2" ) {
+  field ( DESC, "" )
+  field ( INPA, "$(DEV):#CALC-$(VAR)-AVG2.B NPP" )
+  field ( INPB, "$(DEV):#CALC-$(VAR)-AVG2.C NPP" )
+  field ( INPC, "$(DEV):#CALC-$(VAR)-AVG2.D NPP" )
+  field ( INPD, "$(DEV):#CALC-$(VAR)-AVG2.E NPP" )
+  field ( INPE, "$(DEV):#CALC-$(VAR)-AVG2.F NPP" )
+  field ( INPF, "$(DEV):#CALC-$(VAR)-AVG2.G NPP" )
+  field ( INPG, "$(DEV):#CALC-$(VAR)-AVG2.H NPP" )
+  field ( INPH, "$(DEV):#CALC-$(VAR)-AVG2.I NPP" )
+  field ( INPI, "$(DEV):#CALC-$(VAR)-AVG2.J NPP" )
+  field ( INPJ, "$(DEV):$(VAR)-AVG NPP" )
+  field ( VAL,  "0" )
+  field ( INPL, "$(DEV):#CALC-$(VAR)-AVG2 NPP" )
+# CALC = STRING[36]
+  field ( DOPT, "Use OCAL" )
+  field ( OCAL, "(A+B+C+D+E+F+G+H+I+J)/10.0" )
+  field ( CALC, "(L+1)%10" )
+}
+
+# RMS of 10x average
+# ------------------
+
+record ( calcout, "$(DEV):#TRIG-$(VAR)-AVG-RMS" ) {
+  field ( DESC, "" )
+  field ( INPA, "$(DEV):#CALC-$(VAR)-AVG.VAL" )
+  field ( CALC, "A" )
+  field ( OOPT, "When Zero" )
+  field ( DOPT, "Use OCAL" )
+  field ( OCAL, "1" )
+  field ( OUT,  "$(DEV):$(VAR)-AVG-RMS.PROC" )
+}
+
+record ( ai, "$(DEV):$(VAR)-AVG-RMS" ) {
+  field ( DESC, "$(DESC) RMS of 10x aver." )
+  field ( DTYP, "Soft Channel" )
+  field ( INP, "$(DEV):#CALC-$(VAR)-AVG-RMS.OVAL PP" )
+  field ( SCAN, "Passive" )
+  field ( EGU, "$(EGU)" )
+  field ( PREC, "$(PREC)" ) 
+  field ( LOPR, "0" )
+  field ( HOPR, "$(RMS-MAX)" )
+}
+
+record ( calcout, "$(DEV):#CALC-$(VAR)-AVG-RMS" ) {
+  field ( DESC, "" )
+  field ( VAL,  "0" )
+  field ( INPA, "$(DEV):#CALC-$(VAR)-AVG-RMS NPP" )
+  field ( INPB, "$(DEV):#CALC-$(VAR)-AVG-RMS.C NPP" )
+  field ( INPC, "$(DEV):#CALC-$(VAR)-AVG-RMS.D NPP" )
+  field ( INPD, "$(DEV):#CALC-$(VAR)-AVG-RMS.E NPP" )
+  field ( INPE, "$(DEV):#CALC-$(VAR)-AVG-RMS.F NPP" )
+  field ( INPF, "$(DEV):#CALC-$(VAR)-AVG-RMS.G NPP" )
+  field ( INPG, "$(DEV):#CALC-$(VAR)-AVG-RMS.H NPP" )
+  field ( INPH, "$(DEV):#CALC-$(VAR)-AVG-RMS.I NPP" )
+  field ( INPI, "$(DEV):#CALC-$(VAR)-AVG-RMS.J NPP" )
+  field ( INPJ, "$(DEV):$(VAR)-AVG NPP" )
+  field ( INPK, "$(DEV):$(VAR)-AVG2 NPP" )
+# CALC = STRING[36]
+  field ( DOPT, "Use OCAL" )
+  field ( CALC, "B*B+C*C+D*D+E*E+F*F+G*G+H*H+I*I+J*J" )
+  field ( OCAL, "SQRT(((A+J*J)/10.0-K*K)*10.0/9.0)" )
+}
+
+# 10-tap Sliding averge of RMS
+# ----------------------------
+
+record ( calcout, "$(DEV):#TRIG-$(VAR)-RMS-AVG" ) {
+  field ( DESC, "" )
+  field ( INPA, "$(DEV):#CALC-$(VAR)-AVG.VAL" )
+  field ( CALC, "A" )
+  field ( OOPT, "When Zero" )
+  field ( DOPT, "Use OCAL" )
+  field ( OCAL, "1" )
+  field ( OUT,  "$(DEV):$(VAR)-RMS-AVG.PROC" )
+}
+
+record ( ai, "$(DEV):$(VAR)-RMS-AVG" ) {
+  field ( DESC, "$(DESC) 100-sample-RMS" )
+  field ( DTYP, "Soft Channel" )
+  field ( INP, "$(DEV):#CALC-$(VAR)-RMS-AVG.OVAL PP" )
+  field ( SCAN, "Passive" )
+  field ( EGU, "$(EGU)" )
+  field ( PREC, "$(PREC)" ) 
+  field ( LOPR, "0" )
+  field ( HOPR, "$(RMS-MAX)" )
+}
+
+record ( calcout, "$(DEV):#CALC-$(VAR)-RMS-AVG" ) {
+  field ( DESC, "" )
+  field ( INPA, "$(DEV):#CALC-$(VAR)-RMS-AVG.B NPP" )
+  field ( INPB, "$(DEV):#CALC-$(VAR)-RMS-AVG.C NPP" )
+  field ( INPC, "$(DEV):#CALC-$(VAR)-RMS-AVG.D NPP" )
+  field ( INPD, "$(DEV):#CALC-$(VAR)-RMS-AVG.E NPP" )
+  field ( INPE, "$(DEV):#CALC-$(VAR)-RMS-AVG.F NPP" )
+  field ( INPF, "$(DEV):#CALC-$(VAR)-RMS-AVG.G NPP" )
+  field ( INPG, "$(DEV):#CALC-$(VAR)-RMS-AVG.H NPP" )
+  field ( INPH, "$(DEV):#CALC-$(VAR)-RMS-AVG.I NPP" )
+  field ( INPI, "$(DEV):#CALC-$(VAR)-RMS-AVG.J NPP" )
+  field ( INPJ, "$(DEV):$(VAR)-RMS NPP" )
+  field ( VAL,  "0" )
+  field ( INPL, "$(DEV):#CALC-$(VAR)-RMS-AVG NPP" )
+# CALC = STRING[36]
+  field ( DOPT, "Use OCAL" )
+  field ( OCAL, "(A+B+C+D+E+F+G+H+I+J)/10.0" )
+  field ( CALC, "(L+1)%10" )
+}
+
