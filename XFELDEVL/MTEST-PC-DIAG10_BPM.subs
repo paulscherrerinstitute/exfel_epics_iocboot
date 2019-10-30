@@ -177,8 +177,10 @@ file ibfbplay.template {
 ### IBFB Cavity BPMs                                                         ####
 #################################################################################
 #
-#file GPAC_BPM_SMP.template {
-#   pattern  {DEV             SRV          READ_OFFSET  }
+file GPAC_BPM_SMP.template {
+   pattern  {DEV             SRV          READ_OFFSET  }
+            {IPC1629-CAV1    IPC1629-CAV1         660  }
+            {IPC1629-CAV2    IPC1629-CAV2         660  }
 #            {IPC1492-CAV1    IPC1492-CAV1         660  }
 #            {IPC1492-CAV2    IPC1492-CAV2         660  }
 #            {IPC1530-CAV1    IPC1530-CAV1         660  }
@@ -195,10 +197,12 @@ file ibfbplay.template {
 #            {IPC1488-CAV2    IPC1488-CAV2         660  }
 #            {IPC1576-CAV1    IPC1576-CAV1         660  }
 #            {IPC1576-CAV2    IPC1576-CAV2         660  }
-#}
+}
 #
-#file GPAC_BPM_PB_ADC16HL.template {
-#   pattern  {DEV             SRV          READ_OFFSET  }
+file GPAC_BPM_PB_ADC16HL.template {
+   pattern  {DEV             SRV          READ_OFFSET  }
+            {IPC1629-CAV1    IPC1629-CAV1         660  }
+            {IPC1629-CAV2    IPC1629-CAV2         660  }
 #            {IPC1492-CAV1    IPC1492-CAV1         660  }
 #            {IPC1492-CAV2    IPC1492-CAV2         660  }
 #            {IPC1530-CAV1    IPC1530-CAV1         660  }
@@ -215,10 +219,12 @@ file ibfbplay.template {
 #            {IPC1488-CAV2    IPC1488-CAV2         660  }
 #            {IPC1576-CAV1    IPC1576-CAV1         660  }
 #            {IPC1576-CAV2    IPC1576-CAV2         660  }
-#}
+}
 #
-#file RFFE_Cavity_3GHz3_120700B.template {
-#   pattern  {DEV             SRV          READ_OFFSET  GLB         }
+file RFFE_Cavity_3GHz3_120700B.template {
+   pattern  {DEV             SRV          READ_OFFSET  GLB         }
+            {IPC1629-CAV1    IPC1629-CAV1         660  }
+            {IPC1629-CAV2    IPC1629-CAV2         660  }
 #            {IPC1492-CAV1    IPC1492-CAV1         660  MTEST10-ETH0}
 #            {IPC1492-CAV2    IPC1492-CAV2         660  MTEST10-ETH0}
 #            {IPC1530-CAV1    IPC1530-CAV1         660  MTEST10-ETH0}
@@ -235,7 +241,7 @@ file ibfbplay.template {
 #            {IPC1488-CAV2    IPC1488-CAV2         660  MTEST10-ETH0}
 #            {IPC1576-CAV1    IPC1576-CAV1         660  MTEST10-ETH0}
 #            {IPC1576-CAV2    IPC1576-CAV2         660  MTEST10-ETH0}
-#}
+}
 #
 ###file GPAC_BPM_CONSISTENT_SET_VAL.template {
 ###   pattern {DEV           SRV           READ_OFFSET  }
