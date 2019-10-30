@@ -98,8 +98,8 @@ require "s7gpac", "koprek_w"
 # Button BPM Service Server                                                                                                  
 #___________________________________________________________________________________________                     
 #  s7gpacConfigure  ("XFEL-BUTSERV",   "ipc1358", 51245,   6884,      132,         1,        10000,  				 200)    
-  s7gpacConfigure  ("IPC1629-CAV1",       "ipc1629",       51236,   34656,      660,         1,        5000,  200)  # Cavity BPM
-  s7gpacConfigure  ("IPC1629-CAV2",       "ipc1629",       51238,   34656,      660,         1,        5000,  200)  # Cavity BPM
+#  s7gpacConfigure  ("IPC1629-CAV1",       "ipc1629",       51236,   34656,      660,         1,        5000,  200)  # Cavity BPM
+#  s7gpacConfigure  ("IPC1629-CAV2",       "ipc1629",       51238,   34656,      660,         1,        5000,  200)  # Cavity BPM
 
 
 #___________________________________________________________________________________________                     

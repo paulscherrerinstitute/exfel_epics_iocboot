@@ -40,7 +40,8 @@ record(bo, "$(DEV):RFFE-INIT") {
 record(bo, "$(DEV):RFFE-EEPROM-RD") {
    field(DESC, "Read calibration from EEPROM")
   field(DTYP, "S7gpac")
-  field(OUT,  "@$(SRV)/0x0258 T=UINT32")
+  field(OUT,  "@$(SRV)/0x0258:0x0258 T=UINT32")
+  field(SCAN, "I/O Intr")
    field(ZNAM, "Done")
    field(ONAM, "Read")
 }
@@ -48,7 +49,8 @@ record(bo, "$(DEV):RFFE-EEPROM-RD") {
 record(bo, "$(DEV):RFFE-EEPROM-WR") {
    field(DESC, "Write calibration to EEPROM")
   field(DTYP, "S7gpac")
-  field(OUT,  "@$(SRV)/0x025C T=UINT32")
+  field(OUT,  "@$(SRV)/0x025C:0x025C T=UINT32")
+  field(SCAN, "I/O Intr")
    field(ZNAM, "Done")
    field(ONAM, "Write")
 }
