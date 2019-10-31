@@ -1507,13 +1507,15 @@ record(ai, "$(DEV):PH-REF-FB-VAL") {
 #------------------------------------------------------------------------------
 # Gain feedback
 #------------------------------------------------------------------------------
-record(bo, "$(DEV):REF-GAIN-FB-ON") {
+record(mbbo, "$(DEV):REF-GAIN-FB-ON") {
    field(DESC, "REF gain fb on/off")
    field(DTYP, "S7gpac")
    field(OUT,  "@$(SRV)/0x00E8:0x00E8 T=UINT32")
    field(SCAN, "I/O Intr")
-   field(ZNAM, "Off" )
-   field(ONAM, "On" )
+   field(ZRST, "Off" )
+   field(ONST, "On" )
+   field(TWST, "Off" )
+   field(THST, "On/Dest" )
 }
 
 record(ao, "$(DEV):REF-GAIN-FB-MAX") {
@@ -1570,13 +1572,15 @@ record(ai, "$(DEV):REF-GAIN-FB-VAL") {
    field(SCAN, "I/O Intr")
 }
 
-record(bo, "$(DEV):X-GAIN-FB-ON") {
+record(mbbo, "$(DEV):X-GAIN-FB-ON") {
    field(DESC, "X gain fb on/off")
    field(DTYP, "S7gpac")
    field(OUT,  "@$(SRV)/0x00EC:0x00EC T=UINT32")
    field(SCAN, "I/O Intr")
-   field(ZNAM, "Off" )
-   field(ONAM, "On" )
+   field(ZRST, "Off" )
+   field(ONST, "On" )
+   field(TWST, "Off" )
+   field(THST, "On/Dest" )
 }
 
 record(ao, "$(DEV):X-GAIN-FB-MAX") {
@@ -1634,13 +1638,15 @@ record(ai, "$(DEV):X-GAIN-FB-VAL") {
    field(SCAN, "I/O Intr")
 }
 
-record(bo, "$(DEV):Y-GAIN-FB-ON") {
+record(mbbo, "$(DEV):Y-GAIN-FB-ON") {
    field(DESC, "Y gain fb on/off")
    field(DTYP, "S7gpac")
    field(OUT,  "@$(SRV)/0x00F0:0x00F0 T=UINT32")
    field(SCAN, "I/O Intr")
-   field(ZNAM, "Off" )
-   field(ONAM, "On" )
+   field(ZRST, "Off" )
+   field(ONST, "On" )
+   field(TWST, "Off" )
+   field(THST, "On/Dest" )
 }
 
 record(ao, "$(DEV):Y-GAIN-FB-MAX") {
@@ -1711,4 +1717,30 @@ record(seq, "$(DEV):ADC-DATA-CALC") {
    field(LNK8, "$(DEV):#PH-X-R-CALC-AVG-RMS PP")
    field(LNK9, "$(DEV):#AMP-Y-R-CALC-AVG-RMS PP")
    field(LNKA, "$(DEV):#PH-Y-R-CALC-AVG-RMS PP")
+}
+
+
+
+record(longin, "$(DEV):X2TIM-DEST-BUNCH-MASK-RD") {
+   field(DESC, "bunch destination mask")
+   field(DTYP, "S7gpac")
+   field(INP,  "@$(SRV)/0x0294 T=UINT32")
+   field(SCAN, "I/O Intr")
+}
+
+
+record(longout, "$(DEV):X2TIM-DEST-BUNCH-MASK") {
+   field(DESC, "bunch destination mask")
+   field(DTYP, "S7gpac")
+   field(OUT,  "@$(SRV)/0x0294 T=UINT32")
+   field(SCAN, "I/O Intr")
+}
+
+record(bi, "$(DEV):X2TIM-DEST-BUNCH-FOUND-RD") {
+   field(DESC, "bunch destination mask")
+   field(DTYP, "S7gpac")
+   field(INP,  "@$(SRV)/$(READ_OFFSET)+0x84CC T=UINT32")
+   field(SCAN, "I/O Intr")
+   field(ZNAM, "Bunch not found" )
+   field(ONAM, "Bunch found" )
 }
