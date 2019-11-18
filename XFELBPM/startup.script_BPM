@@ -11,9 +11,8 @@ require "s7gpac", "koprek_w"
 # Single instance BPM servers
 #___________________________________________________________________________________________                     
   s7gpacConfigure  ("BUTBPM",                   "hostname",     51235,   45884,      308,         1,        5000,  200)  # Button BPM
-  s7gpacConfigure  ("CAVBPM",                   "hostname",     51235,   34656,      660,         1,        5000,  200)  # Cavity BPM
+  s7gpacConfigure  ("CAVBPM",                   "hostname",     51235,   34664,      664,         1,        5000,  200)  # Cavity BPM
   s7gpacConfigure  ("RENBPM",                   "hostname",     51235,    1904,      536,         1,        5000,  200)  # Re-entrant BPM
-
 
 #___________________________________________________________________________________________                     
 # Button BPM Service Server                                                                                                  
