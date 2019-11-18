@@ -1712,3 +1712,28 @@ record(seq, "$(DEV):ADC-DATA-CALC") {
    field(LNK9, "$(DEV):#AMP-Y-R-CALC-AVG-RMS PP")
    field(LNKA, "$(DEV):#PH-Y-R-CALC-AVG-RMS PP")
 }
+
+record(longin, "$(DEV):X2TIM-DEST-BUNCH-MASK-RD") {
+   field(DESC, "bunch destination mask")
+   field(DTYP, "S7gpac")
+   field(INP,  "@$(SRV)/0x0294 T=UINT32")
+   field(SCAN, "I/O Intr")
+}
+
+
+record(longout, "$(DEV):X2TIM-DEST-BUNCH-MASK") {
+   field(DESC, "bunch destination mask")
+   field(DTYP, "S7gpac")
+   field(OUT,  "@$(SRV)/0x0294 T=UINT32")
+   field(SCAN, "I/O Intr")
+}
+
+record(bi, "$(DEV):X2TIM-DEST-BUNCH-FOUND-RD") {
+   field(DESC, "bunch destination mask")
+   field(DTYP, "S7gpac")
+   field(INP,  "@$(SRV)/$(READ_OFFSET)+0x84CC T=UINT32")
+   field(SCAN, "I/O Intr")
+   field(ZNAM, "Bunch not found" )
+   field(ONAM, "Bunch found" )
+}
+

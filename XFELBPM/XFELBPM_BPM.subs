@@ -27,22 +27,22 @@ file but_bpm_s7gpac.template {
 #-- Cavity BPM
 file GPAC_BPM_SMP.template {
    pattern  {DEV           SRV        READ_OFFSET  }
-            {CAVBPM        CAVBPM             660  }
+            {CAVBPM        CAVBPM             664  }
 }
 
 file GPAC_BPM_PB_ADC16HL.template {
    pattern  {DEV           SRV        READ_OFFSET  }
-            {CAVBPM        CAVBPM             660  }
+            {CAVBPM        CAVBPM             664  }
 }
 
 file RFFE_Cavity_3GHz3_120700B.template {
    pattern  {DEV           SRV        READ_OFFSET  GLB}
-            {CAVBPM        CAVBPM             660  MTEST10-ETH0}
+            {CAVBPM        CAVBPM             664  MTEST10-ETH0}
 }
 
 file GPAC_BPM_CONSISTENT_SET_VAL.template {
    pattern {DEV           SRV         READ_OFFSET  }
-           {CAVBPM        CAVBPM              660  }
+           {CAVBPM        CAVBPM              664  }
 }
 
 file GPAC_BPM_Calc_RMS_AVG.template { 
