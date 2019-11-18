@@ -45,10 +45,19 @@ file S7gpac.template {
 #           {IPC1539-CAV1       IPC1539-CAV1  }
 #           {IPC1539-CAV2       IPC1539-CAV2  }
 #           {IPC1539-IBFB       IPC1539-IBFB  }
+# Cavity
            {IPC1629            IPC1629       }
            {IPC1629-CAV1       IPC1629-CAV1  }
            {IPC1629-CAV2       IPC1629-CAV2  }
            {IPC1629-IBFB       IPC1629-IBFB  }
+# Reentrant
+           {IPC1716            IPC1716       }
+           {IPC1716-REN1       IPC1716-REN1  }
+           {IPC1716-REN2       IPC1716-REN2  }
+# Button
+           {IPC1708            IPC1708       }
+           {IPC1708-BUT1       IPC1708-BUT1  }
+           {IPC1708-BUT2       IPC1708-BUT2  }
 #           {IPC1623            IPC1623       }
 #           {IPC1623-CAV1       IPC1623-CAV1  }
 #           {IPC1623-CAV2       IPC1623-CAV2  }
@@ -78,6 +87,8 @@ file gpac2_service.template {
 #           {IPC1551            IPC1551       }
 #           {IPC1539            IPC1539       }
            {IPC1629            IPC1629       }
+           {IPC1716            IPC1716       }
+           {IPC1708            IPC1708       }
 #           {IPC1623            IPC1623       }
 #           {IPC1488            IPC1488       }
 #           {IPC1576            IPC1576       }
@@ -179,82 +190,103 @@ file ibfbplay.template {
 #
 file GPAC_BPM_SMP.template {
    pattern  {DEV             SRV          READ_OFFSET  }
-            {IPC1629-CAV1       IPC1629-CAV1   660}
-            {IPC1629-CAV2       IPC1629-CAV2   660}
- #            {IPC1492-CAV1    IPC1492-CAV1         660  }
-#            {IPC1492-CAV2    IPC1492-CAV2         660  }
-#            {IPC1530-CAV1    IPC1530-CAV1         660  }
-#            {IPC1530-CAV2    IPC1530-CAV2         660  }
-#            {IPC1551-CAV1    IPC1551-CAV1         660  }
-#            {IPC1551-CAV2    IPC1551-CAV2         660  }
-#            {IPC1539-CAV1    IPC1539-CAV1         660  }
-#            {IPC1539-CAV2    IPC1539-CAV2         660  }
-#            {IPC1627-CAV1    IPC1627-CAV1         660  }
-#            {IPC1627-CAV2    IPC1627-CAV2         660  }
-#            {IPC1623-CAV1    IPC1623-CAV1         660  }
-#            {IPC1623-CAV2    IPC1623-CAV2         660  }
-#            {IPC1488-CAV1    IPC1488-CAV1         660  }
-#            {IPC1488-CAV2    IPC1488-CAV2         660  }
-#            {IPC1576-CAV1    IPC1576-CAV1         660  }
-#            {IPC1576-CAV2    IPC1576-CAV2         660  }
+            {IPC1629-CAV1       IPC1629-CAV1   664}
+            {IPC1629-CAV2       IPC1629-CAV2   664}
+ #            {IPC1492-CAV1    IPC1492-CAV1         664  }
+#            {IPC1492-CAV2    IPC1492-CAV2         664  }
+#            {IPC1530-CAV1    IPC1530-CAV1         664  }
+#            {IPC1530-CAV2    IPC1530-CAV2         664  }
+#            {IPC1551-CAV1    IPC1551-CAV1         664  }
+#            {IPC1551-CAV2    IPC1551-CAV2         664  }
+#            {IPC1539-CAV1    IPC1539-CAV1         664  }
+#            {IPC1539-CAV2    IPC1539-CAV2         664  }
+#            {IPC1627-CAV1    IPC1627-CAV1         664  }
+#            {IPC1627-CAV2    IPC1627-CAV2         664  }
+#            {IPC1623-CAV1    IPC1623-CAV1         664  }
+#            {IPC1623-CAV2    IPC1623-CAV2         664  }
+#            {IPC1488-CAV1    IPC1488-CAV1         664  }
+#            {IPC1488-CAV2    IPC1488-CAV2         664  }
+#            {IPC1576-CAV1    IPC1576-CAV1         664  }
+#            {IPC1576-CAV2    IPC1576-CAV2         664  }
 }
+
+### ReEntrant
+file XFELIBFB/EXFEL_ReCAV_BPM_SMP.template {
+   pattern  {DEV             SRV          READ_OFFSET  }
+            {IPC1716-REN1       IPC1716-REN1   536}
+            {IPC1716-REN2       IPC1716-REN2   536}
+}
+### Button
+file but_bpm_s7gpac.template {
+   pattern  {DEV             SRV          READ_OFFSET  }
+            {IPC1708-BUT1       IPC1708-BUT1   260}
+            {IPC1708-BUT2       IPC1708-BUT2   260}
+}
+
+file but_serv_s7gpac.template {
+   pattern  {DEV             SRV          READ_OFFSET  }
+            {IPC1708-BUT1       IPC1708-BUT1   260}
+            {IPC1708-BUT2       IPC1708-BUT2   260}
+}
+
+
 #
 file GPAC_BPM_PB_ADC16HL.template {
    pattern  {DEV             SRV          READ_OFFSET  }
-            {IPC1629-CAV1       IPC1629-CAV1   660}
-            {IPC1629-CAV2       IPC1629-CAV2   660}
-#            {IPC1492-CAV1    IPC1492-CAV1         660  }
-#            {IPC1492-CAV2    IPC1492-CAV2         660  }
-#            {IPC1530-CAV1    IPC1530-CAV1         660  }
-#            {IPC1530-CAV2    IPC1530-CAV2         660  }
-#            {IPC1551-CAV1    IPC1551-CAV1         660  }
-#            {IPC1551-CAV2    IPC1551-CAV2         660  }
-#            {IPC1539-CAV1    IPC1539-CAV1         660  }
-#            {IPC1539-CAV2    IPC1539-CAV2         660  }
-#            {IPC1627-CAV1    IPC1627-CAV1         660  }
-#            {IPC1627-CAV2    IPC1627-CAV2         660  }
-#            {IPC1623-CAV1    IPC1623-CAV1         660  }
-#            {IPC1623-CAV2    IPC1623-CAV2         660  }
-#            {IPC1488-CAV1    IPC1488-CAV1         660  }
-#            {IPC1488-CAV2    IPC1488-CAV2         660  }
-#            {IPC1576-CAV1    IPC1576-CAV1         660  }
-#            {IPC1576-CAV2    IPC1576-CAV2         660  }
+            {IPC1629-CAV1       IPC1629-CAV1   664}
+            {IPC1629-CAV2       IPC1629-CAV2   664}
+#            {IPC1492-CAV1    IPC1492-CAV1         664  }
+#            {IPC1492-CAV2    IPC1492-CAV2         664  }
+#            {IPC1530-CAV1    IPC1530-CAV1         664  }
+#            {IPC1530-CAV2    IPC1530-CAV2         664  }
+#            {IPC1551-CAV1    IPC1551-CAV1         664  }
+#            {IPC1551-CAV2    IPC1551-CAV2         664  }
+#            {IPC1539-CAV1    IPC1539-CAV1         664  }
+#            {IPC1539-CAV2    IPC1539-CAV2         664  }
+#            {IPC1627-CAV1    IPC1627-CAV1         664  }
+#            {IPC1627-CAV2    IPC1627-CAV2         664  }
+#            {IPC1623-CAV1    IPC1623-CAV1         664  }
+#            {IPC1623-CAV2    IPC1623-CAV2         664  }
+#            {IPC1488-CAV1    IPC1488-CAV1         664  }
+#            {IPC1488-CAV2    IPC1488-CAV2         664  }
+#            {IPC1576-CAV1    IPC1576-CAV1         664  }
+#            {IPC1576-CAV2    IPC1576-CAV2         664  }
 }
 #
 file RFFE_Cavity_3GHz3_120700B.template {
    pattern  {DEV             SRV          READ_OFFSET  GLB         }
-            {IPC1629-CAV1       IPC1629-CAV1   660     MTEST10-ETH0}
-            {IPC1629-CAV2       IPC1629-CAV2   660     MTEST10-ETH0}
-#            {IPC1492-CAV1    IPC1492-CAV1         660  MTEST10-ETH0}
-#            {IPC1492-CAV2    IPC1492-CAV2         660  MTEST10-ETH0}
-#            {IPC1530-CAV1    IPC1530-CAV1         660  MTEST10-ETH0}
-#            {IPC1530-CAV2    IPC1530-CAV2         660  MTEST10-ETH0}
-#            {IPC1551-CAV1    IPC1551-CAV1         660  MTEST10-ETH0}
-#            {IPC1551-CAV2    IPC1551-CAV2         660  MTEST10-ETH0}
-#            {IPC1539-CAV1    IPC1539-CAV1         660  MTEST10-ETH0}
-#            {IPC1539-CAV2    IPC1539-CAV2         660  MTEST10-ETH0}
-#            {IPC1627-CAV1    IPC1627-CAV1         660  MTEST10-ETH0}
-#            {IPC1627-CAV2    IPC1627-CAV2         660  MTEST10-ETH0}
-#            {IPC1623-CAV1    IPC1623-CAV1         660  MTEST10-ETH0}
-#            {IPC1623-CAV2    IPC1623-CAV2         660  MTEST10-ETH0}
-#            {IPC1488-CAV1    IPC1488-CAV1         660  MTEST10-ETH0}
-#            {IPC1488-CAV2    IPC1488-CAV2         660  MTEST10-ETH0}
-#            {IPC1576-CAV1    IPC1576-CAV1         660  MTEST10-ETH0}
-#            {IPC1576-CAV2    IPC1576-CAV2         660  MTEST10-ETH0}
+            {IPC1629-CAV1       IPC1629-CAV1   664     MTEST10-ETH0}
+            {IPC1629-CAV2       IPC1629-CAV2   664     MTEST10-ETH0}
+#            {IPC1492-CAV1    IPC1492-CAV1         664  MTEST10-ETH0}
+#            {IPC1492-CAV2    IPC1492-CAV2         664  MTEST10-ETH0}
+#            {IPC1530-CAV1    IPC1530-CAV1         664  MTEST10-ETH0}
+#            {IPC1530-CAV2    IPC1530-CAV2         664  MTEST10-ETH0}
+#            {IPC1551-CAV1    IPC1551-CAV1         664  MTEST10-ETH0}
+#            {IPC1551-CAV2    IPC1551-CAV2         664  MTEST10-ETH0}
+#            {IPC1539-CAV1    IPC1539-CAV1         664  MTEST10-ETH0}
+#            {IPC1539-CAV2    IPC1539-CAV2         664  MTEST10-ETH0}
+#            {IPC1627-CAV1    IPC1627-CAV1         664  MTEST10-ETH0}
+#            {IPC1627-CAV2    IPC1627-CAV2         664  MTEST10-ETH0}
+#            {IPC1623-CAV1    IPC1623-CAV1         664  MTEST10-ETH0}
+#            {IPC1623-CAV2    IPC1623-CAV2         664  MTEST10-ETH0}
+#            {IPC1488-CAV1    IPC1488-CAV1         664  MTEST10-ETH0}
+#            {IPC1488-CAV2    IPC1488-CAV2         664  MTEST10-ETH0}
+#            {IPC1576-CAV1    IPC1576-CAV1         664  MTEST10-ETH0}
+#            {IPC1576-CAV2    IPC1576-CAV2         664  MTEST10-ETH0}
 }
 #
 file GPAC_BPM_CONSISTENT_SET_VAL.template {
    pattern {DEV           SRV           READ_OFFSET  }
-            {IPC1629-CAV1       IPC1629-CAV1   660}
-            {IPC1629-CAV2       IPC1629-CAV2   660}
-###           {IPC1492-CAV1  IPC1492-CAV1          660  }
-###           {IPC1492-CAV2  IPC1492-CAV2          660  }
-###           {IPC1492-CAV1  IPC1492-CAV1          660  }
-###           {IPC1492-CAV2  IPC1492-CAV2          660  }
-###           {IPC1492-CAV1  IPC1492-CAV1          660  }
-###           {IPC1492-CAV2  IPC1492-CAV2          660  }
-###           {IPC1492-CAV1  IPC1492-CAV1          660  }
-###           {IPC1492-CAV2  IPC1492-CAV2          660  }
+            {IPC1629-CAV1       IPC1629-CAV1   664}
+            {IPC1629-CAV2       IPC1629-CAV2   664}
+###           {IPC1492-CAV1  IPC1492-CAV1          664  }
+###           {IPC1492-CAV2  IPC1492-CAV2          664  }
+###           {IPC1492-CAV1  IPC1492-CAV1          664  }
+###           {IPC1492-CAV2  IPC1492-CAV2          664  }
+###           {IPC1492-CAV1  IPC1492-CAV1          664  }
+###           {IPC1492-CAV2  IPC1492-CAV2          664  }
+###           {IPC1492-CAV1  IPC1492-CAV1          664  }
+###           {IPC1492-CAV2  IPC1492-CAV2          664  }
 }
 ###
 file GPAC_BPM_Calc_RMS_AVG.template { 

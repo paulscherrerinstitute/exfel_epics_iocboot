@@ -29,6 +29,14 @@ require "s7gpac", "koprek_w"
 #   s7gpacConfigure  ("XFELBUT1",      "xfelbut1",   51234,    632,       72,         1,       10000,           200)    
 #   s7gpacConfigure  ("XFELBUT1-BUT1", "xfelbut1",   51235,  45828,      260,         1,       10000,           200)    
 #   s7gpacConfigure  ("XFELBUT1-BUT2", "xfelbut1",   51236,  45828,      260,         1,       10000,           200)
+#  __
+   s7gpacConfigure  ("IPC1708",      "ipc1708",   51234,    632,       72,         1,       10000,           200)    
+   s7gpacConfigure  ("IPC1708-BUT1", "IPC1708",   51235,  45828,      260,         1,       10000,           200)    
+   s7gpacConfigure  ("IPC1708-BUT2", "IPC1708",   51236,  45828,      260,         1,       10000,           200)
+#  __
+   s7gpacConfigure  ("IPC1716",      "ipc1716",    51234,    632,       72,         1,       10000,           200)    
+   s7gpacConfigure  ("IPC1716-REN1", "ipc1716",    51236,   1904,      536,         1,       10000,           200)
+   s7gpacConfigure  ("IPC1716-REN2", "ipc1716",    51238,   1904,      536,         1,       10000,           200)    
 #  __   
    s7gpacConfigure  ("IBFBCTRL",     "xfelgpacibfbctrl",   51234,    632,       72,         1,       10000,           200)    
    s7gpacConfigure  ("IBFBCCOM",     "xfelgpacibfbctrl",   51235,    108,        4,         1,       10000,           200)    
@@ -77,8 +85,8 @@ require "s7gpac", "koprek_w"
 #  s7gpacConfigure   ("IPC1539-CAV2", "ipc1539",    51237,  34656,      660,         1,       10000,          200)      
 #  s7gpacConfigure   ("IPC1539-IBFB", "ipc1539",    51239,     76,       24,         1,       10000,          200)      
   s7gpacConfigure   ("IPC1629",      "ipc1629",    51234,    640,       80,         1,       10000,          200) 
-  s7gpacConfigure   ("IPC1629-CAV1", "ipc1629",    51236,  34656,      660,         1,       10000,          200)  
-  s7gpacConfigure   ("IPC1629-CAV2", "ipc1629",    51238,  34656,      660,         1,       10000,          200)      
+  s7gpacConfigure   ("IPC1629-CAV1", "ipc1629",    51236,  34664,      664,         1,       10000,          200)  
+  s7gpacConfigure   ("IPC1629-CAV2", "ipc1629",    51238,  34664,      664,         1,       10000,          200)      
   s7gpacConfigure   ("IPC1629-IBFB", "ipc1629",    51239,    100,       40,         1,       10000,          200)      
 #  s7gpacConfigure   ("IPC1623",      "ipc1623",    51234,    632,       72,         1,       10000,          200) 
 #  s7gpacConfigure   ("IPC1623-CAV1", "ipc1623",    51235,  34656,      660,         1,       10000,          200)  
