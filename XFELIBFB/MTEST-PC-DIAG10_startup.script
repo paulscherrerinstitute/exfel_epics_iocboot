@@ -30,13 +30,16 @@ require "s7gpac", "koprek_w"
 #   s7gpacConfigure  ("XFELBUT1-BUT1", "xfelbut1",   51235,  45828,      260,         1,       10000,           200)    
 #   s7gpacConfigure  ("XFELBUT1-BUT2", "xfelbut1",   51236,  45828,      260,         1,       10000,           200)
 #  __
-   s7gpacConfigure  ("IPC1708",      "ipc1708",   51234,    632,       72,         1,       10000,           200)    
-   s7gpacConfigure  ("IPC1708-BUT1", "IPC1708",   51235,  45828,      260,         1,       10000,           200)    
-   s7gpacConfigure  ("IPC1708-BUT2", "IPC1708",   51236,  45828,      260,         1,       10000,           200)
+   s7gpacConfigure  ("IPC1708",      "ipc1708",   51234,    640,       80,         1,       10000,           200)    
+   s7gpacConfigure  ("IPC1708-BUT1", "IPC1708",   51235,  45884,      308,         1,       10000,           200)    
+   s7gpacConfigure  ("IPC1708-BUT2", "IPC1708",   51236,  45884,      308,         1,       10000,           200)
+   s7gpacConfigure  ("IPC1708-BUT1SERV",   "IPC1708", 51245,   6892,      136,         1,        10000,  				 200)
+   s7gpacConfigure  ("IPC1708-BUT2SERV",   "IPC1708", 51246,   6892,      136,         1,        10000,  				 200)    
+
 #  __
-   s7gpacConfigure  ("IPC1716",      "ipc1716",    51234,    632,       72,         1,       10000,           200)    
-   s7gpacConfigure  ("IPC1716-REN1", "ipc1716",    51236,   1904,      536,         1,       10000,           200)
-   s7gpacConfigure  ("IPC1716-REN2", "ipc1716",    51238,   1904,      536,         1,       10000,           200)    
+   s7gpacConfigure  ("IPC1716",      "ipc1716",    51234,    640,       80,         1,       10000,           200)    
+   s7gpacConfigure  ("IPC1716-REN1", "ipc1716",    51236,   1912,      540,         1,       10000,           200)
+   s7gpacConfigure  ("IPC1716-REN2", "ipc1716",    51238,   1912,      540,         1,       10000,           200)    
 #  __   
    s7gpacConfigure  ("IBFBCTRL",     "xfelgpacibfbctrl",   51234,    632,       72,         1,       10000,           200)    
    s7gpacConfigure  ("IBFBCCOM",     "xfelgpacibfbctrl",   51235,    108,        4,         1,       10000,           200)    
