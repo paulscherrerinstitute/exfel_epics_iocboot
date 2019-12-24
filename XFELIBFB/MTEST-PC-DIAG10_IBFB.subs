@@ -56,8 +56,8 @@ file S7gpac.template {
            {IPC1716-REN2       IPC1716-REN2  }
 # Button
            {IPC1708            IPC1708       }
-           {IPC1708-BUT1       IPC1708-BUT1  }
-           {IPC1708-BUT2       IPC1708-BUT2  }
+#           {IPC1708-BUT1       IPC1708-BUT1  }
+#           {IPC1708-BUT2       IPC1708-BUT2  }
 #           {IPC1623            IPC1623       }
 #           {IPC1623-CAV1       IPC1623-CAV1  }
 #           {IPC1623-CAV2       IPC1623-CAV2  }
@@ -211,22 +211,46 @@ file GPAC_BPM_SMP.template {
 }
 
 ### ReEntrant
-file XFELIBFB/EXFEL_ReCAV_BPM_SMP.template {
+file EXFEL_ReCAV_BPM_SMP.template {
    pattern  {DEV             SRV          READ_OFFSET  }
-            {IPC1716-REN1       IPC1716-REN1   536}
-            {IPC1716-REN2       IPC1716-REN2   536}
+            {IPC1716-REN1       IPC1716-REN1   540}
+            {IPC1716-REN2       IPC1716-REN2   540}
 }
+
+file EXFEL_ReCAV_BPM_RFFE.template {
+   pattern  {DEV             SRV          READ_OFFSET  }
+            {IPC1716-REN1       IPC1716-REN1   540}
+            {IPC1716-REN2       IPC1716-REN2   540}
+}
+
+file GPAC_BPM_PB_ADC16HL.template {
+   pattern  {DEV             SRV          READ_OFFSET  }
+            {IPC1716-REN1       IPC1716-REN1   540}
+            {IPC1716-REN2       IPC1716-REN2   540}
+}
+
+file GPAC_BPM_Calc_RMS_AVG.template { 
+  pattern {DEV         VAR    EGU PREC MIN MAX RMS-MAX DESC        }
+          {IPC1716-REN1      Q      pC  3    0   500 10      "Charge avg"}
+          {IPC1716-REN1      X      mm  4    -10 10  0.05    "Pos X avg" }
+          {IPC1716-REN1      Y      mm  4    -10 10  0.05    "Pos Y avg" }
+          {IPC1716-REN2      Q      pC  3    0   500 10      "Charge avg"}
+          {IPC1716-REN2      X      mm  4    -10 10  0.05    "Pos X avg" }
+          {IPC1716-REN2      Y      mm  4    -10 10  0.05    "Pos Y avg" }
+}
+
+
 ### Button
 file but_bpm_s7gpac.template {
    pattern  {DEV             SRV          READ_OFFSET  }
-            {IPC1708-BUT1       IPC1708-BUT1   260}
-            {IPC1708-BUT2       IPC1708-BUT2   260}
+            {IPC1708-BUT1       IPC1708-BUT1   308}
+            {IPC1708-BUT2       IPC1708-BUT2   308}
 }
 
 file but_serv_s7gpac.template {
    pattern  {DEV             SRV          READ_OFFSET  }
-            {IPC1708-BUT1       IPC1708-BUT1   260}
-            {IPC1708-BUT2       IPC1708-BUT2   260}
+            {IPC1708-BUT1       IPC1708-BUT1SERV   136}
+            {IPC1708-BUT2       IPC1708-BUT2SERV   136}
 }
 
 

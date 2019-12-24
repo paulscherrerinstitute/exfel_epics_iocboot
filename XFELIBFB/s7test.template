@@ -1,0 +1,68 @@
+#------------------------------------------------------------------------------
+#-----------            GPAC2 SERVICE FUNCTIONS                ----------------
+#------------------------------------------------------------------------------
+
+#------------------------------------------------------------------------------
+# Hardware 
+#------------------------------------------------------------------------------
+## record(longout,"$(DEV):TEST1-WR"){
+##    field (SCAN, "I/O Intr")
+##    field (DTYP, "S7gpac")
+##    field (OUT,  "@$(SRV)/0x0000:0x0000 T=UINT32") 
+##    field (LOPR, "0")
+##    field (HOPR, "65545")
+## }
+## 
+## record(longout,"$(DEV):TEST3-WR"){
+##    field (SCAN, "I/O Intr")
+##    field (DTYP, "S7gpac")
+##    field (OUT,  "@$(SRV)/0x0008 T=UINT32") 
+##    field (LOPR, "0")
+##    field (HOPR, "65545")
+## }
+
+
+#-- TEST INTEGER NUMBER WITH SCALING
+
+record(ao, "$(DEV):AO-INT-WR") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x0004:0x0004 T=INT32")
+  field(SCAN, "I/O Intr")
+  field(LOPR, "-5")
+  field(HOPR, "5")  
+  field(PREC, "3")         
+#  field(LINR, "SLOPE")   
+  field(ASLO, "0.5")   
+}
+
+record(ai,"$(DEV):AO-INT-RD"){
+  field (DTYP, "S7gpac")
+  field (INP,  "@$(SRV)/0x0004 T=INT32") 
+  field (SCAN, "I/O Intr")
+  field(LOPR, "-5")
+  field(HOPR, "5")  
+  field(PREC, "3")         
+#  field(LINR, "SLOPE")   
+  field(ASLO, "0.5")   
+}
+
+## ##--- TEST FLOAT NUMBER
+## 
+## record(ao, "$(DEV):FLOAT-WR") {
+##   field(DTYP, "S7gpac")
+##   field(OUT,  "@$(SRV)/0x0008:0x0008 T=FLOAT")
+##   field(SCAN, "I/O Intr")
+##   field(PREC, "1")
+##   field(DRVH, "160")
+##   field(DRVL, "0")
+##   field(HOPR, "160")  
+##   field(LOPR, "0")
+## }
+## 
+## record(ai,"$(DEV):FLOAT-RD"){
+##   field (DTYP, "S7gpac")
+##   field (INP,  "@$(SRV)/0x0008 T=FLOAT") 
+##   field (SCAN, "I/O Intr")
+##   field(PREC, "1")
+## }
+
