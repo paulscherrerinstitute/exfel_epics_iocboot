@@ -55,17 +55,17 @@ file GPAC_BPM_Calc_RMS_AVG.template {
 #-- Re-entrant BPM
 file EXFEL_ReCAV_BPM_SMP.template {
   pattern  {DEV              SRV          READ_OFFSET  }
-           {RENBPM        RENBPM                  536  }
+           {RENBPM        RENBPM                  540  }
 }
 
 file GPAC_BPM_PB_ADC16HL.template {
   pattern  {DEV              SRV          READ_OFFSET  }
-           {RENBPM        RENBPM                  536  }
+           {RENBPM        RENBPM                  540  }
 }
 
 file EXFEL_ReCAV_BPM_RFFE.template {
   pattern  {DEV              SRV          READ_OFFSET  }
-           {RENBPM        RENBPM                  536  }
+           {RENBPM        RENBPM                  540  }
 }
 
 file GPAC_BPM_Calc_RMS_AVG.template { 
@@ -86,5 +86,5 @@ file S7gpac.template {
 
 file but_serv_s7gpac.template {
   pattern {DEV         SRV        READ_OFFSET  }
-          {BUTBPMSERV  BUTBPMSERV         132  }
+          {BUTBPMSERV  BUTBPMSERV         136  }
 }
