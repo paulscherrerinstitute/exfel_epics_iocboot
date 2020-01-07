@@ -1001,12 +1001,5 @@ record(longout, "$(DEV):X2TIM-DEST-BUNCH-MASK") {
     field(SCAN, "I/O Intr")
  }
 
-record(bi, "$(DEV):X2TIM-DEST-BUNCH-FOUND-RD") {
-   field(DESC, "bunch found")
-   field(DTYP, "S7gpac")
-   field(INP,  "@$(SRV)/$(READ_OFFSET)+0x1A60 T=UINT32")
-   field(SCAN, "I/O Intr")
-   field(ZNAM, "Bunch not found" )
-   field(ONAM, "Bunch found" )
-}
+
 
