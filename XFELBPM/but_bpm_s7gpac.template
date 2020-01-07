@@ -1383,6 +1383,15 @@ record(longin,"$(DEV):A4") {
   field(INP,  "@$(SRV)/$(READ_OFFSET)+0xB128 T=UINT32")
 }
 
+record(bi, "$(DEV):X2TIM-DEST-BUNCH-FOUND-RD") {
+   field(DESC, "bunch found")
+   field(DTYP, "S7gpac")
+   field(INP,  "@$(SRV)/$(READ_OFFSET)+0x1A60 T=UINT32")
+   field(SCAN, "I/O Intr")
+   field(ZNAM, "Bunch not found" )
+   field(ONAM, "Bunch found" )
+}
+
 #------------------------------------------------------------------------------
 # TIMING
 #------------------------------------------------------------------------------
