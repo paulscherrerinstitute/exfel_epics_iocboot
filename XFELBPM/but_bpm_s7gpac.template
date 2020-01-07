@@ -1191,12 +1191,18 @@ record(mbbo, "$(DEV):RFFE-AMPL4") {
 # AGC parameters
 #------------------------------------------------------------------------------
 
-record(bo, "$(DEV):AGC-ENA") {
+record(mbbo, "$(DEV):AGC-ENA") {
   field(DTYP, "S7gpac")
   field(OUT,  "@$(SRV)/0x00A0:0x00A0 T=UINT8")
+  field(NOBT, "2")
+  field(SHFT, "0")
+  field(ZRVL, "0" )
+  field(ONVL, "1" )
+  field(THVL, "3" )
   field(SCAN, "I/O Intr")
-  field(ZNAM, "Manual" )
-  field(ONAM, "Auto" )
+  field(ZRST, "Manual" )
+  field(ONST, "Auto" )
+  field(THST, "Auto Dest" )
 }
 
 record(longout, "$(DEV):AGC-A-MAX") {
