@@ -77,8 +77,8 @@ require "s7gpac", "koprek_w"
 #  s7gpacConfigure   ("IPC1539-CAV2", "ipc1539",    51237,  34656,      660,         1,       10000,          200)      
 #  s7gpacConfigure   ("IPC1539-IBFB", "ipc1539",    51239,     76,       24,         1,       10000,          200)      
   s7gpacConfigure   ("IPC1629",      "ipc1629",    51234,    640,       80,         1,       10000,          200) 
-#  s7gpacConfigure   ("IPC1629-CAV1", "ipc1629",    51235,  34656,      660,         1,       10000,          200)  
-#  s7gpacConfigure   ("IPC1629-CAV2", "ipc1629",    51237,  34656,      660,         1,       10000,          200)      
+  s7gpacConfigure   ("IPC1629-CAV1", "ipc1629",    51235,  34656,      660,         1,       10000,          200)  
+  s7gpacConfigure   ("IPC1629-CAV2", "ipc1629",    51237,  34656,      660,         1,       10000,          200)      
   s7gpacConfigure   ("IPC1629-IBFB", "ipc1629",    51239,     92,       40,         1,       10000,          200)      
 #  s7gpacConfigure   ("IPC1623",      "ipc1623",    51234,    632,       72,         1,       10000,          200) 
 #  s7gpacConfigure   ("IPC1623-CAV1", "ipc1623",    51235,  34656,      660,         1,       10000,          200)  
@@ -98,6 +98,10 @@ require "s7gpac", "koprek_w"
 # Button BPM Service Server                                                                                                  
 #___________________________________________________________________________________________                     
 #  s7gpacConfigure  ("XFEL-BUTSERV",   "ipc1358", 51245,   6884,      132,         1,        10000,  				 200)    
+  s7gpacConfigure  ("IPC1629-CAV1",       "ipc1629",       51236,   34656,      660,         1,        5000,  200)  # Cavity BPM
+  s7gpacConfigure  ("IPC1629-CAV2",       "ipc1629",       51238,   34656,      660,         1,        5000,  200)  # Cavity BPM
+
+
 #___________________________________________________________________________________________                     
 #___________________________________________________________________________________________                     
 # Re-entrant BPM Server                                                                                                  
