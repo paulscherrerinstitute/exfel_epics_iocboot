@@ -22,7 +22,8 @@ require "s7gpac", "koprek_w"
   s7gpacConfigure  ("FLASHFGPACMAFF",   "flashfgpacmaff",      51234,    640,       80,         1,       10000,  200)  # ipc????, cpu???
   s7gpacConfigure  ("FLASHFGPACDIAG1",  "flashfgpacdiag1",     51234,    640,       80,         1,       10000,  200)  # ipc????, cpu???
   s7gpacConfigure  ("FLASHFGPACDIAG3",  "flashfgpacdiag3",     51234,    640,       80,         1,       10000,  200)  # ipc????, cpu???
-#___________________________________________________________________________________________                     
+  s7gpacConfigure  ("DEVCR0963",      "mbugpacCR0963",         51234,    640,       80,         1,       10000,  200)  # ipc????, cpu???
+ #___________________________________________________________________________________________                     
 # BPM Servers                                                                                           
 #___________________________________________________________________________________________                     
   s7gpacConfigure  ("XFELDEVLBUT11",       "mdi7psibut1",       51235,   45884,      308,         1,        5000,  200)  # Button BPM
@@ -38,6 +39,9 @@ require "s7gpac", "koprek_w"
   s7gpacConfigure  ("3FLFDIAG",            "flashfgpacdiag1",   51238,   34656,      660,         1,        5000,  200)  # Cavity BPM
   s7gpacConfigure  ("3FLFXTDS",            "flashfgpacdiag3",   51236,   34656,      660,         1,        5000,  200)  # Cavity BPM
   s7gpacConfigure  ("4FLFXTDS",            "flashfgpacdiag3",   51238,   34656,      660,         1,        5000,  200)  # Cavity BPM
+  s7gpacConfigure  ("DEVCR09631",      "mbugpacCR0963",         51236,   34656,      660,         1,        5000,  200)  # ipc????, cpu???
+  s7gpacConfigure  ("DEVCR09632",      "mbugpacCR0963",         51238,   34656,      660,         1,        5000,  200)  # ipc????, cpu???
+
 
 #___________________________________________________________________________________________                     
 # Button BPM Service Server                                                                                                  

@@ -21,6 +21,7 @@ file S7gpac.template {
             {FLASHFGPACMAFF            FLASHFGPACMAFF   }
             {FLASHFGPACDIAG1           FLASHFGPACDIAG1  }
             {FLASHFGPACDIAG3           FLASHFGPACDIAG3  }
+            {DEVCR0963                 DEVCR0963        }
 }
 
 file gpac2_service.template {
@@ -32,6 +33,7 @@ file gpac2_service.template {
             {FLASHFGPACMAFF           FLASHFGPACMAFF    }
             {FLASHFGPACDIAG1          FLASHFGPACDIAG1   }
             {FLASHFGPACDIAG3          FLASHFGPACDIAG3   }
+            {DEVCR0963                DEVCR0963         }
 }
 
 ################################################################################
@@ -51,7 +53,9 @@ file S7gpac.template {
            {1FLFDIAG              1FLFDIAG                }    
            {3FLFDIAG              3FLFDIAG                }    
            {3FLFXTDS              3FLFXTDS                }    
-           {4FLFXTDS              4FLFXTDS                }    
+           {4FLFXTDS              4FLFXTDS                }
+           {DEVCR09631            DEVCR09631              }
+           {DEVCR09632            DEVCR09632              }    
 }
 
 #-- Button BPM
@@ -72,7 +76,9 @@ file GPAC_BPM_SMP.template {
             {1FLFDIAG                 1FLFDIAG                      660  }
             {3FLFDIAG                 3FLFDIAG                      660  }
             {3FLFXTDS                 3FLFXTDS                      660  }    
-            {4FLFXTDS                 4FLFXTDS                      660  }    
+            {4FLFXTDS                 4FLFXTDS                      660  }
+            {DEVCR09631               DEVCR09631                    660  }
+            {DEVCR09632               DEVCR09632                    660  }    
 }
 
 file GPAC_BPM_PB_ADC16HL.template {
@@ -86,7 +92,9 @@ file GPAC_BPM_PB_ADC16HL.template {
             {1FLFDIAG                 1FLFDIAG                      660  }
             {3FLFDIAG                 3FLFDIAG                      660  }
             {3FLFXTDS                 3FLFXTDS                      660  }    
-            {4FLFXTDS                 4FLFXTDS                      660  }    
+            {4FLFXTDS                 4FLFXTDS                      660  }
+            {DEVCR09631               DEVCR09631                    660  }
+            {DEVCR09632               DEVCR09632                    660  }    
 }
 
 file RFFE_Cavity_3GHz3_120700B.template {
@@ -100,7 +108,10 @@ file RFFE_Cavity_3GHz3_120700B.template {
             {1FLFDIAG                 1FLFDIAG                      660  MTEST10-ETH0}
             {3FLFDIAG                 3FLFDIAG                      660  MTEST10-ETH0}
             {3FLFXTDS                 3FLFXTDS                      660  MTEST10-ETH0}    
-            {4FLFXTDS                 4FLFXTDS                      660  MTEST10-ETH0}    
+            {4FLFXTDS                 4FLFXTDS                      660  MTEST10-ETH0}
+            {DEVCR09631               DEVCR09631                    660  MTEST10-ETH0}
+            {DEVCR09632               DEVCR09632                    660  MTEST10-ETH0}
+    
 }
 
 file GPAC_BPM_CONSISTENT_SET_VAL.template {
@@ -115,6 +126,8 @@ file GPAC_BPM_CONSISTENT_SET_VAL.template {
             {3FLFDIAG                 3FLFDIAG                      660  }
             {3FLFXTDS                 3FLFXTDS                      660  }    
             {4FLFXTDS                 4FLFXTDS                      660  }    
+            {DEVCR09631               DEVCR09631                    660  }
+            {DEVCR09632               DEVCR09632                    660  }    
 }
 
 #file GPAC_BPM_Calc_RMS_AVG.template { 
