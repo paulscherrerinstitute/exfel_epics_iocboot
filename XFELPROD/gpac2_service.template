@@ -1534,3 +1534,23 @@ record(bo, "$(DEV):DIO-SLEEP-MODE") {
 #   field(ZNAM, "Off" )
 #   field(ONAM, "On" )
 # }
+
+record(longout, "$(DEV):XFELTIM-EVENT-0") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x003C T=UINT8") 
+}
+
+record(longout, "$(DEV):XFELTIM-EVENT-1") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x003D T=UINT8") 
+}
+
+record(longout, "$(DEV):XFELTIM-EVENT-2") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x003E T=UINT8") 
+}
+
+record(longout, "$(DEV):XFELTIM-EVENT-3") {
+  field(DTYP, "S7gpac")
+  field(OUT,  "@$(SRV)/0x003F T=UINT8") 
+}
