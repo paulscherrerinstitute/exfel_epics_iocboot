@@ -1,4 +1,5 @@
 
+
 ################################################################################
 ## S7gpac driver test server - ASYNCHRONOUS                                 ####
 ################################################################################
@@ -46,6 +47,7 @@ file S7gpac.template {
            {XFELDEVLCAV11         XFELDEVLCAV11           }    
            {XFELDEVLCAV12         XFELDEVLCAV12           }    
            {XFELDEVLREN11         XFELDEVLREN11           }    
+           {XFELDEVLREN12         XFELDEVLREN12           }    
            {LUXGPAC1MDIBPM1       LUXGPAC1MDIBPM1         }    
            {LUXGPAC1MDIBPM2       LUXGPAC1MDIBPM2         }    
            {11FLFMAFF             11FLFMAFF               }    
@@ -140,20 +142,20 @@ file GPAC_BPM_CONSISTENT_SET_VAL.template {
 #-- Re-entrant BPM
 file EXFEL_ReCAV_BPM_SMP.template {
   pattern  {DEV              SRV          READ_OFFSET  }
-           {XFELDEVLREN11        XFELDEVLREN11                  536  }
-           {XFELDEVLREN12        XFELDEVLREN12                  536  }
+           {XFELDEVLREN11        XFELDEVLREN11                  540  }
+           {XFELDEVLREN12        XFELDEVLREN12                  540  }
 }
 
 file GPAC_BPM_PB_ADC16HL.template {
   pattern  {DEV              SRV          READ_OFFSET  }
-           {XFELDEVLREN11        XFELDEVLREN11                  536  }
-           {XFELDEVLREN12        XFELDEVLREN12                  536  }
+           {XFELDEVLREN11        XFELDEVLREN11                  540  }
+           {XFELDEVLREN12        XFELDEVLREN12                  540  }
 }
 
 file EXFEL_ReCAV_BPM_RFFE.template {
   pattern  {DEV              SRV          READ_OFFSET  }
-           {XFELDEVLREN11        XFELDEVLREN11                  536  }
-           {XFELDEVLREN12        XFELDEVLREN12                  536  }
+           {XFELDEVLREN11        XFELDEVLREN11                  540  }
+           {XFELDEVLREN12        XFELDEVLREN12                  540  }
 }
 
 #file GPAC_BPM_Calc_RMS_AVG.template { 
