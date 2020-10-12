@@ -1,0 +1,200 @@
+
+################################################################################
+## S7gpac driver status                                                     ####
+################################################################################
+
+file S7gpac.template {
+  pattern  {DEV                SRV           }
+           {IBFBCTRL           IBFBCTRL      }
+           {IBFBCCOM           IBFBCCOM      }
+           {IBFBCTRL1          IBFBCTRL1     }
+           {IBFBCWAV1          IBFBCWAV1     }
+           {IBFBCTAB1          IBFBCTAB1     }
+           {IBFBCPAT1          IBFBCPAT1     }
+           {IBFBSCAN1          IBFBSCAN1     }
+           {IBFBCTRL2          IBFBCTRL2     }
+           {IBFBCWAV2          IBFBCWAV2     }
+           {IBFBCTAB2          IBFBCTAB2     }
+           {IBFBCPAT2          IBFBCPAT2     }
+           {IBFBSCAN2          IBFBSCAN2     }
+           {IBFBSW             IBFBSW        }
+           {IBFBSCOM           IBFBSCOM      }
+           {IBFBSW1            IBFBSW1       }
+           {IBFBSW2            IBFBSW2       }
+           {IBFBMON            IBFBMON       }
+           {IBFBMCOM           IBFBMCOM      }
+           {IBFBMON1           IBFBMON1      }
+           {IBFBMON2           IBFBMON2      }
+#           {IBFBPLAY           IBFBPLAY      }
+           {IBFBPCOM           IBFBPCOM      }
+#          {IBFBPLAY1          IBFBPLAY1     }
+#          {IBFBPLAY2          IBFBPLAY2     }
+           {IPC1536            IPC1536       }
+#          {IPC1536-CAV1       IPC1536-CAV1  }
+#          {IPC1536-CAV2       IPC1536-CAV2  }
+           {IPC1536-IBFB       IPC1536-IBFB  }
+           {IPC1629            IPC1629       }
+           {IPC1629-CAV1       IPC1629-CAV1  }
+           {IPC1629-CAV2       IPC1629-CAV2  }
+           {IPC1629-IBFB       IPC1629-IBFB  }
+}
+ 
+################################################################################
+## GPAC SERVICE SERVERS                                                     ####
+################################################################################
+
+file gpac2_service.template {
+  pattern  {DEV                SRV           }
+           {IBFBCTRL           IBFBCTRL      } 
+           {IBFBSW             IBFBSW        }
+           {IBFBMON            IBFBMON       }
+#          {IBFBPLAY           IBFBPLAY      }
+           {IPC1536            IPC1536       }
+           {IPC1629            IPC1629       }
+}
+  
+################################################################################
+## IBFB                                                                     ####
+################################################################################
+
+#-- controller
+
+file ibfbctrl_plane.template {
+   pattern  {DEV           SRV     		   READ_OFFSET  PLANE }
+            {IBFBCTRL      IBFBCTRL1             380      Y }
+            {IBFBCTRL      IBFBCTRL2             380      X }
+}
+
+file ibfbctrl_dac.template {
+   pattern  {DEV           SRV     		   READ_OFFSET  PLANE }
+            {IBFBCTRL      IBFBCTRL1             380      Y }
+            {IBFBCTRL      IBFBCTRL2             380      X }
+}
+
+file ibfbctrl_common.template {
+   pattern  {DEV           SRV     	     READ_OFFSET        }
+            {IBFBCTRL      IBFBCCOM                4        }
+}
+
+file ibfbctrl_amplifier.template {
+   pattern  {DEV           SRV     	     READ_OFFSET        }
+            {IBFBCTRL      IBFBCCOM                4        }
+}
+
+
+file ibfbctrl_waveforms.template {
+   pattern  {DEV           SRV     		   READ_OFFSET  PLANE }
+            {IBFBCTRL      IBFBCWAV1               4      Y }
+            {IBFBCTRL      IBFBCWAV2               4      X }
+}
+
+file ibfbctrl_tables.template {
+   pattern  {DEV           SRV     		   READ_OFFSET  PLANE }
+            {IBFBCTRL      IBFBCTAB1            2048      Y }
+            {IBFBCTRL      IBFBCTAB2            2048      X }
+}
+
+file ibfbctrl_patterns.template {
+   pattern  {DEV           SRV     		   READ_OFFSET  PLANE }
+            {IBFBCTRL      IBFBCPAT1             384      Y }
+            {IBFBCTRL      IBFBCPAT2             384      X }
+}
+
+file ibfbctrl_ff_scan.template {
+   pattern  {DEV           SRV     		   READ_OFFSET  PLANE }
+            {IBFBCTRL      IBFBSCAN1               4      Y }
+            {IBFBCTRL      IBFBSCAN2               4      X }
+}
+
+#-- switch
+file ibfbscom.template {
+   pattern  {DEV           SRV     		   READ_OFFSET        }
+            {IBFBSW        IBFBSCOM               80        }
+}
+
+file ibfbsw.template {
+   pattern  {DEV           SRV     		   READ_OFFSET   SW   }
+            {IBFBSW        IBFBSW1                20   SW1  }
+            {IBFBSW        IBFBSW2                20   SW2  }
+}
+
+#-- monitor
+file ibfbmcom.template {
+   pattern  {DEV           SRV     		   READ_OFFSET        }
+            {IBFBMON       IBFBMCOM               4        }
+}
+
+file ibfbmon.template {
+   pattern  {DEV           SRV     		   READ_OFFSET  MON   }
+            {IBFBMON       IBFBMON1               48  AMP   }
+            {IBFBMON       IBFBMON2               48  KICK  }
+}
+
+#-- player
+#file ibfbpcom.template {
+#   pattern  {DEV           SRV     		   READ_OFFSET        }
+#            {IBFBPLAY      IBFBPCOM                4        }
+#}
+#
+#file ibfbplay.template {
+#   pattern  {DEV           SRV     		   READ_OFFSET  PLAYER}
+#            {IBFBPLAY      IBFBPLAY1           43544  PLAY1 }
+#            {IBFBPLAY      IBFBPLAY2           43544  PLAY2 }
+#}
+
+
+#################################################################################
+### IBFB Cavity BPMs                                                         ####
+#################################################################################
+#
+file GPAC_BPM_SMP.template {
+   pattern  {DEV             SRV          READ_OFFSET  }
+            {IPC1536-CAV1    IPC1536-CAV1         664  }
+            {IPC1536-CAV2    IPC1536-CAV2         664  }
+            {IPC1629-CAV1    IPC1629-CAV1         664  }
+            {IPC1629-CAV2    IPC1629-CAV2         664  }
+}
+
+file GPAC_BPM_PB_ADC16HL.template {
+   pattern  {DEV             SRV          READ_OFFSET  }
+            {IPC1536-CAV1    IPC1536-CAV1         664  }
+            {IPC1536-CAV2    IPC1536-CAV2         664  }
+            {IPC1629-CAV1    IPC1629-CAV1         664  }
+            {IPC1629-CAV2    IPC1629-CAV2         664  }
+}
+
+file RFFE_Cavity_3GHz3_120700B.template {
+   pattern  {DEV             SRV          READ_OFFSET  GLB         }
+            {IPC1536-CAV1    IPC1536-CAV1         664  MTEST10-ETH0}
+            {IPC1536-CAV2    IPC1536-CAV2         664  MTEST10-ETH0}
+            {IPC1629-CAV1    IPC1629-CAV1         664  MTEST10-ETH0}
+            {IPC1629-CAV2    IPC1629-CAV2         664  MTEST10-ETH0}
+}
+
+###file GPAC_BPM_CONSISTENT_SET_VAL.template {
+###   pattern {DEV           SRV           READ_OFFSET  }
+###           {IPC1492-CAV1  IPC1492-CAV1          660  }
+###           {IPC1492-CAV2  IPC1492-CAV2          660  }
+###           {IPC1492-CAV1  IPC1492-CAV1          660  }
+###           {IPC1492-CAV2  IPC1492-CAV2          660  }
+###           {IPC1492-CAV1  IPC1492-CAV1          660  }
+###           {IPC1492-CAV2  IPC1492-CAV2          660  }
+###           {IPC1492-CAV1  IPC1492-CAV1          660  }
+###           {IPC1492-CAV2  IPC1492-CAV2          660  }
+###}
+###
+###file GPAC_BPM_Calc_RMS_AVG.template { 
+###   pattern {DEV            VAR    EGU PREC MIN MAX RMS-MAX DESC        }
+###           {IPC1492-CAV1     Q      pC  3    0   500 10      "Charge avg"}
+###           {IPC1492-CAV1     X      mm  4    -10 10  0.05    "Pos X avg" }
+###           {IPC1492-CAV1     Y      mm  4    -10 10  0.05    "Pos Y avg" }
+###           {IPC1492-CAV2     Q      pC  3    0   500 10      "Charge avg"}
+###           {IPC1492-CAV2     X      mm  4    -10 10  0.05    "Pos X avg" }
+###           {IPC1492-CAV2     Y      mm  4    -10 10  0.05    "Pos Y avg" }
+###}
+#
+file ibfbcav.template {
+   pattern  {DEV             SRV          READ_OFFSET  }
+             {IPC1536-IBFB    IPC1536-IBFB          40  }
+             {IPC1629-IBFB    IPC1629-IBFB          40  }
+}
