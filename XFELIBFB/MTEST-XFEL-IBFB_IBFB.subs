@@ -37,6 +37,10 @@ file S7gpac.template {
            {IPC1629-CAV1       IPC1629-CAV1  }
            {IPC1629-CAV2       IPC1629-CAV2  }
            {IPC1629-IBFB       IPC1629-IBFB  }
+           {IPC1908            IPC1908       }
+           {IPC1908-CAV1       IPC1908-CAV1  }
+           {IPC1908-CAV2       IPC1908-CAV2  }
+           {IPC1908-IBFB       IPC1908-IBFB  }
 }
  
 ################################################################################
@@ -51,6 +55,7 @@ file gpac2_service.template {
 #          {IBFBPLAY           IBFBPLAY      }
            {IPC1536            IPC1536       }
            {IPC1629            IPC1629       }
+           {IPC1908            IPC1908       }
 }
   
 ################################################################################
@@ -153,6 +158,8 @@ file GPAC_BPM_SMP.template {
             {IPC1536-CAV2    IPC1536-CAV2         664  }
             {IPC1629-CAV1    IPC1629-CAV1         664  }
             {IPC1629-CAV2    IPC1629-CAV2         664  }
+            {IPC1908-CAV1    IPC1908-CAV1         664  }
+            {IPC1908-CAV2    IPC1908-CAV2         664  }
 }
 
 file GPAC_BPM_PB_ADC16HL.template {
@@ -161,6 +168,8 @@ file GPAC_BPM_PB_ADC16HL.template {
             {IPC1536-CAV2    IPC1536-CAV2         664  }
             {IPC1629-CAV1    IPC1629-CAV1         664  }
             {IPC1629-CAV2    IPC1629-CAV2         664  }
+            {IPC1908-CAV1    IPC1908-CAV1         664  }
+            {IPC1908-CAV2    IPC1908-CAV2         664  }
 }
 
 file RFFE_Cavity_3GHz3_120700B.template {
@@ -169,6 +178,8 @@ file RFFE_Cavity_3GHz3_120700B.template {
             {IPC1536-CAV2    IPC1536-CAV2         664  MTEST10-ETH0}
             {IPC1629-CAV1    IPC1629-CAV1         664  MTEST10-ETH0}
             {IPC1629-CAV2    IPC1629-CAV2         664  MTEST10-ETH0}
+            {IPC1908-CAV1    IPC1908-CAV1         664  MTEST10-ETH0}
+            {IPC1908-CAV2    IPC1908-CAV2         664  MTEST10-ETH0}
 }
 
 ###file GPAC_BPM_CONSISTENT_SET_VAL.template {
@@ -197,4 +208,5 @@ file ibfbcav.template {
    pattern  {DEV             SRV          READ_OFFSET  }
              {IPC1536-IBFB    IPC1536-IBFB          40  }
              {IPC1629-IBFB    IPC1629-IBFB          40  }
+             {IPC1908-IBFB    IPC1908-IBFB          40  }
 }

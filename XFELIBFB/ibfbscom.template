@@ -279,9 +279,11 @@ record(longin, "$(DEV):QSFP2-SFP-IN") {
 }
 
 ## --- switch filters configuration
+
+## ---- SASE 1
 record(longout, "$(DEV):Y-FILT-SASE1-BPM1") {
   field(DTYP, "S7gpac")
-  field(OUT,  "@$(SRV)/0x0020:0x0020 T=UINT8")
+  field(OUT,  "@$(SRV)/0x0024:0x0024 T=UINT8")
   field(SCAN, "I/O Intr")
   field(DRVH, "255")
   field(DRVL, "0")
@@ -293,7 +295,7 @@ record(longout, "$(DEV):Y-FILT-SASE1-BPM1") {
 
 record(longout, "$(DEV):Y-FILT-SASE1-BPM2") {
   field(DTYP, "S7gpac")
-  field(OUT,  "@$(SRV)/0x0021:0x0021 T=UINT8")
+  field(OUT,  "@$(SRV)/0x0025:0x0025 T=UINT8")
   field(SCAN, "I/O Intr")
   field(DRVH, "255")
   field(DRVL, "0")
@@ -305,7 +307,7 @@ record(longout, "$(DEV):Y-FILT-SASE1-BPM2") {
 
 record(longout, "$(DEV):X-FILT-SASE1-BPM1") {
   field(DTYP, "S7gpac")
-  field(OUT,  "@$(SRV)/0x0022:0x0022 T=UINT8")
+  field(OUT,  "@$(SRV)/0x0026:0x0026 T=UINT8")
   field(SCAN, "I/O Intr")
   field(DRVH, "255")
   field(DRVL, "0")
@@ -317,7 +319,7 @@ record(longout, "$(DEV):X-FILT-SASE1-BPM1") {
 
 record(longout, "$(DEV):X-FILT-SASE1-BPM2") {
   field(DTYP, "S7gpac")
-  field(OUT,  "@$(SRV)/0x0023:0x0023 T=UINT8")
+  field(OUT,  "@$(SRV)/0x0027:0x0027 T=UINT8")
   field(SCAN, "I/O Intr")
   field(DRVH, "255")
   field(DRVL, "0")
@@ -327,9 +329,12 @@ record(longout, "$(DEV):X-FILT-SASE1-BPM2") {
   field(DOL,  "IBFBCTRL:X-FB-SASE1-BPM2")
 }
 
+
+## ---- SASE 2
+
 record(longout, "$(DEV):Y-FILT-SASE2-BPM1") {
   field(DTYP, "S7gpac")
-  field(OUT,  "@$(SRV)/0x0024:0x0024 T=UINT8")
+  field(OUT,  "@$(SRV)/0x0020:0x0020 T=UINT8")
   field(SCAN, "I/O Intr")
   field(DRVH, "255")
   field(DRVL, "0")
@@ -341,7 +346,7 @@ record(longout, "$(DEV):Y-FILT-SASE2-BPM1") {
 
 record(longout, "$(DEV):Y-FILT-SASE2-BPM2") {
   field(DTYP, "S7gpac")
-  field(OUT,  "@$(SRV)/0x0025:0x0025 T=UINT8")
+  field(OUT,  "@$(SRV)/0x0021:0x0021 T=UINT8")
   field(SCAN, "I/O Intr")
   field(DRVH, "255")
   field(DRVL, "0")
@@ -353,7 +358,7 @@ record(longout, "$(DEV):Y-FILT-SASE2-BPM2") {
 
 record(longout, "$(DEV):X-FILT-SASE2-BPM1") {
   field(DTYP, "S7gpac")
-  field(OUT,  "@$(SRV)/0x0026:0x0026 T=UINT8")
+  field(OUT,  "@$(SRV)/0x0022:0x0022 T=UINT8")
   field(SCAN, "I/O Intr")
   field(DRVH, "255")
   field(DRVL, "0")
@@ -365,7 +370,7 @@ record(longout, "$(DEV):X-FILT-SASE2-BPM1") {
 
 record(longout, "$(DEV):X-FILT-SASE2-BPM2") {
   field(DTYP, "S7gpac")
-  field(OUT,  "@$(SRV)/0x0027:0x0027 T=UINT8")
+  field(OUT,  "@$(SRV)/0x0023:0x0023 T=UINT8")
   field(SCAN, "I/O Intr")
   field(DRVH, "255")
   field(DRVL, "0")
@@ -374,6 +379,8 @@ record(longout, "$(DEV):X-FILT-SASE2-BPM2") {
   field(OMSL, "closed_loop")
   field(DOL,  "IBFBCTRL:X-FB-SASE2-BPM2")
 }
+
+## ---- COLIMATOR
 
 record(longout, "$(DEV):Y-FILT-COLL-BPM1") {
   field(DTYP, "S7gpac")
@@ -398,6 +405,8 @@ record(longout, "$(DEV):X-FILT-COLL-BPM1") {
   field(OMSL, "closed_loop")
   field(DOL,  "IBFBCTRL:Y-FB-COL-BPM")
 }
+
+## ---- SASE 3
 
 record(longout, "$(DEV):Y-FILT-SASE3-BPM1") {
   field(DTYP, "S7gpac")
