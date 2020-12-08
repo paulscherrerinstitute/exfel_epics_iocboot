@@ -17,7 +17,7 @@ require "s7gpac", "koprek_w"
 #___________________________________________________________________________________________
   s7gpacConfigure  ("XFELGPAC1DI30I1",        "xfelgpac1di30i1",         51234,    640,       80,         1,       10000,  200)  # ipc1352, xfelcpudi30i1  
   s7gpacConfigure  ("XFELGPAC1DI55I1",        "xfelgpac1di55i1",         51234,    640,       80,         1,       10000,  200)  # ipc1310, xfelcpudi55i1  
-  s7gpacConfigure  ("XFELGPAC2DI55I1",        "xfelgpac2di55i1",         51234,    640,       80,         1,       10000,  200)  # ipc1360, xfelcpudi55i1   
+  s7gpacConfigure  ("XFELGPAC3DI55I1_1",      "xfelgpac3di55i1_1",       51234,    640,       80,         1,       10000,  200)  # ipc1360, xfelcpudi55i1   
   s7gpacConfigure  ("XFELGPAC3DI55I1",        "xfelgpac3di55i1",         51234,    640,       80,         1,       10000,  200)  # ipc1342, xfelcpudi55i1   
   s7gpacConfigure  ("XFELGPAC1DI59I1",        "xfelgpac1di59i1",         51234,    640,       80,         1,       10000,  200)  # ipc1367, xfelcpudi59i1   
   s7gpacConfigure  ("XFELGPAC1DI94I1",        "xfelgpac1di94i1",         51234,    640,       80,         1,       10000,  200)  #

@@ -24,7 +24,7 @@ file S7gpac.template {
    pattern  {DEV                      SRV                   }
             {XFELGPAC1DI30I1          XFELGPAC1DI30I1       }
             {XFELGPAC1DI55I1          XFELGPAC1DI55I1       }
-            {XFELGPAC2DI55I1          XFELGPAC2DI55I1       }
+            {XFELGPAC3DI55I1_1          XFELGPAC3DI55I1_1       }
             {XFELGPAC3DI55I1          XFELGPAC3DI55I1       }
             {XFELGPAC1DI59I1          XFELGPAC1DI59I1       }
             {XFELGPAC1DI94I1          XFELGPAC1DI94I1       }
@@ -197,7 +197,7 @@ file gpac2_service.template {
    pattern  {DEV                     SRV                 }
             {XFELGPAC1DI30I1          XFELGPAC1DI30I1       }
             {XFELGPAC1DI55I1          XFELGPAC1DI55I1       }
-            {XFELGPAC2DI55I1          XFELGPAC2DI55I1       }
+            {XFELGPAC3DI55I1_1          XFELGPAC3DI55I1_1       }
             {XFELGPAC3DI55I1          XFELGPAC3DI55I1       }
             {XFELGPAC1DI59I1          XFELGPAC1DI59I1       }
             {XFELGPAC1DI94I1          XFELGPAC1DI94I1       }
